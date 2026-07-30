@@ -1,0 +1,2 @@
+run=2026-07-30T22:17:00+09:00
+purpose=validate_same_browser_session_from_seller_page_to_exact_unicorn_product
