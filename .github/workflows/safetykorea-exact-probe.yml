@@ -1,0 +1,40 @@
+name: SafetyKorea exact status probe
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "run/safetykorea-probe.trigger"
+      - "tools/safetykorea_exact_probe.py"
+      - ".github/workflows/safetykorea-exact-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Validate source
+        run: python -m py_compile tools/safetykorea_exact_probe.py
+      - name: Resolve exact official statuses
+        env:
+          PROBE_OUTPUT: diagnostics/safetykorea/result.json
+        run: python tools/safetykorea_exact_probe.py
+      - name: Upload official status evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetykorea-exact-status
+          path: diagnostics/safetykorea
+          if-no-files-found: error
+          retention-days: 7
