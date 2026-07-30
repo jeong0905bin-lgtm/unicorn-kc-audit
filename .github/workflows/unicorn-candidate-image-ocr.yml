@@ -1,18 +1,7 @@
 name: Unicorn candidate image publisher OCR
 
+# Thumbnail OCR cannot verify the mandatory publisher table. Manual only.
 on:
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/unicorn-candidate-image-ocr.trigger"
-      - "tools/unicorn_candidate_image_ocr.py"
-      - ".github/workflows/unicorn-candidate-image-ocr.yml"
-  pull_request:
-    branches: [main]
-    paths:
-      - "run/unicorn-candidate-image-ocr.trigger"
-      - "tools/unicorn_candidate_image_ocr.py"
-      - ".github/workflows/unicorn-candidate-image-ocr.yml"
   workflow_dispatch:
 
 permissions:
