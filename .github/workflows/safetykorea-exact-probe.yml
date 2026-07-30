@@ -1,12 +1,7 @@
 name: SafetyKorea exact status probe
 
+# Direct SafetyKorea access timed out on GitHub-hosted runner. Manual only.
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "run/safetykorea-probe.trigger"
-      - "tools/safetykorea_exact_probe.py"
-      - ".github/workflows/safetykorea-exact-probe.yml"
   workflow_dispatch:
 
 permissions:
