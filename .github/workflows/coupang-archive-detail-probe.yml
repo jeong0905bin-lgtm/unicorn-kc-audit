@@ -1,18 +1,7 @@
 name: Coupang archive detail probe
 
+# Archive route did not recover control or target publisher values. Manual only.
 on:
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/archive-detail-probe.trigger"
-      - "tools/coupang_archive_detail_probe.py"
-      - ".github/workflows/coupang-archive-detail-probe.yml"
-  pull_request:
-    branches: [main]
-    paths:
-      - "run/archive-detail-probe.trigger"
-      - "tools/coupang_archive_detail_probe.py"
-      - ".github/workflows/coupang-archive-detail-probe.yml"
   workflow_dispatch:
 
 permissions:
