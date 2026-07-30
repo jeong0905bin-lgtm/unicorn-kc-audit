@@ -1,16 +1,8 @@
 name: Coupang access matrix
 
+# Disabled from automatic execution: all hosted environments already failed
+# exact known-product confirmation. Run manually only for deliberate diagnostics.
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "tools/coupang_access_matrix_probe.py"
-      - ".github/workflows/coupang-access-matrix.yml"
-      - "run/access-probe.trigger"
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/access-probe.trigger"
   workflow_dispatch:
 
 permissions:
