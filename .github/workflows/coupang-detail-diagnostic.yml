@@ -1,11 +1,10 @@
 name: Coupang detail incognito diagnostic
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
     paths:
-      - "tools/coupang_detail_diagnostic.py"
-      - ".github/workflows/coupang-detail-diagnostic.yml"
+      - "run/detail-diagnostic.trigger"
   workflow_dispatch:
 
 permissions:
@@ -22,8 +21,6 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
