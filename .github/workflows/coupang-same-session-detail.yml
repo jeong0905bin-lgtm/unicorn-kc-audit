@@ -1,18 +1,7 @@
 name: Coupang same-session detail diagnostic
 
+# Hosted runners are blocked by Coupang. Manual diagnostics only.
 on:
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/same-session-detail.trigger"
-      - "tools/coupang_same_session_detail.py"
-      - ".github/workflows/coupang-same-session-detail.yml"
-  pull_request:
-    branches: [main]
-    paths:
-      - "run/same-session-detail.trigger"
-      - "tools/coupang_same_session_detail.py"
-      - ".github/workflows/coupang-same-session-detail.yml"
   workflow_dispatch:
 
 permissions:
