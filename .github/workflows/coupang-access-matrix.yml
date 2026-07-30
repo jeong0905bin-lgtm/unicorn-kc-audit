@@ -1,0 +1,133 @@
+name: Coupang access matrix
+
+on:
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
+    paths:
+      - "run/access-probe.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: coupang-access-matrix-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    name: ${{ matrix.id }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - id: ubuntu24-chromium
+            os: ubuntu-24.04
+            browser: chromium
+          - id: ubuntu22-firefox
+            os: ubuntu-22.04
+            browser: firefox
+          - id: windows25-chromium
+            os: windows-2025
+            browser: chromium
+          - id: windows22-firefox
+            os: windows-2022
+            browser: firefox
+          - id: macos15-chromium
+            os: macos-15
+            browser: chromium
+          - id: macos14-webkit
+            os: macos-14
+            browser: webkit
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright requests
+      - name: Install browser with Linux dependencies
+        if: runner.os == 'Linux'
+        run: python -m playwright install --with-deps ${{ matrix.browser }}
+      - name: Install browser
+        if: runner.os != 'Linux'
+        run: python -m playwright install ${{ matrix.browser }}
+      - name: Validate probe source
+        run: python -m py_compile tools/coupang_access_matrix_probe.py
+      - name: Probe seller and known Unicorn detail
+        env:
+          RUNNER_LABEL: ${{ matrix.os }}
+          BROWSER_NAME: ${{ matrix.browser }}
+          PROBE_OUTPUT: probe
+        run: python tools/coupang_access_matrix_probe.py
+      - name: Upload probe evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coupang-probe-${{ matrix.id }}
+          path: probe
+          if-no-files-found: warn
+          retention-days: 7
+
+  select:
+    name: Select validated environment
+    needs: probe
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: coupang-probe-*
+          path: probe-results
+      - name: Require exact known-product confirmation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          reports=[]
+          for path in sorted(Path('probe-results').rglob('result.json')):
+              try:
+                  report=json.loads(path.read_text(encoding='utf-8'))
+              except Exception as exc:
+                  reports.append({'path':str(path),'parseError':str(exc)})
+                  continue
+              summary=report.get('summary') or {}
+              score=(10000 if summary.get('knownUnicornConfirmed') else 0)
+              score+=(2000 if summary.get('productAccessible') else 0)
+              score+=(1000 if summary.get('sellerAccessible') else 0)
+              score+=int(summary.get('sellerProductIds') or 0)
+              reports.append({
+                  'path':str(path),
+                  'runner':report.get('runner'),
+                  'browser':report.get('browser'),
+                  'score':score,
+                  'summary':summary,
+              })
+          valid=[r for r in reports if (r.get('summary') or {}).get('knownUnicornConfirmed')]
+          selection={
+              'valid':bool(valid),
+              'selected':max(valid,key=lambda r:r['score']) if valid else None,
+              'reports':reports,
+          }
+          Path('selection.json').write_text(json.dumps(selection,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps(selection,ensure_ascii=False,indent=2))
+          if not valid:
+              raise SystemExit('No runner/browser combination confirmed 저자, 출판사 = 유니콘 on the known product')
+          PY
+      - name: Upload combined selection report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coupang-access-selection
+          path: |
+            selection.json
+            probe-results
+          if-no-files-found: warn
+          retention-days: 7
