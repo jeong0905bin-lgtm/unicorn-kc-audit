@@ -1,0 +1,46 @@
+name: Unicorn brand filter probe
+
+on:
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
+    paths:
+      - "run/unicorn-brand-probe.trigger"
+  pull_request:
+    branches: [main]
+    paths:
+      - "run/unicorn-brand-probe.trigger"
+      - "tools/unicorn_brand_probe.py"
+      - ".github/workflows/unicorn-brand-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: unicorn-brand-probe-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests
+      - name: Validate source
+        run: python -m py_compile tools/unicorn_brand_probe.py
+      - name: Probe Unicorn brand listing filter
+        run: python tools/unicorn_brand_probe.py
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-brand-filter-probe
+          path: work/brand_probe
+          if-no-files-found: error
+          retention-days: 7
