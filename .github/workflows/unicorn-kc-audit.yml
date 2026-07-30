@@ -1,16 +1,8 @@
 name: Unicorn KC audit
 
+# Catalog collection is complete, but publisher-detail extraction is not yet
+# validated. Manual only until a real product-detail request template exists.
 on:
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/unicorn-audit.trigger"
-  pull_request:
-    branches: [main]
-    paths:
-      - "run/unicorn-audit.trigger"
-      - "tools/unicorn_catalog.py"
-      - ".github/workflows/unicorn-kc-audit.yml"
   workflow_dispatch:
 
 permissions:
