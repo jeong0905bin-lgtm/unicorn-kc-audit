@@ -2,291 +2,336 @@
 from __future__ import annotations
 
 import argparse
-import html
 import json
+import math
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
-from urllib.parse import parse_qs, urljoin, urlparse
+from typing import Any
 
-from playwright.sync_api import sync_playwright
+import requests
 
 SELLER_ID = "A00214628"
-BASE = f"https://shop.coupang.com/{SELLER_ID}"
-PRODUCT_RE = re.compile(r"/vp/products/(\d+)")
-URL_RE = re.compile(r"(?:https?://(?:www\.)?coupang\.com)?/vp/products/\d+[^\"'<>\s]*", re.I)
-TRIPLE_RE = re.compile(
-    r'"productId"\s*:\s*"?(\d+)"?.{0,900}?"itemId"\s*:\s*"?(\d+)"?.{0,900}?"vendorItemId"\s*:\s*"?(\d+)"?',
-    re.I | re.S,
+STORE_ID = 79545
+BRAND_ID = 0
+OUTBOUND_SHIPPING_PLACE_ID = 1208642
+SOURCE_PRODUCT_ID = 9402620761
+SOURCE_VENDOR_ITEM_ID = 94889588242
+SOURCE = "brandstore_sdp_atf"
+
+BASE_URL = "https://shop.coupang.com"
+LISTING_URL = f"{BASE_URL}/api/v1/listing"
+MAIN_CATEGORY_URL = f"{BASE_URL}/api/v1/main_category"
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.7",
+    "Content-Type": "application/json",
+    "Origin": BASE_URL,
+    "Referer": (
+        f"{BASE_URL}/{SELLER_ID}?source={SOURCE}"
+        f"&ocid={OUTBOUND_SHIPPING_PLACE_ID}"
+        f"&checkBatchDelivery=true"
+        f"&pid={SOURCE_PRODUCT_ID}"
+        f"&viid={SOURCE_VENDOR_ITEM_ID}"
+        "&platform=p&brandId=0&btcEnableForce=false"
+    ),
+}
+
+SORT_VALUES = ("POPULARITY", "LOW_PRICE", "HIGH_PRICE", "BEST_SELLING", "NEW")
+CATEGORY_FILTER_TEMPLATES = (
+    "CATEGORY:{category}|SORT_KEY:POPULARITY",
+    "SORT_KEY:POPULARITY|CATEGORY:{category}",
+    "CATEGORY:{category}@VENDOR|SORT_KEY:POPULARITY",
 )
-BLOCK_TERMS = ("access denied", "captcha", "보안 확인", "비정상적인 접근", "서버에서 오류가 발생")
-PROFILES = [
-    (
-        "desktop",
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/149.0.0.0 Safari/537.36",
-        {"width": 1440, "height": 1200},
-        False,
-    ),
-    (
-        "mobile",
-        "Mozilla/5.0 (Linux; Android 15; SM-S928N) AppleWebKit/537.36 Chrome/149.0.0.0 Mobile Safari/537.36",
-        {"width": 430, "height": 932},
-        True,
-    ),
-]
-URL_VARIANTS = [
-    f"{BASE}?source=brandstore_sdp_atf&platform=p",
-    f"{BASE}?platform=p",
-    BASE,
-    f"{BASE}?sortType=SALE&platform=p",
-    f"{BASE}?sortType=NEW&platform=p",
-    f"{BASE}?sortType=PRICE_ASC&platform=p",
-    f"{BASE}?sortType=PRICE_DESC&platform=p",
-    f"{BASE}?ocid=1208642&checkBatchDelivery=true&platform=p",
-]
 
 
-def save(path: Path, data) -> None:
+def save_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(path.suffix + ".tmp")
-    tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    tmp.replace(path)
+    temp = path.with_suffix(path.suffix + ".tmp")
+    temp.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
+    temp.replace(path)
 
 
-def canonical(raw: str) -> str | None:
-    if not raw:
-        return None
-    raw = html.unescape(raw).replace("\\/", "/")
-    raw = urljoin("https://www.coupang.com", raw)
-    parsed = urlparse(raw)
-    match = PRODUCT_RE.search(parsed.path)
-    if not match:
-        return None
-    query = parse_qs(parsed.query)
-    parts = []
-    if query.get("itemId"):
-        parts.append("itemId=" + query["itemId"][0])
-    if query.get("vendorItemId"):
-        parts.append("vendorItemId=" + query["vendorItemId"][0])
-    return f"https://www.coupang.com/vp/products/{match.group(1)}" + (("?" + "&".join(parts)) if parts else "")
+def request_json(url: str, payload: dict[str, Any], attempts: int = 5) -> dict[str, Any]:
+    last_error = ""
+    for attempt in range(1, attempts + 1):
+        try:
+            response = requests.post(url, headers=HEADERS, json=payload, timeout=35)
+            if response.status_code != 200:
+                raise RuntimeError(f"HTTP {response.status_code}: {response.text[:300]}")
+            data = response.json()
+            if int(data.get("code") or 0) != 200:
+                raise RuntimeError(f"API {data.get('code')}: {data.get('msg') or data.get('message')}")
+            return data
+        except Exception as exc:
+            last_error = f"{type(exc).__name__}: {exc}"
+            if attempt < attempts:
+                time.sleep(min(8, attempt * 1.5))
+    raise RuntimeError(last_error)
 
 
-def ids(url: str) -> tuple[str, str, str]:
-    parsed = urlparse(url)
-    match = PRODUCT_RE.search(parsed.path)
-    query = parse_qs(parsed.query)
-    return (
-        match.group(1) if match else "",
-        (query.get("itemId") or [""])[0],
-        (query.get("vendorItemId") or [""])[0],
-    )
-
-
-def normalize_image(raw: str) -> str:
-    if not raw:
-        return ""
-    raw = html.unescape(raw).replace("\\/", "/")
-    if raw.startswith("//"):
-        raw = "https:" + raw
-    return raw if "coupangcdn.com" in raw else ""
-
-
-def add(found: dict, raw_url: str, name: str = "", image: str = "") -> None:
-    url = canonical(raw_url)
-    if not url:
-        return
-    key = ids(url)
-    candidate = {
-        "productId": key[0],
-        "itemId": key[1],
-        "vendorItemId": key[2],
-        "productUrl": url,
-        "sourceName": re.sub(r"\s+", " ", name or "").strip()[:500],
-        "mainImageUrl": normalize_image(image),
+def listing_payload(page: int, filter_value: str, query: str = "") -> dict[str, Any]:
+    payload: dict[str, Any] = {
+        "storeId": STORE_ID,
+        "brandId": BRAND_ID,
+        "vendorId": SELLER_ID,
+        "outboundShippingPlaceId": OUTBOUND_SHIPPING_PLACE_ID,
+        "sourceProductId": SOURCE_PRODUCT_ID,
+        "sourceVendorItemId": SOURCE_VENDOR_ITEM_ID,
+        "source": SOURCE,
+        "enableAdultItemDisplay": True,
+        "nextPageKey": page,
+        "filter": filter_value,
     }
-    old = found.get(key)
-    score = 100 * bool(candidate["vendorItemId"]) + 10 * bool(candidate["sourceName"]) + bool(candidate["mainImageUrl"])
-    old_score = -1 if old is None else 100 * bool(old.get("vendorItemId")) + 10 * bool(old.get("sourceName")) + bool(old.get("mainImageUrl"))
-    if old is None or score > old_score:
-        found[key] = candidate
+    if query:
+        payload["query"] = query
+    return payload
 
 
-def add_text(text: str, found: dict) -> None:
-    if not text:
-        return
-    clean = html.unescape(text).replace("\\/", "/")
-    for match in URL_RE.finditer(clean):
-        add(found, match.group(0))
-    for product_id, item_id, vendor_item_id in TRIPLE_RE.findall(clean):
-        add(found, f"https://www.coupang.com/vp/products/{product_id}?itemId={item_id}&vendorItemId={vendor_item_id}")
+def fetch_listing(page: int, filter_value: str, query: str = "") -> dict[str, Any]:
+    response = request_json(LISTING_URL, listing_payload(page, filter_value, query))
+    data = response.get("data") or {}
+    return {
+        "page": page,
+        "filter": filter_value,
+        "query": query,
+        "totalCount": int(data.get("totalCount") or 0),
+        "validCount": int(data.get("validCount") or 0),
+        "searchId": str(data.get("searchId") or ""),
+        "products": list(data.get("products") or []),
+    }
 
 
-def scrape_dom(page, found: dict) -> None:
-    try:
-        cards = page.locator('a[href*="/vp/products/"]').evaluate_all(
-            """els => els.map(a => ({
-                href: a.href || a.getAttribute('href') || '',
-                text: (a.innerText || a.textContent || '').trim(),
-                image: (() => { const img=a.querySelector('img'); return img ? (img.currentSrc || img.src || img.getAttribute('data-src') || img.getAttribute('data-original') || '') : ''; })()
-            }))"""
-        )
-        for card in cards:
-            add(found, card.get("href", ""), card.get("text", ""), card.get("image", ""))
-    except Exception:
-        pass
-    try:
-        add_text(page.content(), found)
-    except Exception:
-        pass
-
-
-def clear_context(context, page) -> None:
-    context.clear_cookies()
-    try:
-        cdp = context.new_cdp_session(page)
-        cdp.send("Network.enable")
-        cdp.send("Network.clearBrowserCache")
-        cdp.send("Network.clearBrowserCookies")
-        for origin in ("https://shop.coupang.com", "https://www.coupang.com", "https://m.coupang.com"):
-            try:
-                cdp.send("Storage.clearDataForOrigin", {"origin": origin, "storageTypes": "all"})
-            except Exception:
-                pass
-        cdp.detach()
-    except Exception:
-        pass
-
-
-def attempt(browser, url: str, profile, attempt_no: int, max_scrolls: int, diagnostics: Path) -> tuple[dict, dict]:
-    name, ua, viewport, mobile = profile
-    found: dict = {}
-    context = browser.new_context(
-        user_agent=ua,
-        viewport=viewport,
-        locale="ko-KR",
-        timezone_id="Asia/Seoul",
-        is_mobile=mobile,
-        has_touch=mobile,
-        service_workers="block",
-        extra_http_headers={
-            "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.7",
-            "Cache-Control": "no-cache, no-store, max-age=0",
-            "Pragma": "no-cache",
-        },
+def fetch_categories() -> list[dict[str, Any]]:
+    response = request_json(
+        MAIN_CATEGORY_URL,
+        {"vendorId": SELLER_ID, "brandId": BRAND_ID, "categoryLevel": 3},
     )
-    context.set_default_timeout(18000)
-    page = context.new_page()
-    clear_context(context, page)
-    network_count = 0
+    categories = list((response.get("data") or {}).get("categories") or [])
+    return [
+        {"id": int(item["id"]), "name": str(item.get("name") or "")}
+        for item in categories
+        if item.get("id")
+    ]
 
-    def on_response(response):
-        nonlocal network_count
-        try:
-            ctype = (response.headers.get("content-type") or "").lower()
-            if any(x in ctype for x in ("json", "javascript", "html", "text")):
-                body = response.text()
-                if len(body) <= 15_000_000:
-                    add_text(body, found)
-                    network_count += 1
-        except Exception:
-            pass
 
-    page.on("response", on_response)
-    diag = {"attempt": attempt_no, "profile": name, "url": url, "found": 0, "error": "", "blockedTerms": [], "networkBodies": 0}
-    try:
-        bust = ("&" if "?" in url else "?") + f"_fresh={int(time.time() * 1000)}-{attempt_no}"
-        page.goto(url + bust, wait_until="domcontentloaded", timeout=60000)
-        page.wait_for_timeout(1800)
-        stable = 0
-        previous = -1
-        for scroll_no in range(max_scrolls):
-            scrape_dom(page, found)
-            stable = stable + 1 if len(found) == previous else 0
-            previous = len(found)
-            if scroll_no % 10 == 0:
-                print(f"catalog attempt={attempt_no} profile={name} scroll={scroll_no} products={len(found)} stable={stable}", flush=True)
-            if len(found) >= 2500 or (stable >= 30 and len(found) >= 10):
-                break
-            try:
-                page.evaluate("window.scrollTo(0, Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)); window.dispatchEvent(new Event('scroll')); window.dispatchEvent(new Event('resize')); ")
-                page.mouse.wheel(0, 12000)
-            except Exception:
-                pass
-            page.wait_for_timeout(700)
-        scrape_dom(page, found)
+def product_row(raw: dict[str, Any], source_partition: str) -> dict[str, Any] | None:
+    product_id = str(raw.get("productId") or "")
+    item_id = str(raw.get("itemId") or "")
+    vendor_item_id = str(raw.get("vendorItemId") or "")
+    if not product_id or not item_id:
+        return None
+    image_area = raw.get("imageAndTitleArea") or {}
+    title = re.sub(r"\s+", " ", str(image_area.get("title") or "")).strip()
+    image = str(image_area.get("completeHttpUrl") or image_area.get("defaultUrl") or "")
+    if image.startswith("//"):
+        image = "https:" + image
+    product_url = f"https://www.coupang.com/vp/products/{product_id}?itemId={item_id}"
+    if vendor_item_id:
+        product_url += f"&vendorItemId={vendor_item_id}"
+    return {
+        "productId": product_id,
+        "itemId": item_id,
+        "vendorItemId": vendor_item_id,
+        "coupangUniqueId": f"{product_id} - {item_id}",
+        "productUrl": product_url,
+        "sourceName": title,
+        "mainImageUrl": image,
+        "valid": bool(raw.get("valid", True)),
+        "soldOut": bool((raw.get("soldoutArea") or {}).get("soldout", False)),
+        "sourcePartitions": [source_partition],
+    }
+
+
+def merge_product(target: dict[tuple[str, str], dict[str, Any]], raw: dict[str, Any], partition: str) -> None:
+    row = product_row(raw, partition)
+    if not row:
+        return
+    key = (row["productId"], row["itemId"])
+    old = target.get(key)
+    if old is None:
+        target[key] = row
+        return
+    partitions = list(dict.fromkeys((old.get("sourcePartitions") or []) + [partition]))
+    old["sourcePartitions"] = partitions
+    if not old.get("vendorItemId") and row.get("vendorItemId"):
+        old["vendorItemId"] = row["vendorItemId"]
+        old["productUrl"] = row["productUrl"]
+    if len(row.get("sourceName") or "") > len(old.get("sourceName") or ""):
+        old["sourceName"] = row["sourceName"]
+    if not old.get("mainImageUrl") and row.get("mainImageUrl"):
+        old["mainImageUrl"] = row["mainImageUrl"]
+
+
+def choose_category_filter(category_id: int) -> tuple[str, dict[str, Any]]:
+    errors: list[str] = []
+    for template in CATEGORY_FILTER_TEMPLATES:
+        value = template.format(category=category_id)
         try:
-            body = page.locator("body").inner_text(timeout=5000)
-        except Exception:
-            body = ""
-        low = body.lower()
-        diag["blockedTerms"] = [term for term in BLOCK_TERMS if term in low]
-        diagnostics.mkdir(parents=True, exist_ok=True)
-        (diagnostics / f"attempt-{attempt_no}-{name}.html").write_text(page.content(), encoding="utf-8", errors="ignore")
-        page.screenshot(path=str(diagnostics / f"attempt-{attempt_no}-{name}.png"), full_page=False)
-    except Exception as exc:
-        diag["error"] = f"{type(exc).__name__}: {exc}"[:1000]
-    finally:
-        diag["found"] = len(found)
-        diag["networkBodies"] = network_count
-        context.close()
-    return found, diag
+            first = fetch_listing(0, value)
+        except Exception as exc:
+            errors.append(f"{value}: {type(exc).__name__}: {exc}")
+            continue
+        if first["totalCount"] > 0 or first["products"]:
+            return value, first
+    raise RuntimeError(f"category {category_id} had no usable filter; " + " | ".join(errors))
+
+
+def fetch_partition_pages(
+    partition_name: str,
+    filter_value: str,
+    first: dict[str, Any],
+    max_pages: int = 50,
+) -> tuple[str, list[dict[str, Any]], dict[str, Any]]:
+    total = int(first.get("totalCount") or 0)
+    pages = min(max_pages, max(1, math.ceil(total / 20))) if total else 1
+    results: list[dict[str, Any]] = [first]
+    if pages > 1:
+        with ThreadPoolExecutor(max_workers=min(8, pages - 1)) as pool:
+            futures = {
+                pool.submit(fetch_listing, page, filter_value): page
+                for page in range(1, pages)
+            }
+            for future in as_completed(futures):
+                results.append(future.result())
+    results.sort(key=lambda item: item["page"])
+    meta = {
+        "partition": partition_name,
+        "filter": filter_value,
+        "reportedTotal": total,
+        "pagesRequested": pages,
+        "rowsReturned": sum(len(item["products"]) for item in results),
+        "emptyPages": [item["page"] for item in results if not item["products"]],
+    }
+    return partition_name, results, meta
+
+
+def collect_query(query: str) -> dict[str, Any]:
+    first = fetch_listing(0, "SORT_KEY:POPULARITY", query=query)
+    total = int(first["totalCount"])
+    pages = min(50, max(1, math.ceil(total / 20))) if total else 1
+    results = [first]
+    for page in range(1, pages):
+        results.append(fetch_listing(page, "SORT_KEY:POPULARITY", query=query))
+    found: dict[tuple[str, str], dict[str, Any]] = {}
+    for page in results:
+        for raw in page["products"]:
+            merge_product(found, raw, f"query:{query}")
+    rows = sorted(found.values(), key=lambda p: (int(p["productId"]), int(p["itemId"])))
+    return {
+        "query": query,
+        "reportedTotal": total,
+        "count": len(rows),
+        "products": rows,
+    }
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--diagnostics", type=Path, required=True)
-    parser.add_argument("--worker-index", type=int, required=True)
-    parser.add_argument("--workers", type=int, default=4)
-    parser.add_argument("--max-scrolls", type=int, default=260)
-    parser.add_argument("--cycles", type=int, default=2)
+    parser.add_argument("--candidate-output", type=Path, required=True)
     args = parser.parse_args()
 
-    tasks = []
-    attempt_no = 0
-    for _ in range(max(1, args.cycles)):
-        for profile in PROFILES:
-            for url in URL_VARIANTS:
-                attempt_no += 1
-                tasks.append((attempt_no, profile, url))
-    tasks = [task for index, task in enumerate(tasks) if index % args.workers == args.worker_index]
+    root_first = fetch_listing(0, "SORT_KEY:POPULARITY")
+    expected_total = int(root_first["totalCount"])
+    if expected_total < 1500:
+        raise SystemExit(f"catalog sanity check failed: reported total {expected_total}")
 
-    combined: dict = {}
-    attempts = []
-    with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=True, args=["--disable-dev-shm-usage", "--no-sandbox", "--disable-application-cache"])
+    categories = fetch_categories()
+    if len(categories) < 10:
+        raise SystemExit(f"category sanity check failed: {len(categories)} categories")
+
+    partitions: list[tuple[str, str, dict[str, Any]]] = []
+    partitions.append(("root:POPULARITY", "SORT_KEY:POPULARITY", root_first))
+    for sort_value in SORT_VALUES:
+        if sort_value == "POPULARITY":
+            continue
+        first = fetch_listing(0, f"SORT_KEY:{sort_value}")
+        partitions.append((f"root:{sort_value}", f"SORT_KEY:{sort_value}", first))
+
+    category_probe_errors = []
+    for category in categories:
         try:
-            for attempt_no, profile, url in tasks:
-                found, diag = attempt(browser, url, profile, attempt_no, args.max_scrolls, args.diagnostics)
-                for key, product in found.items():
-                    old = combined.get(key)
-                    score = 100 * bool(product.get("vendorItemId")) + 10 * bool(product.get("sourceName")) + bool(product.get("mainImageUrl"))
-                    old_score = -1 if old is None else 100 * bool(old.get("vendorItemId")) + 10 * bool(old.get("sourceName")) + bool(old.get("mainImageUrl"))
-                    if old is None or score > old_score:
-                        combined[key] = product
-                attempts.append(diag)
-                save(args.output.with_suffix(".checkpoint.json"), {
-                    "sellerId": SELLER_ID,
-                    "workerIndex": args.worker_index,
-                    "count": len(combined),
-                    "attempts": attempts,
-                    "products": list(combined.values()),
-                })
-        finally:
-            browser.close()
+            filter_value, first = choose_category_filter(category["id"])
+            partitions.append((f"category:{category['id']}:{category['name']}", filter_value, first))
+        except Exception as exc:
+            category_probe_errors.append({
+                "category": category,
+                "error": f"{type(exc).__name__}: {exc}",
+            })
 
-    products = sorted(combined.values(), key=lambda p: (int(p.get("productId") or 0), p.get("itemId", ""), p.get("vendorItemId", "")))
-    result = {
+    collected: dict[tuple[str, str], dict[str, Any]] = {}
+    partition_meta: list[dict[str, Any]] = []
+    failures: list[dict[str, Any]] = []
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures = {
+            pool.submit(fetch_partition_pages, name, filter_value, first): name
+            for name, filter_value, first in partitions
+        }
+        for future in as_completed(futures):
+            name = futures[future]
+            try:
+                partition_name, pages, meta = future.result()
+                partition_meta.append(meta)
+                for page in pages:
+                    for raw in page["products"]:
+                        merge_product(collected, raw, partition_name)
+                print(json.dumps({
+                    "partition": partition_name,
+                    "reportedTotal": meta["reportedTotal"],
+                    "rowsReturned": meta["rowsReturned"],
+                    "catalogUnique": len(collected),
+                }, ensure_ascii=False), flush=True)
+            except Exception as exc:
+                failures.append({"partition": name, "error": f"{type(exc).__name__}: {exc}"})
+
+    products = sorted(collected.values(), key=lambda p: (int(p["productId"]), int(p["itemId"])))
+    candidate_result = collect_query("유니콘")
+
+    diagnostics = {
         "sellerId": SELLER_ID,
-        "workerIndex": args.worker_index,
-        "workers": args.workers,
-        "count": len(products),
-        "attempts": attempts,
-        "products": products,
+        "storeId": STORE_ID,
+        "reportedTotal": expected_total,
+        "collectedUnique": len(products),
+        "coverageRatio": (len(products) / expected_total) if expected_total else 0,
+        "categoryCount": len(categories),
+        "categories": categories,
+        "categoryProbeErrors": category_probe_errors,
+        "partitionCount": len(partitions),
+        "partitions": sorted(partition_meta, key=lambda item: item["partition"]),
+        "partitionFailures": failures,
+        "unicornQueryReportedTotal": candidate_result["reportedTotal"],
+        "unicornQueryUnique": candidate_result["count"],
     }
-    save(args.output, result)
-    save(args.diagnostics / "summary.json", result)
-    print(json.dumps({"worker": args.worker_index, "catalogCount": len(products)}, ensure_ascii=False), flush=True)
+    save_json(args.output, {
+        "sellerId": SELLER_ID,
+        "storeId": STORE_ID,
+        "reportedTotal": expected_total,
+        "count": len(products),
+        "products": products,
+    })
+    save_json(args.diagnostics, diagnostics)
+    save_json(args.candidate_output, candidate_result)
+
+    print(json.dumps({
+        "reportedTotal": expected_total,
+        "collectedUnique": len(products),
+        "categoryCount": len(categories),
+        "unicornQueryUnique": candidate_result["count"],
+        "failures": len(failures) + len(category_probe_errors),
+    }, ensure_ascii=False), flush=True)
+
+    if failures or category_probe_errors:
+        raise SystemExit("one or more catalog partitions failed; see diagnostics")
+    if len(products) < expected_total:
+        raise SystemExit(
+            f"incomplete catalog: collected {len(products)} of reported {expected_total}"
+        )
 
 
 if __name__ == "__main__":
