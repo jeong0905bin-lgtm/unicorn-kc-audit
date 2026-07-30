@@ -1,0 +1,2 @@
+run=2026-07-30T22:24:00+09:00
+purpose=scan_candidate_listing_images_for_exact_author_publisher_unicorn
