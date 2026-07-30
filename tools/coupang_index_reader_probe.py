@@ -7,7 +7,6 @@ import json
 import re
 import time
 from pathlib import Path
-from urllib.parse import quote_plus, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -25,14 +24,18 @@ CASES = [
         "vendorItemId": "3234653644",
         "title": "REST API DESIGN RULEBOOK",
         "expectedPublisher": "Masse, Mark",
+        "categoryIds": [458443],
+        "legacyItemIds": [],
     },
     {
         "label": "known-unicorn-target",
         "productId": "8411161016",
-        "itemId": "27355912643",
+        "itemId": "24319968314",
         "vendorItemId": "91335726263",
         "title": "위시캣 스티커퀸 300",
         "expectedPublisher": "유니콘",
+        "categoryIds": [349237, 347211, 326768],
+        "legacyItemIds": ["27355912643"],
     },
     {
         "label": "unicorn-brand-target",
@@ -41,6 +44,8 @@ CASES = [
         "vendorItemId": "92128043110",
         "title": "프린세스 캐치티니핑 스티커퀸300",
         "expectedPublisher": "유니콘",
+        "categoryIds": [349237, 347211, 326768],
+        "legacyItemIds": [],
     },
 ]
 
@@ -53,11 +58,33 @@ def compact(value: str) -> str:
     return re.sub(r"[\s,·ㆍ/|:：\-]+", "", norm(value))
 
 
-def product_url(case: dict) -> str:
-    return (
-        f"https://www.coupang.com/vp/products/{case['productId']}"
-        f"?itemId={case['itemId']}&vendorItemId={case['vendorItemId']}"
-    )
+def product_urls(case: dict) -> list[tuple[str, str]]:
+    product_id = case["productId"]
+    item_id = case["itemId"]
+    vendor_item_id = case["vendorItemId"]
+    rows: list[tuple[str, str]] = [
+        (
+            "desktop-current-item",
+            f"https://www.coupang.com/vp/products/{product_id}?itemId={item_id}&vendorItemId={vendor_item_id}",
+        ),
+        ("desktop-product-only", f"https://www.coupang.com/vp/products/{product_id}"),
+        (
+            "mobile-current-item",
+            f"https://m.coupang.com/vm/products/{product_id}?itemId={item_id}&vendorItemId={vendor_item_id}",
+        ),
+    ]
+    for category_id in case.get("categoryIds") or []:
+        rows.append((
+            f"desktop-category-{category_id}",
+            f"https://www.coupang.com/vp/products/{product_id}?categoryId={category_id}"
+            f"&itemId={item_id}&sourceType=CATEGORY&vendorItemId={vendor_item_id}",
+        ))
+    for legacy_item in case.get("legacyItemIds") or []:
+        rows.append((
+            f"desktop-legacy-item-{legacy_item}",
+            f"https://www.coupang.com/vp/products/{product_id}?itemId={legacy_item}&vendorItemId={vendor_item_id}",
+        ))
+    return list(dict.fromkeys(rows))
 
 
 def publisher_values(text: str) -> list[str]:
@@ -81,7 +108,7 @@ def publisher_values(text: str) -> list[str]:
     return values
 
 
-def snippets(text: str, terms: tuple[str, ...] = ("저자, 출판사", "저자", "유니콘")) -> list[str]:
+def snippets(text: str, terms: tuple[str, ...] = ("저자, 출판사", "저자", "유니콘", "access denied")) -> list[str]:
     clean = norm(text)
     low = clean.lower()
     out: list[str] = []
@@ -133,10 +160,11 @@ def parse_html_results(raw: str) -> list[dict]:
             link = block.select_one("a[href]")
             if not link:
                 continue
-            href = link.get("href") or ""
-            title = norm(link.get_text(" ", strip=True))
-            description = norm(block.get_text(" ", strip=True))
-            rows.append({"title": title, "link": href, "description": description})
+            rows.append({
+                "title": norm(link.get_text(" ", strip=True)),
+                "link": link.get("href") or "",
+                "description": norm(block.get_text(" ", strip=True)),
+            })
         if rows:
             break
     return rows
@@ -155,60 +183,49 @@ def relevant_rows(rows: list[dict], product_id: str) -> list[dict]:
 
 
 def probe_case(case: dict) -> dict:
-    url = product_url(case)
     query_variants = [
         f'site:coupang.com/vp/products/{case["productId"]} "저자, 출판사"',
         f'"{case["productId"]} - {case["itemId"]}" "저자, 출판사"',
         f'"{case["title"]}" "저자, 출판사" 쿠팡',
     ]
-    result = {**case, "productUrl": url, "routes": []}
+    result = {**case, "productUrls": product_urls(case), "routes": []}
 
-    jina_url = "https://r.jina.ai/" + url
-    jina = fetch(jina_url)
-    jina_text = jina.pop("text", "")
-    result["routes"].append({
-        "route": "jina-reader",
-        **jina,
-        "length": len(jina_text),
-        "publisherValues": publisher_values(jina_text),
-        "snippets": snippets(jina_text),
-    })
+    for variant, url in result["productUrls"]:
+        jina = fetch("https://r.jina.ai/" + url)
+        jina_text = jina.pop("text", "")
+        result["routes"].append({
+            "route": "jina-reader",
+            "variant": variant,
+            "sourceUrl": url,
+            **jina,
+            "length": len(jina_text),
+            "publisherValues": publisher_values(jina_text),
+            "snippets": snippets(jina_text),
+        })
 
     for query in query_variants:
         rss = fetch("https://www.bing.com/search", params={"q": query, "format": "rss"})
         rss_text = rss.pop("text", "")
         rss_rows = parse_bing_rss(rss_text) if rss.get("status") == 200 else []
         result["routes"].append({
-            "route": "bing-rss",
-            "query": query,
-            **rss,
-            "length": len(rss_text),
-            "resultCount": len(rss_rows),
-            "relevant": relevant_rows(rss_rows, case["productId"]),
+            "route": "bing-rss", "query": query, **rss, "length": len(rss_text),
+            "resultCount": len(rss_rows), "relevant": relevant_rows(rss_rows, case["productId"]),
         })
 
         bing = fetch("https://www.bing.com/search", params={"q": query, "setlang": "ko"})
         bing_text = bing.pop("text", "")
         bing_rows = parse_html_results(bing_text) if bing.get("status") == 200 else []
         result["routes"].append({
-            "route": "bing-html",
-            "query": query,
-            **bing,
-            "length": len(bing_text),
-            "resultCount": len(bing_rows),
-            "relevant": relevant_rows(bing_rows, case["productId"]),
+            "route": "bing-html", "query": query, **bing, "length": len(bing_text),
+            "resultCount": len(bing_rows), "relevant": relevant_rows(bing_rows, case["productId"]),
         })
 
         ddg = fetch("https://html.duckduckgo.com/html/", params={"q": query})
         ddg_text = ddg.pop("text", "")
         ddg_rows = parse_html_results(ddg_text) if ddg.get("status") == 200 else []
         result["routes"].append({
-            "route": "duckduckgo-html",
-            "query": query,
-            **ddg,
-            "length": len(ddg_text),
-            "resultCount": len(ddg_rows),
-            "relevant": relevant_rows(ddg_rows, case["productId"]),
+            "route": "duckduckgo-html", "query": query, **ddg, "length": len(ddg_text),
+            "resultCount": len(ddg_rows), "relevant": relevant_rows(ddg_rows, case["productId"]),
         })
 
     found_values: list[str] = []
@@ -236,10 +253,8 @@ def main() -> None:
         row = probe_case(case)
         results.append(row)
         print(json.dumps({
-            "label": row["label"],
-            "publisherValues": row["publisherValues"],
-            "expectedExact": row["expectedExact"],
-            "unicornExact": row["unicornExact"],
+            "label": row["label"], "publisherValues": row["publisherValues"],
+            "expectedExact": row["expectedExact"], "unicornExact": row["unicornExact"],
         }, ensure_ascii=False), flush=True)
     summary = {
         "cases": results,
