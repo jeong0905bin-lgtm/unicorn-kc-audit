@@ -1,6 +1,12 @@
 name: Coupang access matrix
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/coupang_access_matrix_probe.py"
+      - ".github/workflows/coupang-access-matrix.yml"
+      - "run/access-probe.trigger"
   push:
     branches: [chatgpt/run-unicorn-audit-20260730]
     paths:
