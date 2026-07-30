@@ -1,8 +1,10 @@
 name: Unicorn KC audit
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
+    paths:
+      - "run/unicorn-audit.trigger"
   workflow_dispatch:
 
 permissions:
@@ -28,168 +30,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Validate Python source
-        run: python -m py_compile tools/unicorn_catalog.py tools/unicorn_engine.py
-      - name: Install browser OCR and Excel dependencies
+      - name: Block execution until validated engine is installed
         run: |
-          sudo apt-get update
-          sudo apt-get install -y tesseract-ocr tesseract-ocr-kor
-          python -m pip install --upgrade pip
-          pip install playwright requests beautifulsoup4 opencv-python-headless pytesseract numpy openpyxl pillow
-          python -m playwright install --with-deps chromium
-
-      - name: Stage 1 collect seller catalog
-        shell: bash
-        run: |
-          set -uo pipefail
-          rm -rf work final
-          mkdir -p work/catalog work/catalog-diagnostics
-          pids=()
-          for worker in 0 1 2 3; do
-            python tools/unicorn_catalog.py \
-              --output "work/catalog/catalog-${worker}.json" \
-              --diagnostics "work/catalog-diagnostics/worker-${worker}" \
-              --worker-index "${worker}" --workers 4 --max-scrolls 260 --cycles 2 \
-              >"work/catalog-${worker}.log" 2>&1 &
-            pids+=("$!")
-          done
-          failed=0
-          for pid in "${pids[@]}"; do wait "$pid" || failed=1; done
-          echo "catalog_workers_failed=${failed}"
-          cat work/catalog-*.log || true
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          best={}; attempts=[]
-          paths=sorted(Path('work/catalog').glob('catalog-*.json'))+sorted(Path('work/catalog').glob('catalog-*.checkpoint.json'))
-          for path in paths:
-              try: data=json.loads(path.read_text(encoding='utf-8'))
-              except Exception: continue
-              attempts.extend(data.get('attempts',[]))
-              for p in data.get('products',[]):
-                  key=(str(p.get('productId','')),str(p.get('itemId','')),str(p.get('vendorItemId','')))
-                  if not any(key): key=(str(p.get('productUrl','')),'','')
-                  old=best.get(key)
-                  score=100*bool(p.get('vendorItemId'))+10*bool(p.get('sourceName'))+bool(p.get('mainImageUrl'))
-                  old_score=-1 if old is None else 100*bool(old.get('vendorItemId'))+10*bool(old.get('sourceName'))+bool(old.get('mainImageUrl'))
-                  if old is None or score>old_score: best[key]=p
-          products=sorted(best.values(),key=lambda p:(int(p.get('productId') or 0),str(p.get('itemId','')),str(p.get('vendorItemId',''))))
-          out={'sellerId':'A00214628','count':len(products),'attempts':attempts,'products':products}
-          Path('work/catalog.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
-          Path('work/progress.json').write_text(json.dumps({'phase':'catalog_complete','catalogProducts':len(products)},ensure_ascii=False,indent=2),encoding='utf-8')
-          print(json.dumps({'catalogProducts':len(products)},ensure_ascii=False))
-          if not products: raise SystemExit('catalog collection produced zero products')
-          PY
-
-      - name: Stage 2 filter exact author publisher Unicorn
-        shell: bash
-        run: |
-          set -uo pipefail
-          mkdir -p work/filter
-          pids=()
-          for shard in 0 1 2 3 4 5 6 7; do
-            python tools/unicorn_engine.py filter --catalog work/catalog.json \
-              --output "work/filter/filter-${shard}.json" --shard "${shard}" --shards 8 \
-              >"work/filter-${shard}.log" 2>&1 &
-            pids+=("$!")
-          done
-          failed=0
-          for pid in "${pids[@]}"; do wait "$pid" || failed=1; done
-          echo "filter_workers_failed=${failed}"
-          cat work/filter-*.log || true
-          python - <<'PY'
-          import json
-          from collections import Counter
-          from pathlib import Path
-          catalog=json.loads(Path('work/catalog.json').read_text(encoding='utf-8'))
-          expected={(str(p.get('productId','')),str(p.get('itemId','')),str(p.get('vendorItemId',''))):p for p in catalog.get('products',[])}
-          best={}; rank={'unicorn':4,'other':3,'missing':2,'inaccessible':1}
-          for path in sorted(Path('work/filter').glob('filter-*.json'))+sorted(Path('work/filter').glob('filter-*.checkpoint.json')):
-              try: data=json.loads(path.read_text(encoding='utf-8'))
-              except Exception: continue
-              for p in data.get('products',[]):
-                  key=(str(p.get('productId','')),str(p.get('itemId','')),str(p.get('vendorItemId','')))
-                  old=best.get(key)
-                  if old is None or rank.get(p.get('publisherStatus'),0)>rank.get(old.get('publisherStatus'),0): best[key]=p
-          missing=[p for k,p in expected.items() if k not in best]
-          products=sorted(best.values(),key=lambda p:(int(p.get('productId') or 0),str(p.get('itemId','')),str(p.get('vendorItemId',''))))
-          unicorn=[p for p in products if p.get('publisherStatus')=='unicorn']
-          counts=Counter(str(p.get('publisherStatus') or 'unknown') for p in products)
-          result={'sellerId':'A00214628','expectedCatalogProducts':len(expected),'processedProducts':len(products),'missingProducts':len(missing),'publisherCounts':dict(counts),'products':products}
-          Path('work/unicorn_filter_results.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
-          Path('work/unicorn_products.json').write_text(json.dumps({'count':len(unicorn),'products':unicorn},ensure_ascii=False,indent=2),encoding='utf-8')
-          Path('work/filter_missing_products.json').write_text(json.dumps({'count':len(missing),'products':missing},ensure_ascii=False,indent=2),encoding='utf-8')
-          Path('work/progress.json').write_text(json.dumps({'phase':'filter_complete','catalogProducts':len(expected),'processedProducts':len(products),'unicornProducts':len(unicorn),'missingProducts':len(missing),'publisherCounts':dict(counts)},ensure_ascii=False,indent=2),encoding='utf-8')
-          print(json.dumps({'catalog':len(expected),'processed':len(products),'unicorn':len(unicorn),'missing':len(missing),'counts':dict(counts)},ensure_ascii=False))
-          PY
-
-      - name: Stage 3 direct CDN KC OCR
-        shell: bash
-        run: |
-          set -uo pipefail
-          mkdir -p work/ocr work/images
-          pids=()
-          for shard in 0 1 2 3; do
-            python tools/unicorn_engine.py ocr --input work/unicorn_products.json \
-              --output "work/ocr/ocr-${shard}.json" --image-dir "work/images/shard-${shard}" \
-              --shard "${shard}" --shards 4 >"work/ocr-${shard}.log" 2>&1 &
-            pids+=("$!")
-          done
-          failed=0
-          for pid in "${pids[@]}"; do wait "$pid" || failed=1; done
-          echo "ocr_workers_failed=${failed}"
-          cat work/ocr-*.log || true
-          python - <<'PY'
-          import json
-          from collections import Counter
-          from pathlib import Path
-          expected_data=json.loads(Path('work/unicorn_products.json').read_text(encoding='utf-8'))
-          expected={(str(p.get('productId','')),str(p.get('itemId','')),str(p.get('vendorItemId',''))):p for p in expected_data.get('products',[])}
-          best={}; rank={'found':6,'candidate_review':5,'no_kc':4,'image_download_failed':3,'no_images':2,'error':1}
-          for path in sorted(Path('work/ocr').glob('ocr-*.json'))+sorted(Path('work/ocr').glob('ocr-*.checkpoint.json')):
-              try: data=json.loads(path.read_text(encoding='utf-8'))
-              except Exception: continue
-              for p in data.get('products',[]):
-                  key=(str(p.get('productId','')),str(p.get('itemId','')),str(p.get('vendorItemId','')))
-                  old=best.get(key)
-                  if old is None or rank.get(p.get('resultStatus'),0)>rank.get(old.get('resultStatus'),0): best[key]=p
-          missing=[p for k,p in expected.items() if k not in best]
-          for p in missing:
-              key=(str(p.get('productId','')),str(p.get('itemId','')),str(p.get('vendorItemId','')))
-              best[key]={**p,'resultStatus':'error','kcNumbers':[],'kcCandidates':[],'error':'OCR result missing'}
-          products=sorted(best.values(),key=lambda p:(int(p.get('productId') or 0),str(p.get('itemId','')),str(p.get('vendorItemId',''))))
-          codes=sorted({str(c).upper() for p in products for c in (p.get('kcNumbers') or []) if c})
-          statuses=Counter(str(p.get('resultStatus') or 'unknown') for p in products)
-          result={'sellerId':'A00214628','expectedUnicornProducts':len(expected),'processedProducts':len(products),'missingOcrProducts':len(missing),'summary':{'products':len(products),'statusCounts':dict(statuses),'productsWithKc':sum(bool(p.get('kcNumbers')) for p in products),'uniqueKcNumbers':len(codes)},'uniqueKcNumbers':codes,'products':products}
-          Path('work/kc_collection_results.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
-          Path('work/progress.json').write_text(json.dumps({'phase':'ocr_complete',**result['summary'],'missingOcrProducts':len(missing)},ensure_ascii=False,indent=2),encoding='utf-8')
-          print(json.dumps(result['summary'],ensure_ascii=False))
-          PY
-
-      - name: Stage 4 SafetyKorea lookup and final Excel files
-        run: |
-          mkdir -p final
-          python tools/unicorn_engine.py lookup-build --collection work/kc_collection_results.json --output-dir final --workers 10
-          cp work/catalog.json final/
-          cp work/unicorn_filter_results.json final/
-          cp work/unicorn_products.json final/
-          cp work/filter_missing_products.json final/
-          cp work/kc_collection_results.json final/
-          cp work/progress.json final/progress-before-final.json
-
-      - name: Upload final files and diagnostics
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: unicorn-kc-final-two-excels
-          path: |
-            final
-            work/progress.json
-            work/catalog-*.log
-            work/filter-*.log
-            work/ocr-*.log
-            work/catalog/*.checkpoint.json
-            work/filter/*.checkpoint.json
-            work/ocr/*.checkpoint.json
-          if-no-files-found: warn
-          retention-days: 14
+          echo "The previous engine is intentionally disabled."
+          echo "Run the access matrix probe and install the validated engine before creating run/unicorn-audit.trigger."
+          exit 1
