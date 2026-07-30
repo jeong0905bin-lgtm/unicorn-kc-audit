@@ -1,0 +1,104 @@
+name: Unicorn candidate image publisher OCR
+
+on:
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
+    paths:
+      - "run/unicorn-candidate-image-ocr.trigger"
+      - "tools/unicorn_candidate_image_ocr.py"
+      - ".github/workflows/unicorn-candidate-image-ocr.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "run/unicorn-candidate-image-ocr.trigger"
+      - "tools/unicorn_candidate_image_ocr.py"
+      - ".github/workflows/unicorn-candidate-image-ocr.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  scan:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install OCR system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-kor
+      - name: Install Python dependencies
+        run: pip install requests pillow pytesseract
+      - name: Validate source
+        run: python -m py_compile tools/unicorn_candidate_image_ocr.py
+      - name: OCR candidate product images
+        run: |
+          mkdir -p work
+          python tools/unicorn_candidate_image_ocr.py \
+            --shard ${{ matrix.shard }} \
+            --shards 8 \
+            --output work/shard-${{ matrix.shard }}.json
+      - name: Upload shard result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-candidate-image-ocr-${{ matrix.shard }}
+          path: work/shard-${{ matrix.shard }}.json
+          if-no-files-found: error
+          retention-days: 7
+
+  merge:
+    needs: scan
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: unicorn-candidate-image-ocr-*
+          path: shards
+          merge-multiple: true
+      - name: Merge and summarize
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          rows=[]
+          shard_summaries=[]
+          for path in sorted(Path('shards').glob('shard-*.json')):
+              data=json.loads(path.read_text(encoding='utf-8'))
+              shard_summaries.append({k:data.get(k) for k in ('shard','candidateTotal','processed','exactUnicorn','publisherEvidence','noImages')})
+              rows.extend(data.get('results') or [])
+          unique={(str(r.get('productId')),str(r.get('itemId'))):r for r in rows}
+          results=sorted(unique.values(),key=lambda r:(int(r['productId']),int(r['itemId'])))
+          summary={
+              'candidateTotal': max([int(s.get('candidateTotal') or 0) for s in shard_summaries] or [0]),
+              'processedUnique': len(results),
+              'exactUnicorn': sum(bool(r.get('publisherExactUnicorn')) for r in results),
+              'publisherEvidence': sum(bool(r.get('publisherValues')) for r in results),
+              'noImages': sum(not r.get('imageUrls') for r in results),
+              'shards': shard_summaries,
+              'results': results,
+          }
+          Path('merged').mkdir(exist_ok=True)
+          Path('merged/result.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps({k:summary[k] for k in ('candidateTotal','processedUnique','exactUnicorn','publisherEvidence','noImages')},ensure_ascii=False))
+          if summary['processedUnique'] != summary['candidateTotal']:
+              raise SystemExit(f"incomplete candidate OCR: {summary['processedUnique']}/{summary['candidateTotal']}")
+          PY
+      - name: Upload merged result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-candidate-image-ocr-merged
+          path: merged/result.json
+          if-no-files-found: error
+          retention-days: 7
