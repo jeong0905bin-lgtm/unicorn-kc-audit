@@ -1,0 +1,2 @@
+run=2026-07-30T22:59:00+09:00
+purpose=recover_exact_author_publisher_row_from_public_coupang_detail_content
