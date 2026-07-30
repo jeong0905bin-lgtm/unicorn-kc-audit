@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import math
 import time
 from pathlib import Path
 from typing import Any
@@ -72,21 +73,32 @@ def fetch(page: int, filter_value: str) -> dict[str, Any]:
     raise RuntimeError(last_error)
 
 
+def normalize_url(value: str) -> str:
+    value = str(value or "")
+    return "https:" + value if value.startswith("//") else value
+
+
 def normalize(raw: dict[str, Any]) -> dict[str, Any] | None:
     product_id = str(raw.get("productId") or "")
     item_id = str(raw.get("itemId") or "")
+    vendor_item_id = str(raw.get("vendorItemId") or "")
     if not product_id or not item_id:
         return None
     area = raw.get("imageAndTitleArea") or {}
-    detail_urls = list(area.get("completeHttpDetailImageUrls") or area.get("detailImageUrls") or [])
+    detail_urls = [normalize_url(x) for x in (area.get("completeHttpDetailImageUrls") or area.get("detailImageUrls") or []) if x]
+    product_url = f"https://www.coupang.com/vp/products/{product_id}?itemId={item_id}"
+    if vendor_item_id:
+        product_url += f"&vendorItemId={vendor_item_id}"
     return {
         "productId": product_id,
         "itemId": item_id,
-        "vendorItemId": str(raw.get("vendorItemId") or ""),
+        "vendorItemId": vendor_item_id,
         "coupangUniqueId": f"{product_id} - {item_id}",
-        "productName": str(area.get("title") or "").strip(),
-        "mainImageUrl": str(area.get("completeHttpUrl") or area.get("defaultUrl") or ""),
+        "productUrl": product_url,
+        "sourceName": str(area.get("title") or "").strip(),
+        "mainImageUrl": normalize_url(area.get("completeHttpUrl") or area.get("defaultUrl") or ""),
         "detailImageUrls": detail_urls,
+        "sourcePartitions": [f"brand:{UNICORN_BRAND_FILTER_ID}"],
     }
 
 
@@ -94,26 +106,61 @@ def main() -> None:
     out = Path("work/brand_probe")
     out.mkdir(parents=True, exist_ok=True)
     reports = []
+    selected_filter = ""
+    selected_total = 0
     for variant in FILTER_VARIANTS:
         try:
             first = fetch(0, variant)
             sample = [row for raw in first["products"] if (row := normalize(raw))]
-            reports.append({
+            report = {
                 "filter": variant,
                 "ok": True,
                 "totalCount": first["totalCount"],
                 "validCount": first["validCount"],
                 "sampleCount": len(sample),
                 "sample": sample,
-            })
+            }
+            reports.append(report)
+            if not selected_filter and 0 < first["totalCount"] < 1000 and "BRAND_KEY" in variant:
+                selected_filter = variant
+                selected_total = first["totalCount"]
         except Exception as exc:
             reports.append({"filter": variant, "ok": False, "error": f"{type(exc).__name__}: {exc}"})
-    usable = [r for r in reports if r.get("ok") and int(r.get("totalCount") or 0) > 0]
-    result = {"unicornBrandFilterId": UNICORN_BRAND_FILTER_ID, "usable": usable, "reports": reports}
+    if not selected_filter:
+        raise SystemExit("No usable BRAND_KEY Unicorn filter returned a bounded candidate set")
+
+    products: dict[tuple[str, str], dict[str, Any]] = {}
+    pages = max(1, math.ceil(selected_total / 20))
+    page_reports = []
+    for page in range(pages):
+        result = fetch(page, selected_filter)
+        page_reports.append({"page": page, "totalCount": result["totalCount"], "rows": len(result["products"])})
+        for raw in result["products"]:
+            row = normalize(raw)
+            if row:
+                products[(row["productId"], row["itemId"])] = row
+    rows = sorted(products.values(), key=lambda row: (int(row["productId"]), int(row["itemId"])))
+    candidate_result = {
+        "sellerId": SELLER_ID,
+        "brandFilterId": UNICORN_BRAND_FILTER_ID,
+        "selectedFilter": selected_filter,
+        "reportedTotal": selected_total,
+        "count": len(rows),
+        "products": rows,
+    }
+    result = {
+        "unicornBrandFilterId": UNICORN_BRAND_FILTER_ID,
+        "selectedFilter": selected_filter,
+        "reportedTotal": selected_total,
+        "collected": len(rows),
+        "pages": page_reports,
+        "reports": reports,
+    }
     (out / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(result, ensure_ascii=False), flush=True)
-    if not usable:
-        raise SystemExit("No Unicorn brand-filter variant returned products")
+    (out / "candidates.json").write_text(json.dumps(candidate_result, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(json.dumps({"filter": selected_filter, "reportedTotal": selected_total, "collected": len(rows)}, ensure_ascii=False), flush=True)
+    if len(rows) != selected_total:
+        raise SystemExit(f"Incomplete Unicorn brand candidates: {len(rows)}/{selected_total}")
 
 
 if __name__ == "__main__":
