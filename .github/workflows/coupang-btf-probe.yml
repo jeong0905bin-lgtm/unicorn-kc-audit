@@ -1,16 +1,7 @@
 name: Coupang BTF JSON probe
 
+# Confirmed blocked on GitHub-hosted runners. Manual only; do not repeat.
 on:
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/btf-probe.trigger"
-  pull_request:
-    branches: [main]
-    paths:
-      - "run/btf-probe.trigger"
-      - "tools/coupang_btf_probe.py"
-      - ".github/workflows/coupang-btf-probe.yml"
   workflow_dispatch:
 
 permissions:
@@ -19,17 +10,7 @@ permissions:
 
 jobs:
   probe:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-24.04
-            label: ubuntu24
-          - os: windows-2025
-            label: windows25
-          - os: macos-15
-            label: macos15
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -42,14 +23,14 @@ jobs:
         run: python -m py_compile tools/coupang_btf_probe.py
       - name: Probe lightweight BTF JSON
         env:
-          RUNNER_LABEL: ${{ matrix.label }}
-          PROBE_OUTPUT: diagnostics/btf/${{ matrix.label }}/result.json
+          RUNNER_LABEL: ubuntu24
+          PROBE_OUTPUT: diagnostics/btf/ubuntu24/result.json
         run: python tools/coupang_btf_probe.py
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: coupang-btf-probe-${{ matrix.label }}
-          path: diagnostics/btf/${{ matrix.label }}
+          name: coupang-btf-probe-ubuntu24
+          path: diagnostics/btf/ubuntu24
           if-no-files-found: error
           retention-days: 7
