@@ -1,16 +1,7 @@
 name: Unicorn brand filter probe
 
+# Brand filter is not an authoritative publisher test. Manual only.
 on:
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/unicorn-brand-probe.trigger"
-  pull_request:
-    branches: [main]
-    paths:
-      - "run/unicorn-brand-probe.trigger"
-      - "tools/unicorn_brand_probe.py"
-      - ".github/workflows/unicorn-brand-probe.yml"
   workflow_dispatch:
 
 permissions:
