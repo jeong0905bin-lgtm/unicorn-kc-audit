@@ -1,18 +1,7 @@
 name: Coupang indexed detail reader probe
 
+# Search-index route is incomplete for target products. Manual only.
 on:
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/index-reader-probe.trigger"
-      - "tools/coupang_index_reader_probe.py"
-      - ".github/workflows/coupang-index-reader-probe.yml"
-  pull_request:
-    branches: [main]
-    paths:
-      - "run/index-reader-probe.trigger"
-      - "tools/coupang_index_reader_probe.py"
-      - ".github/workflows/coupang-index-reader-probe.yml"
   workflow_dispatch:
 
 permissions:
