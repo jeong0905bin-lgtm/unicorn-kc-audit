@@ -1,10 +1,7 @@
 name: Coupang detail incognito diagnostic
 
+# Hosted incognito detail requests are blocked. Manual diagnostics only.
 on:
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/detail-diagnostic.trigger"
   workflow_dispatch:
 
 permissions:
