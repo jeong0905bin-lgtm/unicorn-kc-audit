@@ -5,6 +5,12 @@ on:
     branches: [chatgpt/run-unicorn-audit-20260730]
     paths:
       - "run/btf-probe.trigger"
+  pull_request:
+    branches: [main]
+    paths:
+      - "run/btf-probe.trigger"
+      - "tools/coupang_btf_probe.py"
+      - ".github/workflows/coupang-btf-probe.yml"
   workflow_dispatch:
 
 permissions:
