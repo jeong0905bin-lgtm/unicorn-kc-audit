@@ -1,0 +1,44 @@
+name: Coupang detail incognito diagnostic
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/coupang_detail_diagnostic.py"
+      - ".github/workflows/coupang-detail-diagnostic.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: coupang-detail-diagnostic-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Playwright
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Run strict incognito cache-cleared diagnostic
+        run: python tools/coupang_detail_diagnostic.py
+      - name: Upload detail diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coupang-detail-diagnostics
+          path: diagnostics/detail
+          if-no-files-found: warn
+          retention-days: 7
