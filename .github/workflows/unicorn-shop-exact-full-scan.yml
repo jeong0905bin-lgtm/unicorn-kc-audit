@@ -1,0 +1,78 @@
+name: Unicorn shop exact full scan
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+    paths:
+      - "tools/unicorn_shop_exact_scan.py"
+      - "tools/unicorn_catalog.py"
+      - ".github/workflows/unicorn-shop-exact-full-scan.yml"
+      - "run/unicorn-shop-exact-full-scan.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unicorn-shop-exact-full-scan-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          pip install requests playwright
+          python -m playwright install --with-deps chromium
+      - name: Validate scanners
+        run: |
+          python -m py_compile tools/unicorn_catalog.py
+          python -m py_compile tools/unicorn_shop_exact_scan.py
+      - name: Collect complete 2,230-product catalog
+        run: |
+          mkdir -p work/catalog work/exact
+          python tools/unicorn_catalog.py \
+            --output work/catalog/catalog.json \
+            --diagnostics work/catalog/catalog-diagnostics.json \
+            --candidate-output work/catalog/title-query-only-not-final.json
+      - name: Scan every catalog row through shop individualInfo detail API
+        run: |
+          python tools/unicorn_shop_exact_scan.py \
+            --catalog work/catalog/catalog.json \
+            --output-dir work/exact \
+            --chunk-size 50 \
+            --concurrency 3
+      - name: Print final exact summary
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('work/exact/summary.json')
+          if path.exists():
+              print(json.dumps(json.loads(path.read_text(encoding='utf-8')), ensure_ascii=False, indent=2))
+          else:
+              checkpoint = Path('work/exact/checkpoint.json')
+              if checkpoint.exists():
+                  data = json.loads(checkpoint.read_text(encoding='utf-8'))
+                  print(json.dumps(data.get('summary', {}), ensure_ascii=False, indent=2))
+              else:
+                  print('No exact-scan summary or checkpoint was produced.')
+          PY
+      - name: Upload complete catalog and exact-detail results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-shop-exact-full-scan-${{ github.run_id }}
+          path: work
+          if-no-files-found: warn
+          retention-days: 7
