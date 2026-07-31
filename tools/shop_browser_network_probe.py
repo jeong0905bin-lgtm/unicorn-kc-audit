@@ -7,11 +7,13 @@ import json
 import re
 from pathlib import Path
 from typing import Any
+from urllib.parse import parse_qs, urlparse
 
 from playwright.async_api import async_playwright
 
 BASE = "https://shop.coupang.com"
 SELLER_ID = "A00214628"
+STORE_ID = 79545
 STORE_URL = f"{BASE}/{SELLER_ID}"
 KNOWN = {
     "productId": "8411161016",
@@ -81,6 +83,11 @@ def hits(value: Any, path: str = "$", out: list[dict[str, str]] | None = None) -
     return out
 
 
+def clean_query(link: str) -> dict[str, str]:
+    query = parse_qs(urlparse(link).query)
+    return {key: values[0] for key, values in query.items() if values}
+
+
 async def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
@@ -93,6 +100,7 @@ async def main() -> None:
         "apiTraffic": [],
         "productLinks": [],
         "replays": [],
+        "individualInfoMatrix": [],
         "pageSignals": {},
     }
     request_rows: dict[int, dict[str, Any]] = {}
@@ -148,13 +156,15 @@ async def main() -> None:
             if parsed is not None:
                 row["responseTopLevelKeys"] = sorted(parsed.keys()) if isinstance(parsed, dict) else []
                 row["responseHits"] = hits(parsed)
-                if len(body) <= 350000 and any(
+                keep_json = any(
                     route in request.url
                     for route in (
                         "/api/v2/store/individualInfo/product",
                         "/api/v2/store/individualInfo/products",
+                        "/api/v2/store/top_selling",
                     )
-                ):
+                )
+                if len(body) <= 350000 and keep_json:
                     row["responseJson"] = parsed
 
         page.on("request", on_request)
@@ -174,6 +184,10 @@ async def main() -> None:
             await page.mouse.wheel(0, 1800)
             await page.wait_for_timeout(1200)
         await page.wait_for_timeout(5000)
+
+        if response_tasks:
+            await asyncio.gather(*response_tasks, return_exceptions=True)
+            response_tasks.clear()
 
         try:
             links = await page.eval_on_selector_all(
@@ -208,6 +222,105 @@ async def main() -> None:
                 start = max(0, match.start() - 300)
                 end = min(len(html), match.end() + 700)
                 result["pageSignals"]["snippets"].append({"token": token, "text": html[start:end]})
+
+        top_rows = [
+            row
+            for row in result["apiTraffic"]
+            if "/api/v2/store/top_selling" in row.get("url", "") and isinstance(row.get("responseJson"), dict)
+        ]
+        top_products: list[dict[str, Any]] = []
+        if top_rows:
+            top_products = (((top_rows[-1].get("responseJson") or {}).get("data") or {}).get("products") or [])
+
+        if top_products:
+            product = top_products[0]
+            vendor_item_id = str(product.get("vendorItemId") or "")
+            link = str(product.get("link") or "")
+            query = clean_query(link)
+            source_type = query.get("sourceType") or "brandstore-best_products"
+            common = {
+                "vendorItemIds": [vendor_item_id],
+                "isVIBased": True,
+                "storeId": STORE_ID,
+                "vendorId": SELLER_ID,
+                "ignoreAdultCheck": True,
+            }
+            metadata = {
+                "sourceSearchId": query.get("searchId"),
+                "lptag": query.get("lptag"),
+                "spec": query.get("spec"),
+                "src": query.get("src"),
+                "wPcid": query.get("wPcid"),
+            }
+            metadata = {key: value for key, value in metadata.items() if value not in (None, "")}
+            variants = [
+                ("minimal", common),
+                ("link-meta", {**common, **metadata}),
+                ("source-store", {**common, **metadata, "source": source_type, "pageType": "STORE"}),
+                ("source-brandstore", {**common, **metadata, "source": source_type, "pageType": "BRANDSTORE"}),
+                ("direct-store", {**common, **metadata, "source": "direct", "pageType": "STORE"}),
+                ("source-only", {**common, "source": source_type}),
+                ("source-search-only", {**common, "sourceSearchId": query.get("searchId"), "source": source_type}),
+                ("known-card-fields", {
+                    **common,
+                    **metadata,
+                    "source": source_type,
+                    "pageType": "STORE",
+                    "productListRules": product.get("productListRules"),
+                }),
+            ]
+            variants = [
+                (name, {key: value for key, value in body.items() if value not in (None, "")})
+                for name, body in variants
+            ]
+            for route in (
+                "/api/v2/store/individualInfo/product",
+                "/api/v2/store/individualInfo/products",
+            ):
+                for name, body in variants:
+                    row: dict[str, Any] = {
+                        "route": route,
+                        "variant": name,
+                        "productId": product.get("productId"),
+                        "itemId": product.get("itemId"),
+                        "vendorItemId": vendor_item_id,
+                        "sourceLink": link,
+                        "body": body,
+                    }
+                    try:
+                        replay_result = await page.evaluate(
+                            """async ({route, body}) => {
+                                const response = await fetch(route, {
+                                    method: 'POST',
+                                    credentials: 'include',
+                                    headers: {
+                                        'content-type': 'application/json',
+                                        'accept': 'application/json, text/plain, */*'
+                                    },
+                                    body: JSON.stringify(body),
+                                });
+                                const text = await response.text();
+                                return {
+                                    status: response.status,
+                                    length: text.length,
+                                    text: text.slice(0, 300000),
+                                };
+                            }""",
+                            {"route": route, "body": body},
+                        )
+                        row["status"] = replay_result.get("status")
+                        row["length"] = replay_result.get("length")
+                        text = replay_result.get("text", "")
+                        row["prefix"] = text[:12000]
+                        parsed = parse_json(text)
+                        if parsed is not None:
+                            row["topLevelKeys"] = sorted(parsed.keys()) if isinstance(parsed, dict) else []
+                            row["hits"] = hits(parsed)
+                            if len(text) <= 300000:
+                                row["json"] = parsed
+                    except Exception as exc:
+                        row["error"] = f"{type(exc).__name__}: {exc}"
+                    result["individualInfoMatrix"].append(row)
 
         individual_rows = [
             row
@@ -275,11 +388,9 @@ async def main() -> None:
             for row in result["apiTraffic"]
             if "/api/v2/store/individualInfo/product" in row.get("url", "") and row.get("status") == 200
         ),
-        "individualInfoRowsWithHits": sum(
-            1
-            for row in result["apiTraffic"]
-            if "/api/v2/store/individualInfo/product" in row.get("url", "") and row.get("responseHits")
-        ),
+        "matrixAttempts": len(result["individualInfoMatrix"]),
+        "matrixHttp200": sum(1 for row in result["individualInfoMatrix"] if row.get("status") == 200),
+        "matrixRowsWithHits": sum(1 for row in result["individualInfoMatrix"] if row.get("hits")),
         "productLinks": len(result["productLinks"]),
     }
     save(args.output, result)
