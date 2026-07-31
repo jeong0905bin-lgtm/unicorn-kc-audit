@@ -22,12 +22,23 @@
         "accept-language": "ko-KR"
       },
       "postData": "",
-      "status": 403,
+      "status": 200,
       "responseHeaders": {
-        "content-type": "text/html"
+        "content-type": "application/json"
       },
-      "responseLength": 406,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;layout&#47;templateV2\" on this server.<P>\nReference&#32;&#35;18&#46;224e4317&#46;1785493288&#46;12e6d1b7\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;224e4317&#46;1785493288&#46;12e6d1b7</P>\n</BODY>\n</HTML>\n"
+      "responseLength": 36250,
+      "responsePrefix": "{\"bodyClassName\":\"fw-font-apple-gothic\",\"header\":\"<div id=\\\"wa-config\\\" data-currency=\\\"__원\\\" data-disable-price-translate=\\\"false\\\" data-arrow-left=\\\"https://assets.coupangcdn.com/front/front-web-next/_next/static/media/arrow_left.128503b7.png\\\" data-t=\\\"{&quot;94b7db&quot;:&quot;닫기&quot;,&quot;ff1379&quot;:&quot;삭제가 안됐나요? 다시 한번 해보세요.&quot;,&quot;52624c&quot;:&quot;최근본 상품이&quot;,&quot;7779d6&quot;:&quot;없습니다.&quot;,&quot;2d47c8&quot;:&quot;다시 시도해 주세요.&quot;,&quot;back&quot;:&quot;뒤로가기&quot;,&quot;4b8d54&quot;:&quot;검색&quot;,&quot;990d4f&quot;:&quot;마이크&quot;,&quot;2bdfeb&quot;:&quot;최근검색어켜기&quot;,&quot;c8917d&quot;:&quot;최근검색어끄기&quot;,&quot;fd74f0&quot;:&quot;검색어&quot;,&quot;8124e8&quot;:&quot;최근&quot;,&quot;fc81e2&quot;:&quot;삭제&quot;,&quot;f3dc4f&quot;:&quot;최근 검색어 저장 기능이 꺼져 있습니다.&quot;,&quot;4bcb41&quot;:&quot;여행/티켓&quot;,&quot;0037c7&quot;:&quot;테마관&quot;,&quot;6e50be&quot;:&quot;더보기&quot;,&quot;a4b69f&quot;:&quot;전체&quot;}\\\" data-search-uri=\\\"/np/search\\\" data-web-domain=\\\"https://www.coupang.com\\\" data-apply-app-redirection=\\\"1\\\"></div><div id=\\\"wa-header\\\" class=\\\"fw-font-apple-gothic  fw-bg-white s600:fw-static \\\"><div class=\\\"fw-bg-[#f0f0f0] \\\" id=\\\"wa-top-bar\\\" data-user-name-masked=\\\"false\\\"><div style=\\\"max-width:1280px\\\" class=\\\"fw-m-auto fw-w-full fw-text-[11px]\\\"><menu class=\\\"fw-relative fw-float-right *:fw-float-right *:fw-h-[33px] *:fw-pr-[12px] *:fw-pt-[10px]\\\"><li class=\\\"fw-hidden s600:fw-block\\\"><a href=\\\"https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_top_right_cta&amp;utm_medium=non_paid&amp;utm_campaign=seller_registration\\\">판매자 가입</a></li><li class=\\\"cs-center fw-group fw-relative\\\"><a href=\\\"https://mc.coupang.com/ssr/desktop/contact/faq\\\" data-log=\\\"{ id: &#x27;customer_center&#x27;}\\\">고객센터</a><p class=\\\"fw-hidden group-hover:fw-block\\\" style=\\\"z-index:9999\\\"><a href=\\\"https://mc.coupang.com/ssr/desktop/contact/faq\\\" data-log=\\\"{ id:&#x27;customer_center_1&#x27; }\\\">자주묻는 질문</a><a href=\\\"https://mc.coupang.com/ssr/desktop/contact/inquiry\\\" data-log=\\\"{ id:&#x27;customer_center_3&#x27; }\\\">1:1 채팅문의</a><a href=\\\"https://mc.coupang.com/ssr/desktop/contact/voc\\\" data-log=\\\"{ id:&#x27;customer_center_2&#x27; }\\\">고객의 소리</a><a href=\\\"https://www.coupang.com/returnPolicy.pang\\\" data-log=\\\"{ id:&#x27;customer_center_4&#x27; }\\\">취소 / 반품 안내</a></p></li><li><a href=\\\"https://login.coupang.com/login/memberJoinFrm.pang\\\" title=\\\"회원가입\\\">회원가입</a></li><li><a href=\\\"https://login.coupang.com/login/login.pang?rtnUrl=https%3A%2F%2Fwww.coupang.com%2Fnp%2Fpost%2Flogin%3Fr%3Dhttps%253A%252F%252Fwww.coupang.com\\\" title=\\\"로그인\\\">로그인</a></li></menu><menu id=\\\"subscribeHeader\\\" class=\\\"fw-hidden s600:fw-block\\\"><li class=\\\"new-header\\\"><a id=\\\"wa-bookmark\\\" data-msg=\\\"Ctrl+D 키를 누르면 즐겨찾기에 추가하실 수 있습니다.\\\" class=\\\"bookmark\\\" data-log=\\\"{ id: &quot;add_to_favorites&quot; }\\\">즐겨찾기</a></li><li class=\\\"vendor-join\\\"><a class=\\\"dropdown_menu_flag\\\">입점신청<i class=\\\"ic\\\"></i></a><p class=\\\"vendor-join-menu fw-hidden\\\" style=\\\"z-index:9999\\\"><a href=\\\"https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_top_left_cta&amp;utm_medium=non_paid&amp;utm_campaign=openmarket\\\" data-log=\\\"{ id:&#x27;seller_page&#x27; }\\\" target=\\\"_blank\\\">오픈마켓</a><a href=\\\"https://with.coupang.com/contract/initialize\\\" data-log=\\\"{ id:&#x27;travel_seller_page&#x27; }\\\" target=\\\"_blank\\\">여행·티켓</a><a href=\\\"https://supplier.coupang.com/welcome/join\\\" data-log=\\\"{ id:&#x27;rocket_seller_page&#x27; }\\\" target=\\\"_blank\\\">로켓배송</a><a href=\\\"https://partners.coupang.com\\\" data-log=\\\"{ id:&#x27;affiliate_marketing_page&#x27; }\\\" target=\\\"_blank\\\">제휴마케팅</a><a href=\\\"https://sell.coupang.com?utm_source=web_button_pc_rg&amp;utm_medium=referral&amp;utm_campaign=onsite_lead&amp;utm_id=coupang_web?inflow=WEB_HEADER_B\\\" data-log=\\\"{ id:&#x27;rocketGrowth&#x27; }\\\" target=\\\"_blank\\\">로켓그로스</a></p></li></menu><div class=\\\"fw-invisible fw-clear-both fw-h-[0px]\\\">.</div></div></div><div><select id=\\\"wa-category-select\\\" name=\\\"component\\\" class=\\\"searchCategories search_category_filter fw-hidden\\\"><option value=\\\"\\\" data-text=\\\"전체\\\">전체</option></select><div style=\\\"max-width:1280px\\\" class=\\\"fw-mx-auto fw-flex fw-w-full fw-items-center fw-pr-[5px] max-s1024:rlux:fw-bg-[#131516]\\\"><div id=\\\"wa-category\\\" class=\\\"fw-relative fw-flex fw-h-[48px] fw-w-[48px] fw-cursor-pointer fw-flex-col fw-items-center fw-justify-center fw-bg-[#346aff] rlux:fw-bg-[#131516] s1024:fw-h-[119px] s1024:fw-w-[110px]\\\"><div class=\\\"fw-flex fw-h-[24px] fw-w-[24px] fw-flex-col fw-items-center fw-justify-around s1024:fw-h-[28px] s1024:fw-w-[28px]\\\"><div class=\\\"fw-h-[1px] fw-w-full fw-bg-white s1024:fw-h-[4px]\\\"></div><div class=\\\"fw-h-[1px] fw-w-full fw-bg-white s1024:fw-h-[4px]\\\"></div><div class=\\\"fw-h-[1px] fw-w-full fw-bg-white s1024:fw-h-[4px]\\\"></div></div><div class=\\\"fw-mt-[15px] fw-hidden fw-text-center fw-text-[13px] fw-font-normal fw-leading-none fw-text-white s1024:fw-block\\\">카테고리</div><div class=\\\"category-layer\\\" id=\\\"wa-pc-category\\\" data-icons=\\\"https://assets.coupangcdn.com/front/front-web-next/_next/static/media/icons.03b3790b.png\\\" style=\\\"z-index:9999\\\"><div class=\\\"fw-hidden\\\">쇼핑</div><ul class=\\\"menu shopping-menu-list fd\\\"></ul><div class=\\\"fw-hidden\\\">티켓</div><ul class=\\\"menu ticket-menu-list fd\\\"></ul><div class=\\\"fw-hidden\\\">테마관</div><ul class=\\\"menu theme-menu-list menu-divider fd fw-hidden\\\"></ul><ul class=\\\"menu ingress-menu-list fd\\\"><li class=\\\"ingress-point\\\"><a href=\\\"https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_category_cta&amp;utm_medium=non_paid&amp;utm_campaign=category\\\" data-el=\\\"seller_signup\\\" data-text=\\\"입점/판매 신청\\\">입점/판매 신청</a></li></ul><div class=\\\"loader-wrapper\\\"><span class=\\\"loader\\\"></span></div></div><div class=\\\"fw-absolute fw-left-0 fw-top-[114px] fw-z-10 fw-hidden fw-w-[220px] fw-overflow-auto fw-bg-white fw-shadow-md\\\" id=\\\"wa-mobile-category\\\" style=\\\"z-index:9999\\\"><div id=\\\"wa-mobile-category-language\\\"></div><div id=\\\"wa-category-list-wrap\\\"></div><div id=\\\"wa-mobile-category-app-links\\\"></div><div class=\\\"loader-wrapper\\\"><span class=\\\"loader\\\"></span></div></div></div><div class=\\\"fw-flex fw-flex-1 fw-flex-col max-s1024:fw-h-[48px]\\\"><div class=\\\"fw-ml-[16px] fw-flex fw-items-center fw-justify-between max-s1024:fw-h-[48px] s1024:fw-ml-[30px] s1024:fw-mt-[20px]\\\"><a href=\\\"https://www.coupang.com\\\" class=\\\"fw-mr-[25px] fw-inline-block fw-flex-none\\\" data-log=\\\"{ id: &#x27;coupang_header_logo_click&#x27; }\\\"><img loading=\\\"lazy\\\" class=\\\"fw-h-[23px] fw-w-[101px] s1024:fw-h-[36px] s1024:fw-w-[154px]\\\" src=\\\"//image7.coupangcdn.com/image/coupang/common/logo_coupang_w350.png\\\" alt=\\\"Coupang\\\"/></a><form id=\\\"wa-search-form\\\" class=\\\"product-search search-form fw-flex fw-flex-1 fw-items-center fw-border-0 fw-hidden s1024:fw-flex fw-border-2 rlux:fw-border-bluegray-1000\\\" action=\\\"https://www.coupang.com/np/search\\\"><div class=\\\"select--category fw-w-[90px] s500:fw-w-[135px]\\\"><span class=\\\"select--category--button\\\"></span><a class=\\\"select--category__current rlux:fw-text-bluegray-800\\\" id=\\\"currentCategoryText\\\">전체</a></div><div class=\\\"header-searchForm fw-relative fw-flex-1\\\"><input type=\\\"text\\\" maxLength=\\\"150\\\" placeholder=\\\"찾고 싶은 상품을 검색해보세요!\\\" class=\\\"headerSearchKeyword coupang-search fw-h-full fw-w-full fw-bg-white fw-indent-[10px] fw-text-[14px] fw-outline-none rlux:fw-text-bluegray-1000 rlux:placeholder:fw-text-bluegray-800\\\" title=\\\"쿠팡 상품 검색\\\" autoComplete=\\\"off\\\" name=\\\"q\\\" value=\\\"\\\"/><input type=\\\"hidden\\\" name=\\\"traceId\\\"/><div class=\\\"headerPopupWords popularity-words\\\" style=\\\"z-index:9999\\\"><div class=\\\"autocomplete_wrap\\\"></div><div class=\\\"history-btns\\\"><span class=\\\"delete-all-kwdhistory del-button\\\">전체삭제</span><span class=\\\"history-on-off on\\\">최근검색어끄기</span></div></div></div><a class=\\\"speech-mic fw-mr-[12px] fw-hidden fw-flex-none fw-cursor-pointer\\\"></a><button type=\\\"submit\\\" class=\\\"headerSearchBtn fw-mr-[12px] fw-inline-block fw-flex-none\\\" title=\\\"검색\\\">",
+      "responseTopLevelKeys": [
+        "bodyClassName",
+        "footer",
+        "header",
+        "isLogin",
+        "links",
+        "locale",
+        "metas",
+        "scripts"
+      ],
+      "responseHits": []
     },
     {
       "method": "GET",
@@ -115,7 +126,7 @@
         "content-type": "text/html"
       },
       "responseLength": 412,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;menu&#47;checkCompatibility\" on this server.<P>\nReference&#32;&#35;18&#46;224e4317&#46;1785493289&#46;12e6d4bc\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;224e4317&#46;1785493289&#46;12e6d4bc</P>\n</BODY>\n</HTML>\n"
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;menu&#47;checkCompatibility\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d752f0\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d752f0</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "GET",
@@ -133,7 +144,7 @@
         "content-type": "text/html"
       },
       "responseLength": 429,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;creative&#95;module&#47;data&#47;933969&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;224e4317&#46;1785493289&#46;12e6d4bd\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;224e4317&#46;1785493289&#46;12e6d4bd</P>\n</BODY>\n</HTML>\n"
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;creative&#95;module&#47;data&#47;933969&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d752f1\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d752f1</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "GET",
@@ -186,7 +197,7 @@
         "content-type": "text/html"
       },
       "responseLength": 392,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;listing\" on this server.<P>\nReference&#32;&#35;18&#46;224e4317&#46;1785493289&#46;12e6d4bf\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;224e4317&#46;1785493289&#46;12e6d4bf</P>\n</BODY>\n</HTML>\n"
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;listing\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d752f3\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d752f3</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "GET",
@@ -204,7 +215,7 @@
         "content-type": "text/html"
       },
       "responseLength": 421,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;benefit&#47;getStoreBenefitInfo&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;224e4317&#46;1785493289&#46;12e6d4c0\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;224e4317&#46;1785493289&#46;12e6d4c0</P>\n</BODY>\n</HTML>\n"
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;benefit&#47;getStoreBenefitInfo&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d752f4\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d752f4</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "POST",
@@ -222,92 +233,12 @@
         "filterQuery": "VENDOR_ID:A00214628|CATEGORY:34793@VENDOR",
         "brandId": 0
       },
-      "status": 200,
+      "status": 403,
       "responseHeaders": {
-        "content-type": "application/json"
+        "content-type": "text/html"
       },
-      "responseLength": 219260,
-      "responsePrefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"extraFilters\":[{\"name\":\"정렬\",\"valueType\":\"SORT_KEY\",\"dataType\":\"SORT_KEY\",\"layoutType\":\"TEXT\",\"viewType\":{\"selectType\":\"SELECT\",\"rowCount\":null,\"columnCount\":3},\"componentId\":null,\"attributeId\":null,\"brandsOnMainView\":null,\"mainViewDisplayCount\":null,\"valid\":null,\"headerHide\":null,\"fixed\":true,\"detailOpen\":false,\"defaultFilter\":null,\"customFilter\":null,\"customFilterOrder\":null,\"filters\":[{\"id\":null,\"campaignId\":null,\"name\":\"쿠팡 랭킹순\",\"value\":\"POPULARITY\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":true,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null},{\"id\":null,\"campaignId\":null,\"name\":\"낮은 가격순\",\"value\":\"LOW_PRICE\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":false,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null},{\"id\":null,\"campaignId\":null,\"name\":\"높은 가격순\",\"value\":\"HIGH_PRICE\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":false,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null},{\"id\":null,\"campaignId\":null,\"name\":\"판매량순\",\"value\":\"BEST_SELLING\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":false,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null},{\"id\":null,\"campaignId\":null,\"name\":\"최신순\",\"value\":\"LATEST\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":false,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null}],\"async\":null,\"targetSectionTypes\":[]},{\"name\":\"카테고리\",\"valueType\":\"CATEGORY\",\"dataType\":\"CATEGORY\",\"layoutType\":\"TEXT\",\"viewType\":{\"selectType\":\"SINGLE_CHECKBOX\",\"rowCount\":null,\"columnCount\":3},\"componentId\":null,\"attributeId\":null,\"brandsOnMainView\":null,\"mainViewDisplayCount\":null,\"valid\":null,\"headerHide\":null,\"fixed\":true,\"detailOpen\":false,\"defaultFilter\":null,\"customFilter\":null,\"customFilterOrder\":null,\"filters\":[{\"id\":346778,\"campaignId\":null,\"name\":\"유아동도서\",\"value\":\"346778\",\"code\":null,\"count\":354759,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346802,\"campaignId\":null,\"name\":\"놀이책/토이북\",\"value\":\"346802\",\"code\":null,\"count\":128100,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346803,\"campaignId\":null,\"name\":\"스티커북\",\"value\":\"346803\",\"code\":null,\"count\":45858,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346807,\"campaignId\":null,\"name\":\"사운드북\",\"value\":\"346807\",\"code\":null,\"count\":41690,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346808,\"campaignId\":null,\"name\":\"만들기/종이접기\",\"value\":\"346808\",\"code\":null,\"count\":15520,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346805,\"campaignId\":null,\"name\":\"퍼즐북\",\"value\":\"346805\",\"code\":null,\"count\":8757,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346804,\"campaignId\":null,\"name\":\"색칠하기\",\"value\":\"346804\",\"code\":null,\"count\":8433,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346806,\"campaignId\":null,\"name\":\"입체책\",\"value\":\"346806\",\"code\":null,\"count\":3994,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346810,\"campaignId\":null,\"name\":\"블록/교구\",\"value\":\"346810\",\"code\":null,\"count\":3836,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346812,\"campaignId\":null,\"name\":\"기타 놀이책\",\"value\":\"346812\",\"code\":null,\"count\":5,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346811,\"campaignId\":null,\"name\":\"토이북\",\"value\":\"346811\",\"code\":null,\"count\":3,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346809,\"campaignId\":null,\"name\":\"미술 워크북\",\"value\":\"346809\",\"code\":null,\"count\":1,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null}],\"sortKey\":null,\"componentId\":null},{\"id\":346813,\"campaignId\":null,\"name\":\"학습/교양\",\"value\":\"346813\",\"code\":null,\"count\":101087,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346850,\"campaignId\":null,\"name\":\"학습일반/공부법\",\"value\":\"346850\",\"code\":null,\"count\":21022,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346841,\"campaignId\":null,\"name\":\"사회/역사/문화\",\"value\":\"346841\",\"code\":null,\"count\":19885,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346843,\"campaignId\":null,\"name\":\"역사/지리\",\"value\":\"346843\",\"code\":null,\"count\":11973,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346842,\"campaignId\":null,\"name\":\"사회/문화/시사\",\"value\":\"346842\",\"code\":null,\"count\":7910,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346846,\"campaignId\":null,\"name\":\"예술\",\"value\":\"346846\",\"code\":null,\"count\":3,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346844,\"campaignId\":null,\"name\":\"인물\",\"value\":\"346844\",\"code\":null,\"count\":1,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346848,\"campaignId\":null,\"name\":\"취미\",\"value\":\"346848\",\"code\":null,\"count\":1,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null}],\"sortKey\":null,\"componentId\":null},{\"id\":346832,\"campaignId\":null,\"name\":\"작문/독서/논술\",\"value\":\"346832\",\"code\":null,\"count\":13709,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346834,\"campaignId\":null,\"name\":\"논리/논술/사고력\",\"value\":\"346834\",\"code\":null,\"count\":13703,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346833,\"campaignId\":null,\"name\":\"글짓기/독서\",\"value\":\"346833\",\"code\":null,\"count\":4,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componen",
-      "responseTopLevelKeys": [
-        "code",
-        "data",
-        "extra",
-        "msg"
-      ],
-      "responseHits": [
-        {
-          "path": "$.data.extraFilters[0].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[1].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[2].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[2].filters[1].name",
-          "value": "삼성출판사"
-        },
-        {
-          "path": "$.data.extraFilters[2].filters[7].name",
-          "value": "유니콘"
-        },
-        {
-          "path": "$.data.extraFilters[3].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[4].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[5].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[6].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[7].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[8].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[9].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[10].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[11].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[12].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[13].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[14].detailOpen",
-          "value": "False"
-        },
-        {
-          "path": "$.data.extraFilters[15].detailOpen",
-          "value": "False"
-        }
-      ]
+      "responseLength": 391,
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;filter\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d75327\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d75327</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "GET",
@@ -325,7 +256,7 @@
         "content-type": "text/html"
       },
       "responseLength": 414,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;store&#47;getStoreReview&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;224e4317&#46;1785493289&#46;12e6d675\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;224e4317&#46;1785493289&#46;12e6d675</P>\n</BODY>\n</HTML>\n"
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;store&#47;getStoreReview&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493405&#46;11d75453\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493405&#46;11d75453</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "POST",
@@ -362,20 +293,12 @@
   "productLinks": [],
   "replays": [],
   "pageSignals": {
-    "htmlLength": 309607,
+    "htmlLength": 291396,
     "containsKnownProductId": false,
     "containsKnownVendorItemId": false,
     "containsPublisherLabel": false,
-    "containsUnicorn": true,
+    "containsUnicorn": false,
     "snippets": [
-      {
-        "token": "유니콘",
-        "text": "e is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">엠키즈</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">스마트베어</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">유니콘</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">아이휴먼</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">UNICORN</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">단꿈아이</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">메가스터디북스</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">오픈북</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\""
-      },
-      {
-        "token": "출판사",
-        "text": "roup-name\">\n    브랜드\n  </div> <ul data-v-555d0c27=\"\" class=\"filter-items\"><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">캐치티니핑</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">삼성출판사</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">꿈꾸는달팽이</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">메가스터디</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">지원출판</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">엠키즈</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">스마트베어</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" c"
-      },
       {
         "token": "kc",
         "text": "NTg1IDEyIDQuMjkzIDUuNzA3Yy0uMzktLjM5LS4zOS0xLjAyNCAwLTEuNDE0LjM2LS4zNi45MjgtLjM4OCAxLjMyLS4wODN6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtOTQ2IC04MTkpIHRyYW5zbGF0ZSg5NDYgODE5KSIvPgogICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZmlsbC1vcGFjaXR5PSIwIiBkPSJNMCAyNEwyNCAyNCAyNCAwIDAgMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC05NDYgLTgxOSkgdHJhbnNsYXRlKDk0NiA4MTkpIi8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=) 50% no-repeat;background-size:24px 24px;border:0;cursor:pointer;height:24px;margin:-2px;overflow:hidden;text-indent:-9999px;width:24px}.modal-body[data-v-02c2806a]{padding:0 20px 20px}.modal-enter[data-v-02c2806a]{opacity:0}.modal-enter .modal-container[data-v-02c2806a]{transform:scale(.8)}.modal-leave-active[data-v-02c2806a]{opacity:0}.modal-leave-active .modal-container[data-v-02c2806a]{transform:scale(1.1)}\n.search-bar[data-v-4d1165b4]{align-items:center;box-sizing:border-box;overflow:hidden;padding:15px 0}.search-bar[data-v-4d1165b4],.search-form[data-v-4d1165b4]{display:flex;posit"
