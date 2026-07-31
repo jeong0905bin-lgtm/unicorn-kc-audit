@@ -1,0 +1,16 @@
+{
+  "storeUrl": "https://shop.coupang.com/A00214628?platform=p",
+  "navigation": {
+    "status": 200,
+    "url": "https://shop.coupang.com/A00214628?platform=p",
+    "title": ""
+  },
+  "productLink": null,
+  "attempts": [],
+  "summary": {
+    "links": 0,
+    "attempts": 0,
+    "http200": 0,
+    "nonEmpty": 0
+  }
+}
