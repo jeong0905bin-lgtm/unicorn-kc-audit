@@ -1,0 +1,816 @@
+{
+  "sellerId": "A00214628",
+  "storeId": 79545,
+  "catalogCount": 2229,
+  "generatedAt": "2026-08-01T01:10:00+09:00",
+  "publisherAcceptanceRule": "Use only exact product-detail publisher evidence where the publisher value normalizes exactly to 유니콘.",
+  "summary": {
+    "singularDetailSuccessCount": 1825,
+    "singularDetailUnresolvedCount": 404,
+    "apiExactUnicornCount": 30,
+    "additionalExactPublisherCount": 3,
+    "consolidatedExactUnicornCount": 33,
+    "productsWithConfirmedKcMapping": 7,
+    "uniqueConfirmedKcNumbers": [
+      "CB064H009-2001",
+      "CB064H009-3002",
+      "CB064H009-4001",
+      "CB064H009-4003",
+      "CB064H009-8001"
+    ],
+    "finalWorkbookReady": false
+  },
+  "sourceRuns": {
+    "basePluralMetadataRunId": 30643392302,
+    "latestSingularPublisherRunId": 30644484268,
+    "latestSingularPublisherArtifact": "unicorn-singular-link-merged-30644484268"
+  },
+  "officialSafetyKorea": {
+    "CB064H009-3002": {
+      "status": "적합",
+      "officialExactMatch": true,
+      "expired": false,
+      "manufacturer": "주식회사 유니콘",
+      "modelName": "스티커 컬렉션",
+      "sourceUrl": "https://www.safetykorea.kr/search/searchPop?certNum=CB064H009-3002"
+    },
+    "CB064H009-9003": {
+      "status": "기간만료",
+      "officialExactMatch": true,
+      "expired": true,
+      "manufacturer": "주식회사 유니콘",
+      "modelName": "캐릭터 퍼즐",
+      "sourceUrl": "https://www.safetykorea.kr/search/searchPop?certNum=CB064H009-9003&menu=search",
+      "catalogProductMapping": "unresolved"
+    },
+    "CB064H009-2001": {
+      "status": "unresolved",
+      "officialExactMatch": false
+    },
+    "CB064H009-4001": {
+      "status": "unresolved",
+      "officialExactMatch": false
+    },
+    "CB064H009-4003": {
+      "status": "unresolved",
+      "officialExactMatch": false
+    },
+    "CB064H009-8001": {
+      "status": "unresolved",
+      "officialExactMatch": false
+    }
+  },
+  "products": [
+    {
+      "catalogIndex": 135,
+      "productName": "미니특공대X 스티커 컬렉션북, 유니콘",
+      "productId": "109020782",
+      "itemId": "329855604",
+      "vendorItemId": "5521601478",
+      "coupangUniqueId": "109020782 - 329855604",
+      "productUrl": "https://www.coupang.com/vp/products/109020782?itemId=329855604&vendorItemId=5521601478",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 152,
+      "productName": "요괴 메카드 스티커 컬렉션북, 유니콘",
+      "productId": "154363345",
+      "itemId": "445082014",
+      "vendorItemId": "5521611300",
+      "coupangUniqueId": "154363345 - 445082014",
+      "productUrl": "https://www.coupang.com/vp/products/154363345?itemId=445082014&vendorItemId=5521611300",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 231,
+      "productName": "쥬라기캅스 스티커 컬렉션북, 유니콘",
+      "productId": "238001339",
+      "itemId": "756498891",
+      "vendorItemId": "5521641443",
+      "coupangUniqueId": "238001339 - 756498891",
+      "productUrl": "https://www.coupang.com/vp/products/238001339?itemId=756498891&vendorItemId=5521641443",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 232,
+      "productName": "헬로카봇 쿵 스티커 컬렉션북, 유니콘",
+      "productId": "238365275",
+      "itemId": "757275319",
+      "vendorItemId": "5521642699",
+      "coupangUniqueId": "238365275 - 757275319",
+      "productUrl": "https://www.coupang.com/vp/products/238365275?itemId=757275319&vendorItemId=5521642699",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 267,
+      "productName": "(BOOKFRIENDS) 시크릿 쥬쥬 스티커 퀸 300, 유니콘, 시크릿쥬쥬",
+      "productId": "274824520",
+      "itemId": "868302647",
+      "vendorItemId": "5198069064",
+      "coupangUniqueId": "274824520 - 868302647",
+      "productUrl": "https://www.coupang.com/vp/products/274824520?itemId=868302647&vendorItemId=5198069064",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 278,
+      "productName": "시크릿쥬쥬 스티커색칠북 2종세트, 유니콘",
+      "productId": "281434359",
+      "itemId": "891207698",
+      "vendorItemId": "5204258991",
+      "coupangUniqueId": "281434359 - 891207698",
+      "productUrl": "https://www.coupang.com/vp/products/281434359?itemId=891207698&vendorItemId=5204258991",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 321,
+      "productName": "유니콘 신기한 워터 색칠북 - 콩순이",
+      "productId": "1321324685",
+      "itemId": "2342362756",
+      "vendorItemId": "75250297328",
+      "coupangUniqueId": "1321324685 - 2342362756",
+      "productUrl": "https://www.coupang.com/vp/products/1321324685?itemId=2342362756&vendorItemId=75250297328",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "indexed_product_detail_exact_publisher",
+      "publisherEvidence": [],
+      "kcEvidence": [
+        {
+          "kcNumber": "CB064H009-8001",
+          "mappingStatus": "confirmed",
+          "evidenceType": "indexed_exact_product_and_retailer_record",
+          "evidenceDescription": "Exact product record identifies the Unicorn water-coloring title and KC number.",
+          "sourceUrl": "https://www.yes24.com/product/goods/106046471"
+        }
+      ]
+    },
+    {
+      "catalogIndex": 338,
+      "productName": "미미 스티커 색칠북 2종세트, 유니콘",
+      "productId": "338432152",
+      "itemId": "1078306428",
+      "vendorItemId": "5209605290",
+      "coupangUniqueId": "338432152 - 1078306428",
+      "productUrl": "https://www.coupang.com/vp/products/338432152?itemId=1078306428&vendorItemId=5209605290",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 367,
+      "productName": "유니콘 반지의 비밀일기2 판퍼즐 2종세트",
+      "productId": "1058484558",
+      "itemId": "2001655046",
+      "vendorItemId": "70001937819",
+      "coupangUniqueId": "1058484558 - 2001655046",
+      "productUrl": "https://www.coupang.com/vp/products/1058484558?itemId=2001655046&vendorItemId=70001937819",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 374,
+      "productName": "엉덩이탐정 스티커 색칠북 2종 세트, 유니콘",
+      "productId": "1074457906",
+      "itemId": "2027232964",
+      "vendorItemId": "70027589348",
+      "coupangUniqueId": "1074457906 - 2027232964",
+      "productUrl": "https://www.coupang.com/vp/products/1074457906?itemId=2027232964&vendorItemId=70027589348",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 375,
+      "productName": "엉덩이탐정 스티커 색칠북 01, 유니콘",
+      "productId": "1076170088",
+      "itemId": "2030230565",
+      "vendorItemId": "70030585581",
+      "coupangUniqueId": "1076170088 - 2030230565",
+      "productUrl": "https://www.coupang.com/vp/products/1076170088?itemId=2030230565&vendorItemId=70030585581",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 376,
+      "productName": "유니콘 엉덩이탐정 판퍼즐 2종세트 (63조각)",
+      "productId": "1079913175",
+      "itemId": "2036419863",
+      "vendorItemId": "70036774836",
+      "coupangUniqueId": "1079913175 - 2036419863",
+      "productUrl": "https://www.coupang.com/vp/products/1079913175?itemId=2036419863&vendorItemId=70036774836",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 429,
+      "productName": "엉덩이탐정 스티커 컬렉션북, 유니콘",
+      "productId": "1318402202",
+      "itemId": "2336871425",
+      "vendorItemId": "70291981466",
+      "coupangUniqueId": "1318402202 - 2336871425",
+      "productUrl": "https://www.coupang.com/vp/products/1318402202?itemId=2336871425&vendorItemId=70291981466",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 440,
+      "productName": "엉덩이탐정 스티커 2종 세트 컬렉션북 + 킹 300, 유니콘",
+      "productId": "1329308694",
+      "itemId": "2350228897",
+      "vendorItemId": "70305249489",
+      "coupangUniqueId": "1329308694 - 2350228897",
+      "productUrl": "https://www.coupang.com/vp/products/1329308694?itemId=2350228897&vendorItemId=70305249489",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 505,
+      "productName": "신비아파트 고스트볼 더블X 6개의 예언 스티커 컬렉션북 + 킹 300 세트, 유니콘",
+      "productId": "1741474604",
+      "itemId": "2964569596",
+      "vendorItemId": "70752645721",
+      "coupangUniqueId": "1741474604 - 2964569596",
+      "productUrl": "https://www.coupang.com/vp/products/1741474604?itemId=2964569596&vendorItemId=70752645721",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 506,
+      "productName": "반짝이는 프리채널 신기한 워터색칠북, 유니콘",
+      "productId": "1741474611",
+      "itemId": "2964569605",
+      "vendorItemId": "70752645713",
+      "coupangUniqueId": "1741474611 - 2964569605",
+      "productUrl": "https://www.coupang.com/vp/products/1741474611?itemId=2964569605&vendorItemId=70752645713",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 961,
+      "productName": "리틀미미 신기한 워터색칠북, 유니콘",
+      "productId": "5184666602",
+      "itemId": "7172499147",
+      "vendorItemId": "74463995443",
+      "coupangUniqueId": "5184666602 - 7172499147",
+      "productUrl": "https://www.coupang.com/vp/products/5184666602?itemId=7172499147&vendorItemId=74463995443",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": [
+        {
+          "kcNumber": "CB064H009-8001",
+          "mappingStatus": "confirmed",
+          "evidenceType": "normalized_exact_title_retailer_record",
+          "evidenceDescription": "Normalized exact Little Mimi water-coloring title record lists CB064H009-8001.",
+          "sourceUrl": "https://www.yes24.com/product/goods/106046471"
+        }
+      ]
+    },
+    {
+      "catalogIndex": 1086,
+      "productName": "신세계 인지향상 고도리 퍼즐 3종 세트, 1개, 혼합색상",
+      "productId": "6732125611",
+      "itemId": "14240107530",
+      "vendorItemId": "87009590602",
+      "coupangUniqueId": "6732125611 - 14240107530",
+      "productUrl": "https://www.coupang.com/vp/products/6732125611?itemId=14240107530&vendorItemId=87009590602",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "indexed_coupang_exact_mandatory_disclosure",
+      "publisherEvidence": [],
+      "kcEvidence": [
+        {
+          "kcNumber": "CB064H009-4003",
+          "mappingStatus": "confirmed",
+          "evidenceType": "indexed_coupang_exact_mandatory_disclosure",
+          "evidenceDescription": "Indexed Coupang product detail matched the exact catalog product and KC disclosure."
+        }
+      ]
+    },
+    {
+      "catalogIndex": 1226,
+      "productName": "미니특공대 애니멀트론 스티커 앨범, 유니콘, 1권",
+      "productId": "6303970235",
+      "itemId": "13058891655",
+      "vendorItemId": "80320915008",
+      "coupangUniqueId": "6303970235 - 13058891655",
+      "productUrl": "https://www.coupang.com/vp/products/6303970235?itemId=13058891655&vendorItemId=80320915008",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 1282,
+      "productName": "구스구스덕 신기한 워터 색칠북, 유니콘",
+      "productId": "6919959387",
+      "itemId": "16655180839",
+      "vendorItemId": "83834586297",
+      "coupangUniqueId": "6919959387 - 16655180839",
+      "productUrl": "https://www.coupang.com/vp/products/6919959387?itemId=16655180839&vendorItemId=83834586297",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 1343,
+      "productName": "슈퍼다이노 신기한 워터색칠북, 유니콘",
+      "productId": "7201864624",
+      "itemId": "18211327144",
+      "vendorItemId": "85358834301",
+      "coupangUniqueId": "7201864624 - 18211327144",
+      "productUrl": "https://www.coupang.com/vp/products/7201864624?itemId=18211327144&vendorItemId=85358834301",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": [
+        {
+          "kcNumber": "CB064H009-8001",
+          "mappingStatus": "confirmed",
+          "evidenceType": "exact_title_and_isbn_retailer_record",
+          "evidenceDescription": "Exact Super Dino water-coloring title record lists CB064H009-8001.",
+          "sourceUrl": "https://m.yes24.com/Goods/Detail/117976555"
+        }
+      ]
+    },
+    {
+      "catalogIndex": 1363,
+      "productName": "다이너소어 대판퍼즐 (130조각), 유니콘",
+      "productId": "7263547110",
+      "itemId": "18497053974",
+      "vendorItemId": "85634138912",
+      "coupangUniqueId": "7263547110 - 18497053974",
+      "productUrl": "https://www.coupang.com/vp/products/7263547110?itemId=18497053974&vendorItemId=85634138912",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 1590,
+      "productName": "(BOOKFRIENDS) 위시캣 스티커퀸 300",
+      "productId": "8411161016",
+      "itemId": "24319968314",
+      "vendorItemId": "91335726263",
+      "coupangUniqueId": "8411161016 - 24319968314",
+      "productUrl": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "user_product_detail_HAR_exact_html_row",
+      "publisherEvidence": [],
+      "kcEvidence": [
+        {
+          "kcNumber": "CB064H009-3002",
+          "mappingStatus": "confirmed",
+          "evidenceType": "user_product_detail_HAR_exact_mandatory_disclosure",
+          "evidenceDescription": "User-provided product-detail HAR contained the exact product mandatory disclosure and KC number."
+        }
+      ]
+    },
+    {
+      "catalogIndex": 1715,
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 판퍼즐 2종세트 (각77조각), 유니콘",
+      "productId": "8511009040",
+      "itemId": "24638422795",
+      "vendorItemId": "91631001911",
+      "coupangUniqueId": "8511009040 - 24638422795",
+      "productUrl": "https://www.coupang.com/vp/products/8511009040?itemId=24638422795&vendorItemId=91631001911",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 1717,
+      "productName": "(BOOKFRIENDS) 콩순이 판퍼즐 (130조각), 유니콘",
+      "productId": "8511112309",
+      "itemId": "24638695165",
+      "vendorItemId": "91631270185",
+      "coupangUniqueId": "8511112309 - 24638695165",
+      "productUrl": "https://www.coupang.com/vp/products/8511112309?itemId=24638695165&vendorItemId=91631270185",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 1754,
+      "productName": "핑크퐁 아기상어 판퍼즐 2종세트 (각77조각), 유니콘",
+      "productId": "8603813579",
+      "itemId": "24951365973",
+      "vendorItemId": "91958205612",
+      "coupangUniqueId": "8603813579 - 24951365973",
+      "productUrl": "https://www.coupang.com/vp/products/8603813579?itemId=24951365973&vendorItemId=91958205612",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 1757,
+      "productName": "슈팅스타 캐치티니핑 신기한 워터색칠북, 유니콘, 2권",
+      "productId": "8616958567",
+      "itemId": "24987622953",
+      "vendorItemId": "91991874953",
+      "coupangUniqueId": "8616958567 - 24987622953",
+      "productUrl": "https://www.coupang.com/vp/products/8616958567?itemId=24987622953&vendorItemId=91991874953",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 2032,
+      "productName": "프린세스 캐치티니핑 스티커퀸300, 유니콘",
+      "productId": "9237088992",
+      "itemId": "24365968915",
+      "vendorItemId": "94313393561",
+      "coupangUniqueId": "9237088992 - 24365968915",
+      "productUrl": "https://www.coupang.com/vp/products/9237088992?itemId=24365968915&vendorItemId=94313393561",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": [
+        {
+          "kcNumber": "CB064H009-3002",
+          "mappingStatus": "confirmed",
+          "evidenceType": "indexed_coupang_exact_mandatory_disclosure",
+          "evidenceDescription": "Coupang exact product page mandatory disclosure lists CB064H009-3002.",
+          "sourceUrl": "https://www.coupang.com/vp/products/9237088992?itemId=24365968915&vendorItemId=94313393561"
+        }
+      ]
+    },
+    {
+      "catalogIndex": 2050,
+      "productName": "(BOOKFRIENDS) 프린세스 캐치티니핑 대판퍼즐 (130조각), 유니콘, 하드커버",
+      "productId": "9326155490",
+      "itemId": "27645549036",
+      "vendorItemId": "82742752015",
+      "coupangUniqueId": "9326155490 - 27645549036",
+      "productUrl": "https://www.coupang.com/vp/products/9326155490?itemId=27645549036&vendorItemId=82742752015",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": [
+        {
+          "kcNumber": "CB064H009-2001",
+          "mappingStatus": "confirmed",
+          "evidenceType": "exact_product_retailer_record",
+          "evidenceDescription": "Exact Princess Catch Teenieping 130-piece large puzzle record lists this KC.",
+          "sourceUrl": "https://www.yes24.com/product/goods/174652224"
+        },
+        {
+          "kcNumber": "CB064H009-4001",
+          "mappingStatus": "confirmed",
+          "evidenceType": "exact_product_retailer_record",
+          "evidenceDescription": "The same exact product record lists this additional KC.",
+          "sourceUrl": "https://www.yes24.com/product/goods/174652224"
+        }
+      ]
+    },
+    {
+      "catalogIndex": 2052,
+      "productName": "(BOOKFRIENDS) 프린센스 티니핑 판퍼즐 2종 세트 (각63조각/48조각), 유니콘, 캐치티니핑",
+      "productId": "9334593133",
+      "itemId": "27669798639",
+      "vendorItemId": "94640489119",
+      "coupangUniqueId": "9334593133 - 27669798639",
+      "productUrl": "https://www.coupang.com/vp/products/9334593133?itemId=27669798639&vendorItemId=94640489119",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 2054,
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커컬렉션, 유니콘",
+      "productId": "9339894602",
+      "itemId": "27686559926",
+      "vendorItemId": "94656693240",
+      "coupangUniqueId": "9339894602 - 27686559926",
+      "productUrl": "https://www.coupang.com/vp/products/9339894602?itemId=27686559926&vendorItemId=94656693240",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 2055,
+      "productName": "(BOOKFRIENDS) 시크릿 쥬쥬 스티커 컬렉션북, 유니콘, 시크릿쥬쥬",
+      "productId": "9339915074",
+      "itemId": "27686638985",
+      "vendorItemId": "94656772524",
+      "coupangUniqueId": "9339915074 - 27686638985",
+      "productUrl": "https://www.coupang.com/vp/products/9339915074?itemId=27686638985&vendorItemId=94656772524",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    },
+    {
+      "catalogIndex": 2218,
+      "productName": "(BOOKFRIENDS) 나를 위한 힐링 타임 : 인지 향상 컬러링북 - 세계의 명소, 유니콘, 유니콘",
+      "productId": "9628068962",
+      "itemId": "29430446906",
+      "vendorItemId": "96401654150",
+      "coupangUniqueId": "9628068962 - 29430446906",
+      "productUrl": "https://www.coupang.com/vp/products/9628068962?itemId=29430446906&vendorItemId=96401654150",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "publisherEvidence": [
+        {
+          "id": 728,
+          "name": "출판사",
+          "value": "유니콘",
+          "expose": true
+        }
+      ],
+      "kcEvidence": []
+    }
+  ],
+  "kcReviewCandidates": [
+    {
+      "productId": "9334593133",
+      "productName": "(BOOKFRIENDS) 프린센스 티니핑 판퍼즐 2종 세트 (각63조각/48조각), 유니콘, 캐치티니핑",
+      "candidateKcNumbers": [
+        "CB064H009-4003"
+      ],
+      "reason": "A closely matching Princess Catch Teenieping 63+48-piece two-puzzle retailer record lists this KC, but the catalog title has a spelling variation; retain for exact-product confirmation."
+    }
+  ],
+  "safeguards": [
+    "No product is included from title or brand inference alone.",
+    "No inaccessible product is classified as no-KC.",
+    "KC family similarity is not accepted as product-level evidence.",
+    "CB064H009-9003 is not assigned to any catalog product without exact product evidence.",
+    "Never include U003E1577-7011.",
+    "Do not create final workbooks until all accepted KC statuses are officially validated and no-KC evidence is complete."
+  ]
+}
