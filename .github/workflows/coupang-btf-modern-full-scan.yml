@@ -1,0 +1,227 @@
+name: Coupang BTF modern full scan
+
+on:
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
+    paths:
+      - "run/btf-modern.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: coupang-btf-modern-full-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  catalog:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependency
+        run: pip install requests
+      - name: Validate sources
+        run: |
+          python -m py_compile tools/unicorn_catalog.py
+          python -m py_compile tools/unicorn_btf_modern_scan.py
+      - name: Collect complete 2,230 product catalog
+        run: |
+          mkdir -p work
+          python tools/unicorn_catalog.py \
+            --output work/catalog.json \
+            --diagnostics work/catalog-diagnostics.json \
+            --candidate-output work/query-candidates.json
+      - name: Enforce complete catalog
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('work/catalog.json').read_text(encoding='utf-8'))
+          expected=int(data.get('reportedTotal') or 0)
+          actual=int(data.get('count') or 0)
+          print({'reportedTotal':expected,'count':actual})
+          if expected != 2230 or actual != 2230:
+              raise SystemExit(f'catalog incomplete: {actual}/{expected}')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-modern-catalog
+          path: work/catalog.json
+          if-no-files-found: error
+          retention-days: 7
+
+  preflight:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            label: ubuntu24
+            profile: linux
+          - os: windows-2025
+            label: windows25
+            profile: windows
+          - os: macos-15
+            label: macos15
+            profile: macos
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependency
+        run: pip install requests
+      - name: Exact known-product BTF preflight
+        env:
+          RUNNER_LABEL: ${{ matrix.label }}
+          BTF_PROFILE: ${{ matrix.profile }}
+        run: python tools/unicorn_btf_modern_scan.py probe --output preflight/${{ matrix.label }}.json --attempts 3
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unicorn-modern-preflight-${{ matrix.label }}
+          path: preflight/${{ matrix.label }}.json
+          if-no-files-found: error
+          retention-days: 7
+
+  select:
+    needs: preflight
+    if: always()
+    runs-on: ubuntu-24.04
+    outputs:
+      has_usable: ${{ steps.choose.outputs.has_usable }}
+      matrix: ${{ steps.choose.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: unicorn-modern-preflight-*
+          path: downloaded
+      - id: choose
+        name: Select a runner that proves exact publisher access
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          reports=[]
+          for path in sorted(Path('downloaded').rglob('*.json')):
+              try:
+                  reports.append(json.loads(path.read_text(encoding='utf-8')))
+              except Exception as exc:
+                  reports.append({'path':str(path),'parseError':str(exc),'usable':False})
+          order={'macos15':0,'windows25':1,'ubuntu24':2}
+          usable=sorted([r for r in reports if r.get('usable')],key=lambda r:order.get(r.get('runner'),99))
+          selected=usable[0] if usable else None
+          os_map={'macos15':'macos-15','windows25':'windows-2025','ubuntu24':'ubuntu-24.04'}
+          profile_map={'macos15':'macos','windows25':'windows','ubuntu24':'linux'}
+          matrix={'include':[]}
+          if selected:
+              label=selected['runner']
+              for shard in range(8):
+                  matrix['include'].append({'os':os_map[label],'label':label,'profile':profile_map[label],'shard':shard})
+          summary={'usable':bool(selected),'selected':selected,'reports':reports,'matrix':matrix}
+          Path('diagnostics/btf-modern').mkdir(parents=True,exist_ok=True)
+          Path('diagnostics/btf-modern/preflight-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf-8') as out:
+              out.write('has_usable=' + ('true' if selected else 'false') + '\n')
+              out.write('matrix=' + json.dumps(matrix,separators=(',',':')) + '\n')
+          print(json.dumps(summary,ensure_ascii=False,indent=2))
+          PY
+      - name: Commit preflight evidence
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add diagnostics/btf-modern/preflight-summary.json
+          git diff --cached --quiet || git commit -m "Record modern BTF preflight evidence"
+          git pull --rebase origin chatgpt/run-unicorn-audit-20260730
+          git push origin HEAD:chatgpt/run-unicorn-audit-20260730
+
+  scan:
+    needs: [catalog, select]
+    if: needs.select.outputs.has_usable == 'true'
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.select.outputs.matrix) }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: unicorn-modern-catalog
+          path: work
+      - name: Install dependency
+        run: pip install requests
+      - name: Scan assigned catalog shard through BTF
+        env:
+          RUNNER_LABEL: ${{ matrix.label }}
+          BTF_PROFILE: ${{ matrix.profile }}
+        run: >-
+          python tools/unicorn_btf_modern_scan.py scan
+          --catalog work/catalog.json
+          --shard ${{ matrix.shard }}
+          --shards 8
+          --output scan/shard-${{ matrix.shard }}.json
+          --attempts 2
+          --delay 0.12
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unicorn-modern-scan-${{ matrix.shard }}
+          path: scan
+          if-no-files-found: error
+          retention-days: 7
+
+  merge:
+    needs: [catalog, select, scan]
+    if: needs.select.outputs.has_usable == 'true' && always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: unicorn-modern-scan-*
+          path: shards
+          merge-multiple: true
+      - name: Merge all 2,230 results and apply exact rule
+        run: |
+          python tools/unicorn_btf_modern_scan.py merge \
+            --input-dir shards \
+            --output-dir diagnostics/btf-modern/full-scan \
+            --expected 2230
+      - name: Commit sanitized scan result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add diagnostics/btf-modern/full-scan
+          git diff --cached --quiet || git commit -m "Record complete 2230-product BTF exact scan"
+          git pull --rebase origin chatgpt/run-unicorn-audit-20260730
+          git push origin HEAD:chatgpt/run-unicorn-audit-20260730
