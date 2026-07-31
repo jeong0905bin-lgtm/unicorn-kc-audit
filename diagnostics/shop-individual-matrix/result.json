@@ -1,16 +1,1597 @@
 {
   "storeUrl": "https://shop.coupang.com/A00214628?platform=p",
   "navigation": {
-    "status": 403,
+    "status": 200,
     "url": "https://shop.coupang.com/A00214628?platform=p",
-    "title": "Access Denied"
+    "title": "쿠팡이 추천하는 북프렌즈 관련 혜택과 특가"
   },
-  "productLink": null,
-  "attempts": [],
+  "productLink": "https://www.coupang.com/vp/products/1115170893?itemId=2079921619&lptag=A00214628&redirect=landing&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d&sourceType=brandstore-best_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-best_products&vendorId=A00214628&vendorItemId=70079303473&wPcid=31507675393473556589191",
+  "attempts": [
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "variant": "minimal",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 5626,
+      "prefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"6,400\",\"lowestPrice\":\"6,400\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"6,400\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":6400,\"finalPriceForBtc\":6400,\"priceWithIdForBtc\":6400,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디\",\"description\":\"\",\"defaultUrl\":\"//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"oriDefaultUrl\":\"retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"completeHttpUrl\":\"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"바다 탐험대 옥토넛 숨은 그림 스티커북\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 320원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":null,\"usedProductPrice\":[],\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":5.0,\"ratingCount\":378,\"ratingRatio\":100,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=765d1d48ffe24417b818ea540c25eab8\",\"mlink\":\"coupang://review?action=list&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473\"},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=765d1d48ffe24417b818ea540c25eab8\",\"mlink\":\"coupang://product?sourceType=brandstore&pId=1115170893&vendorItemId=70079303473&searchId=765d1d48ffe24417b818ea540c25eab8&src=1139998&spec=10799999&lptag=A00214628&wPcid=31507675393473556589191&redirect=landing&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":70079303473,\"productId\":1115170893,\"itemId\":2079921619,\"unitPrice\":\"\",\"priceLabel\":null,\"salesStartDate\":\"2024-07-25T01:18:39Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":{\"storeId\":79545,\"vendorId\":\"A00214628\",\"logoUrl\":\"https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png\",\"displayName\":\"북프렌즈\",\"link\":\"https://shop.coupang.com/vid/A00214628?pid=1115170893&viid=70079303473\",\"mlink\":\"coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y\",\"brandInfoArea\":null,\"maxDiscountAmount\":null,\"maxDiscountAmountText\":null,\"uiVersion\":null,\"storeAttributes\":{\"benefit_discount_type\":\"PRICE\",\"benefit_title\":\"이 판매자의 쿠폰을 받아보세요\",\"brandshop_type\":\"0\",\"has_sdp_btc\":\"false\",\"is_manufacturer\":\"N\",\"official\":\"N\",\"official_brands\":\"[]\",\"render_type\":\"COUMALL_DEFAULT\",\"seller_type\":\"Reseller / Distributor\",\"total_vi_cnt\":\"4263\",\"truncate_display_name\":\"북프렌즈\",\"ui_version\":\"1\"},\"officialBrands\":[]},\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":\"GOODS\",\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":6400,\"finalPrice\":6400,\"priceWithID\":6400,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":[{\"id\":14280,\"name\":\"시리즈(파트)\",\"value\":\"1권\",\"expose\":true},{\"id\":728,\"name\":\"출판사\",\"value\":\"메가스터디\",\"expose\":true}],\"brandInfo\":{\"description\":\"메가스터디\",\"id\":19431,\"logoUrl\":\"brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg\",\"name\":\"메가스터디\",\"properties\":null,\"shopAvailable\":false},\"deliveryInfo\":{\"batchShipment\":null,\"cashOnDeliveries\":[],\"deliveryCharge\":null,\"deliveryChargeOnReturn\":null,\"deliveryChargeType\":null,\"deliveryCompanyCode\":null,\"deliveryCompanyName\":null,\"deliveryMethod\":null,\"deliveryType\":null,\"deliveryTypes\":[\"CONDITIONAL_FREE\"],\"finalFreeShipOverAmount\":null,\"freeShipOverAmount\":null,\"isLogistics\":null,\"outboundShippingDuration\":null,\"outboundShippingPlaceId\":null,\"pickUpBranchGroupCodes\":[],\"remoteArea\":null,\"remoteAreaDeliverable\":null,\"remoteAreaFeeChargeable\":null,\"remoteShippingFee\":null},\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false},\"extra\":null}",
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "hits": [
+        {
+          "path": "$.data.imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.attributes[1].name",
+          "value": "출판사"
+        }
+      ],
+      "json": {
+        "code": 200,
+        "msg": "SUCCESS",
+        "data": {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "6,400",
+            "lowestPrice": "6,400",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "6,400",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 6400,
+            "finalPriceForBtc": 6400,
+            "priceWithIdForBtc": 6400,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디",
+            "description": "",
+            "defaultUrl": "//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+            "oriDefaultUrl": "retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+            "completeHttpUrl": "https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "바다 탐험대 옥토넛 숨은 그림 스티커북",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 320원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": null,
+            "usedProductPrice": [],
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": null,
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 5.0,
+            "ratingCount": 378,
+            "ratingRatio": 100,
+            "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=765d1d48ffe24417b818ea540c25eab8",
+            "mlink": "coupang://review?action=list&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473"
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=765d1d48ffe24417b818ea540c25eab8",
+          "mlink": "coupang://product?sourceType=brandstore&pId=1115170893&vendorItemId=70079303473&searchId=765d1d48ffe24417b818ea540c25eab8&src=1139998&spec=10799999&lptag=A00214628&wPcid=31507675393473556589191&redirect=landing&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 70079303473,
+          "productId": 1115170893,
+          "itemId": 2079921619,
+          "unitPrice": "",
+          "priceLabel": null,
+          "salesStartDate": "2024-07-25T01:18:39Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": {
+            "storeId": 79545,
+            "vendorId": "A00214628",
+            "logoUrl": "https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png",
+            "displayName": "북프렌즈",
+            "link": "https://shop.coupang.com/vid/A00214628?pid=1115170893&viid=70079303473",
+            "mlink": "coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y",
+            "brandInfoArea": null,
+            "maxDiscountAmount": null,
+            "maxDiscountAmountText": null,
+            "uiVersion": null,
+            "storeAttributes": {
+              "benefit_discount_type": "PRICE",
+              "benefit_title": "이 판매자의 쿠폰을 받아보세요",
+              "brandshop_type": "0",
+              "has_sdp_btc": "false",
+              "is_manufacturer": "N",
+              "official": "N",
+              "official_brands": "[]",
+              "render_type": "COUMALL_DEFAULT",
+              "seller_type": "Reseller / Distributor",
+              "total_vi_cnt": "4263",
+              "truncate_display_name": "북프렌즈",
+              "ui_version": "1"
+            },
+            "officialBrands": []
+          },
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": "GOODS",
+          "btcInfo": {
+            "freeShipOverAmountEx": 9800,
+            "salesPrice": 6400,
+            "finalPrice": 6400,
+            "priceWithID": 6400,
+            "hasCoupon": false,
+            "deliveryFee": 2500,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": [
+            {
+              "id": 14280,
+              "name": "시리즈(파트)",
+              "value": "1권",
+              "expose": true
+            },
+            {
+              "id": 728,
+              "name": "출판사",
+              "value": "메가스터디",
+              "expose": true
+            }
+          ],
+          "brandInfo": {
+            "description": "메가스터디",
+            "id": 19431,
+            "logoUrl": "brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg",
+            "name": "메가스터디",
+            "properties": null,
+            "shopAvailable": false
+          },
+          "deliveryInfo": {
+            "batchShipment": null,
+            "cashOnDeliveries": [],
+            "deliveryCharge": null,
+            "deliveryChargeOnReturn": null,
+            "deliveryChargeType": null,
+            "deliveryCompanyCode": null,
+            "deliveryCompanyName": null,
+            "deliveryMethod": null,
+            "deliveryType": null,
+            "deliveryTypes": [
+              "CONDITIONAL_FREE"
+            ],
+            "finalFreeShipOverAmount": null,
+            "freeShipOverAmount": null,
+            "isLogistics": null,
+            "outboundShippingDuration": null,
+            "outboundShippingPlaceId": null,
+            "pickUpBranchGroupCodes": [],
+            "remoteArea": null,
+            "remoteAreaDeliverable": null,
+            "remoteAreaFeeChargeable": null,
+            "remoteShippingFee": null
+          },
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "variant": "link-meta",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191"
+      },
+      "status": 403,
+      "contentType": "text/html",
+      "length": 419,
+      "prefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v2&#47;store&#47;individualInfo&#47;product\" on this server.<P>\nReference&#32;&#35;18&#46;64cfdb17&#46;1785493989&#46;c606c51\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;64cfdb17&#46;1785493989&#46;c606c51</P>\n</BODY>\n</HTML>\n"
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "variant": "source-store",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191",
+        "source": "brandstore-best_products",
+        "pageType": "STORE"
+      },
+      "status": 400,
+      "contentType": "application/json",
+      "length": 233,
+      "prefix": "{\"timestamp\":1785493989480,\"path\":\"/api/v2/store/individualInfo/product\",\"status\":\"BAD_REQUEST\",\"error\":\"Bad Request\",\"requestId\":null,\"exception\":\"ServerWebInputException\",\"message\":\"400 BAD_REQUEST \\\"Failed to read HTTP message\\\"\"}",
+      "topLevelKeys": [
+        "error",
+        "exception",
+        "message",
+        "path",
+        "requestId",
+        "status",
+        "timestamp"
+      ],
+      "hits": [],
+      "json": {
+        "timestamp": 1785493989480,
+        "path": "/api/v2/store/individualInfo/product",
+        "status": "BAD_REQUEST",
+        "error": "Bad Request",
+        "requestId": null,
+        "exception": "ServerWebInputException",
+        "message": "400 BAD_REQUEST \"Failed to read HTTP message\""
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "variant": "source-brandstore",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191",
+        "source": "brandstore-best_products",
+        "pageType": "BRANDSTORE"
+      },
+      "status": 403,
+      "contentType": "text/html",
+      "length": 419,
+      "prefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v2&#47;store&#47;individualInfo&#47;product\" on this server.<P>\nReference&#32;&#35;18&#46;64cfdb17&#46;1785493989&#46;c606e55\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;64cfdb17&#46;1785493989&#46;c606e55</P>\n</BODY>\n</HTML>\n"
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "variant": "source-brandstore-sdp",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191",
+        "source": "brandstore-best_products",
+        "pageType": "BRANDSTORE_SDP"
+      },
+      "status": 400,
+      "contentType": "application/json",
+      "length": 233,
+      "prefix": "{\"timestamp\":1785493989785,\"path\":\"/api/v2/store/individualInfo/product\",\"status\":\"BAD_REQUEST\",\"error\":\"Bad Request\",\"requestId\":null,\"exception\":\"ServerWebInputException\",\"message\":\"400 BAD_REQUEST \\\"Failed to read HTTP message\\\"\"}",
+      "topLevelKeys": [
+        "error",
+        "exception",
+        "message",
+        "path",
+        "requestId",
+        "status",
+        "timestamp"
+      ],
+      "hits": [],
+      "json": {
+        "timestamp": 1785493989785,
+        "path": "/api/v2/store/individualInfo/product",
+        "status": "BAD_REQUEST",
+        "error": "Bad Request",
+        "requestId": null,
+        "exception": "ServerWebInputException",
+        "message": "400 BAD_REQUEST \"Failed to read HTTP message\""
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "variant": "direct-store",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191",
+        "source": "direct",
+        "pageType": "STORE"
+      },
+      "status": 403,
+      "contentType": "text/html",
+      "length": 419,
+      "prefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v2&#47;store&#47;individualInfo&#47;product\" on this server.<P>\nReference&#32;&#35;18&#46;64cfdb17&#46;1785493989&#46;c607058\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;64cfdb17&#46;1785493989&#46;c607058</P>\n</BODY>\n</HTML>\n"
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "variant": "source-only",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "source": "brandstore-best_products"
+      },
+      "status": 403,
+      "contentType": "text/html",
+      "length": 419,
+      "prefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v2&#47;store&#47;individualInfo&#47;product\" on this server.<P>\nReference&#32;&#35;18&#46;64cfdb17&#46;1785493990&#46;c6070cb\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;64cfdb17&#46;1785493990&#46;c6070cb</P>\n</BODY>\n</HTML>\n"
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "variant": "source-search-only",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "source": "brandstore-best_products"
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 5683,
+      "prefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"6,400\",\"lowestPrice\":\"6,400\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"6,400\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":6400,\"finalPriceForBtc\":6400,\"priceWithIdForBtc\":6400,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디\",\"description\":\"\",\"defaultUrl\":\"//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"oriDefaultUrl\":\"retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"completeHttpUrl\":\"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"바다 탐험대 옥토넛 숨은 그림 스티커북\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 320원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":null,\"usedProductPrice\":[],\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":5.0,\"ratingCount\":378,\"ratingRatio\":100,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d\",\"mlink\":\"coupang://review?action=list&sourceType=brandstore-best_products&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473\"},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d\",\"mlink\":\"coupang://product?sourceType=brandstore-best_products&pId=1115170893&vendorItemId=70079303473&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":70079303473,\"productId\":1115170893,\"itemId\":2079921619,\"unitPrice\":\"\",\"priceLabel\":null,\"salesStartDate\":\"2024-07-25T01:18:39Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":{\"storeId\":79545,\"vendorId\":\"A00214628\",\"logoUrl\":\"https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png\",\"displayName\":\"북프렌즈\",\"link\":\"https://shop.coupang.com/vid/A00214628?source=brandstore-best_products&pid=1115170893&viid=70079303473\",\"mlink\":\"coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26source%3Dbrandstore-best_products%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y\",\"brandInfoArea\":null,\"maxDiscountAmount\":null,\"maxDiscountAmountText\":null,\"uiVersion\":null,\"storeAttributes\":{\"benefit_discount_type\":\"PRICE\",\"benefit_title\":\"이 판매자의 쿠폰을 받아보세요\",\"brandshop_type\":\"0\",\"has_sdp_btc\":\"false\",\"is_manufacturer\":\"N\",\"official\":\"N\",\"official_brands\":\"[]\",\"render_type\":\"COUMALL_DEFAULT\",\"seller_type\":\"Reseller / Distributor\",\"total_vi_cnt\":\"4263\",\"truncate_display_name\":\"북프렌즈\",\"ui_version\":\"1\"},\"officialBrands\":[]},\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":\"GOODS\",\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":6400,\"finalPrice\":6400,\"priceWithID\":6400,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":[{\"id\":14280,\"name\":\"시리즈(파트)\",\"value\":\"1권\",\"expose\":true},{\"id\":728,\"name\":\"출판사\",\"value\":\"메가스터디\",\"expose\":true}],\"brandInfo\":{\"description\":\"메가스터디\",\"id\":19431,\"logoUrl\":\"brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg\",\"name\":\"메가스터디\",\"properties\":null,\"shopAvailable\":false},\"deliveryInfo\":{\"batchShipment\":null,\"cashOnDeliveries\":[],\"deliveryCharge\":null,\"deliveryChargeOnReturn\":null,\"deliveryChargeType\":null,\"deliveryCompanyCode\":null,\"deliveryCompanyName\":null,\"deliveryMethod\":null,\"deliveryType\":null,\"deliveryTypes\":[\"CONDITIONAL_FREE\"],\"finalFreeShipOverAmount\":null,\"freeShipOverAmount\":null,\"isLogistics\":null,\"outboundShippingDuration\":null,\"outboundShippingPlaceId\":null,\"pickUpBranchGroupCodes\":[],\"remoteArea\":null,\"remoteAreaDeliverable\":null,\"remoteAreaFeeChargeable\":null,\"remoteShippingFee\":null},\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false},\"extra\":null}",
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "hits": [
+        {
+          "path": "$.data.imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.attributes[1].name",
+          "value": "출판사"
+        }
+      ],
+      "json": {
+        "code": 200,
+        "msg": "SUCCESS",
+        "data": {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "6,400",
+            "lowestPrice": "6,400",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "6,400",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 6400,
+            "finalPriceForBtc": 6400,
+            "priceWithIdForBtc": 6400,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디",
+            "description": "",
+            "defaultUrl": "//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+            "oriDefaultUrl": "retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+            "completeHttpUrl": "https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "바다 탐험대 옥토넛 숨은 그림 스티커북",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 320원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": null,
+            "usedProductPrice": [],
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": null,
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 5.0,
+            "ratingCount": 378,
+            "ratingRatio": 100,
+            "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d",
+            "mlink": "coupang://review?action=list&sourceType=brandstore-best_products&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473"
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d",
+          "mlink": "coupang://product?sourceType=brandstore-best_products&pId=1115170893&vendorItemId=70079303473&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 70079303473,
+          "productId": 1115170893,
+          "itemId": 2079921619,
+          "unitPrice": "",
+          "priceLabel": null,
+          "salesStartDate": "2024-07-25T01:18:39Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": {
+            "storeId": 79545,
+            "vendorId": "A00214628",
+            "logoUrl": "https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png",
+            "displayName": "북프렌즈",
+            "link": "https://shop.coupang.com/vid/A00214628?source=brandstore-best_products&pid=1115170893&viid=70079303473",
+            "mlink": "coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26source%3Dbrandstore-best_products%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y",
+            "brandInfoArea": null,
+            "maxDiscountAmount": null,
+            "maxDiscountAmountText": null,
+            "uiVersion": null,
+            "storeAttributes": {
+              "benefit_discount_type": "PRICE",
+              "benefit_title": "이 판매자의 쿠폰을 받아보세요",
+              "brandshop_type": "0",
+              "has_sdp_btc": "false",
+              "is_manufacturer": "N",
+              "official": "N",
+              "official_brands": "[]",
+              "render_type": "COUMALL_DEFAULT",
+              "seller_type": "Reseller / Distributor",
+              "total_vi_cnt": "4263",
+              "truncate_display_name": "북프렌즈",
+              "ui_version": "1"
+            },
+            "officialBrands": []
+          },
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": "GOODS",
+          "btcInfo": {
+            "freeShipOverAmountEx": 9800,
+            "salesPrice": 6400,
+            "finalPrice": 6400,
+            "priceWithID": 6400,
+            "hasCoupon": false,
+            "deliveryFee": 2500,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": [
+            {
+              "id": 14280,
+              "name": "시리즈(파트)",
+              "value": "1권",
+              "expose": true
+            },
+            {
+              "id": 728,
+              "name": "출판사",
+              "value": "메가스터디",
+              "expose": true
+            }
+          ],
+          "brandInfo": {
+            "description": "메가스터디",
+            "id": 19431,
+            "logoUrl": "brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg",
+            "name": "메가스터디",
+            "properties": null,
+            "shopAvailable": false
+          },
+          "deliveryInfo": {
+            "batchShipment": null,
+            "cashOnDeliveries": [],
+            "deliveryCharge": null,
+            "deliveryChargeOnReturn": null,
+            "deliveryChargeType": null,
+            "deliveryCompanyCode": null,
+            "deliveryCompanyName": null,
+            "deliveryMethod": null,
+            "deliveryType": null,
+            "deliveryTypes": [
+              "CONDITIONAL_FREE"
+            ],
+            "finalFreeShipOverAmount": null,
+            "freeShipOverAmount": null,
+            "isLogistics": null,
+            "outboundShippingDuration": null,
+            "outboundShippingPlaceId": null,
+            "pickUpBranchGroupCodes": [],
+            "remoteArea": null,
+            "remoteAreaDeliverable": null,
+            "remoteAreaFeeChargeable": null,
+            "remoteShippingFee": null
+          },
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "variant": "minimal",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 5687,
+      "prefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"products\":[{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"6,400\",\"lowestPrice\":\"6,400\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"6,400\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":6400,\"finalPriceForBtc\":6400,\"priceWithIdForBtc\":6400,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디\",\"description\":\"\",\"defaultUrl\":\"//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"oriDefaultUrl\":\"retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"completeHttpUrl\":\"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"바다 탐험대 옥토넛 숨은 그림 스티커북\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 320원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":null,\"usedProductPrice\":[],\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":5.0,\"ratingCount\":378,\"ratingRatio\":100,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=08055783f30a4cf4a1944f7b5ee19805\",\"mlink\":\"coupang://review?action=list&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473\"},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=08055783f30a4cf4a1944f7b5ee19805\",\"mlink\":\"coupang://product?sourceType=brandstore&pId=1115170893&vendorItemId=70079303473&searchId=08055783f30a4cf4a1944f7b5ee19805&src=1139998&spec=10799999&lptag=A00214628&wPcid=31507675393473556589191&redirect=landing&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":70079303473,\"productId\":1115170893,\"itemId\":2079921619,\"unitPrice\":\"\",\"priceLabel\":null,\"salesStartDate\":\"2024-07-25T01:18:39Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":{\"storeId\":79545,\"vendorId\":\"A00214628\",\"logoUrl\":\"https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png\",\"displayName\":\"북프렌즈\",\"link\":\"https://shop.coupang.com/vid/A00214628?pid=1115170893&viid=70079303473\",\"mlink\":\"coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y\",\"brandInfoArea\":null,\"maxDiscountAmount\":null,\"maxDiscountAmountText\":null,\"uiVersion\":null,\"storeAttributes\":{\"benefit_discount_type\":\"PRICE\",\"benefit_title\":\"이 판매자의 쿠폰을 받아보세요\",\"brandshop_type\":\"0\",\"has_sdp_btc\":\"false\",\"is_manufacturer\":\"N\",\"official\":\"N\",\"official_brands\":\"[]\",\"render_type\":\"COUMALL_DEFAULT\",\"seller_type\":\"Reseller / Distributor\",\"total_vi_cnt\":\"4263\",\"truncate_display_name\":\"북프렌즈\",\"ui_version\":\"1\"},\"officialBrands\":[]},\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":\"GOODS\",\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":6400,\"finalPrice\":6400,\"priceWithID\":6400,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":null,\"brandInfo\":{\"description\":\"메가스터디\",\"id\":19431,\"logoUrl\":\"brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg\",\"name\":\"메가스터디\",\"properties\":null,\"shopAvailable\":false},\"deliveryInfo\":{\"batchShipment\":null,\"cashOnDeliveries\":[],\"deliveryCharge\":null,\"deliveryChargeOnReturn\":null,\"deliveryChargeType\":null,\"deliveryCompanyCode\":null,\"deliveryCompanyName\":null,\"deliveryMethod\":null,\"deliveryType\":null,\"deliveryTypes\":[\"CONDITIONAL_FREE\"],\"finalFreeShipOverAmount\":null,\"freeShipOverAmount\":null,\"isLogistics\":null,\"outboundShippingDuration\":null,\"outboundShippingPlaceId\":null,\"pickUpBranchGroupCodes\":[],\"remoteArea\":null,\"remoteAreaDeliverable\":null,\"remoteAreaFeeChargeable\":null,\"remoteShippingFee\":null},\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false}],\"totalCount\":1,\"validCount\":null,\"token\":null,\"searchId\":null,\"sortingDescription\":null,\"topCuratedProducts\":null,\"nonFilterByShippingConsolidation\":null},\"extra\":null}",
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "hits": [
+        {
+          "path": "$.data.products[0].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        }
+      ],
+      "json": {
+        "code": 200,
+        "msg": "SUCCESS",
+        "data": {
+          "products": [
+            {
+              "priceArea": {
+                "originalPrice": "0",
+                "salesPrice": "6,400",
+                "lowestPrice": "6,400",
+                "instantDiscountPrice": "0",
+                "criteriaPriceInfo": "",
+                "basePrice": "0",
+                "price": "6,400",
+                "discountRate": 0,
+                "instantDiscountDescription": "",
+                "instantDiscountExpiryDateUTCV2": null,
+                "currencyPrefix": "",
+                "currencyPostfix": "원",
+                "discountDescription": null,
+                "salesPriceForBtc": 6400,
+                "finalPriceForBtc": 6400,
+                "priceWithIdForBtc": 6400,
+                "hasCouponForBtc": false,
+                "discount": false,
+                "instantDiscount": false,
+                "badDiscount": false
+              },
+              "imageAndTitleArea": {
+                "title": "바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디",
+                "description": "",
+                "defaultUrl": "//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+                "oriDefaultUrl": "retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+                "completeHttpUrl": "https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+                "detailImageUrls": [],
+                "completeHttpDetailImageUrls": [],
+                "groupTitle": "바다 탐험대 옥토넛 숨은 그림 스티커북",
+                "adultImageReplaced": false
+              },
+              "soldoutArea": {
+                "soldOutText": "품절",
+                "soldout": false
+              },
+              "rocketArea": {
+                "badgeImage": null,
+                "deliveryBadgeImage": null,
+                "deliveryBadgeIcon": null,
+                "deliveryBadgePDD": null,
+                "deliveryUnificationBadgeArea": null,
+                "show": false,
+                "rocketLuxury": false
+              },
+              "subscriptionPriceArea": null,
+              "cashBackArea": {
+                "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+                "cashRewardText": "최대 320원 적립"
+              },
+              "ccidArea": null,
+              "promisedDeliveryDateArea": {
+                "contents": [
+                  {
+                    "text": "8/4(화) ",
+                    "size": 14,
+                    "color": "#212B36",
+                    "bold": false
+                  },
+                  {
+                    "text": "도착 예정",
+                    "size": 14,
+                    "color": "#212B36",
+                    "bold": false
+                  }
+                ]
+              },
+              "usedProductArea": {
+                "usedProductInfo": null,
+                "usedProductPrice": [],
+                "usedOnlyItem": false
+              },
+              "instantDiscountBundlePriceArea": null,
+              "eligibleFalconArea": null,
+              "telcoBadgeArea": null,
+              "afterServiceArea": null,
+              "benefitBadgeArea": null,
+              "deliveryBadgeArea": null,
+              "deliverySpeedBadgeArea": null,
+              "topBrandArea": null,
+              "topBadgeAreas": [],
+              "preOrderArea": null,
+              "brandAuthenticityBadge": null,
+              "couponArea": null,
+              "reviewArea": {
+                "ratingAverage": 5.0,
+                "ratingCount": 378,
+                "ratingRatio": 100,
+                "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=08055783f30a4cf4a1944f7b5ee19805",
+                "mlink": "coupang://review?action=list&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473"
+              },
+              "bestPriceArea": null,
+              "bizOnlyArea": null,
+              "bestAwardArea": null,
+              "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=08055783f30a4cf4a1944f7b5ee19805",
+              "mlink": "coupang://product?sourceType=brandstore&pId=1115170893&vendorItemId=70079303473&searchId=08055783f30a4cf4a1944f7b5ee19805&src=1139998&spec=10799999&lptag=A00214628&wPcid=31507675393473556589191&redirect=landing&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+              "offsiteGmLink": null,
+              "vendorItemId": 70079303473,
+              "productId": 1115170893,
+              "itemId": 2079921619,
+              "unitPrice": "",
+              "priceLabel": null,
+              "salesStartDate": "2024-07-25T01:18:39Z",
+              "isFreeExposurePromotion": null,
+              "productType": "PRODUCT",
+              "ueLoggingArea": null,
+              "shopHomeLink": null,
+              "storeInfoArea": {
+                "storeId": 79545,
+                "vendorId": "A00214628",
+                "logoUrl": "https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png",
+                "displayName": "북프렌즈",
+                "link": "https://shop.coupang.com/vid/A00214628?pid=1115170893&viid=70079303473",
+                "mlink": "coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y",
+                "brandInfoArea": null,
+                "maxDiscountAmount": null,
+                "maxDiscountAmountText": null,
+                "uiVersion": null,
+                "storeAttributes": {
+                  "benefit_discount_type": "PRICE",
+                  "benefit_title": "이 판매자의 쿠폰을 받아보세요",
+                  "brandshop_type": "0",
+                  "has_sdp_btc": "false",
+                  "is_manufacturer": "N",
+                  "official": "N",
+                  "official_brands": "[]",
+                  "render_type": "COUMALL_DEFAULT",
+                  "seller_type": "Reseller / Distributor",
+                  "total_vi_cnt": "4263",
+                  "truncate_display_name": "북프렌즈",
+                  "ui_version": "1"
+                },
+                "officialBrands": []
+              },
+              "rluxBrandInfo": null,
+              "freebiesInfo": null,
+              "wowBenefitArea": null,
+              "divisionType": "GOODS",
+              "btcInfo": {
+                "freeShipOverAmountEx": 9800,
+                "salesPrice": 6400,
+                "finalPrice": 6400,
+                "priceWithID": 6400,
+                "hasCoupon": false,
+                "deliveryFee": 2500,
+                "outboundShippingPlaceId": 1208642,
+                "batchShipment": true,
+                "rocketDelivery": false
+              },
+              "setPromotionItemDto": null,
+              "promotionClosingArea": null,
+              "attributes": null,
+              "brandInfo": {
+                "description": "메가스터디",
+                "id": 19431,
+                "logoUrl": "brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg",
+                "name": "메가스터디",
+                "properties": null,
+                "shopAvailable": false
+              },
+              "deliveryInfo": {
+                "batchShipment": null,
+                "cashOnDeliveries": [],
+                "deliveryCharge": null,
+                "deliveryChargeOnReturn": null,
+                "deliveryChargeType": null,
+                "deliveryCompanyCode": null,
+                "deliveryCompanyName": null,
+                "deliveryMethod": null,
+                "deliveryType": null,
+                "deliveryTypes": [
+                  "CONDITIONAL_FREE"
+                ],
+                "finalFreeShipOverAmount": null,
+                "freeShipOverAmount": null,
+                "isLogistics": null,
+                "outboundShippingDuration": null,
+                "outboundShippingPlaceId": null,
+                "pickUpBranchGroupCodes": [],
+                "remoteArea": null,
+                "remoteAreaDeliverable": null,
+                "remoteAreaFeeChargeable": null,
+                "remoteShippingFee": null
+              },
+              "valid": true,
+              "adult": false,
+              "rocketMerchant": false,
+              "coupangGlobal": false
+            }
+          ],
+          "totalCount": 1,
+          "validCount": null,
+          "token": null,
+          "searchId": null,
+          "sortingDescription": null,
+          "topCuratedProducts": null,
+          "nonFilterByShippingConsolidation": null
+        },
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "variant": "link-meta",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191"
+      },
+      "status": 403,
+      "contentType": "text/html",
+      "length": 420,
+      "prefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v2&#47;store&#47;individualInfo&#47;products\" on this server.<P>\nReference&#32;&#35;18&#46;64cfdb17&#46;1785493990&#46;c60749c\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;64cfdb17&#46;1785493990&#46;c60749c</P>\n</BODY>\n</HTML>\n"
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "variant": "source-store",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191",
+        "source": "brandstore-best_products",
+        "pageType": "STORE"
+      },
+      "status": 400,
+      "contentType": "application/json",
+      "length": 234,
+      "prefix": "{\"timestamp\":1785493990840,\"path\":\"/api/v2/store/individualInfo/products\",\"status\":\"BAD_REQUEST\",\"error\":\"Bad Request\",\"requestId\":null,\"exception\":\"ServerWebInputException\",\"message\":\"400 BAD_REQUEST \\\"Failed to read HTTP message\\\"\"}",
+      "topLevelKeys": [
+        "error",
+        "exception",
+        "message",
+        "path",
+        "requestId",
+        "status",
+        "timestamp"
+      ],
+      "hits": [],
+      "json": {
+        "timestamp": 1785493990840,
+        "path": "/api/v2/store/individualInfo/products",
+        "status": "BAD_REQUEST",
+        "error": "Bad Request",
+        "requestId": null,
+        "exception": "ServerWebInputException",
+        "message": "400 BAD_REQUEST \"Failed to read HTTP message\""
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "variant": "source-brandstore",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191",
+        "source": "brandstore-best_products",
+        "pageType": "BRANDSTORE"
+      },
+      "status": 400,
+      "contentType": "application/json",
+      "length": 234,
+      "prefix": "{\"timestamp\":1785493991086,\"path\":\"/api/v2/store/individualInfo/products\",\"status\":\"BAD_REQUEST\",\"error\":\"Bad Request\",\"requestId\":null,\"exception\":\"ServerWebInputException\",\"message\":\"400 BAD_REQUEST \\\"Failed to read HTTP message\\\"\"}",
+      "topLevelKeys": [
+        "error",
+        "exception",
+        "message",
+        "path",
+        "requestId",
+        "status",
+        "timestamp"
+      ],
+      "hits": [],
+      "json": {
+        "timestamp": 1785493991086,
+        "path": "/api/v2/store/individualInfo/products",
+        "status": "BAD_REQUEST",
+        "error": "Bad Request",
+        "requestId": null,
+        "exception": "ServerWebInputException",
+        "message": "400 BAD_REQUEST \"Failed to read HTTP message\""
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "variant": "source-brandstore-sdp",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191",
+        "source": "brandstore-best_products",
+        "pageType": "BRANDSTORE_SDP"
+      },
+      "status": 400,
+      "contentType": "application/json",
+      "length": 234,
+      "prefix": "{\"timestamp\":1785493991361,\"path\":\"/api/v2/store/individualInfo/products\",\"status\":\"BAD_REQUEST\",\"error\":\"Bad Request\",\"requestId\":null,\"exception\":\"ServerWebInputException\",\"message\":\"400 BAD_REQUEST \\\"Failed to read HTTP message\\\"\"}",
+      "topLevelKeys": [
+        "error",
+        "exception",
+        "message",
+        "path",
+        "requestId",
+        "status",
+        "timestamp"
+      ],
+      "hits": [],
+      "json": {
+        "timestamp": 1785493991361,
+        "path": "/api/v2/store/individualInfo/products",
+        "status": "BAD_REQUEST",
+        "error": "Bad Request",
+        "requestId": null,
+        "exception": "ServerWebInputException",
+        "message": "400 BAD_REQUEST \"Failed to read HTTP message\""
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "variant": "direct-store",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "lptag": "A00214628",
+        "spec": "10799999",
+        "src": "1139998",
+        "wPcid": "31507675393473556589191",
+        "source": "direct",
+        "pageType": "STORE"
+      },
+      "status": 403,
+      "contentType": "text/html",
+      "length": 420,
+      "prefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v2&#47;store&#47;individualInfo&#47;products\" on this server.<P>\nReference&#32;&#35;18&#46;64cfdb17&#46;1785493991&#46;c607a1d\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;64cfdb17&#46;1785493991&#46;c607a1d</P>\n</BODY>\n</HTML>\n"
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "variant": "source-only",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "source": "brandstore-best_products"
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 5744,
+      "prefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"products\":[{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"6,400\",\"lowestPrice\":\"6,400\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"6,400\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":6400,\"finalPriceForBtc\":6400,\"priceWithIdForBtc\":6400,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디\",\"description\":\"\",\"defaultUrl\":\"//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"oriDefaultUrl\":\"retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"completeHttpUrl\":\"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"바다 탐험대 옥토넛 숨은 그림 스티커북\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 320원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":null,\"usedProductPrice\":[],\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":5.0,\"ratingCount\":378,\"ratingRatio\":100,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=98e4042831fb472183a7d24296d34405\",\"mlink\":\"coupang://review?action=list&sourceType=brandstore-best_products&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473\"},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=98e4042831fb472183a7d24296d34405\",\"mlink\":\"coupang://product?sourceType=brandstore-best_products&pId=1115170893&vendorItemId=70079303473&searchId=98e4042831fb472183a7d24296d34405&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":70079303473,\"productId\":1115170893,\"itemId\":2079921619,\"unitPrice\":\"\",\"priceLabel\":null,\"salesStartDate\":\"2024-07-25T01:18:39Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":{\"storeId\":79545,\"vendorId\":\"A00214628\",\"logoUrl\":\"https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png\",\"displayName\":\"북프렌즈\",\"link\":\"https://shop.coupang.com/vid/A00214628?source=brandstore-best_products&pid=1115170893&viid=70079303473\",\"mlink\":\"coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26source%3Dbrandstore-best_products%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y\",\"brandInfoArea\":null,\"maxDiscountAmount\":null,\"maxDiscountAmountText\":null,\"uiVersion\":null,\"storeAttributes\":{\"benefit_discount_type\":\"PRICE\",\"benefit_title\":\"이 판매자의 쿠폰을 받아보세요\",\"brandshop_type\":\"0\",\"has_sdp_btc\":\"false\",\"is_manufacturer\":\"N\",\"official\":\"N\",\"official_brands\":\"[]\",\"render_type\":\"COUMALL_DEFAULT\",\"seller_type\":\"Reseller / Distributor\",\"total_vi_cnt\":\"4263\",\"truncate_display_name\":\"북프렌즈\",\"ui_version\":\"1\"},\"officialBrands\":[]},\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":\"GOODS\",\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":6400,\"finalPrice\":6400,\"priceWithID\":6400,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":null,\"brandInfo\":{\"description\":\"메가스터디\",\"id\":19431,\"logoUrl\":\"brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg\",\"name\":\"메가스터디\",\"properties\":null,\"shopAvailable\":false},\"deliveryInfo\":{\"batchShipment\":null,\"cashOnDeliveries\":[],\"deliveryCharge\":null,\"deliveryChargeOnReturn\":null,\"deliveryChargeType\":null,\"deliveryCompanyCode\":null,\"deliveryCompanyName\":null,\"deliveryMethod\":null,\"deliveryType\":null,\"deliveryTypes\":[\"CONDITIONAL_FREE\"],\"finalFreeShipOverAmount\":null,\"freeShipOverAmount\":null,\"isLogistics\":null,\"outboundShippingDuration\":null,\"outboundShippingPlaceId\":null,\"pickUpBranchGroupCodes\":[],\"remoteArea\":null,\"remoteAreaDeliverable\":null,\"remoteAreaFeeChargeable\":null,\"remoteShippingFee\":null},\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false}],\"totalCount\":1,\"validCount\":null,\"token\":null,\"searchId\":null,\"sortingDescription\":null,\"topCuratedProducts\":null,\"nonFilterByShippingConsolidation\":null},\"extra\":null}",
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "hits": [
+        {
+          "path": "$.data.products[0].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        }
+      ],
+      "json": {
+        "code": 200,
+        "msg": "SUCCESS",
+        "data": {
+          "products": [
+            {
+              "priceArea": {
+                "originalPrice": "0",
+                "salesPrice": "6,400",
+                "lowestPrice": "6,400",
+                "instantDiscountPrice": "0",
+                "criteriaPriceInfo": "",
+                "basePrice": "0",
+                "price": "6,400",
+                "discountRate": 0,
+                "instantDiscountDescription": "",
+                "instantDiscountExpiryDateUTCV2": null,
+                "currencyPrefix": "",
+                "currencyPostfix": "원",
+                "discountDescription": null,
+                "salesPriceForBtc": 6400,
+                "finalPriceForBtc": 6400,
+                "priceWithIdForBtc": 6400,
+                "hasCouponForBtc": false,
+                "discount": false,
+                "instantDiscount": false,
+                "badDiscount": false
+              },
+              "imageAndTitleArea": {
+                "title": "바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디",
+                "description": "",
+                "defaultUrl": "//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+                "oriDefaultUrl": "retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+                "completeHttpUrl": "https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+                "detailImageUrls": [],
+                "completeHttpDetailImageUrls": [],
+                "groupTitle": "바다 탐험대 옥토넛 숨은 그림 스티커북",
+                "adultImageReplaced": false
+              },
+              "soldoutArea": {
+                "soldOutText": "품절",
+                "soldout": false
+              },
+              "rocketArea": {
+                "badgeImage": null,
+                "deliveryBadgeImage": null,
+                "deliveryBadgeIcon": null,
+                "deliveryBadgePDD": null,
+                "deliveryUnificationBadgeArea": null,
+                "show": false,
+                "rocketLuxury": false
+              },
+              "subscriptionPriceArea": null,
+              "cashBackArea": {
+                "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+                "cashRewardText": "최대 320원 적립"
+              },
+              "ccidArea": null,
+              "promisedDeliveryDateArea": {
+                "contents": [
+                  {
+                    "text": "8/4(화) ",
+                    "size": 14,
+                    "color": "#212B36",
+                    "bold": false
+                  },
+                  {
+                    "text": "도착 예정",
+                    "size": 14,
+                    "color": "#212B36",
+                    "bold": false
+                  }
+                ]
+              },
+              "usedProductArea": {
+                "usedProductInfo": null,
+                "usedProductPrice": [],
+                "usedOnlyItem": false
+              },
+              "instantDiscountBundlePriceArea": null,
+              "eligibleFalconArea": null,
+              "telcoBadgeArea": null,
+              "afterServiceArea": null,
+              "benefitBadgeArea": null,
+              "deliveryBadgeArea": null,
+              "deliverySpeedBadgeArea": null,
+              "topBrandArea": null,
+              "topBadgeAreas": [],
+              "preOrderArea": null,
+              "brandAuthenticityBadge": null,
+              "couponArea": null,
+              "reviewArea": {
+                "ratingAverage": 5.0,
+                "ratingCount": 378,
+                "ratingRatio": 100,
+                "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=98e4042831fb472183a7d24296d34405",
+                "mlink": "coupang://review?action=list&sourceType=brandstore-best_products&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473"
+              },
+              "bestPriceArea": null,
+              "bizOnlyArea": null,
+              "bestAwardArea": null,
+              "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=98e4042831fb472183a7d24296d34405",
+              "mlink": "coupang://product?sourceType=brandstore-best_products&pId=1115170893&vendorItemId=70079303473&searchId=98e4042831fb472183a7d24296d34405&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+              "offsiteGmLink": null,
+              "vendorItemId": 70079303473,
+              "productId": 1115170893,
+              "itemId": 2079921619,
+              "unitPrice": "",
+              "priceLabel": null,
+              "salesStartDate": "2024-07-25T01:18:39Z",
+              "isFreeExposurePromotion": null,
+              "productType": "PRODUCT",
+              "ueLoggingArea": null,
+              "shopHomeLink": null,
+              "storeInfoArea": {
+                "storeId": 79545,
+                "vendorId": "A00214628",
+                "logoUrl": "https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png",
+                "displayName": "북프렌즈",
+                "link": "https://shop.coupang.com/vid/A00214628?source=brandstore-best_products&pid=1115170893&viid=70079303473",
+                "mlink": "coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26source%3Dbrandstore-best_products%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y",
+                "brandInfoArea": null,
+                "maxDiscountAmount": null,
+                "maxDiscountAmountText": null,
+                "uiVersion": null,
+                "storeAttributes": {
+                  "benefit_discount_type": "PRICE",
+                  "benefit_title": "이 판매자의 쿠폰을 받아보세요",
+                  "brandshop_type": "0",
+                  "has_sdp_btc": "false",
+                  "is_manufacturer": "N",
+                  "official": "N",
+                  "official_brands": "[]",
+                  "render_type": "COUMALL_DEFAULT",
+                  "seller_type": "Reseller / Distributor",
+                  "total_vi_cnt": "4263",
+                  "truncate_display_name": "북프렌즈",
+                  "ui_version": "1"
+                },
+                "officialBrands": []
+              },
+              "rluxBrandInfo": null,
+              "freebiesInfo": null,
+              "wowBenefitArea": null,
+              "divisionType": "GOODS",
+              "btcInfo": {
+                "freeShipOverAmountEx": 9800,
+                "salesPrice": 6400,
+                "finalPrice": 6400,
+                "priceWithID": 6400,
+                "hasCoupon": false,
+                "deliveryFee": 2500,
+                "outboundShippingPlaceId": 1208642,
+                "batchShipment": true,
+                "rocketDelivery": false
+              },
+              "setPromotionItemDto": null,
+              "promotionClosingArea": null,
+              "attributes": null,
+              "brandInfo": {
+                "description": "메가스터디",
+                "id": 19431,
+                "logoUrl": "brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg",
+                "name": "메가스터디",
+                "properties": null,
+                "shopAvailable": false
+              },
+              "deliveryInfo": {
+                "batchShipment": null,
+                "cashOnDeliveries": [],
+                "deliveryCharge": null,
+                "deliveryChargeOnReturn": null,
+                "deliveryChargeType": null,
+                "deliveryCompanyCode": null,
+                "deliveryCompanyName": null,
+                "deliveryMethod": null,
+                "deliveryType": null,
+                "deliveryTypes": [
+                  "CONDITIONAL_FREE"
+                ],
+                "finalFreeShipOverAmount": null,
+                "freeShipOverAmount": null,
+                "isLogistics": null,
+                "outboundShippingDuration": null,
+                "outboundShippingPlaceId": null,
+                "pickUpBranchGroupCodes": [],
+                "remoteArea": null,
+                "remoteAreaDeliverable": null,
+                "remoteAreaFeeChargeable": null,
+                "remoteShippingFee": null
+              },
+              "valid": true,
+              "adult": false,
+              "rocketMerchant": false,
+              "coupangGlobal": false
+            }
+          ],
+          "totalCount": 1,
+          "validCount": null,
+          "token": null,
+          "searchId": null,
+          "sortingDescription": null,
+          "topCuratedProducts": null,
+          "nonFilterByShippingConsolidation": null
+        },
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "variant": "source-search-only",
+      "body": {
+        "vendorItemIds": [
+          "70079303473"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+        "source": "brandstore-best_products"
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 5744,
+      "prefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"products\":[{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"6,400\",\"lowestPrice\":\"6,400\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"6,400\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":6400,\"finalPriceForBtc\":6400,\"priceWithIdForBtc\":6400,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디\",\"description\":\"\",\"defaultUrl\":\"//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"oriDefaultUrl\":\"retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"completeHttpUrl\":\"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"바다 탐험대 옥토넛 숨은 그림 스티커북\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 320원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":null,\"usedProductPrice\":[],\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":5.0,\"ratingCount\":378,\"ratingRatio\":100,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d\",\"mlink\":\"coupang://review?action=list&sourceType=brandstore-best_products&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473\"},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d\",\"mlink\":\"coupang://product?sourceType=brandstore-best_products&pId=1115170893&vendorItemId=70079303473&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":70079303473,\"productId\":1115170893,\"itemId\":2079921619,\"unitPrice\":\"\",\"priceLabel\":null,\"salesStartDate\":\"2024-07-25T01:18:39Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":{\"storeId\":79545,\"vendorId\":\"A00214628\",\"logoUrl\":\"https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png\",\"displayName\":\"북프렌즈\",\"link\":\"https://shop.coupang.com/vid/A00214628?source=brandstore-best_products&pid=1115170893&viid=70079303473\",\"mlink\":\"coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26source%3Dbrandstore-best_products%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y\",\"brandInfoArea\":null,\"maxDiscountAmount\":null,\"maxDiscountAmountText\":null,\"uiVersion\":null,\"storeAttributes\":{\"benefit_discount_type\":\"PRICE\",\"benefit_title\":\"이 판매자의 쿠폰을 받아보세요\",\"brandshop_type\":\"0\",\"has_sdp_btc\":\"false\",\"is_manufacturer\":\"N\",\"official\":\"N\",\"official_brands\":\"[]\",\"render_type\":\"COUMALL_DEFAULT\",\"seller_type\":\"Reseller / Distributor\",\"total_vi_cnt\":\"4263\",\"truncate_display_name\":\"북프렌즈\",\"ui_version\":\"1\"},\"officialBrands\":[]},\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":\"GOODS\",\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":6400,\"finalPrice\":6400,\"priceWithID\":6400,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":null,\"brandInfo\":{\"description\":\"메가스터디\",\"id\":19431,\"logoUrl\":\"brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg\",\"name\":\"메가스터디\",\"properties\":null,\"shopAvailable\":false},\"deliveryInfo\":{\"batchShipment\":null,\"cashOnDeliveries\":[],\"deliveryCharge\":null,\"deliveryChargeOnReturn\":null,\"deliveryChargeType\":null,\"deliveryCompanyCode\":null,\"deliveryCompanyName\":null,\"deliveryMethod\":null,\"deliveryType\":null,\"deliveryTypes\":[\"CONDITIONAL_FREE\"],\"finalFreeShipOverAmount\":null,\"freeShipOverAmount\":null,\"isLogistics\":null,\"outboundShippingDuration\":null,\"outboundShippingPlaceId\":null,\"pickUpBranchGroupCodes\":[],\"remoteArea\":null,\"remoteAreaDeliverable\":null,\"remoteAreaFeeChargeable\":null,\"remoteShippingFee\":null},\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false}],\"totalCount\":1,\"validCount\":null,\"token\":null,\"searchId\":null,\"sortingDescription\":null,\"topCuratedProducts\":null,\"nonFilterByShippingConsolidation\":null},\"extra\":null}",
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "hits": [
+        {
+          "path": "$.data.products[0].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        }
+      ],
+      "json": {
+        "code": 200,
+        "msg": "SUCCESS",
+        "data": {
+          "products": [
+            {
+              "priceArea": {
+                "originalPrice": "0",
+                "salesPrice": "6,400",
+                "lowestPrice": "6,400",
+                "instantDiscountPrice": "0",
+                "criteriaPriceInfo": "",
+                "basePrice": "0",
+                "price": "6,400",
+                "discountRate": 0,
+                "instantDiscountDescription": "",
+                "instantDiscountExpiryDateUTCV2": null,
+                "currencyPrefix": "",
+                "currencyPostfix": "원",
+                "discountDescription": null,
+                "salesPriceForBtc": 6400,
+                "finalPriceForBtc": 6400,
+                "priceWithIdForBtc": 6400,
+                "hasCouponForBtc": false,
+                "discount": false,
+                "instantDiscount": false,
+                "badDiscount": false
+              },
+              "imageAndTitleArea": {
+                "title": "바다 탐험대 옥토넛 숨은 그림 스티커북, 1권, 메가스터디",
+                "description": "",
+                "defaultUrl": "//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+                "oriDefaultUrl": "retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+                "completeHttpUrl": "https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+                "detailImageUrls": [],
+                "completeHttpDetailImageUrls": [],
+                "groupTitle": "바다 탐험대 옥토넛 숨은 그림 스티커북",
+                "adultImageReplaced": false
+              },
+              "soldoutArea": {
+                "soldOutText": "품절",
+                "soldout": false
+              },
+              "rocketArea": {
+                "badgeImage": null,
+                "deliveryBadgeImage": null,
+                "deliveryBadgeIcon": null,
+                "deliveryBadgePDD": null,
+                "deliveryUnificationBadgeArea": null,
+                "show": false,
+                "rocketLuxury": false
+              },
+              "subscriptionPriceArea": null,
+              "cashBackArea": {
+                "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+                "cashRewardText": "최대 320원 적립"
+              },
+              "ccidArea": null,
+              "promisedDeliveryDateArea": {
+                "contents": [
+                  {
+                    "text": "8/4(화) ",
+                    "size": 14,
+                    "color": "#212B36",
+                    "bold": false
+                  },
+                  {
+                    "text": "도착 예정",
+                    "size": 14,
+                    "color": "#212B36",
+                    "bold": false
+                  }
+                ]
+              },
+              "usedProductArea": {
+                "usedProductInfo": null,
+                "usedProductPrice": [],
+                "usedOnlyItem": false
+              },
+              "instantDiscountBundlePriceArea": null,
+              "eligibleFalconArea": null,
+              "telcoBadgeArea": null,
+              "afterServiceArea": null,
+              "benefitBadgeArea": null,
+              "deliveryBadgeArea": null,
+              "deliverySpeedBadgeArea": null,
+              "topBrandArea": null,
+              "topBadgeAreas": [],
+              "preOrderArea": null,
+              "brandAuthenticityBadge": null,
+              "couponArea": null,
+              "reviewArea": {
+                "ratingAverage": 5.0,
+                "ratingCount": 378,
+                "ratingRatio": 100,
+                "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d",
+                "mlink": "coupang://review?action=list&sourceType=brandstore-best_products&productId=1115170893&vendorId=A00214628&vendorItemId=70079303473"
+              },
+              "bestPriceArea": null,
+              "bizOnlyArea": null,
+              "bestAwardArea": null,
+              "link": "/vp/products/1115170893?itemId=2079921619&vendorItemId=70079303473&sourceType=brandstore-best_products&vendorId=A00214628&storeId=79545&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d",
+              "mlink": "coupang://product?sourceType=brandstore-best_products&pId=1115170893&vendorItemId=70079303473&searchId=9bbd50e14adb49ecb0ff89a47fc16f3d&title=%EB%B0%94%EB%8B%A4+%ED%83%90%ED%97%98%EB%8C%80+%EC%98%A5%ED%86%A0%EB%84%9B+%EC%88%A8%EC%9D%80+%EA%B7%B8%EB%A6%BC+%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/12/23/22/6/3db9372b-ac86-4604-aab8-b2fa77e8ff20.jpg",
+              "offsiteGmLink": null,
+              "vendorItemId": 70079303473,
+              "productId": 1115170893,
+              "itemId": 2079921619,
+              "unitPrice": "",
+              "priceLabel": null,
+              "salesStartDate": "2024-07-25T01:18:39Z",
+              "isFreeExposurePromotion": null,
+              "productType": "PRODUCT",
+              "ueLoggingArea": null,
+              "shopHomeLink": null,
+              "storeInfoArea": {
+                "storeId": 79545,
+                "vendorId": "A00214628",
+                "logoUrl": "https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png",
+                "displayName": "북프렌즈",
+                "link": "https://shop.coupang.com/vid/A00214628?source=brandstore-best_products&pid=1115170893&viid=70079303473",
+                "mlink": "coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26source%3Dbrandstore-best_products%26pid%3D1115170893%26viid%3D70079303473&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y",
+                "brandInfoArea": null,
+                "maxDiscountAmount": null,
+                "maxDiscountAmountText": null,
+                "uiVersion": null,
+                "storeAttributes": {
+                  "benefit_discount_type": "PRICE",
+                  "benefit_title": "이 판매자의 쿠폰을 받아보세요",
+                  "brandshop_type": "0",
+                  "has_sdp_btc": "false",
+                  "is_manufacturer": "N",
+                  "official": "N",
+                  "official_brands": "[]",
+                  "render_type": "COUMALL_DEFAULT",
+                  "seller_type": "Reseller / Distributor",
+                  "total_vi_cnt": "4263",
+                  "truncate_display_name": "북프렌즈",
+                  "ui_version": "1"
+                },
+                "officialBrands": []
+              },
+              "rluxBrandInfo": null,
+              "freebiesInfo": null,
+              "wowBenefitArea": null,
+              "divisionType": "GOODS",
+              "btcInfo": {
+                "freeShipOverAmountEx": 9800,
+                "salesPrice": 6400,
+                "finalPrice": 6400,
+                "priceWithID": 6400,
+                "hasCoupon": false,
+                "deliveryFee": 2500,
+                "outboundShippingPlaceId": 1208642,
+                "batchShipment": true,
+                "rocketDelivery": false
+              },
+              "setPromotionItemDto": null,
+              "promotionClosingArea": null,
+              "attributes": null,
+              "brandInfo": {
+                "description": "메가스터디",
+                "id": 19431,
+                "logoUrl": "brandLogo/brandLogo_b7477364-ea8f-4432-afc7-16e9478662ef.jpg",
+                "name": "메가스터디",
+                "properties": null,
+                "shopAvailable": false
+              },
+              "deliveryInfo": {
+                "batchShipment": null,
+                "cashOnDeliveries": [],
+                "deliveryCharge": null,
+                "deliveryChargeOnReturn": null,
+                "deliveryChargeType": null,
+                "deliveryCompanyCode": null,
+                "deliveryCompanyName": null,
+                "deliveryMethod": null,
+                "deliveryType": null,
+                "deliveryTypes": [
+                  "CONDITIONAL_FREE"
+                ],
+                "finalFreeShipOverAmount": null,
+                "freeShipOverAmount": null,
+                "isLogistics": null,
+                "outboundShippingDuration": null,
+                "outboundShippingPlaceId": null,
+                "pickUpBranchGroupCodes": [],
+                "remoteArea": null,
+                "remoteAreaDeliverable": null,
+                "remoteAreaFeeChargeable": null,
+                "remoteShippingFee": null
+              },
+              "valid": true,
+              "adult": false,
+              "rocketMerchant": false,
+              "coupangGlobal": false
+            }
+          ],
+          "totalCount": 1,
+          "validCount": null,
+          "token": null,
+          "searchId": null,
+          "sortingDescription": null,
+          "topCuratedProducts": null,
+          "nonFilterByShippingConsolidation": null
+        },
+        "extra": null
+      }
+    }
+  ],
+  "selected": {
+    "productId": "1115170893",
+    "itemId": "2079921619",
+    "vendorItemId": "70079303473",
+    "sourceType": "brandstore-best_products",
+    "metadata": {
+      "sourceSearchId": "9bbd50e14adb49ecb0ff89a47fc16f3d",
+      "lptag": "A00214628",
+      "spec": "10799999",
+      "src": "1139998",
+      "wPcid": "31507675393473556589191"
+    }
+  },
   "summary": {
-    "links": 0,
-    "attempts": 0,
-    "http200": 0,
-    "nonEmpty": 0
+    "links": 18,
+    "attempts": 16,
+    "http200": 5,
+    "nonEmpty": 16,
+    "rowsWithHits": 5
   }
 }
