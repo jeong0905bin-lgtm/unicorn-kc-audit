@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,24 +41,24 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Validate retry scanner
         run: python -m py_compile tools/unicorn_exact_retry_shard.py
-      - name: Download base full-scan artifact
+      - name: Download previous merged retry artifact
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p base
-          gh run download 30625752041 \
+          gh run download 30626919558 \
             --repo "$GITHUB_REPOSITORY" \
-            --name unicorn-shop-exact-full-scan-30625752041 \
+            --name unicorn-exact-retry-merged-30626919558 \
             --dir base
-          test -f base/exact/unresolved-products.json
+          test -f base/unresolved-products.json
       - name: Retry assigned unresolved rows
         run: |
           mkdir -p shard-output
           python tools/unicorn_exact_retry_shard.py \
-            --unresolved base/exact/unresolved-products.json \
+            --unresolved base/unresolved-products.json \
             --output shard-output/result.json \
             --shard-index ${{ matrix.shard }} \
-            --shard-count 8 \
+            --shard-count 12 \
             --rounds 4
       - name: Upload shard result
         uses: actions/upload-artifact@v4
@@ -80,14 +80,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Download base full-scan artifact
+      - name: Download previous merged retry artifact
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p base
-          gh run download 30625752041 \
+          gh run download 30626919558 \
             --repo "$GITHUB_REPOSITORY" \
-            --name unicorn-shop-exact-full-scan-30625752041 \
+            --name unicorn-exact-retry-merged-30626919558 \
             --dir base
       - name: Download all retry shards
         uses: actions/download-artifact@v4
@@ -98,6 +98,7 @@ jobs:
         run: |
           python tools/merge_unicorn_exact_retries.py \
             --base base \
+            --base-run-id 30626919558 \
             --shards shards \
             --output merged
       - name: Print merged summary
