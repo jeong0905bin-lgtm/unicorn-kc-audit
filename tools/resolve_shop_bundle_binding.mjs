@@ -37,9 +37,7 @@ const bindings = [];
 const endpointHits = [];
 
 function isFunction(node) {
-  return node && [
-    'FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression'
-  ].includes(node.type);
+  return node && ['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression'].includes(node.type);
 }
 
 function walk(node, ancestors = [], fnStack = []) {
@@ -96,11 +94,12 @@ function source(start, end, pad = 0) {
   return text.slice(Math.max(0, start - pad), Math.min(text.length, end + pad));
 }
 
-function sharedDepth(bindingStack, hitStack) {
-  let depth = 0;
-  const max = Math.min(bindingStack.length, hitStack.length);
-  while (depth < max && bindingStack[depth] === hitStack[depth]) depth += 1;
-  return depth;
+function isVisiblePrefix(bindingStack, hitStack) {
+  if (bindingStack.length > hitStack.length) return false;
+  for (let index = 0; index < bindingStack.length; index += 1) {
+    if (bindingStack[index] !== hitStack[index]) return false;
+  }
+  return true;
 }
 
 const result = {
@@ -121,17 +120,16 @@ for (const hit of endpointHits) {
 
   for (const name of ['S', 'P', 'A', 'f', 'X', 'z']) {
     const candidates = bindings
-      .filter((b) => b.name === name && b.start < hit.start)
-      .map((b) => ({ ...b, depth: sharedDepth(b.fnStack, hit.fnStack) }))
-      .filter((b) => b.depth > 0 || b.fnStack.length === 0)
-      .sort((a, b) => (b.depth - a.depth) || (b.start - a.start));
-    endpointRow.bindings[name] = candidates.slice(0, 8).map((b) => ({
-      kind: b.kind,
-      start: b.start,
-      functionStack: b.fnStack.map(fnId),
-      sharedFunctionDepth: b.depth,
-      bindingSource: source(b.start, b.end, 1200),
-      initializerSource: source(b.initStart, b.initEnd, 0),
+      .filter((binding) => binding.name === name && binding.start < hit.start)
+      .filter((binding) => isVisiblePrefix(binding.fnStack, hit.fnStack))
+      .sort((a, b) => (b.fnStack.length - a.fnStack.length) || (b.start - a.start));
+    endpointRow.bindings[name] = candidates.slice(0, 12).map((binding) => ({
+      kind: binding.kind,
+      start: binding.start,
+      functionStack: binding.fnStack.map(fnId),
+      lexicalDepth: binding.fnStack.length,
+      bindingSource: source(binding.start, binding.end, 1600),
+      initializerSource: source(binding.initStart, binding.initEnd, 0),
     }));
   }
   result.endpoints.push(endpointRow);
@@ -143,7 +141,6 @@ result.summary = {
   endpointsWithSBinding: result.endpoints.filter((row) => row.bindings.S.length > 0).length,
 };
 
-await fs.mkdir(new URL('.', `file://${process.cwd()}/${output}`).pathname, { recursive: true }).catch(() => {});
 await fs.mkdir(output.split('/').slice(0, -1).join('/') || '.', { recursive: true });
 await fs.writeFile(output, JSON.stringify(result, null, 2), 'utf8');
 console.log(JSON.stringify(result.summary, null, 2));
