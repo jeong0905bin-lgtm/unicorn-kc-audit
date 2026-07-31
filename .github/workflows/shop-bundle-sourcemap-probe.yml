@@ -1,19 +1,6 @@
 name: Shop bundle source-map probe
 
 on:
-  pull_request:
-    branches: [main]
-    types: [opened, reopened, synchronize]
-    paths:
-      - "run/shop-bundle-sourcemap.trigger"
-      - "tools/shop_bundle_sourcemap_probe.py"
-      - ".github/workflows/shop-bundle-sourcemap-probe.yml"
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/shop-bundle-sourcemap.trigger"
-      - "tools/shop_bundle_sourcemap_probe.py"
-      - ".github/workflows/shop-bundle-sourcemap-probe.yml"
   workflow_dispatch:
 
 permissions:
