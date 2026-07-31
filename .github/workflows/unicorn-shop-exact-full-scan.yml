@@ -5,7 +5,7 @@ on:
     branches: [main]
     types: [opened, reopened, synchronize]
     paths:
-      - "tools/unicorn_shop_exact_scan.py"
+      - "tools/unicorn_shop_exact_scan_fast.py"
       - "tools/unicorn_catalog.py"
       - ".github/workflows/unicorn-shop-exact-full-scan.yml"
       - "run/unicorn-shop-exact-full-scan.trigger"
@@ -21,7 +21,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-24.04
-    timeout-minutes: 300
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,7 +36,7 @@ jobs:
       - name: Validate scanners
         run: |
           python -m py_compile tools/unicorn_catalog.py
-          python -m py_compile tools/unicorn_shop_exact_scan.py
+          python -m py_compile tools/unicorn_shop_exact_scan_fast.py
       - name: Collect complete 2,230-product catalog
         run: |
           mkdir -p work/catalog work/exact
@@ -44,13 +44,13 @@ jobs:
             --output work/catalog/catalog.json \
             --diagnostics work/catalog/catalog-diagnostics.json \
             --candidate-output work/catalog/title-query-only-not-final.json
-      - name: Scan every catalog row through shop individualInfo detail API
+      - name: Scan every catalog row through timeout-safe detail API calls
         run: |
-          python tools/unicorn_shop_exact_scan.py \
+          python tools/unicorn_shop_exact_scan_fast.py \
             --catalog work/catalog/catalog.json \
             --output-dir work/exact \
-            --chunk-size 50 \
-            --concurrency 3
+            --chunk-size 100 \
+            --concurrency 8
       - name: Print final exact summary
         if: always()
         run: |
