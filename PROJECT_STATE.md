@@ -1,6 +1,6 @@
 # Unicorn KC Audit — Persistent Project State
 
-Updated: 2026-08-01 01:22 KST
+Updated: 2026-08-01 01:46 KST
 
 ## Objective
 
@@ -83,7 +83,7 @@ This endpoint is retained for product metadata and link recovery only. It cannot
 
 ## KC evidence
 
-Exact product-to-KC mappings are currently confirmed for **9 products**.
+Exact product-to-KC mappings are currently confirmed for **10 products**.
 
 Confirmed unique KC numbers:
 
@@ -99,6 +99,7 @@ Newest exact mappings:
 
 - `1318402202` 엉덩이탐정 스티커 컬렉션북 → `CB064H009-9002`
 - `8616958567` 슈팅스타 캐치티니핑 신기한 워터색칠북 2권 → ISBN `8806328724817` → `CB064H009-3003`
+- `7201864624` 슈퍼다이노 신기한 워터색칠북 → ISBN `8806328723063` → `CB064H009-8001`
 
 Official SafetyKorea status resolved so far:
 
@@ -145,7 +146,7 @@ Rules:
 ## Current blockers
 
 - Publisher classification remains unresolved for 404 catalog products.
-- 24 accepted Unicorn products still lack exact product-level KC evidence.
+- 23 accepted Unicorn products still lack exact product-level KC evidence.
 - Six accepted KC numbers still need official SafetyKorea status resolution.
 - No current catalog product is yet exactly mapped to the known expired code `CB064H009-9003`.
 - No-KC conclusions are not yet complete enough for a final workbook.
@@ -160,7 +161,7 @@ Rules:
 
 ## Immediate next work
 
-1. Resolve exact KC mappings for the remaining 24 accepted publisher products.
+1. Resolve exact KC mappings for the remaining 23 accepted publisher products.
 2. Resolve official SafetyKorea status for `2001`, `3003`, `4001`, `4003`, `8001`, and `9002`.
 3. Search for exact current-catalog use of expired `9003`.
 4. Continue publisher recovery only through materially different evidence routes.
