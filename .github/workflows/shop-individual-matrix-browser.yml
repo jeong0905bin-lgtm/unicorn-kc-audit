@@ -6,13 +6,13 @@ on:
     types: [opened, reopened, synchronize]
     paths:
       - "run/shop-individual-matrix.trigger"
-      - "tools/shop_individual_matrix_browser.py"
+      - "tools/shop_individual_matrix_browser_v2.py"
       - ".github/workflows/shop-individual-matrix-browser.yml"
   push:
     branches: [chatgpt/run-unicorn-audit-20260730]
     paths:
       - "run/shop-individual-matrix.trigger"
-      - "tools/shop_individual_matrix_browser.py"
+      - "tools/shop_individual_matrix_browser_v2.py"
       - ".github/workflows/shop-individual-matrix-browser.yml"
   workflow_dispatch:
 
@@ -35,9 +35,9 @@ jobs:
           pip install playwright
           python -m playwright install --with-deps chromium
       - name: Validate matrix
-        run: python -m py_compile tools/shop_individual_matrix_browser.py
+        run: python -m py_compile tools/shop_individual_matrix_browser_v2.py
       - name: Run individualInfo request matrix
-        run: python tools/shop_individual_matrix_browser.py --output diagnostics/shop-individual-matrix/result.json
+        run: python tools/shop_individual_matrix_browser_v2.py --output diagnostics/shop-individual-matrix/result.json
       - name: Commit sanitized matrix
         shell: bash
         run: |
