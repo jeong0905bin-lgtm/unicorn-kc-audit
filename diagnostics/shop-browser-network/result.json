@@ -1,0 +1,31 @@
+{
+  "storeUrl": "https://shop.coupang.com/A00214628",
+  "known": {
+    "productId": "8411161016",
+    "itemId": "24319968314",
+    "vendorItemId": "91335726263"
+  },
+  "navigation": {
+    "status": 403,
+    "url": "https://shop.coupang.com/A00214628",
+    "title": "Access Denied"
+  },
+  "apiTraffic": [],
+  "productLinks": [],
+  "replays": [],
+  "pageSignals": {
+    "htmlLength": 303,
+    "containsKnownProductId": false,
+    "containsKnownVendorItemId": false,
+    "containsPublisherLabel": false,
+    "containsUnicorn": false,
+    "snippets": []
+  },
+  "summary": {
+    "apiRequests": 0,
+    "individualInfoRequests": 0,
+    "successfulIndividualInfoResponses": 0,
+    "individualInfoRowsWithHits": 0,
+    "productLinks": 0
+  }
+}
