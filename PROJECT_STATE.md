@@ -1,6 +1,6 @@
 # Unicorn KC Audit — Persistent Project State
 
-Updated: 2026-08-01 01:12 KST
+Updated: 2026-08-01 01:22 KST
 
 ## Objective
 
@@ -65,9 +65,10 @@ Three catalog products are accepted from exact evidence outside the successful A
 - Additional exact products: **3**
 - Consolidated exact publisher products: **33**
 
-Canonical file:
+Canonical files:
 
 - `diagnostics/consolidated-unicorn-products.json`
+- `diagnostics/kc-mapping-addendum-20260801.json`
 
 ## Plural endpoint result
 
@@ -82,15 +83,22 @@ This endpoint is retained for product metadata and link recovery only. It cannot
 
 ## KC evidence
 
-Exact product-to-KC mappings currently confirmed for **7 products**.
+Exact product-to-KC mappings are currently confirmed for **9 products**.
 
 Confirmed unique KC numbers:
 
 - `CB064H009-2001`
 - `CB064H009-3002`
+- `CB064H009-3003`
 - `CB064H009-4001`
 - `CB064H009-4003`
 - `CB064H009-8001`
+- `CB064H009-9002`
+
+Newest exact mappings:
+
+- `1318402202` 엉덩이탐정 스티커 컬렉션북 → `CB064H009-9002`
+- `8616958567` 슈팅스타 캐치티니핑 신기한 워터색칠북 2권 → ISBN `8806328724817` → `CB064H009-3003`
 
 Official SafetyKorea status resolved so far:
 
@@ -102,9 +110,11 @@ Important: `CB064H009-9003` is not yet mapped to any exact current catalog produ
 Official status remains unresolved for:
 
 - `CB064H009-2001`
+- `CB064H009-3003`
 - `CB064H009-4001`
 - `CB064H009-4003`
 - `CB064H009-8001`
+- `CB064H009-9002`
 
 ## Required outputs
 
@@ -135,8 +145,8 @@ Rules:
 ## Current blockers
 
 - Publisher classification remains unresolved for 404 catalog products.
-- Most accepted Unicorn products still lack exact product-level KC evidence.
-- Four accepted KC numbers still need official SafetyKorea status resolution.
+- 24 accepted Unicorn products still lack exact product-level KC evidence.
+- Six accepted KC numbers still need official SafetyKorea status resolution.
 - No current catalog product is yet exactly mapped to the known expired code `CB064H009-9003`.
 - No-KC conclusions are not yet complete enough for a final workbook.
 
@@ -150,8 +160,8 @@ Rules:
 
 ## Immediate next work
 
-1. Resolve exact KC mappings for the remaining 26 accepted publisher products.
-2. Resolve official SafetyKorea status for `2001`, `4001`, `4003`, and `8001`.
+1. Resolve exact KC mappings for the remaining 24 accepted publisher products.
+2. Resolve official SafetyKorea status for `2001`, `3003`, `4001`, `4003`, `8001`, and `9002`.
 3. Search for exact current-catalog use of expired `9003`.
 4. Continue publisher recovery only through materially different evidence routes.
 5. Generate final workbooks only after the mapping and official-status gates are complete.
