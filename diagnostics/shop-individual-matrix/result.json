@@ -1,9 +1,9 @@
 {
   "storeUrl": "https://shop.coupang.com/A00214628?platform=p",
   "navigation": {
-    "status": 200,
+    "status": 403,
     "url": "https://shop.coupang.com/A00214628?platform=p",
-    "title": ""
+    "title": "Access Denied"
   },
   "productLink": null,
   "attempts": [],
