@@ -1,0 +1,273 @@
+{
+  "usable": false,
+  "selected": null,
+  "reports": [
+    {
+      "runner": "macos15",
+      "profile": "macos",
+      "known": {
+        "productId": "8411161016",
+        "itemId": "24319968314",
+        "vendorItemId": "91335726263",
+        "expectedPublisher": "유니콘",
+        "expectedKc": "CB064H009-3002"
+      },
+      "usable": false,
+      "publisher": "",
+      "kcNumbers": [],
+      "expectedKcSeen": false,
+      "result": {
+        "requestStatus": "failed",
+        "httpStatus": 403,
+        "parsed": {},
+        "evidence": [
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/",
+            "status": 403,
+            "length": 369
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+            "status": 403,
+            "length": 404
+          },
+          {
+            "stage": "btf",
+            "attempt": 1,
+            "status": 403,
+            "contentType": "text/html",
+            "length": 407,
+            "url": "https://www.coupang.com/next-api/products/btf?productId=8411161016&itemId=24319968314&vendorItemId=91335726263&_fresh=1785470041539-1-8416",
+            "cookieNames": [],
+            "bodyPrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;coupang&#46;com&#47;next&#45;api&#47;products&#47;btf&#63;\" on this server."
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/",
+            "status": 403,
+            "length": 369
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+            "status": 403,
+            "length": 402
+          },
+          {
+            "stage": "btf",
+            "attempt": 2,
+            "status": 403,
+            "contentType": "text/html",
+            "length": 405,
+            "url": "https://www.coupang.com/next-api/products/btf?productId=8411161016&itemId=24319968314&vendorItemId=91335726263&_fresh=1785470042890-2-4601",
+            "cookieNames": [],
+            "bodyPrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;coupang&#46;com&#47;next&#45;api&#47;products&#47;btf&#63;\" on this server."
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/",
+            "status": 403,
+            "length": 369
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+            "status": 403,
+            "length": 402
+          },
+          {
+            "stage": "btf",
+            "attempt": 3,
+            "status": 403,
+            "contentType": "text/html",
+            "length": 405,
+            "url": "https://www.coupang.com/next-api/products/btf?productId=8411161016&itemId=24319968314&vendorItemId=91335726263&_fresh=1785470045062-3-8464",
+            "cookieNames": [],
+            "bodyPrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;coupang&#46;com&#47;next&#45;api&#47;products&#47;btf&#63;\" on this server."
+          }
+        ]
+      }
+    },
+    {
+      "runner": "ubuntu24",
+      "profile": "linux",
+      "known": {
+        "productId": "8411161016",
+        "itemId": "24319968314",
+        "vendorItemId": "91335726263",
+        "expectedPublisher": "유니콘",
+        "expectedKc": "CB064H009-3002"
+      },
+      "usable": false,
+      "publisher": "",
+      "kcNumbers": [],
+      "expectedKcSeen": false,
+      "result": {
+        "requestStatus": "failed",
+        "httpStatus": 403,
+        "parsed": {},
+        "evidence": [
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/",
+            "status": 403,
+            "length": 369
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+            "status": 403,
+            "length": 398
+          },
+          {
+            "stage": "btf",
+            "attempt": 1,
+            "status": 403,
+            "contentType": "text/html",
+            "length": 403,
+            "url": "https://www.coupang.com/next-api/products/btf?productId=8411161016&itemId=24319968314&vendorItemId=91335726263&_fresh=1785470045683-1-8166",
+            "cookieNames": [],
+            "bodyPrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;coupang&#46;com&#47;next&#45;api&#47;products&#47;btf&#63;\" on this server."
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/",
+            "status": 403,
+            "length": 369
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+            "status": 403,
+            "length": 398
+          },
+          {
+            "stage": "btf",
+            "attempt": 2,
+            "status": 403,
+            "contentType": "text/html",
+            "length": 401,
+            "url": "https://www.coupang.com/next-api/products/btf?productId=8411161016&itemId=24319968314&vendorItemId=91335726263&_fresh=1785470046730-2-3545",
+            "cookieNames": [],
+            "bodyPrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;coupang&#46;com&#47;next&#45;api&#47;products&#47;btf&#63;\" on this server."
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/",
+            "status": 403,
+            "length": 363
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+            "status": 403,
+            "length": 400
+          },
+          {
+            "stage": "btf",
+            "attempt": 3,
+            "status": 403,
+            "contentType": "text/html",
+            "length": 403,
+            "url": "https://www.coupang.com/next-api/products/btf?productId=8411161016&itemId=24319968314&vendorItemId=91335726263&_fresh=1785470048593-3-4284",
+            "cookieNames": [],
+            "bodyPrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;coupang&#46;com&#47;next&#45;api&#47;products&#47;btf&#63;\" on this server."
+          }
+        ]
+      }
+    },
+    {
+      "runner": "windows25",
+      "profile": "windows",
+      "known": {
+        "productId": "8411161016",
+        "itemId": "24319968314",
+        "vendorItemId": "91335726263",
+        "expectedPublisher": "유니콘",
+        "expectedKc": "CB064H009-3002"
+      },
+      "usable": false,
+      "publisher": "",
+      "kcNumbers": [],
+      "expectedKcSeen": false,
+      "result": {
+        "requestStatus": "failed",
+        "httpStatus": 403,
+        "parsed": {},
+        "evidence": [
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/",
+            "status": 403,
+            "length": 369
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+            "status": 403,
+            "length": 404
+          },
+          {
+            "stage": "btf",
+            "attempt": 1,
+            "status": 403,
+            "contentType": "text/html",
+            "length": 407,
+            "url": "https://www.coupang.com/next-api/products/btf?productId=8411161016&itemId=24319968314&vendorItemId=91335726263&_fresh=1785470053409-1-1136",
+            "cookieNames": [],
+            "bodyPrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;coupang&#46;com&#47;next&#45;api&#47;products&#47;btf&#63;\" on this server."
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/",
+            "status": 403,
+            "length": 369
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+            "status": 403,
+            "length": 404
+          },
+          {
+            "stage": "btf",
+            "attempt": 2,
+            "status": 403,
+            "contentType": "text/html",
+            "length": 407,
+            "url": "https://www.coupang.com/next-api/products/btf?productId=8411161016&itemId=24319968314&vendorItemId=91335726263&_fresh=1785470055703-2-5869",
+            "cookieNames": [],
+            "bodyPrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;coupang&#46;com&#47;next&#45;api&#47;products&#47;btf&#63;\" on this server."
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/",
+            "status": 403,
+            "length": 369
+          },
+          {
+            "stage": "warm",
+            "url": "https://www.coupang.com/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263",
+            "status": 403,
+            "length": 404
+          },
+          {
+            "stage": "btf",
+            "attempt": 3,
+            "status": 403,
+            "contentType": "text/html",
+            "length": 407,
+            "url": "https://www.coupang.com/next-api/products/btf?productId=8411161016&itemId=24319968314&vendorItemId=91335726263&_fresh=1785470058576-3-9396",
+            "cookieNames": [],
+            "bodyPrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;coupang&#46;com&#47;next&#45;api&#47;products&#47;btf&#63;\" on this server."
+          }
+        ]
+      }
+    }
+  ],
+  "matrix": {
+    "include": []
+  }
+}
