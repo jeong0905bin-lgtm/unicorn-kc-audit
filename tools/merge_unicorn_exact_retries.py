@@ -25,16 +25,27 @@ def product_key(row: dict[str, Any]) -> tuple[str, str, str, str]:
     )
 
 
+def base_file(base: Path, name: str) -> Path:
+    direct = base / name
+    nested = base / "exact" / name
+    if direct.exists():
+        return direct
+    if nested.exists():
+        return nested
+    raise FileNotFoundError(f"base file not found: {name}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base", type=Path, required=True)
     parser.add_argument("--shards", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--base-run-id", type=int, default=0)
     args = parser.parse_args()
 
-    base_summary = load(args.base / "exact" / "summary.json")
-    base_exact = load(args.base / "exact" / "exact-unicorn-products.json")
-    base_unresolved = load(args.base / "exact" / "unresolved-products.json")
+    base_summary = load(base_file(args.base, "summary.json"))
+    base_exact = load(base_file(args.base, "exact-unicorn-products.json"))
+    base_unresolved = load(base_file(args.base, "unresolved-products.json"))
     shard_paths = sorted(args.shards.glob("**/result.json"))
     if not shard_paths:
         raise SystemExit("no shard result files found")
@@ -83,11 +94,21 @@ def main() -> None:
         key = f"http={status};api={api_code};data={data_present}"
         response_types[key] = response_types.get(key, 0) + 1
 
+    history = list(base_summary.get("retryHistory") or [])
+    history.append({
+        "baseRunId": args.base_run_id or base_summary.get("baseRunId"),
+        "baseSuccessfulCount": base_success,
+        "baseUnresolvedCount": base_unresolved_count,
+        "retryShardCount": shard_count,
+        "retryRecoveredCount": len(recovered),
+        "retryAttemptCount": len(attempts),
+    })
+
     summary = {
         "sellerId": base_summary.get("sellerId"),
         "storeId": base_summary.get("storeId"),
         "catalogCount": catalog_count,
-        "baseRunId": 30625752041,
+        "baseRunId": args.base_run_id or base_summary.get("baseRunId"),
         "baseSuccessfulCount": base_success,
         "baseUnresolvedCount": base_unresolved_count,
         "retryShardCount": shard_count,
@@ -100,6 +121,7 @@ def main() -> None:
         "publisherExactUnicornCount": len(exact),
         "unresolvedResponseTypes": response_types,
         "retryAttemptCount": len(attempts),
+        "retryHistory": history,
     }
 
     args.output.mkdir(parents=True, exist_ok=True)
