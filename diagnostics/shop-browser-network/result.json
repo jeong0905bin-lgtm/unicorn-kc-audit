@@ -22,23 +22,12 @@
         "accept-language": "ko-KR"
       },
       "postData": "",
-      "status": 200,
+      "status": 403,
       "responseHeaders": {
-        "content-type": "application/json"
+        "content-type": "text/html"
       },
-      "responseLength": 36250,
-      "responsePrefix": "{\"bodyClassName\":\"fw-font-apple-gothic\",\"header\":\"<div id=\\\"wa-config\\\" data-currency=\\\"__원\\\" data-disable-price-translate=\\\"false\\\" data-arrow-left=\\\"https://assets.coupangcdn.com/front/front-web-next/_next/static/media/arrow_left.128503b7.png\\\" data-t=\\\"{&quot;94b7db&quot;:&quot;닫기&quot;,&quot;ff1379&quot;:&quot;삭제가 안됐나요? 다시 한번 해보세요.&quot;,&quot;52624c&quot;:&quot;최근본 상품이&quot;,&quot;7779d6&quot;:&quot;없습니다.&quot;,&quot;2d47c8&quot;:&quot;다시 시도해 주세요.&quot;,&quot;back&quot;:&quot;뒤로가기&quot;,&quot;4b8d54&quot;:&quot;검색&quot;,&quot;990d4f&quot;:&quot;마이크&quot;,&quot;2bdfeb&quot;:&quot;최근검색어켜기&quot;,&quot;c8917d&quot;:&quot;최근검색어끄기&quot;,&quot;fd74f0&quot;:&quot;검색어&quot;,&quot;8124e8&quot;:&quot;최근&quot;,&quot;fc81e2&quot;:&quot;삭제&quot;,&quot;f3dc4f&quot;:&quot;최근 검색어 저장 기능이 꺼져 있습니다.&quot;,&quot;4bcb41&quot;:&quot;여행/티켓&quot;,&quot;0037c7&quot;:&quot;테마관&quot;,&quot;6e50be&quot;:&quot;더보기&quot;,&quot;a4b69f&quot;:&quot;전체&quot;}\\\" data-search-uri=\\\"/np/search\\\" data-web-domain=\\\"https://www.coupang.com\\\" data-apply-app-redirection=\\\"1\\\"></div><div id=\\\"wa-header\\\" class=\\\"fw-font-apple-gothic  fw-bg-white s600:fw-static \\\"><div class=\\\"fw-bg-[#f0f0f0] \\\" id=\\\"wa-top-bar\\\" data-user-name-masked=\\\"false\\\"><div style=\\\"max-width:1280px\\\" class=\\\"fw-m-auto fw-w-full fw-text-[11px]\\\"><menu class=\\\"fw-relative fw-float-right *:fw-float-right *:fw-h-[33px] *:fw-pr-[12px] *:fw-pt-[10px]\\\"><li class=\\\"fw-hidden s600:fw-block\\\"><a href=\\\"https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_top_right_cta&amp;utm_medium=non_paid&amp;utm_campaign=seller_registration\\\">판매자 가입</a></li><li class=\\\"cs-center fw-group fw-relative\\\"><a href=\\\"https://mc.coupang.com/ssr/desktop/contact/faq\\\" data-log=\\\"{ id: &#x27;customer_center&#x27;}\\\">고객센터</a><p class=\\\"fw-hidden group-hover:fw-block\\\" style=\\\"z-index:9999\\\"><a href=\\\"https://mc.coupang.com/ssr/desktop/contact/faq\\\" data-log=\\\"{ id:&#x27;customer_center_1&#x27; }\\\">자주묻는 질문</a><a href=\\\"https://mc.coupang.com/ssr/desktop/contact/inquiry\\\" data-log=\\\"{ id:&#x27;customer_center_3&#x27; }\\\">1:1 채팅문의</a><a href=\\\"https://mc.coupang.com/ssr/desktop/contact/voc\\\" data-log=\\\"{ id:&#x27;customer_center_2&#x27; }\\\">고객의 소리</a><a href=\\\"https://www.coupang.com/returnPolicy.pang\\\" data-log=\\\"{ id:&#x27;customer_center_4&#x27; }\\\">취소 / 반품 안내</a></p></li><li><a href=\\\"https://login.coupang.com/login/memberJoinFrm.pang\\\" title=\\\"회원가입\\\">회원가입</a></li><li><a href=\\\"https://login.coupang.com/login/login.pang?rtnUrl=https%3A%2F%2Fwww.coupang.com%2Fnp%2Fpost%2Flogin%3Fr%3Dhttps%253A%252F%252Fwww.coupang.com\\\" title=\\\"로그인\\\">로그인</a></li></menu><menu id=\\\"subscribeHeader\\\" class=\\\"fw-hidden s600:fw-block\\\"><li class=\\\"new-header\\\"><a id=\\\"wa-bookmark\\\" data-msg=\\\"Ctrl+D 키를 누르면 즐겨찾기에 추가하실 수 있습니다.\\\" class=\\\"bookmark\\\" data-log=\\\"{ id: &quot;add_to_favorites&quot; }\\\">즐겨찾기</a></li><li class=\\\"vendor-join\\\"><a class=\\\"dropdown_menu_flag\\\">입점신청<i class=\\\"ic\\\"></i></a><p class=\\\"vendor-join-menu fw-hidden\\\" style=\\\"z-index:9999\\\"><a href=\\\"https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_top_left_cta&amp;utm_medium=non_paid&amp;utm_campaign=openmarket\\\" data-log=\\\"{ id:&#x27;seller_page&#x27; }\\\" target=\\\"_blank\\\">오픈마켓</a><a href=\\\"https://with.coupang.com/contract/initialize\\\" data-log=\\\"{ id:&#x27;travel_seller_page&#x27; }\\\" target=\\\"_blank\\\">여행·티켓</a><a href=\\\"https://supplier.coupang.com/welcome/join\\\" data-log=\\\"{ id:&#x27;rocket_seller_page&#x27; }\\\" target=\\\"_blank\\\">로켓배송</a><a href=\\\"https://partners.coupang.com\\\" data-log=\\\"{ id:&#x27;affiliate_marketing_page&#x27; }\\\" target=\\\"_blank\\\">제휴마케팅</a><a href=\\\"https://sell.coupang.com?utm_source=web_button_pc_rg&amp;utm_medium=referral&amp;utm_campaign=onsite_lead&amp;utm_id=coupang_web?inflow=WEB_HEADER_B\\\" data-log=\\\"{ id:&#x27;rocketGrowth&#x27; }\\\" target=\\\"_blank\\\">로켓그로스</a></p></li></menu><div class=\\\"fw-invisible fw-clear-both fw-h-[0px]\\\">.</div></div></div><div><select id=\\\"wa-category-select\\\" name=\\\"component\\\" class=\\\"searchCategories search_category_filter fw-hidden\\\"><option value=\\\"\\\" data-text=\\\"전체\\\">전체</option></select><div style=\\\"max-width:1280px\\\" class=\\\"fw-mx-auto fw-flex fw-w-full fw-items-center fw-pr-[5px] max-s1024:rlux:fw-bg-[#131516]\\\"><div id=\\\"wa-category\\\" class=\\\"fw-relative fw-flex fw-h-[48px] fw-w-[48px] fw-cursor-pointer fw-flex-col fw-items-center fw-justify-center fw-bg-[#346aff] rlux:fw-bg-[#131516] s1024:fw-h-[119px] s1024:fw-w-[110px]\\\"><div class=\\\"fw-flex fw-h-[24px] fw-w-[24px] fw-flex-col fw-items-center fw-justify-around s1024:fw-h-[28px] s1024:fw-w-[28px]\\\"><div class=\\\"fw-h-[1px] fw-w-full fw-bg-white s1024:fw-h-[4px]\\\"></div><div class=\\\"fw-h-[1px] fw-w-full fw-bg-white s1024:fw-h-[4px]\\\"></div><div class=\\\"fw-h-[1px] fw-w-full fw-bg-white s1024:fw-h-[4px]\\\"></div></div><div class=\\\"fw-mt-[15px] fw-hidden fw-text-center fw-text-[13px] fw-font-normal fw-leading-none fw-text-white s1024:fw-block\\\">카테고리</div><div class=\\\"category-layer\\\" id=\\\"wa-pc-category\\\" data-icons=\\\"https://assets.coupangcdn.com/front/front-web-next/_next/static/media/icons.03b3790b.png\\\" style=\\\"z-index:9999\\\"><div class=\\\"fw-hidden\\\">쇼핑</div><ul class=\\\"menu shopping-menu-list fd\\\"></ul><div class=\\\"fw-hidden\\\">티켓</div><ul class=\\\"menu ticket-menu-list fd\\\"></ul><div class=\\\"fw-hidden\\\">테마관</div><ul class=\\\"menu theme-menu-list menu-divider fd fw-hidden\\\"></ul><ul class=\\\"menu ingress-menu-list fd\\\"><li class=\\\"ingress-point\\\"><a href=\\\"https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_category_cta&amp;utm_medium=non_paid&amp;utm_campaign=category\\\" data-el=\\\"seller_signup\\\" data-text=\\\"입점/판매 신청\\\">입점/판매 신청</a></li></ul><div class=\\\"loader-wrapper\\\"><span class=\\\"loader\\\"></span></div></div><div class=\\\"fw-absolute fw-left-0 fw-top-[114px] fw-z-10 fw-hidden fw-w-[220px] fw-overflow-auto fw-bg-white fw-shadow-md\\\" id=\\\"wa-mobile-category\\\" style=\\\"z-index:9999\\\"><div id=\\\"wa-mobile-category-language\\\"></div><div id=\\\"wa-category-list-wrap\\\"></div><div id=\\\"wa-mobile-category-app-links\\\"></div><div class=\\\"loader-wrapper\\\"><span class=\\\"loader\\\"></span></div></div></div><div class=\\\"fw-flex fw-flex-1 fw-flex-col max-s1024:fw-h-[48px]\\\"><div class=\\\"fw-ml-[16px] fw-flex fw-items-center fw-justify-between max-s1024:fw-h-[48px] s1024:fw-ml-[30px] s1024:fw-mt-[20px]\\\"><a href=\\\"https://www.coupang.com\\\" class=\\\"fw-mr-[25px] fw-inline-block fw-flex-none\\\" data-log=\\\"{ id: &#x27;coupang_header_logo_click&#x27; }\\\"><img loading=\\\"lazy\\\" class=\\\"fw-h-[23px] fw-w-[101px] s1024:fw-h-[36px] s1024:fw-w-[154px]\\\" src=\\\"//image7.coupangcdn.com/image/coupang/common/logo_coupang_w350.png\\\" alt=\\\"Coupang\\\"/></a><form id=\\\"wa-search-form\\\" class=\\\"product-search search-form fw-flex fw-flex-1 fw-items-center fw-border-0 fw-hidden s1024:fw-flex fw-border-2 rlux:fw-border-bluegray-1000\\\" action=\\\"https://www.coupang.com/np/search\\\"><div class=\\\"select--category fw-w-[90px] s500:fw-w-[135px]\\\"><span class=\\\"select--category--button\\\"></span><a class=\\\"select--category__current rlux:fw-text-bluegray-800\\\" id=\\\"currentCategoryText\\\">전체</a></div><div class=\\\"header-searchForm fw-relative fw-flex-1\\\"><input type=\\\"text\\\" maxLength=\\\"150\\\" placeholder=\\\"찾고 싶은 상품을 검색해보세요!\\\" class=\\\"headerSearchKeyword coupang-search fw-h-full fw-w-full fw-bg-white fw-indent-[10px] fw-text-[14px] fw-outline-none rlux:fw-text-bluegray-1000 rlux:placeholder:fw-text-bluegray-800\\\" title=\\\"쿠팡 상품 검색\\\" autoComplete=\\\"off\\\" name=\\\"q\\\" value=\\\"\\\"/><input type=\\\"hidden\\\" name=\\\"traceId\\\"/><div class=\\\"headerPopupWords popularity-words\\\" style=\\\"z-index:9999\\\"><div class=\\\"autocomplete_wrap\\\"></div><div class=\\\"history-btns\\\"><span class=\\\"delete-all-kwdhistory del-button\\\">전체삭제</span><span class=\\\"history-on-off on\\\">최근검색어끄기</span></div></div></div><a class=\\\"speech-mic fw-mr-[12px] fw-hidden fw-flex-none fw-cursor-pointer\\\"></a><button type=\\\"submit\\\" class=\\\"headerSearchBtn fw-mr-[12px] fw-inline-block fw-flex-none\\\" title=\\\"검색\\\">",
-      "responseTopLevelKeys": [
-        "bodyClassName",
-        "footer",
-        "header",
-        "isLogin",
-        "links",
-        "locale",
-        "metas",
-        "scripts"
-      ],
-      "responseHits": []
+      "responseLength": 406,
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;layout&#47;templateV2\" on this server.<P>\nReference&#32;&#35;18&#46;4e0f3417&#46;1785493572&#46;6cec370a\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;4e0f3417&#46;1785493572&#46;6cec370a</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "GET",
@@ -51,31 +40,12 @@
         "accept-language": "ko-KR"
       },
       "postData": "",
-      "status": 200,
+      "status": 403,
       "responseHeaders": {
-        "content-type": "application/json"
+        "content-type": "text/html"
       },
-      "responseLength": 500,
-      "responsePrefix": "{\"enableSearchBarImprovement\":false,\"enableInShopNotificationList\":true,\"enableNewFilterExperience\":false,\"enableTopSellingForSearchPage\":false,\"enableRgFilter\":true,\"hideAllProductsPageCategory\":false,\"enableBTC\":true,\"enableAllProductsExpB\":false,\"enableSearchBarIconRemovedStyle\":false,\"expValueForNoDeadEndBrandShop\":\"A\",\"enableSetPromotionBanner\":false,\"enableFullScreenMode\":true,\"farfetchRankingGroup\":null,\"expValueForBetterVisualize\":\"A\",\"farfetchBadgeExpB\":false,\"longTermHoldOutExpB\":true}",
-      "responseTopLevelKeys": [
-        "enableAllProductsExpB",
-        "enableBTC",
-        "enableFullScreenMode",
-        "enableInShopNotificationList",
-        "enableNewFilterExperience",
-        "enableRgFilter",
-        "enableSearchBarIconRemovedStyle",
-        "enableSearchBarImprovement",
-        "enableSetPromotionBanner",
-        "enableTopSellingForSearchPage",
-        "expValueForBetterVisualize",
-        "expValueForNoDeadEndBrandShop",
-        "farfetchBadgeExpB",
-        "farfetchRankingGroup",
-        "hideAllProductsPageCategory",
-        "longTermHoldOutExpB"
-      ],
-      "responseHits": []
+      "responseLength": 408,
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;store&#47;features&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;4e0f3417&#46;1785493572&#46;6cec3b9e\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;4e0f3417&#46;1785493572&#46;6cec3b9e</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "GET",
@@ -88,19 +58,12 @@
         "accept-language": "ko-KR"
       },
       "postData": "",
-      "status": 200,
+      "status": 403,
       "responseHeaders": {
-        "content-type": "application/json"
+        "content-type": "text/html"
       },
-      "responseLength": 79,
-      "responsePrefix": "{\"storeId\":79545,\"favorite\":false,\"followCount\":-1,\"notificationEnabled\":false}",
-      "responseTopLevelKeys": [
-        "favorite",
-        "followCount",
-        "notificationEnabled",
-        "storeId"
-      ],
-      "responseHits": []
+      "responseLength": 416,
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;sub&#47;getStoreFollowInfo&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;4e0f3417&#46;1785493572&#46;6cec412f\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;4e0f3417&#46;1785493572&#46;6cec412f</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "POST",
@@ -126,7 +89,7 @@
         "content-type": "text/html"
       },
       "responseLength": 412,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;menu&#47;checkCompatibility\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d752f0\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d752f0</P>\n</BODY>\n</HTML>\n"
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;menu&#47;checkCompatibility\" on this server.<P>\nReference&#32;&#35;18&#46;4e0f3417&#46;1785493572&#46;6cec4131\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;4e0f3417&#46;1785493572&#46;6cec4131</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "GET",
@@ -144,7 +107,7 @@
         "content-type": "text/html"
       },
       "responseLength": 429,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;creative&#95;module&#47;data&#47;933969&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d752f1\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d752f1</P>\n</BODY>\n</HTML>\n"
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;creative&#95;module&#47;data&#47;933969&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;4e0f3417&#46;1785493572&#46;6cec4132\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;4e0f3417&#46;1785493572&#46;6cec4132</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "GET",
@@ -192,12 +155,208 @@
         "nextPageKey": 0,
         "filter": "SORT_KEY:"
       },
-      "status": 403,
+      "status": 200,
       "responseHeaders": {
-        "content-type": "text/html"
+        "content-type": "application/json"
       },
-      "responseLength": 392,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;listing\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d752f3\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d752f3</P>\n</BODY>\n</HTML>\n"
+      "responseLength": 92748,
+      "responsePrefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"products\":[{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"4,400\",\"lowestPrice\":\"4,400\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"4,400\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":0,\"finalPriceForBtc\":0,\"priceWithIdForBtc\":0,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"세계지도: 한 눈에 보는 지도 퍼즐 (72조각 소퍼즐), 지원출판\",\"description\":\"\",\"defaultUrl\":\"//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/81eb/1d6c8ebd914ebf4a741719ca7a0738115f6ba227e9cb10f4c849bcb9172b.jpg\",\"oriDefaultUrl\":\"vendor_inventory/81eb/1d6c8ebd914ebf4a741719ca7a0738115f6ba227e9cb10f4c849bcb9172b.jpg\",\"completeHttpUrl\":\"https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/81eb/1d6c8ebd914ebf4a741719ca7a0738115f6ba227e9cb10f4c849bcb9172b.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"세계지도: 한 눈에 보는 지도 퍼즐 (72조각 소퍼즐)\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 220원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":[],\"usedProductPrice\":null,\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":5.0,\"ratingCount\":123,\"ratingRatio\":100,\"link\":null,\"mlink\":null},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/6810384474?itemId=16108403732&vendorItemId=83188206127&sourceType=direct&vendorId=A00214628&storeId=79545&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing\",\"mlink\":\"coupang://product?sourceType=direct&pId=6810384474&vendorItemId=83188206127&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing&title=%EC%84%B8%EA%B3%84%EC%A7%80%EB%8F%84%3A+%ED%95%9C+%EB%88%88%EC%97%90+%EB%B3%B4%EB%8A%94+%EC%A7%80%EB%8F%84+%ED%8D%BC%EC%A6%90+%2872%EC%A1%B0%EA%B0%81+%EC%86%8C%ED%8D%BC%EC%A6%90%29&sdpImageUrl=https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/81eb/1d6c8ebd914ebf4a741719ca7a0738115f6ba227e9cb10f4c849bcb9172b.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":83188206127,\"productId\":6810384474,\"itemId\":16108403732,\"unitPrice\":\"\",\"priceLabel\":\"\",\"salesStartDate\":\"2022-09-20T07:25:04Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":null,\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":null,\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":0,\"finalPrice\":0,\"priceWithID\":0,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":null,\"brandInfo\":null,\"deliveryInfo\":null,\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false},{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"4,500\",\"lowestPrice\":\"4,500\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"4,500\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":0,\"finalPriceForBtc\":0,\"priceWithIdForBtc\":0,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"군용장비 조립하기, 지원\",\"description\":\"\",\"defaultUrl\":\"//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/9bfb/4d0e604ae2e9b98b6b20ed5470446ae0d270e6a1374fd8702a0049ee6370.jpg\",\"oriDefaultUrl\":\"vendor_inventory/9bfb/4d0e604ae2e9b98b6b20ed5470446ae0d270e6a1374fd8702a0049ee6370.jpg\",\"completeHttpUrl\":\"https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/9bfb/4d0e604ae2e9b98b6b20ed5470446ae0d270e6a1374fd8702a0049ee6370.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"군용장비 조립하기\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 225원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":[],\"usedProductPrice\":null,\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":4.5,\"ratingCount\":11,\"ratingRatio\":90,\"link\":null,\"mlink\":null},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/4402763?itemId=20754909&vendorItemId=5552103323&sourceType=direct&vendorId=A00214628&storeId=79545&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing\",\"mlink\":\"coupang://product?sourceType=direct&pId=4402763&vendorItemId=5552103323&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing&title=%EA%B5%B0%EC%9A%A9%EC%9E%A5%EB%B9%84+%EC%A1%B0%EB%A6%BD%ED%95%98%EA%B8%B0&sdpImageUrl=https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/9bfb/4d0e604ae2e9b98b6b20ed5470446ae0d270e6a1374fd8702a0049ee6370.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":5552103323,\"productId\":4402763,\"itemId\":20754909,\"unitPrice\":\"\",\"priceLabel\":\"\",\"salesStartDate\":\"2021-03-02T09:33:39Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":null,\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":null,\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":0,\"finalPrice\":0,\"priceWithID\":0,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":null,\"brandInfo\":null,\"deliveryInfo\":null,\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false},{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"7,650\",\"lowestPrice\":\"7,650\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"7,650\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":0,\"finalPriceForBtc\":0,\"priceWithIdForBtc\":0,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"1일 1독해 예비 초등 세계 나라 ",
+      "responseTopLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "responseHits": [
+        {
+          "path": "$.data.products[0].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[1].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[1].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933341/113706479/detail/9791129708540_L.jpg']"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.detailImageUrls[0]",
+          "value": "//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933341/113706479/detail/9791129708540_L.jpg"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933341/113706479/detail/9791129708540_L.jpg']"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.completeHttpDetailImageUrls[0]",
+          "value": "https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933341/113706479/detail/9791129708540_L.jpg"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.title",
+          "value": "타이거스쿨 만3세 창의력, 삼성출판사"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933348/113706486/detail/9791129708526_L.jpg']"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.detailImageUrls[0]",
+          "value": "//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933348/113706486/detail/9791129708526_L.jpg"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933348/113706486/detail/9791129708526_L.jpg']"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.completeHttpDetailImageUrls[0]",
+          "value": "https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933348/113706486/detail/9791129708526_L.jpg"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[10].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[10].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.title",
+          "value": "캐릭터스티커 상어가족:, 삼성출판사, 상세내용 참조"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/1656802107342940-322ea293-0690-472b-87ac-972bbf12b769.png', '//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/184159065549741-d68f31e4-6c31-4a3d-aafc-c9628631c612.png', '//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/517573499148906-47527cfb-4e4d-401a-a87b-0793999905e2.jpg', '//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/517546982379326-ab40ba3e-d0ff-4987-a070-465f88a09d96.jpg', '//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/516179295242681-983cfd0a-090a-4e98-be8f-d73bf4ee4fb4.jpg', '//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/517547033794740-d1b1d6c1-281b-40ad-936e-eedae6641c50.jpg', '//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/516179301208275-708fbccc-96f5-4420-a8af-0d80985f4986.jpg']"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/1656802107342940-322ea293-0690-472b-87ac-972bbf12b769.png', 'https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/184159065549741-d68f31e4-6c31-4a3d-aafc-c9628631c612.png', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/517573499148906-47527cfb-4e4d-401a-a87b-0793999905e2.jpg', 'https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/517546982379326-ab40ba3e-d0ff-4987-a070-465f88a09d96.jpg', 'https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/516179295242681-983cfd0a-090a-4e98-be8f-d73bf4ee4fb4.jpg', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/517547033794740-d1b1d6c1-281b-40ad-936e-eedae6641c50.jpg', 'https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/516179301208275-708fbccc-96f5-4420-a8af-0d80985f4986.jpg']"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.title",
+          "value": "(BOOKFRIENDS) 아기상어 숨은그림찾기 - 아기상어 미니스티커북, 페이퍼백, 삼성출판사"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/18643190094969-a0074148-2887-47ed-bd85-6a7966793bc1.jpg', '//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69922701405088-2cfc79f2-3aba-4d16-bc1e-7812bafb2361.jpg', '//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69922731299474-cdc2e05c-c1f9-4a08-a3ba-60fd256535c8.jpg', '//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69922788573891-316f04a4-2c67-451b-9133-62f714c94391.jpg', '//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34777989253308-3e16f9ea-80d7-4e45-ada7-d0f170399853.jpg', '//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68925267753148-e76f4fb8-fe0b-47c5-bd23-2f63b71ead24.jpg', '//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/18643352691938-12a9b7cc-6e10-437a-b214-5892923b85de.jpg', '//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68925394584561-2cfa8d0a-f120-426d-ad0c-fb7658cc379a.jpg', '//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68925480948725-120861c0-1c89-4150-ac91-dce20d5c6a25.jpg']"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/18643190094969-a0074148-2887-47ed-bd85-6a7966793bc1.jpg', 'https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69922701405088-2cfc79f2-3aba-4d16-bc1e-7812bafb2361.jpg', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69922731299474-cdc2e05c-c1f9-4a08-a3ba-60fd256535c8.jpg', 'https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69922788573891-316f04a4-2c67-451b-9133-62f714c94391.jpg', 'https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34777989253308-3e16f9ea-80d7-4e45-ada7-d0f170399853.jpg', 'https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68925267753148-e76f4fb8-fe0b-47c5-bd23-2f63b71ead24.jpg', 'https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/18643352691938-12a9b7cc-6e10-437a-b214-5892923b85de.jpg', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68925394584561-2cfa8d0a-f120-426d-ad0c-fb7658cc379a.jpg', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68925480948725-120861c0-1c89-4150-ac91-dce20d5c6a25.jpg']"
+        },
+        {
+          "path": "$.data.products[16].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[16].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[17].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[17].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[18].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[18].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        }
+      ]
     },
     {
       "method": "GET",
@@ -215,48 +374,7 @@
         "content-type": "text/html"
       },
       "responseLength": 421,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;benefit&#47;getStoreBenefitInfo&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d752f4\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d752f4</P>\n</BODY>\n</HTML>\n"
-    },
-    {
-      "method": "POST",
-      "url": "https://shop.coupang.com/api/v1/filter",
-      "resourceType": "xhr",
-      "headers": {
-        "referer": "https://shop.coupang.com/A00214628?platform=p",
-        "accept-language": "ko-KR",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-        "accept": "application/json, text/plain, */*",
-        "content-type": "application/json"
-      },
-      "postData": "{\"filterQuery\":\"VENDOR_ID:A00214628|CATEGORY:34793@VENDOR\",\"brandId\":0}",
-      "postJson": {
-        "filterQuery": "VENDOR_ID:A00214628|CATEGORY:34793@VENDOR",
-        "brandId": 0
-      },
-      "status": 403,
-      "responseHeaders": {
-        "content-type": "text/html"
-      },
-      "responseLength": 391,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;filter\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493404&#46;11d75327\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493404&#46;11d75327</P>\n</BODY>\n</HTML>\n"
-    },
-    {
-      "method": "GET",
-      "url": "https://shop.coupang.com/api/v1/store/getStoreReview?storeId=79545&vendorId=A00214628&urlName=A00214628",
-      "resourceType": "xhr",
-      "headers": {
-        "referer": "https://shop.coupang.com/A00214628?platform=p",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-        "accept": "application/json, text/plain, */*",
-        "accept-language": "ko-KR"
-      },
-      "postData": "",
-      "status": 403,
-      "responseHeaders": {
-        "content-type": "text/html"
-      },
-      "responseLength": 414,
-      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;store&#47;getStoreReview&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;214e4317&#46;1785493405&#46;11d75453\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;214e4317&#46;1785493405&#46;11d75453</P>\n</BODY>\n</HTML>\n"
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;benefit&#47;getStoreBenefitInfo&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;4e0f3417&#46;1785493572&#46;6cec4135\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;4e0f3417&#46;1785493572&#46;6cec4135</P>\n</BODY>\n</HTML>\n"
     },
     {
       "method": "POST",
@@ -288,17 +406,918 @@
         "msg"
       ],
       "responseHits": []
+    },
+    {
+      "method": "POST",
+      "url": "https://shop.coupang.com/api/v1/listing",
+      "resourceType": "xhr",
+      "headers": {
+        "referer": "https://shop.coupang.com/A00214628?platform=p",
+        "accept-language": "ko-KR",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json"
+      },
+      "postData": "{\"storeId\":79545,\"brandId\":0,\"vendorId\":\"A00214628\",\"source\":\"direct\",\"enableAdultItemDisplay\":true,\"nextPageKey\":1,\"filter\":\"SORT_KEY:\"}",
+      "postJson": {
+        "storeId": 79545,
+        "brandId": 0,
+        "vendorId": "A00214628",
+        "source": "direct",
+        "enableAdultItemDisplay": true,
+        "nextPageKey": 1,
+        "filter": "SORT_KEY:"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "content-type": "application/json"
+      },
+      "responseLength": 101052,
+      "responsePrefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"products\":[{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"7,650\",\"lowestPrice\":\"7,650\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"7,650\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":0,\"finalPriceForBtc\":0,\"priceWithIdForBtc\":0,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"1일 1독해 예비 초등 과학 이야기 4, 국어(독해), 예비 초등/4\",\"description\":\"\",\"defaultUrl\":\"//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933350/113706488/main/9791129708588_L.jpg\",\"oriDefaultUrl\":\"retail-product-api/A00077021/101933350/113706488/main/9791129708588_L.jpg\",\"completeHttpUrl\":\"https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933350/113706488/main/9791129708588_L.jpg\",\"detailImageUrls\":[\"//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933350/113706488/detail/9791129708588_L.jpg\"],\"completeHttpDetailImageUrls\":[\"https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933350/113706488/detail/9791129708588_L.jpg\"],\"groupTitle\":\"1일 1독해 예비 초등 과학 이야기 4\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 383원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":[],\"usedProductPrice\":null,\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":5.0,\"ratingCount\":29,\"ratingRatio\":100,\"link\":null,\"mlink\":null},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/6610473539?itemId=14987579998&vendorItemId=82212026967&sourceType=direct&vendorId=A00214628&storeId=79545&searchId=aaff0732a0b14a0595a312f13b1ba0af&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing\",\"mlink\":\"coupang://product?sourceType=direct&pId=6610473539&vendorItemId=82212026967&searchId=aaff0732a0b14a0595a312f13b1ba0af&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing&title=1%EC%9D%BC+1%EB%8F%85%ED%95%B4+%EC%98%88%EB%B9%84+%EC%B4%88%EB%93%B1+%EA%B3%BC%ED%95%99+%EC%9D%B4%EC%95%BC%EA%B8%B0+4&sdpImageUrl=https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933350/113706488/main/9791129708588_L.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":82212026967,\"productId\":6610473539,\"itemId\":14987579998,\"unitPrice\":\"\",\"priceLabel\":\"\",\"salesStartDate\":\"2022-06-28T07:17:15Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":null,\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":null,\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":0,\"finalPrice\":0,\"priceWithID\":0,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":null,\"brandInfo\":null,\"deliveryInfo\":null,\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false},{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"8,820\",\"lowestPrice\":\"8,820\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"8,820\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":0,\"finalPriceForBtc\":0,\"priceWithIdForBtc\":0,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"초등 필수 백과: 고학년 되기 전에 이것만은 꼭!, 삼성출판사, 삼성출판사 편집부\",\"description\":\"\",\"defaultUrl\":\"//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4074197476524269-b87aa1c0-9b4c-44de-872e-e72b20cd8be7.jpg\",\"oriDefaultUrl\":\"retail/images/4074197476524269-b87aa1c0-9b4c-44de-872e-e72b20cd8be7.jpg\",\"completeHttpUrl\":\"https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4074197476524269-b87aa1c0-9b4c-44de-872e-e72b20cd8be7.jpg\",\"detailImageUrls\":[\"//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160280720377664-ec67c056-acd0-409d-9099-483ec0164b7d.png\",\"//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/267158726046980-6cc59daa-0e60-4e0c-afc5-a43243a34bb4.png\",\"//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160280714849394-01c6071b-d234-4524-916d-ce4534ebe084.png\",\"//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/305091701464943-41d5ac4b-5d8c-42a5-a505-60c33d8f3790.png\",\"//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160283499515160-12eb6cf3-1ce9-4384-a044-0e4a18994e57.png\",\"//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2848981565394984-500415d6-dfd6-490e-987f-9126e3a243f5.png\"],\"completeHttpDetailImageUrls\":[\"https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160280720377664-ec67c056-acd0-409d-9099-483ec0164b7d.png\",\"https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/267158726046980-6cc59daa-0e60-4e0c-afc5-a43243a34bb4.png\",\"https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160280714849394-01c6071b-d234-4524-916d-ce4534ebe084.png\",\"https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/305091701464943-41d5ac4b-5d8c-42a5-a505-60c33d8f3790.png\",\"https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160283499515160-12eb6cf3-1ce9-4384-a044-0e4a18994e57.png\",\"https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2848981565394984-500415d6-dfd6-490e-987f-9126e3a243f5.png\"],\"groupTitle\":\"초등 필수 백과: 고학년 되기 전에 이것만은 꼭!\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 441원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":[],\"usedProductPrice\":null,\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":4.5,\"ratingCount\":2802,\"ratingRatio\":90,\"link\":null,\"mlink\":null},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/7000406598?itemId=17165433343&vendorItemId=84442042531&sourceType=direct&vendorId=A00214628&storeId=79545&searc",
+      "responseTopLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "responseHits": [
+        {
+          "path": "$.data.products[0].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933350/113706488/detail/9791129708588_L.jpg']"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.detailImageUrls[0]",
+          "value": "//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933350/113706488/detail/9791129708588_L.jpg"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933350/113706488/detail/9791129708588_L.jpg']"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.completeHttpDetailImageUrls[0]",
+          "value": "https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/101933350/113706488/detail/9791129708588_L.jpg"
+        },
+        {
+          "path": "$.data.products[1].imageAndTitleArea.title",
+          "value": "초등 필수 백과: 고학년 되기 전에 이것만은 꼭!, 삼성출판사, 삼성출판사 편집부"
+        },
+        {
+          "path": "$.data.products[1].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160280720377664-ec67c056-acd0-409d-9099-483ec0164b7d.png', '//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/267158726046980-6cc59daa-0e60-4e0c-afc5-a43243a34bb4.png', '//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160280714849394-01c6071b-d234-4524-916d-ce4534ebe084.png', '//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/305091701464943-41d5ac4b-5d8c-42a5-a505-60c33d8f3790.png', '//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160283499515160-12eb6cf3-1ce9-4384-a044-0e4a18994e57.png', '//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2848981565394984-500415d6-dfd6-490e-987f-9126e3a243f5.png']"
+        },
+        {
+          "path": "$.data.products[1].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160280720377664-ec67c056-acd0-409d-9099-483ec0164b7d.png', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/267158726046980-6cc59daa-0e60-4e0c-afc5-a43243a34bb4.png', 'https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160280714849394-01c6071b-d234-4524-916d-ce4534ebe084.png', 'https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/305091701464943-41d5ac4b-5d8c-42a5-a505-60c33d8f3790.png', 'https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4160283499515160-12eb6cf3-1ce9-4384-a044-0e4a18994e57.png', 'https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2848981565394984-500415d6-dfd6-490e-987f-9126e3a243f5.png']"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098980/135141676/detail/8809854310462_L.jpg']"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.detailImageUrls[0]",
+          "value": "//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098980/135141676/detail/8809854310462_L.jpg"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098980/135141676/detail/8809854310462_L.jpg']"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.completeHttpDetailImageUrls[0]",
+          "value": "https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098980/135141676/detail/8809854310462_L.jpg"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[10].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[10].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[16].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/845392205196219-7e42a70a-6413-4cb8-a2d5-695525074928.jpg']"
+        },
+        {
+          "path": "$.data.products[16].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/845392205196219-7e42a70a-6413-4cb8-a2d5-695525074928.jpg']"
+        },
+        {
+          "path": "$.data.products[17].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[17].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[18].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[18].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "url": "https://shop.coupang.com/api/v1/filter",
+      "resourceType": "xhr",
+      "headers": {
+        "referer": "https://shop.coupang.com/A00214628?platform=p",
+        "accept-language": "ko-KR",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json"
+      },
+      "postData": "{\"filterQuery\":\"VENDOR_ID:A00214628|CATEGORY:34793@VENDOR\",\"brandId\":0}",
+      "postJson": {
+        "filterQuery": "VENDOR_ID:A00214628|CATEGORY:34793@VENDOR",
+        "brandId": 0
+      },
+      "status": 200,
+      "responseHeaders": {
+        "content-type": "application/json"
+      },
+      "responseLength": 219260,
+      "responsePrefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"extraFilters\":[{\"name\":\"정렬\",\"valueType\":\"SORT_KEY\",\"dataType\":\"SORT_KEY\",\"layoutType\":\"TEXT\",\"viewType\":{\"selectType\":\"SELECT\",\"rowCount\":null,\"columnCount\":3},\"componentId\":null,\"attributeId\":null,\"brandsOnMainView\":null,\"mainViewDisplayCount\":null,\"valid\":null,\"headerHide\":null,\"fixed\":true,\"detailOpen\":false,\"defaultFilter\":null,\"customFilter\":null,\"customFilterOrder\":null,\"filters\":[{\"id\":null,\"campaignId\":null,\"name\":\"쿠팡 랭킹순\",\"value\":\"POPULARITY\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":true,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null},{\"id\":null,\"campaignId\":null,\"name\":\"낮은 가격순\",\"value\":\"LOW_PRICE\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":false,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null},{\"id\":null,\"campaignId\":null,\"name\":\"높은 가격순\",\"value\":\"HIGH_PRICE\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":false,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null},{\"id\":null,\"campaignId\":null,\"name\":\"판매량순\",\"value\":\"BEST_SELLING\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":false,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null},{\"id\":null,\"campaignId\":null,\"name\":\"최신순\",\"value\":\"LATEST\",\"code\":null,\"count\":null,\"description\":null,\"selected\":null,\"radioAll\":false,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":null,\"sortKey\":null,\"componentId\":null}],\"async\":null,\"targetSectionTypes\":[]},{\"name\":\"카테고리\",\"valueType\":\"CATEGORY\",\"dataType\":\"CATEGORY\",\"layoutType\":\"TEXT\",\"viewType\":{\"selectType\":\"SINGLE_CHECKBOX\",\"rowCount\":null,\"columnCount\":3},\"componentId\":null,\"attributeId\":null,\"brandsOnMainView\":null,\"mainViewDisplayCount\":null,\"valid\":null,\"headerHide\":null,\"fixed\":true,\"detailOpen\":false,\"defaultFilter\":null,\"customFilter\":null,\"customFilterOrder\":null,\"filters\":[{\"id\":346778,\"campaignId\":null,\"name\":\"유아동도서\",\"value\":\"346778\",\"code\":null,\"count\":354759,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346802,\"campaignId\":null,\"name\":\"놀이책/토이북\",\"value\":\"346802\",\"code\":null,\"count\":128100,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346803,\"campaignId\":null,\"name\":\"스티커북\",\"value\":\"346803\",\"code\":null,\"count\":45858,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346807,\"campaignId\":null,\"name\":\"사운드북\",\"value\":\"346807\",\"code\":null,\"count\":41690,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346808,\"campaignId\":null,\"name\":\"만들기/종이접기\",\"value\":\"346808\",\"code\":null,\"count\":15520,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346805,\"campaignId\":null,\"name\":\"퍼즐북\",\"value\":\"346805\",\"code\":null,\"count\":8757,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346804,\"campaignId\":null,\"name\":\"색칠하기\",\"value\":\"346804\",\"code\":null,\"count\":8433,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346806,\"campaignId\":null,\"name\":\"입체책\",\"value\":\"346806\",\"code\":null,\"count\":3994,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346810,\"campaignId\":null,\"name\":\"블록/교구\",\"value\":\"346810\",\"code\":null,\"count\":3836,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346812,\"campaignId\":null,\"name\":\"기타 놀이책\",\"value\":\"346812\",\"code\":null,\"count\":5,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346811,\"campaignId\":null,\"name\":\"토이북\",\"value\":\"346811\",\"code\":null,\"count\":3,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346809,\"campaignId\":null,\"name\":\"미술 워크북\",\"value\":\"346809\",\"code\":null,\"count\":1,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null}],\"sortKey\":null,\"componentId\":null},{\"id\":346813,\"campaignId\":null,\"name\":\"학습/교양\",\"value\":\"346813\",\"code\":null,\"count\":101087,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346850,\"campaignId\":null,\"name\":\"학습일반/공부법\",\"value\":\"346850\",\"code\":null,\"count\":21022,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346841,\"campaignId\":null,\"name\":\"사회/역사/문화\",\"value\":\"346841\",\"code\":null,\"count\":19885,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346843,\"campaignId\":null,\"name\":\"역사/지리\",\"value\":\"346843\",\"code\":null,\"count\":11973,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346842,\"campaignId\":null,\"name\":\"사회/문화/시사\",\"value\":\"346842\",\"code\":null,\"count\":7910,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346846,\"campaignId\":null,\"name\":\"예술\",\"value\":\"346846\",\"code\":null,\"count\":3,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346844,\"campaignId\":null,\"name\":\"인물\",\"value\":\"346844\",\"code\":null,\"count\":1,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346848,\"campaignId\":null,\"name\":\"취미\",\"value\":\"346848\",\"code\":null,\"count\":1,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null}],\"sortKey\":null,\"componentId\":null},{\"id\":346832,\"campaignId\":null,\"name\":\"작문/독서/논술\",\"value\":\"346832\",\"code\":null,\"count\":13709,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[{\"id\":346834,\"campaignId\":null,\"name\":\"논리/논술/사고력\",\"value\":\"346834\",\"code\":null,\"count\":13703,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componentId\":null},{\"id\":346833,\"campaignId\":null,\"name\":\"글짓기/독서\",\"value\":\"346833\",\"code\":null,\"count\":4,\"description\":null,\"selected\":null,\"radioAll\":null,\"displayOnMainView\":null,\"image\":null,\"textImage\":null,\"resource\":null,\"children\":[],\"sortKey\":null,\"componen",
+      "responseTopLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "responseHits": [
+        {
+          "path": "$.data.extraFilters[0].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[1].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[2].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[2].filters[1].name",
+          "value": "삼성출판사"
+        },
+        {
+          "path": "$.data.extraFilters[2].filters[7].name",
+          "value": "유니콘"
+        },
+        {
+          "path": "$.data.extraFilters[3].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[4].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[5].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[6].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[7].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[8].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[9].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[10].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[11].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[12].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[13].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[14].detailOpen",
+          "value": "False"
+        },
+        {
+          "path": "$.data.extraFilters[15].detailOpen",
+          "value": "False"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "url": "https://shop.coupang.com/api/v1/listing",
+      "resourceType": "xhr",
+      "headers": {
+        "referer": "https://shop.coupang.com/A00214628?platform=p",
+        "accept-language": "ko-KR",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json"
+      },
+      "postData": "{\"storeId\":79545,\"brandId\":0,\"vendorId\":\"A00214628\",\"source\":\"direct\",\"enableAdultItemDisplay\":true,\"nextPageKey\":2,\"filter\":\"SORT_KEY:POPULARITY\"}",
+      "postJson": {
+        "storeId": 79545,
+        "brandId": 0,
+        "vendorId": "A00214628",
+        "source": "direct",
+        "enableAdultItemDisplay": true,
+        "nextPageKey": 2,
+        "filter": "SORT_KEY:POPULARITY"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "content-type": "application/json"
+      },
+      "responseLength": 100452,
+      "responsePrefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"products\":[{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"3,200\",\"lowestPrice\":\"3,200\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"3,200\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":0,\"finalPriceForBtc\":0,\"priceWithIdForBtc\":0,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"신세계 유아학습 코팅벽보 - 한글.숫자.알파벳.동물.과일.구구단.우리나라지도.세계지도, 한글2단계\",\"description\":\"\",\"defaultUrl\":\"//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/4cc7/b4a11af0d3760415dcf6b5a82fb2f28576efd21fa5d2e1e3db8e35fa59e9.jpg\",\"oriDefaultUrl\":\"vendor_inventory/4cc7/b4a11af0d3760415dcf6b5a82fb2f28576efd21fa5d2e1e3db8e35fa59e9.jpg\",\"completeHttpUrl\":\"https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/4cc7/b4a11af0d3760415dcf6b5a82fb2f28576efd21fa5d2e1e3db8e35fa59e9.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"신세계 유아학습 코팅벽보 - 한글.숫자.알파벳.동물.과일.구구단.우리나라지도.세계지도\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 160원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":[],\"usedProductPrice\":null,\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":5.0,\"ratingCount\":20,\"ratingRatio\":100,\"link\":null,\"mlink\":null},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/1061500342?itemId=2005918852&vendorItemId=70005831562&sourceType=direct&vendorId=A00214628&storeId=79545&searchId=18d6862090dd4154bef43668caeb0d33&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing\",\"mlink\":\"coupang://product?sourceType=direct&pId=1061500342&vendorItemId=70005831562&searchId=18d6862090dd4154bef43668caeb0d33&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing&title=%EC%8B%A0%EC%84%B8%EA%B3%84+%EC%9C%A0%EC%95%84%ED%95%99%EC%8A%B5+%EC%BD%94%ED%8C%85%EB%B2%BD%EB%B3%B4+-+%ED%95%9C%EA%B8%80.%EC%88%AB%EC%9E%90.%EC%95%8C%ED%8C%8C%EB%B2%B3.%EB%8F%99%EB%AC%BC.%EA%B3%BC%EC%9D%BC.%EA%B5%AC%EA%B5%AC%EB%8B%A8.%EC%9A%B0%EB%A6%AC%EB%82%98%EB%9D%BC%EC%A7%80%EB%8F%84.%EC%84%B8%EA%B3%84%EC%A7%80%EB%8F%84&sdpImageUrl=https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/4cc7/b4a11af0d3760415dcf6b5a82fb2f28576efd21fa5d2e1e3db8e35fa59e9.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":70005831562,\"productId\":1061500342,\"itemId\":2005918852,\"unitPrice\":\"\",\"priceLabel\":\"\",\"salesStartDate\":\"2024-10-31T01:14:42Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":null,\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":null,\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":0,\"finalPrice\":0,\"priceWithID\":0,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":null,\"brandInfo\":null,\"deliveryInfo\":null,\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false},{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"95,200\",\"lowestPrice\":\"95,200\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"95,200\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":0,\"finalPriceForBtc\":0,\"priceWithIdForBtc\":0,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"메가북스 큰 별쌤 최태성의 한국사 수호대 (1~8권) 세트 (완결)\",\"description\":\"\",\"defaultUrl\":\"//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/2da1/bb81b0c20c64e03e18b452d6e6f590ff507d880f27f09b21810c9f82e13f.png\",\"oriDefaultUrl\":\"vendor_inventory/2da1/bb81b0c20c64e03e18b452d6e6f590ff507d880f27f09b21810c9f82e13f.png\",\"completeHttpUrl\":\"https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/2da1/bb81b0c20c64e03e18b452d6e6f590ff507d880f27f09b21810c9f82e13f.png\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"메가북스 큰 별쌤 최태성의 한국사 수호대 (1~8권) 세트 (완결)\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 4,760원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":[],\"usedProductPrice\":null,\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":{\"badgeAreaContents\":[{\"css\":\"\",\"title\":\"무료배송\",\"iconUrl\":\"\",\"type\":\"FREE_SHIPPING\",\"discountInfo\":null,\"freeDeliveryStandard\":null}]},\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[{\"id\":\"SHIPPINGTYPE\",\"type\":\"TEXT\",\"icon\":null,\"text\":\"무료배송\"}],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":5.0,\"ratingCount\":16,\"ratingRatio\":100,\"link\":null,\"mlink\":null},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/319901892?itemId=1023493068&vendorItemId=5464635266&sourceType=direct&vendorId=A00214628&storeId=79545&searchId=18d6862090dd4154bef43668caeb0d33&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing\",\"mlink\":\"coupang://product?sourceType=direct&pId=319901892&vendorItemId=5464635266&searchId=18d6862090dd4154bef43668caeb0d33&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing&title=%EB%A9%94%EA%B0%80%EB%B6%81%EC%8A%A4+%ED%81%B0+%EB%B3%84%EC%8C%A4+%EC%B5%9C%ED%83%9C%EC%84%B1%EC%9D%98+%ED%95%9C%EA%B5%AD%EC%82%AC+%EC%88%98%ED%98%B8%EB%8C%80+%281%7E8%EA%B6%8C%29+%EC%84%B8%ED%8A%B8+%28%EC%99%84%EA%B2%B0%29&sdpImageUrl=https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/2da1/bb81b0c20c64e03e18b452d6e6f590ff507d880f27f09b21810c9f82e13f.png\",\"offsiteGmLink\":null,\"vendorItemId\":5464635266,\"productId\":319901892,\"itemId\":1023493068,\"unitPrice\":\"\",\"priceLabel\":\"\",\"salesStartDate\":\"2024-10-08T01:34:11Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":null,\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":null,\"btcInfo\":{\"freeShipOverAmountEx\":0,\"salesPrice\":0,\"finalPrice\":0,\"priceWithID\":0,\"hasCoupon\":false,\"deliveryFee\":0,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":null,\"brandInfo\":null,\"deliveryInfo\":null,\"valid\":t",
+      "responseTopLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "responseHits": [
+        {
+          "path": "$.data.products[0].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[1].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[1].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34157590458359-7d0ee94c-3f24-4ad8-9746-4c10d576afce.jpg', '//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34157619933662-b3edb654-38d0-4914-8406-3bd4344eb27b.jpg', '//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69302474901255-fc8e0636-8d33-47f6-89c4-9f66295c5573.jpg', '//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69302517325755-3919c5fb-c18c-4f89-b790-60e395660710.jpg', '//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34157721691773-ef5ac88f-58a3-4012-8e0b-12a92f0940c8.jpg', '//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68305043868150-189c246a-d22a-47c4-99c7-57bcdd8befff.jpg', '//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34157750931072-7221b648-4176-4c94-a0de-9d39dcc9b35e.jpg', '//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69302596607159-a983ccd3-0367-4aac-b52c-1ee4e2460128.jpg', '//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68305185692089-627c343a-1720-4cba-85c0-b1ec749aaa2a.jpg']"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34157590458359-7d0ee94c-3f24-4ad8-9746-4c10d576afce.jpg', 'https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34157619933662-b3edb654-38d0-4914-8406-3bd4344eb27b.jpg', 'https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69302474901255-fc8e0636-8d33-47f6-89c4-9f66295c5573.jpg', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69302517325755-3919c5fb-c18c-4f89-b790-60e395660710.jpg', 'https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34157721691773-ef5ac88f-58a3-4012-8e0b-12a92f0940c8.jpg', 'https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68305043868150-189c246a-d22a-47c4-99c7-57bcdd8befff.jpg', 'https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/34157750931072-7221b648-4176-4c94-a0de-9d39dcc9b35e.jpg', 'https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/69302596607159-a983ccd3-0367-4aac-b52c-1ee4e2460128.jpg', 'https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/68305185692089-627c343a-1720-4cba-85c0-b1ec749aaa2a.jpg']"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/1688625073586792-3ae26e1d-5a50-4ba6-b38c-9f057975b52f.png', '//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/1688625160143701-8d24d243-7261-48e1-9dbb-1d6eebbeda57.png', '//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/1688625206293639-f202f8a5-e161-4ed7-bc7e-09aa518873f2.png']"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/1688625073586792-3ae26e1d-5a50-4ba6-b38c-9f057975b52f.png', 'https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/1688625160143701-8d24d243-7261-48e1-9dbb-1d6eebbeda57.png', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/1688625206293639-f202f8a5-e161-4ed7-bc7e-09aa518873f2.png']"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.title",
+          "value": "타이거스쿨 만2세 첫 수학 1, 삼성출판사"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[10].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[10].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.title",
+          "value": "타이거스쿨 만2세 첫 수학 2, 삼성출판사"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.title",
+          "value": "한글 12주 세트 전 3권, 삼성출판사"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098984/135141680/detail/8809854310493_L.jpg']"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.detailImageUrls[0]",
+          "value": "//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098984/135141680/detail/8809854310493_L.jpg"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098984/135141680/detail/8809854310493_L.jpg']"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.completeHttpDetailImageUrls[0]",
+          "value": "https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098984/135141680/detail/8809854310493_L.jpg"
+        },
+        {
+          "path": "$.data.products[16].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[16].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[17].imageAndTitleArea.title",
+          "value": "(BOOKFRIENDS) 시크릿 쥬쥬 스티커 퀸 300, 유니콘, 시크릿쥬쥬"
+        },
+        {
+          "path": "$.data.products[17].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[17].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[18].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[18].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "url": "https://shop.coupang.com/api/v1/listing",
+      "resourceType": "xhr",
+      "headers": {
+        "referer": "https://shop.coupang.com/A00214628?platform=p",
+        "accept-language": "ko-KR",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json"
+      },
+      "postData": "{\"storeId\":79545,\"brandId\":0,\"vendorId\":\"A00214628\",\"source\":\"direct\",\"enableAdultItemDisplay\":true,\"nextPageKey\":3,\"filter\":\"SORT_KEY:POPULARITY\"}",
+      "postJson": {
+        "storeId": 79545,
+        "brandId": 0,
+        "vendorId": "A00214628",
+        "source": "direct",
+        "enableAdultItemDisplay": true,
+        "nextPageKey": 3,
+        "filter": "SORT_KEY:POPULARITY"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "content-type": "application/json"
+      },
+      "responseLength": 90628,
+      "responsePrefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"products\":[{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"5,220\",\"lowestPrice\":\"5,220\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"5,220\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":0,\"finalPriceForBtc\":0,\"priceWithIdForBtc\":0,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"타이거스쿨 만2세 첫 수학 1, 삼성출판사\",\"description\":\"\",\"defaultUrl\":\"//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/cbea/de8a453843c5c53d38a798d0ee39ae32a8f65ea8f2bb57f2b415e9006a87.jpg\",\"oriDefaultUrl\":\"vendor_inventory/cbea/de8a453843c5c53d38a798d0ee39ae32a8f65ea8f2bb57f2b415e9006a87.jpg\",\"completeHttpUrl\":\"https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/cbea/de8a453843c5c53d38a798d0ee39ae32a8f65ea8f2bb57f2b415e9006a87.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"타이거스쿨 만2세 첫 수학 1\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":null,\"deliveryBadgeImage\":null,\"deliveryBadgeIcon\":null,\"deliveryBadgePDD\":null,\"deliveryUnificationBadgeArea\":null,\"show\":false,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 261원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"8/4(화) \",\"size\":14,\"color\":\"#212B36\",\"bold\":false},{\"text\":\"도착 예정\",\"size\":14,\"color\":\"#212B36\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":[],\"usedProductPrice\":null,\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,\"afterServiceArea\":null,\"benefitBadgeArea\":null,\"deliveryBadgeArea\":null,\"deliverySpeedBadgeArea\":null,\"topBrandArea\":null,\"topBadgeAreas\":[],\"preOrderArea\":null,\"brandAuthenticityBadge\":null,\"couponArea\":null,\"reviewArea\":{\"ratingAverage\":4.5,\"ratingCount\":52,\"ratingRatio\":90,\"link\":null,\"mlink\":null},\"bestPriceArea\":null,\"bizOnlyArea\":null,\"bestAwardArea\":null,\"link\":\"/vp/products/71157420?itemId=237517653&vendorItemId=85166855947&sourceType=direct&vendorId=A00214628&storeId=79545&searchId=8a76528628da48f7bb5b65c08d760582&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing\",\"mlink\":\"coupang://product?sourceType=direct&pId=71157420&vendorItemId=85166855947&searchId=8a76528628da48f7bb5b65c08d760582&src=1139998&spec=10799999&lptag=A00214628&wPcid=11135119509307931282752&redirect=landing&title=%ED%83%80%EC%9D%B4%EA%B1%B0%EC%8A%A4%EC%BF%A8+%EB%A7%8C2%EC%84%B8+%EC%B2%AB+%EC%88%98%ED%95%99+1&sdpImageUrl=https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/cbea/de8a453843c5c53d38a798d0ee39ae32a8f65ea8f2bb57f2b415e9006a87.jpg\",\"offsiteGmLink\":null,\"vendorItemId\":85166855947,\"productId\":71157420,\"itemId\":237517653,\"unitPrice\":\"\",\"priceLabel\":\"\",\"salesStartDate\":\"2023-02-24T03:00:15Z\",\"isFreeExposurePromotion\":null,\"productType\":\"PRODUCT\",\"ueLoggingArea\":null,\"shopHomeLink\":null,\"storeInfoArea\":null,\"rluxBrandInfo\":null,\"freebiesInfo\":null,\"wowBenefitArea\":null,\"divisionType\":null,\"btcInfo\":{\"freeShipOverAmountEx\":9800,\"salesPrice\":0,\"finalPrice\":0,\"priceWithID\":0,\"hasCoupon\":false,\"deliveryFee\":2500,\"outboundShippingPlaceId\":1208642,\"batchShipment\":true,\"rocketDelivery\":false},\"setPromotionItemDto\":null,\"promotionClosingArea\":null,\"attributes\":null,\"brandInfo\":null,\"deliveryInfo\":null,\"valid\":true,\"adult\":false,\"rocketMerchant\":false,\"coupangGlobal\":false},{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"18,900\",\"lowestPrice\":\"18,900\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"18,900\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":0,\"finalPriceForBtc\":0,\"priceWithIdForBtc\":0,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"(BOOKFRIENDS) 1일 10분 초등 메가 계산력 5학년 세트 (2권), 메가스터디북스, 메가스터디북스, 메가계산격\",\"description\":\"\",\"defaultUrl\":\"//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/16b4/440763cca3f27798050d299e3a566f4fe74f587dcab251db9b509dfb6120.jpg\",\"oriDefaultUrl\":\"vendor_inventory/16b4/440763cca3f27798050d299e3a566f4fe74f587dcab251db9b509dfb6120.jpg\",\"completeHttpUrl\":\"https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/16b4/440763cca3f27798050d299e3a566f4fe74f587dcab251db9b509dfb6120.jpg\",\"detailImageUrls\":[],\"completeHttpDetailImageUrls\":[],\"groupTitle\":\"(BOOKFRIENDS) 1일 10분 초등 메가 계산력 5학년 세트 (2권)\",\"adultImageReplaced\":false},\"soldoutArea\":{\"soldOutText\":\"품절\",\"soldout\":false},\"rocketArea\":{\"badgeImage\":{\"iconUrl\":\"//image9.coupangcdn.com/image/coupang/rds/logo/xxxhdpi/logo_rocket_merchant_medium_v3_r3.png\",\"iconWidth\":79,\"iconHeight\":16,\"type\":\"ROCKET_MERCHANT\",\"cmsName\":\"BADGE_IMAGE_ROCKET_MERCHANT_MEDIUM_V3\"},\"deliveryBadgeImage\":{\"iconUrl\":\"//image8.coupangcdn.com/image/rds/delivery_badge_ext/badge_199559539fb.png\",\"iconWidth\":94,\"iconHeight\":14,\"type\":\"ROCKET_MERCHANT_TOMORROW\",\"cmsName\":\"BADGE_IMAGE_RDS_LOGO_MERCHANT_TOMORROW_SM\"},\"deliveryBadgeIcon\":{\"iconUrl\":\"//image7.coupangcdn.com/image/coupang/rds/logo/xhdpi/logo_rocket_merchant_medium_v3_r3.png\",\"iconWidth\":79,\"iconHeight\":16,\"type\":\"ROCKET_MERCHANT_TOMORROW\",\"cmsName\":\"BADGE_IMAGE_ROCKET_MERCHANT_MEDIUM_V3\"},\"deliveryBadgePDD\":{\"iconUrl\":\"//image9.coupangcdn.com/image/coupang/rds/logo_v2/rds_logo_pdd_tomorrow_md/badge_199cd481e67.png\",\"iconWidth\":29,\"iconHeight\":16,\"type\":\"ROCKET_MERCHANT_TOMORROW\",\"cmsName\":\"BADGE_IMAGE_RDS_LOGO_PDD_TOMORROW_MD\"},\"deliveryUnificationBadgeArea\":{\"show\":true,\"badge\":{\"badgeList\":[{\"badgeId\":\"ROCKET_MERCHANT\",\"badgeType\":\"IMAGE\",\"imageVO\":{\"url\":\"//image9.coupangcdn.com/image/coupang/rds/logo/xxxhdpi/logo_rocket_merchant_medium_v3_r3.png\",\"width\":79,\"height\":16}},{\"badgeId\":\"TOMORROW\",\"badgeType\":\"IMAGE\",\"imageVO\":{\"url\":\"//image10.coupangcdn.com/image/coupang/rds/logo_v2/rds_logo_pdd_tomorrow_md/badge_199cd481dc2.png\",\"width\":29,\"height\":16}}],\"flexWrap\":\"WRAP\",\"unificationBadgeMetaData\":{\"abTracking\":{},\"matchConditionId\":\"shippingType_shippingSpeed_productUnitMiddle\"},\"style\":{}},\"webContainer\":{\"style\":[{\"key\":\"row-gap\",\"value\":\"2px\"},{\"key\":\"display\",\"value\":\"flex\"},{\"key\":\"align-items\",\"value\":\"center\"},{\"key\":\"flex-wrap\",\"value\":\"wrap\"}],\"items\":[{\"identifier\":\"ROCKET_MERCHANT\",\"beforeBr\":null,\"beforeDiv\":null,\"isImage\":true,\"isText\":null,\"data\":\"//image9.coupangcdn.com/image/coupang/rds/logo/xxxhdpi/logo_rocket_merchant_medium_v3_r3.png\",\"type\":\"IMAGE\",\"style\":[{\"key\":\"flex-shrink\",\"value\":\"0\"},{\"key\":\"max-width\",\"value\":\"100%\"},{\"key\":\"width\",\"value\":\"79px\"},{\"key\":\"height\",\"value\":\"16px\"},{\"key\":\"margin-right\",\"value\":\"2px\"},{\"key\":\"flex-grow\",\"value\":\"0\"}]},{\"identifier\":\"TOMORROW\",\"beforeBr\":null,\"beforeDiv\":null,\"isImage\":true,\"isText\":null,\"data\":\"//image10.coupangcdn.com/image/coupang/rds/logo_v2/rds_logo_pdd_tomorrow_md/badge_199cd481dc2.png\",\"type\":\"IMAGE\",\"style\":[{\"key\":\"flex-shrink\",\"value\":\"0\"},{\"key\":\"max-width\",\"value\":\"100%\"},{\"key\":\"width\",\"value\":\"29px\"},{\"key\":\"height\",\"value\":\"16px\"},{\"key\":\"flex-grow\",\"value\":\"0\"}]}]}},\"show\":true,\"rocketLuxury\":false},\"subscriptionPriceArea\":null,\"cashBackArea\":{\"iconUrl\":\"//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png\",\"cashRewardText\":\"최대 945원 적립\"},\"ccidArea\":null,\"promisedDeliveryDateArea\":{\"contents\":[{\"text\":\"내일(토) \",\"size\":14,\"color\":\"#008C00\",\"bold\":false},{\"text\":\"도착\",\"size\":14,\"color\":\"#008C00\",\"bold\":false}]},\"usedProductArea\":{\"usedProductInfo\":[],\"usedProductPrice\":null,\"usedOnlyItem\":false},\"instantDiscountBundlePriceArea\":null,\"eligibleFalconArea\":null,\"telcoBadgeArea\":null,",
+      "responseTopLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "responseHits": [
+        {
+          "path": "$.data.products[0].imageAndTitleArea.title",
+          "value": "타이거스쿨 만2세 첫 수학 1, 삼성출판사"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[0].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[1].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[1].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[2].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.title",
+          "value": "타이거스쿨 만2세 첫 수학 2, 삼성출판사"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.title",
+          "value": "한글 12주 세트 전 3권, 삼성출판사"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[10].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[10].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098984/135141680/detail/8809854310493_L.jpg']"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.detailImageUrls[0]",
+          "value": "//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098984/135141680/detail/8809854310493_L.jpg"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098984/135141680/detail/8809854310493_L.jpg']"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.completeHttpDetailImageUrls[0]",
+          "value": "https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail-product-api/A00077021/122098984/135141680/detail/8809854310493_L.jpg"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.title",
+          "value": "(BOOKFRIENDS) 시크릿 쥬쥬 스티커 퀸 300, 유니콘, 시크릿쥬쥬"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[13].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[15].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[16].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[16].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[17].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[17].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[18].imageAndTitleArea.title",
+          "value": "(BOOKFRIENDS) 프린세스 캐치티니핑 대판퍼즐 (130조각), 유니콘, 하드커버"
+        },
+        {
+          "path": "$.data.products[18].imageAndTitleArea.detailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[18].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "[]"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.title",
+          "value": "붙여도 붙여도 스티커왕, 동물, 삼성출판사"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.detailImageUrls",
+          "value": "['//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/121835881256075-646ad271-9e02-4592-b581-88f70d80e25c.jpg', '//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/355888971061289-76726e36-aa71-43c7-a353-f361622cd7c6.jpg', '//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/96775648769559-c8f56d0a-484a-4bde-b001-bc60d9cd9e41.jpg', '//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/183074003213231-538276fd-42d5-4ddc-bed7-2791b65d199b.jpg', '//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/355888976840441-c7eacaa4-d32e-475f-b5a1-990153a244e5.jpg']"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.completeHttpDetailImageUrls",
+          "value": "['https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/121835881256075-646ad271-9e02-4592-b581-88f70d80e25c.jpg', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/355888971061289-76726e36-aa71-43c7-a353-f361622cd7c6.jpg', 'https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/96775648769559-c8f56d0a-484a-4bde-b001-bc60d9cd9e41.jpg', 'https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/183074003213231-538276fd-42d5-4ddc-bed7-2791b65d199b.jpg', 'https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/355888976840441-c7eacaa4-d32e-475f-b5a1-990153a244e5.jpg']"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "url": "https://shop.coupang.com/api/v1/listing",
+      "resourceType": "xhr",
+      "headers": {
+        "referer": "https://shop.coupang.com/A00214628?platform=p",
+        "accept-language": "ko-KR",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json"
+      },
+      "postData": "{\"storeId\":79545,\"brandId\":0,\"vendorId\":\"A00214628\",\"source\":\"direct\",\"enableAdultItemDisplay\":true,\"nextPageKey\":4,\"filter\":\"SORT_KEY:POPULARITY\"}",
+      "postJson": {
+        "storeId": 79545,
+        "brandId": 0,
+        "vendorId": "A00214628",
+        "source": "direct",
+        "enableAdultItemDisplay": true,
+        "nextPageKey": 4,
+        "filter": "SORT_KEY:POPULARITY"
+      },
+      "status": 403,
+      "responseHeaders": {
+        "content-type": "text/html"
+      },
+      "responseLength": 392,
+      "responsePrefix": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;shop&#46;coupang&#46;com&#47;api&#47;v1&#47;listing\" on this server.<P>\nReference&#32;&#35;18&#46;4e0f3417&#46;1785493577&#46;6cecb362\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;4e0f3417&#46;1785493577&#46;6cecb362</P>\n</BODY>\n</HTML>\n"
     }
   ],
-  "productLinks": [],
+  "productLinks": [
+    "https://www.coupang.com/vp/products/1061500342?itemId=2005918851&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=70005831558&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/1061500342?itemId=2005918852&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=70005831562&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/1061500342?itemId=2005918853&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=70005831567&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/1061500342?itemId=2005918858&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=70005831580&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/119585881?itemId=356381438&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=5302262327&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/1902320?itemId=8424070&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=92506168814&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/20599384?itemId=216215232&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=5360025391&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/2086536200?itemId=3544174703&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=86186757469&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/219415757?itemId=681585782&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87088888827&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/274824520?itemId=868302647&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=5521739494&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/274824520?itemId=868302647&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=5521739494&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/297739359?itemId=937793523&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=5344495181&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/319901892?itemId=1023493068&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=5464635266&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/4402763?itemId=20754909&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=5552103323&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6204341731?itemId=12329577594&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=93300490294&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6226922364?itemId=12493038549&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87463733345&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6226938148?itemId=12493158339&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87463722971&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6226938148?itemId=12493158339&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87463722971&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6226943538?itemId=12493200687&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87463718583&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6226957531?itemId=12493294988&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87463711224&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6610473532?itemId=14987579209&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=82212123763&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6610473532?itemId=14987579984&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=82212013578&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6610473532?itemId=14987579990&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=82212021428&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6610473532?itemId=14987581606&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=82212133084&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6610473532?itemId=15062935088&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=82255027989&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6610473539?itemId=14987579998&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=82212026967&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6617294178?itemId=15030373373&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=82254569114&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6652348824?itemId=19909916105&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87009847637&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6732203239?itemId=15689294663&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=88528586925&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6741017168?itemId=15736429374&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=88528590390&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6741038214?itemId=15736532575&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=88528595273&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/67892747?itemId=31526521&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=74350419231&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6810384474?itemId=16108403732&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=83188206127&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6871915904?itemId=16442386947&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=85437046273&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6871915904?itemId=16442386947&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=85437046273&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/6871916232?itemId=16442388549&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=85436987939&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/7000406598?itemId=17165433343&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=84442042531&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/70480481?itemId=235632640&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=77077510183&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/7095225326?itemId=17693255348&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=93495158728&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/71157420?itemId=237517653&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=85166855947&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/71157420?itemId=237517653&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=85166855947&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/71157421?itemId=237517657&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=86063614438&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/71157421?itemId=237517657&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=86063614438&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/71157427?itemId=237517673&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=86063007922&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/7291966258?itemId=18639836922&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=86635163952&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/7291966258?itemId=18639836981&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=86635202939&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/7327648250?itemId=18806266432&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=75939621543&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/7335237108?itemId=18840785098&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87541001765&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/7558886554?itemId=26118330177&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87259715010&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/7687769888?itemId=20550025213&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87626218014&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/7702099572?itemId=20624309884&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87698428470&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8466614324?itemId=24497126930&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=88384100532&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8466644580?itemId=24497220368&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87463714631&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8466644580?itemId=24497220368&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87463714631&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8680355562?itemId=25198745599&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87089003822&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8680355562?itemId=25198745599&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87089003822&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8856365263?itemId=25821259290&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=89216755959&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8856365263?itemId=25821259290&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=89216755959&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8924050011?itemId=26081114561&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=87767572373&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8990028898?itemId=26332648927&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=93309879711&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/8990028898?itemId=26332648927&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=93309879711&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9031865069?itemId=26493295688&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=93468133115&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9031865069?itemId=26493295688&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=93468133115&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9326155490?itemId=27645549036&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=82742752015&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9391551581?itemId=27890103062&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=94849085550&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9402638468?itemId=27931242929&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=94889654458&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9453245720?itemId=28123883963&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95094258945&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9457226687?itemId=28139031239&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95094544715&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9459542119?itemId=28147017619&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=88048114307&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9461642676?itemId=28154553529&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=88728838125&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9494060572?itemId=28278726291&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95231911752&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9555341614?itemId=28511980136&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95460877574&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9555341614?itemId=28511980136&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95460877574&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9560505419?itemId=28530041976&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95377955068&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9560547579?itemId=28530188211&lptag=A00214628&redirect=landing&searchId=40ed45a6583f4fa48ca2f9f451aac1d3&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95476133353&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9571872054?itemId=28569780086&lptag=A00214628&redirect=landing&searchId=18d6862090dd4154bef43668caeb0d33&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95514184811&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9571872054?itemId=28569780086&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95514184811&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9571901588?itemId=28569889916&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95514292427&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9628003914?itemId=28755399512&lptag=A00214628&redirect=landing&searchId=8a76528628da48f7bb5b65c08d760582&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95694173453&wPcid=11135119509307931282752",
+    "https://www.coupang.com/vp/products/9643677466?itemId=28817725403&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=95779837335&wPcid=11135119509307931282752"
+  ],
   "replays": [],
+  "individualInfoMatrix": [],
   "pageSignals": {
-    "htmlLength": 291396,
+    "htmlLength": 645931,
     "containsKnownProductId": false,
     "containsKnownVendorItemId": false,
     "containsPublisherLabel": false,
-    "containsUnicorn": false,
+    "containsUnicorn": true,
     "snippets": [
+      {
+        "token": "유니콘",
+        "text": "e is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">엠키즈</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">스마트베어</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">유니콘</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">아이휴먼</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">UNICORN</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">단꿈아이</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">메가스터디북스</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">오픈북</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\""
+      },
+      {
+        "token": "유니콘",
+        "text": "adges\"><span data-v-f72a1f00=\"\" class=\"badge\"><span data-v-f72a1f00=\"\" class=\"text shippingtype\">\n      무료배송\n    </span></span></div> <div data-v-de7b8b88=\"\" style=\"height: 4px; width: 0px;\"></div></div> <!----> <div data-v-1acd0e2a=\"\" data-v-de7b8b88=\"\" class=\"name\">(BOOKFRIENDS) 시크릿 쥬쥬 스티커 퀸 300, 유니콘, 시크릿쥬쥬</div> <div data-v-de7b8b88=\"\" style=\"height: 6px; width: 0px;\"></div> <!----> <div data-v-de7b8b88=\"\"><div data-v-497789aa=\"\" data-v-de7b8b88=\"\" class=\"price-area\"><!----> <em data-v-497789aa=\"\" class=\"sale\"><strong data-v-497789aa=\"\" class=\"price-value\">6,900원</strong> <!----> <!----> <!----></em> <!----></div></div> <div data-v-de7b8b88=\"\" class=\"is-pre-order-hidden\"><div data-v-de7b8b88=\"\" style=\"height: 6px; width: 0px;\"></div> <div data-v-559380c4=\"\" data-v-de7b8b88=\"\" class=\"delivery\"><em data-v-559380c4=\"\" style=\"color: rgb(33, 43, 54);\">\n    8/4(화) \n  </em><em data-v-559380c4=\"\" style=\"color: rgb(33, 43, 54);\">\n    도착 예정\n  </em></div></div> <!----> <!----> <div data-v-de7b8b8"
+      },
+      {
+        "token": "유니콘",
+        "text": "adges\"><span data-v-f72a1f00=\"\" class=\"badge\"><span data-v-f72a1f00=\"\" class=\"text shippingtype\">\n      무료배송\n    </span></span></div> <div data-v-de7b8b88=\"\" style=\"height: 4px; width: 0px;\"></div></div> <!----> <div data-v-1acd0e2a=\"\" data-v-de7b8b88=\"\" class=\"name\">(BOOKFRIENDS) 시크릿 쥬쥬 스티커 퀸 300, 유니콘, 시크릿쥬쥬</div> <div data-v-de7b8b88=\"\" style=\"height: 6px; width: 0px;\"></div> <!----> <div data-v-de7b8b88=\"\"><div data-v-497789aa=\"\" data-v-de7b8b88=\"\" class=\"price-area\"><!----> <em data-v-497789aa=\"\" class=\"sale\"><strong data-v-497789aa=\"\" class=\"price-value\">6,900원</strong> <!----> <!----> <!----></em> <!----></div></div> <div data-v-de7b8b88=\"\" class=\"is-pre-order-hidden\"><div data-v-de7b8b88=\"\" style=\"height: 6px; width: 0px;\"></div> <div data-v-559380c4=\"\" data-v-de7b8b88=\"\" class=\"delivery\"><em data-v-559380c4=\"\" style=\"color: rgb(33, 43, 54);\">\n    8/4(화) \n  </em><em data-v-559380c4=\"\" style=\"color: rgb(33, 43, 54);\">\n    도착 예정\n  </em></div></div> <!----> <!----> <div data-v-de7b8b8"
+      },
+      {
+        "token": "출판사",
+        "text": "roup-name\">\n    브랜드\n  </div> <ul data-v-555d0c27=\"\" class=\"filter-items\"><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">캐치티니핑</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">삼성출판사</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">꿈꾸는달팽이</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">메가스터디</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">지원출판</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">엠키즈</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" class=\"filter-name\">스마트베어</span></li><li data-v-555d0c27=\"\" class=\"filter-instance is-checkbox\"><span data-v-555d0c27=\"\" c"
+      },
+      {
+        "token": "출판사",
+        "text": "-bottom: 0px;\"><!----></div></div></dt> <dd data-v-48460b48=\"\" class=\"info-wrapper-desc\"><div data-v-de7b8b88=\"\" data-v-48460b48=\"\" class=\"descriptions is-for-product-detail-pc product-detail is-product-detail\"><!----> <!----> <div data-v-1acd0e2a=\"\" data-v-de7b8b88=\"\" class=\"name\">타이거스쿨 만3세 창의력, 삼성출판사</div> <div data-v-de7b8b88=\"\" style=\"height: 6px; width: 0px;\"></div> <!----> <div data-v-de7b8b88=\"\"><div data-v-497789aa=\"\" data-v-de7b8b88=\"\" class=\"price-area\"><!----> <em data-v-497789aa=\"\" class=\"sale\"><strong data-v-497789aa=\"\" class=\"price-value\">5,220원</strong> <!----> <!----> <!----></em> <!----></div></div> <div data-v-de7b8b88=\"\" class=\"is-pre-order-hidden\"><div data-v-de7b8b88=\"\" style=\"height: 6px; width: 0px;\"></div> <div data-v-559380c4=\"\" data-v-de7b8b88=\"\" class=\"delivery\"><em data-v-559380c4=\"\" style=\"color: rgb(33, 43, 54);\">\n    8/4(화) \n  </em><em data-v-559380c4=\"\" style=\"color: rgb(33, 43, 54);\">\n    도착 예정\n  </em></div></div> <!----> <!----> <div data-v-de7b8b88=\"\" cl"
+      },
+      {
+        "token": "출판사",
+        "text": "n-bottom: 0px;\"><!----></div></div></dt> <dd data-v-48460b48=\"\" class=\"info-wrapper-desc\"><div data-v-de7b8b88=\"\" data-v-48460b48=\"\" class=\"descriptions is-for-product-detail-pc product-detail is-product-detail\"><!----> <!----> <div data-v-1acd0e2a=\"\" data-v-de7b8b88=\"\" class=\"name\">캐릭터스티커 상어가족:, 삼성출판사, 상세내용 참조</div> <div data-v-de7b8b88=\"\" style=\"height: 6px; width: 0px;\"></div> <!----> <div data-v-de7b8b88=\"\"><div data-v-497789aa=\"\" data-v-de7b8b88=\"\" class=\"price-area\"><!----> <em data-v-497789aa=\"\" class=\"sale\"><strong data-v-497789aa=\"\" class=\"price-value\">3,600원</strong> <!----> <!----> <!----></em> <!----></div></div> <div data-v-de7b8b88=\"\" class=\"is-pre-order-hidden\"><div data-v-de7b8b88=\"\" style=\"height: 6px; width: 0px;\"></div> <div data-v-559380c4=\"\" data-v-de7b8b88=\"\" class=\"delivery\"><em data-v-559380c4=\"\" style=\"color: rgb(33, 43, 54);\">\n    8/4(화) \n  </em><em data-v-559380c4=\"\" style=\"color: rgb(33, 43, 54);\">\n    도착 예정\n  </em></div></div> <!----> <!----> <div data-v-de7b8"
+      },
       {
         "token": "kc",
         "text": "NTg1IDEyIDQuMjkzIDUuNzA3Yy0uMzktLjM5LS4zOS0xLjAyNCAwLTEuNDE0LjM2LS4zNi45MjgtLjM4OCAxLjMyLS4wODN6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtOTQ2IC04MTkpIHRyYW5zbGF0ZSg5NDYgODE5KSIvPgogICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZmlsbC1vcGFjaXR5PSIwIiBkPSJNMCAyNEwyNCAyNCAyNCAwIDAgMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC05NDYgLTgxOSkgdHJhbnNsYXRlKDk0NiA4MTkpIi8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=) 50% no-repeat;background-size:24px 24px;border:0;cursor:pointer;height:24px;margin:-2px;overflow:hidden;text-indent:-9999px;width:24px}.modal-body[data-v-02c2806a]{padding:0 20px 20px}.modal-enter[data-v-02c2806a]{opacity:0}.modal-enter .modal-container[data-v-02c2806a]{transform:scale(.8)}.modal-leave-active[data-v-02c2806a]{opacity:0}.modal-leave-active .modal-container[data-v-02c2806a]{transform:scale(1.1)}\n.search-bar[data-v-4d1165b4]{align-items:center;box-sizing:border-box;overflow:hidden;padding:15px 0}.search-bar[data-v-4d1165b4],.search-form[data-v-4d1165b4]{display:flex;posit"
@@ -325,11 +1344,19 @@
       }
     ]
   },
+  "detailNavigation": {
+    "requested": "https://www.coupang.com/vp/products/1061500342?itemId=2005918851&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=70005831558&wPcid=11135119509307931282752",
+    "status": 403,
+    "url": "https://www.coupang.com/vp/products/1061500342?itemId=2005918851&lptag=A00214628&redirect=landing&searchId=aaff0732a0b14a0595a312f13b1ba0af&sourceType=brandstore-all_products&spec=10799999&src=1139998&storeId=79545&subSourceType=brandstore-all_products&vendorId=A00214628&vendorItemId=70005831558&wPcid=11135119509307931282752",
+    "title": "Access Denied"
+  },
   "summary": {
-    "apiRequests": 11,
+    "apiRequests": 14,
     "individualInfoRequests": 0,
     "successfulIndividualInfoResponses": 0,
-    "individualInfoRowsWithHits": 0,
-    "productLinks": 0
+    "matrixAttempts": 0,
+    "matrixHttp200": 0,
+    "matrixRowsWithHits": 0,
+    "productLinks": 80
   }
 }
