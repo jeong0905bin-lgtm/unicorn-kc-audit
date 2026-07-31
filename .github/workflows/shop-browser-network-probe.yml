@@ -1,19 +1,6 @@
 name: Shop browser network probe
 
 on:
-  pull_request:
-    branches: [main]
-    types: [opened, reopened, synchronize]
-    paths:
-      - "run/shop-browser-network.trigger"
-      - "tools/shop_browser_network_probe.py"
-      - ".github/workflows/shop-browser-network-probe.yml"
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/shop-browser-network.trigger"
-      - "tools/shop_browser_network_probe.py"
-      - ".github/workflows/shop-browser-network-probe.yml"
   workflow_dispatch:
 
 permissions:
