@@ -1,29 +1,110 @@
 # Unicorn KC Audit — Persistent Project State
 
-Updated: 2026-07-30 23:56 KST
+Updated: 2026-08-01 01:12 KST
 
 ## Objective
 
-Audit all products from Coupang seller `A00214628`.
+Audit every current product from Coupang seller `A00214628`.
 
-Final inclusion rule:
+Final publisher inclusion rule:
 
-- Read the mandatory disclosure table on each product detail page.
-- Use only the row labeled `저자, 출판사`.
+- Read product-level publisher evidence.
+- Accept only a field labeled `출판사` or an exact mandatory-disclosure row equivalent.
 - Normalize whitespace and punctuation.
-- Include a product only when the value is exactly `유니콘`.
-- Do not use product title, brand filter, seller filter, or guessed publisher as the final criterion.
+- Include only when the value is exactly `유니콘`.
+- Never infer publisher from title, brand, product family, or seller.
 
-For included products:
+For accepted products:
 
-1. Preserve product name.
-2. Preserve Coupang unique ID as `productId-itemId`.
-3. Collect KC numbers from product detail content/images.
-4. Mark truly processed products with no KC as `없음`.
-5. Keep inaccessible, no-image, and manual-review cases separate.
-6. Validate every accepted unique KC number through official SafetyKorea.
-7. Include only official status `기간만료` in the expired workbook.
+1. Preserve the current product name.
+2. Preserve Coupang unique ID as `productId - itemId`.
+3. Collect KC numbers only from exact-product evidence.
+4. Mark `없음` only after the product was actually processed and no KC was found.
+5. Keep inaccessible and manual-review cases explicit.
+6. Validate every accepted unique KC number with official SafetyKorea.
+7. Put a row in the expired workbook only when both the product-to-KC mapping and official `기간만료` status are confirmed.
 8. Never include `U003E1577-7011`.
+
+## Current catalog
+
+- Seller listing API: `/api/v1/listing`
+- Current reported/collected catalog: **2,229 / 2,229**
+- Previous 2,230 count is stale and superseded.
+- Previous 120-product result and old blank workbooks remain permanently discarded.
+
+## Publisher classification
+
+### Singular detail API
+
+Latest merged run: `30644484268`
+
+- Successfully classified: **1,825**
+- Unresolved: **404**
+- Coverage: **81.8753%**
+- Exact `출판사 = 유니콘` from API attributes: **30**
+
+Unresolved response classes:
+
+- HTTP 403, no data: 218
+- HTTP 200, empty/no usable data: 176
+- HTTP 400, no data: 10
+
+The plural-link metadata retry added 2 accessible non-Unicorn products and no new exact Unicorn products.
+
+### Additional exact publisher evidence
+
+Three catalog products are accepted from exact evidence outside the successful API set:
+
+- `1321324685 - 2342362756` — 유니콘 신기한 워터 색칠북 - 콩순이
+- `6732125611 - 14240107530` — 신세계 인지향상 고도리 퍼즐 3종 세트
+- `8411161016 - 24319968314` — (BOOKFRIENDS) 위시캣 스티커퀸 300
+
+### Consolidated accepted scope
+
+- API exact products: **30**
+- Additional exact products: **3**
+- Consolidated exact publisher products: **33**
+
+Canonical file:
+
+- `diagnostics/consolidated-unicorn-products.json`
+
+## Plural endpoint result
+
+Run `30643392302` scanned `/api/v2/store/individualInfo/products`.
+
+- Usable metadata response: **2,076 / 2,229**
+- Unresolved: **153**
+- Endpoint coverage: **93.1359%**
+- Publisher attributes exposed: **0**
+
+This endpoint is retained for product metadata and link recovery only. It cannot classify publisher.
+
+## KC evidence
+
+Exact product-to-KC mappings currently confirmed for **7 products**.
+
+Confirmed unique KC numbers:
+
+- `CB064H009-2001`
+- `CB064H009-3002`
+- `CB064H009-4001`
+- `CB064H009-4003`
+- `CB064H009-8001`
+
+Official SafetyKorea status resolved so far:
+
+- `CB064H009-3002` — **적합**, manufacturer `주식회사 유니콘`, model `스티커 컬렉션`
+- `CB064H009-9003` — **기간만료**, manufacturer `주식회사 유니콘`, model `캐릭터 퍼즐`
+
+Important: `CB064H009-9003` is not yet mapped to any exact current catalog product. Therefore it must not produce an expired-workbook row yet.
+
+Official status remains unresolved for:
+
+- `CB064H009-2001`
+- `CB064H009-4001`
+- `CB064H009-4003`
+- `CB064H009-8001`
 
 ## Required outputs
 
@@ -35,7 +116,7 @@ Columns:
 - 쿠팡 상품 고유번호
 - KC 인증번호
 
-Value for confirmed no-KC rows: `없음`
+Use `없음` only for products whose complete detail/KC evidence was processed successfully.
 
 ### Workbook 2 — Expired KC
 
@@ -45,91 +126,32 @@ Columns:
 - 만료된 상품명
 - 쿠팡 상품 고유번호
 
-Row rules:
+Rules:
 
-- One product with multiple expired KCs: one row per KC.
-- Same KC used by multiple products: one row per product.
-- Active valid KC: exclude.
+- One row per product/KC pair.
+- A duplicated KC used by multiple products gets one row per product.
+- Active or unresolved certification status is excluded.
 
-## Confirmed catalog state
+## Current blockers
 
-- Seller listing API: `/api/v1/listing`
-- Reported total: 2,230 products
-- Collected unique products: 2,230
-- Catalog coverage: complete
-- Previous 120-product result: invalid and permanently discarded
-- Old blank spreadsheets and old ZIP: never deliver
+- Publisher classification remains unresolved for 404 catalog products.
+- Most accepted Unicorn products still lack exact product-level KC evidence.
+- Four accepted KC numbers still need official SafetyKorea status resolution.
+- No current catalog product is yet exactly mapped to the known expired code `CB064H009-9003`.
+- No-KC conclusions are not yet complete enough for a final workbook.
 
-## Proven blocker
+## Execution policy
 
-GitHub-hosted runners cannot access the actual Coupang product detail content needed for `저자, 출판사`.
+- Do not repeat broad API retries that have already yielded negligible recovery.
+- Use exact-product identifiers, ISBN/GTIN, mandatory disclosure, retailer records, archived exact pages, and user HAR evidence.
+- Keep exact confirmation separate from product-family similarity.
+- Do not promote a KC candidate until exact-product identity is established.
+- Do not create or deliver final workbooks until validation gates pass.
 
-Tested and failed:
+## Immediate next work
 
-- direct product URL
-- seller-page-to-product same-session navigation
-- six OS/browser combinations
-- current itemId and older itemId variants
-- brand-filter-only selection
-- representative-image OCR
-- search-engine indexed snippets
-- Jina reader
-- Common Crawl
-- Wayback
-
-Representative-image OCR is invalid for publisher classification because the seller API exposes cover thumbnails, not the mandatory disclosure table or full detail images.
-
-## Current execution policy
-
-All failed diagnostic workflows are manual-only. Do not re-enable automatic execution or repeat them.
-
-Do not claim progress from queued jobs. Distinguish strictly:
-
-- queued
-- in progress
-- completed successfully
-- completed but produced no usable evidence
-
-Do not report percentage progress unless tied to verified records.
-
-## Only accepted next path
-
-Use one logged-out Chrome HAR captured on an actual product detail page where the `필수 표기 정보` table is visible.
-
-HAR capture must include:
-
-1. Clear Network log.
-2. Refresh product detail page.
-3. Scroll to `필수 표기 정보`.
-4. Export HAR with content.
-
-From that HAR:
-
-- identify the exact request/response containing `저자, 출판사`
-- identify any detail/specification API
-- identify detail image URLs used for KC extraction
-- strip cookies, authorization, tracking IDs, and personal/session data
-- never commit or publish raw HAR
-- retain only sanitized request structure and non-sensitive payload fields
-
-Before full execution, require a preflight that confirms a known product returns exactly `저자, 출판사 = 유니콘`.
-
-Then run the sanitized request pattern across all 2,230 products with strict completeness gates.
-
-## Non-negotiable safeguards
-
-- Never guess publisher or KC number.
-- Never use the 36-product brand-filter set as final scope.
-- Never mark inaccessible products as `없음`.
-- Never deliver blank workbooks as successful output.
-- Never mix data from the previous seller/KC project.
-- Fail the workflow when catalog processing is incomplete.
-- Keep unresolved cases explicit.
-
-## Immediate status
-
-- Catalog: complete, 2,230/2,230
-- Exact publisher classification: blocked pending one product-detail HAR
-- KC extraction: not started for verified Unicorn products
-- SafetyKorea validation: not started
-- Final Excel files: not created
+1. Resolve exact KC mappings for the remaining 26 accepted publisher products.
+2. Resolve official SafetyKorea status for `2001`, `4001`, `4003`, and `8001`.
+3. Search for exact current-catalog use of expired `9003`.
+4. Continue publisher recovery only through materially different evidence routes.
+5. Generate final workbooks only after the mapping and official-status gates are complete.
