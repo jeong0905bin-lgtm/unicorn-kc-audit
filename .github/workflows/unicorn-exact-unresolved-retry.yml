@@ -1,14 +1,6 @@
 name: Unicorn exact unresolved retry
 
 on:
-  pull_request:
-    branches: [main]
-    types: [opened, reopened, synchronize]
-    paths:
-      - "tools/unicorn_exact_retry_shard.py"
-      - "tools/merge_unicorn_exact_retries.py"
-      - ".github/workflows/unicorn-exact-unresolved-retry.yml"
-      - "run/unicorn-exact-unresolved-retry.trigger"
   workflow_dispatch:
 
 permissions:
