@@ -1,14 +1,6 @@
 name: Unicorn shop exact full scan
 
 on:
-  pull_request:
-    branches: [main]
-    types: [opened, reopened, synchronize]
-    paths:
-      - "tools/unicorn_shop_exact_scan_fast.py"
-      - "tools/unicorn_catalog.py"
-      - ".github/workflows/unicorn-shop-exact-full-scan.yml"
-      - "run/unicorn-shop-exact-full-scan.trigger"
   workflow_dispatch:
 
 permissions:
@@ -37,7 +29,7 @@ jobs:
         run: |
           python -m py_compile tools/unicorn_catalog.py
           python -m py_compile tools/unicorn_shop_exact_scan_fast.py
-      - name: Collect complete 2,230-product catalog
+      - name: Collect current complete seller catalog
         run: |
           mkdir -p work/catalog work/exact
           python tools/unicorn_catalog.py \
