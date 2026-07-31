@@ -1,0 +1,47 @@
+name: Shop bundle source-map probe
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+    paths:
+      - "run/shop-bundle-sourcemap.trigger"
+      - "tools/shop_bundle_sourcemap_probe.py"
+      - ".github/workflows/shop-bundle-sourcemap-probe.yml"
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
+    paths:
+      - "run/shop-bundle-sourcemap.trigger"
+      - "tools/shop_bundle_sourcemap_probe.py"
+      - ".github/workflows/shop-bundle-sourcemap-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependency
+        run: pip install requests
+      - name: Validate probe
+        run: python -m py_compile tools/shop_bundle_sourcemap_probe.py
+      - name: Inspect bundle and source maps
+        run: python tools/shop_bundle_sourcemap_probe.py --output diagnostics/shop-bundle-sourcemap/result.json
+      - name: Commit sanitized result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add diagnostics/shop-bundle-sourcemap/result.json
+          git diff --cached --quiet || git commit -m "Record shop bundle source-map probe"
+          git pull --rebase origin chatgpt/run-unicorn-audit-20260730
+          git push origin HEAD:chatgpt/run-unicorn-audit-20260730
