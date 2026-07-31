@@ -4,9 +4,9 @@
     {
       "url": "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/f6ae536.js.map",
       "status": 403,
-      "length": 243,
+      "length": 263,
       "contentType": "application/xml",
-      "prefix": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>92FEYSMMQJW4T08B</RequestId><HostId>CROZ3B1sLz3c5SPxdXWAnlZ7smZaUZP4pjdSNWz/DlPLgeolKTmkHKZOm4+sbzQlMEZG4nr4waA=</HostId></Error>"
+      "prefix": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>AXS55BPWWXP90RNM</RequestId><HostId>1+HEAo+JDilDGKe4wmXEXhkJ8/5qkyrDwht4BZFGn7pslLNYivsKZP9QjzSu2MUhZI1eJ7Oyk5XbF4Mcr8XgguzRqXuoIeYV</HostId></Error>"
     }
   ],
   "endpointContexts": {
