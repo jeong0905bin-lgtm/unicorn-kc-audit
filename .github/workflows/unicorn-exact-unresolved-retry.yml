@@ -1,0 +1,111 @@
+name: Unicorn exact unresolved retry
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+    paths:
+      - "tools/unicorn_exact_retry_shard.py"
+      - "tools/merge_unicorn_exact_retries.py"
+      - ".github/workflows/unicorn-exact-unresolved-retry.yml"
+      - "run/unicorn-exact-unresolved-retry.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: unicorn-exact-unresolved-retry-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  retry:
+    name: Retry shard ${{ matrix.shard }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Validate retry scanner
+        run: python -m py_compile tools/unicorn_exact_retry_shard.py
+      - name: Download base full-scan artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p base
+          gh run download 30625752041 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name unicorn-shop-exact-full-scan-30625752041 \
+            --dir base
+          test -f base/exact/unresolved-products.json
+      - name: Retry assigned unresolved rows
+        run: |
+          mkdir -p shard-output
+          python tools/unicorn_exact_retry_shard.py \
+            --unresolved base/exact/unresolved-products.json \
+            --output shard-output/result.json \
+            --shard-index ${{ matrix.shard }} \
+            --shard-count 8 \
+            --rounds 4
+      - name: Upload shard result
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-exact-retry-shard-${{ matrix.shard }}-${{ github.run_id }}
+          path: shard-output/result.json
+          if-no-files-found: error
+          retention-days: 7
+
+  merge:
+    name: Merge exact retry results
+    needs: retry
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download base full-scan artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p base
+          gh run download 30625752041 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name unicorn-shop-exact-full-scan-30625752041 \
+            --dir base
+      - name: Download all retry shards
+        uses: actions/download-artifact@v4
+        with:
+          pattern: unicorn-exact-retry-shard-*-${{ github.run_id }}
+          path: shards
+      - name: Merge and validate
+        run: |
+          python tools/merge_unicorn_exact_retries.py \
+            --base base \
+            --shards shards \
+            --output merged
+      - name: Print merged summary
+        run: cat merged/summary.json
+      - name: Upload merged exact results
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-exact-retry-merged-${{ github.run_id }}
+          path: merged
+          if-no-files-found: error
+          retention-days: 7
