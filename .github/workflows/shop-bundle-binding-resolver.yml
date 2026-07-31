@@ -1,19 +1,6 @@
 name: Shop bundle binding resolver
 
 on:
-  pull_request:
-    branches: [main]
-    types: [opened, reopened, synchronize]
-    paths:
-      - "run/shop-bundle-binding.trigger"
-      - "tools/resolve_shop_bundle_binding.mjs"
-      - ".github/workflows/shop-bundle-binding-resolver.yml"
-  push:
-    branches: [chatgpt/run-unicorn-audit-20260730]
-    paths:
-      - "run/shop-bundle-binding.trigger"
-      - "tools/resolve_shop_bundle_binding.mjs"
-      - ".github/workflows/shop-bundle-binding-resolver.yml"
   workflow_dispatch:
 
 permissions:
