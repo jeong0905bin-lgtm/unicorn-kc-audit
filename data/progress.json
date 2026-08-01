@@ -1,0 +1,66 @@
+{
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "updatedAt": "2026-08-02T02:54:40+09:00",
+  "rules": {
+    "publisherEvidence": [
+      "coupang_essential_exact",
+      "coupang_detail",
+      "isbn_official_book_record"
+    ],
+    "excludeCharacterOnlyMatches": true,
+    "excludedCertificationNumber": "U003E1577-7011",
+    "blockedResponsesCountAsComplete": false
+  },
+  "verifiedProducts": [
+    {
+      "productId": "1321324685",
+      "itemId": "2342362756",
+      "vendorItemId": "75250297328",
+      "name": "유니콘 신기한 워터 색칠북 - 콩순이",
+      "publisher": "유니콘",
+      "publisherEvidence": "쿠팡 필수표기 저자, 출판사 exact",
+      "kcNumbers": ["CB064H009-8001"],
+      "kcStatus": "기간만료",
+      "classification": "expired_kc",
+      "sources": [
+        "https://www.coupang.com/vp/products/1321324685?itemId=2342362756&vendorItemId=75250297328"
+      ]
+    },
+    {
+      "productId": "6495402114",
+      "itemId": "14278404135",
+      "vendorItemId": "80329370715",
+      "name": "헬로 카봇 시즌 11 스티커 놀이북, UNICORN",
+      "publisher": "유니콘",
+      "publisherEvidence": "예스24 도서 검색에서 유니콘 편집부/유니콘 확인",
+      "kcNumbers": [],
+      "kcStatus": "unverified",
+      "classification": "publisher_verified_kc_pending",
+      "sources": [
+        "https://m.yes24.com/Search?query=%ED%97%AC%EB%A1%9C%EC%B9%B4%EB%B4%87+%EC%83%89%EC%B9%A0%EB%B6%81"
+      ]
+    }
+  ],
+  "certificationReference": [
+    {
+      "kcNumber": "CB064H009-9003",
+      "status": "기간만료",
+      "model": "캐릭터 퍼즐",
+      "manufacturer": "주식회사 유니콘",
+      "productMapping": "not_yet_verified"
+    },
+    {
+      "kcNumber": "CB064H009-3002",
+      "status": "적합",
+      "model": "스티커 컬렉션",
+      "manufacturer": "주식회사 유니콘",
+      "productMapping": "not_yet_verified"
+    }
+  ],
+  "finalOutputs": {
+    "noKcComplete": false,
+    "expiredKcComplete": false,
+    "catalogReviewComplete": false
+  }
+}
