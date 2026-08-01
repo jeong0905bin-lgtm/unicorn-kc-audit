@@ -1,0 +1,42 @@
+name: Coupang search index audit
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/coupang_search_index_audit.py"
+      - ".github/workflows/coupang-search-index-audit.yml"
+      - "run/search-index-audit.trigger"
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
+    paths:
+      - "run/search-index-audit.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Validate source
+        run: python -m py_compile tools/coupang_search_index_audit.py
+      - name: Audit public search index
+        run: python tools/coupang_search_index_audit.py
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coupang-search-index-audit
+          path: diagnostics/search-index/result.json
+          if-no-files-found: error
+          retention-days: 7
