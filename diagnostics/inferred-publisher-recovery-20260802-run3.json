@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2026-08-02T04:53:20+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Continue unresolved publisher recovery using exact or normalized official book records while keeping KC inference product-specific.",
+  "newPublisherConfirmations": [
+    {
+      "productId": "1732152888",
+      "itemId": "2948558710",
+      "vendorItemId": "74101868757",
+      "productName": "유니콘 콩순이 판퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed_by_official_component_record",
+      "confidence": "high",
+      "officialRecord": {
+        "title": "엉뚱발랄 콩순이 판퍼즐 63조각",
+        "publisher": "유니콘",
+        "isbn13": "8806328724862",
+        "sourceUrl": "https://www.yes24.com/product/goods/140128057"
+      },
+      "identityNotes": "The catalog bundle title explicitly identifies the Unicorn Kongsooni 63-piece puzzle line; the official exact component record confirms publisher 유니콘.",
+      "kcNumbers": [],
+      "kcStatus": "pending_exact_number; official indexed record exposes conformity confirmation but no certification number"
+    },
+    {
+      "productId": "5033750728",
+      "itemId": "6762142287",
+      "vendorItemId": "74101910626",
+      "productName": "유니콘 콩순이 판퍼즐 2종세트 (63조각), 엉덩이탐정 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "publisherStatus": "inferred_from_verified_bundle_component",
+      "confidence": "high",
+      "evidence": [
+        "The exact bundle title contains the verified Unicorn Kongsooni 63-piece puzzle component.",
+        "The bundle remains outside exact KC mapping until component-level or bundle mandatory disclosure is recovered."
+      ],
+      "kcNumbers": [],
+      "kcStatus": "pending_exact_bundle_evidence"
+    },
+    {
+      "productId": "8479335481",
+      "itemId": "24536533363",
+      "vendorItemId": "91531361512",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치티니핑 스티커 색칠북 1번",
+      "publisher": "유니콘",
+      "publisherStatus": "inferred_from_normalized_official_series_record",
+      "confidence": "medium_high",
+      "officialRecord": {
+        "title": "슈팅스타 캐치티니핑 캐릭터 색칠북 1",
+        "publisher": "유니콘",
+        "sourceUrl": "https://www.yes24.com/24/category/SpecialDisplay/001?FetchSize=40&GS=03&PageNumber=4&ParamSortTp=07&SortKind=PR&SortOption=06&TabNo=1"
+      },
+      "identityNotes": "The catalog wording '스티커 색칠북 1번' is not yet proven identical to the official '캐릭터 색칠북 1'; publisher is retained as inferred, not exact.",
+      "kcNumbers": [],
+      "kcStatus": "pending_exact_edition_identity"
+    }
+  ],
+  "validatedExistingMapping": [
+    {
+      "productId": "6209404889",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 01, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "isbn13": "8806328721298",
+      "kcNumber": "CB064H009-9001",
+      "mappingStatus": "confirmed",
+      "sourceUrl": "https://www.yes24.com/product/goods/109712634",
+      "notes": "Official exact normalized title record confirms publisher 유니콘 and KC CB064H009-9001. A separate similarly named 놀이북 published by 신세계 is not this product."
+    }
+  ],
+  "summary": {
+    "newPublisherConfirmedHigh": 1,
+    "newPublisherInferredHigh": 1,
+    "newPublisherInferredMediumHigh": 1,
+    "existingExactMappingRevalidated": 1,
+    "newExactKcMappings": 0
+  },
+  "safeguards": [
+    "No KC number was inferred from product family or character alone.",
+    "No blocked response was counted as completed.",
+    "U003E1577-7011 remains excluded."
+  ]
+}
