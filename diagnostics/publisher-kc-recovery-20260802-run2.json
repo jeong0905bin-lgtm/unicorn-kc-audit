@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-08-02T06:56:54+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve inferred-publisher candidates with exact official book records and collect exact-product KC evidence.",
+  "newExactPublisherConfirmations": [
+    {
+      "productId": "6209404889",
+      "itemId": "12368820079",
+      "vendorItemId": "80366499414",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 01, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "normalized_exact_title_official_book_record",
+      "normalizedOfficialTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 1",
+      "isbn": "8806328721298",
+      "officialRecordUrl": "https://www.yes24.com/product/goods/109712634",
+      "identityNotes": [
+        "Catalog title and official record differ only by spacing, leading-zero volume notation, and appended publisher/author tokens.",
+        "Official record identifies publisher 유니콘 and the same volume 1 edition."
+      ]
+    }
+  ],
+  "newExactKcMappings": [
+    {
+      "productId": "6209404889",
+      "itemId": "12368820079",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 01, UNICORN, 편집부",
+      "isbn": "8806328721298",
+      "kcNumber": "CB064H009-9001",
+      "mappingStatus": "confirmed",
+      "evidenceType": "normalized_exact_title_isbn_official_retailer_record",
+      "sourceUrl": "https://www.yes24.com/product/goods/109712634"
+    }
+  ],
+  "officialSafetyKoreaStatus": {
+    "CB064H009-9001": {
+      "status": "unresolved",
+      "officialExactMatch": false,
+      "note": "Public exact-product records consistently expose this KC, but official SafetyKorea status was not yet resolved in this run."
+    }
+  },
+  "candidateReview": [
+    {
+      "productId": "8479335481",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치티니핑 스티커 색칠북 1번",
+      "result": "retain_inferred",
+      "reason": "Official records confirm 유니콘 for adjacent titles and a normalized 캐릭터 색칠북 1 title, but exact identity to the catalog's 스티커 색칠북 1번 wording is not yet closed."
+    }
+  ],
+  "summary": {
+    "newExactPublisherConfirmations": 1,
+    "newExactKcMappings": 1,
+    "newUniqueKcNumbers": ["CB064H009-9001"],
+    "remainingInferredCandidatesFromRun1": 4
+  },
+  "safeguards": [
+    "No KC was inferred from product-family similarity.",
+    "No blocked response was counted as processed.",
+    "U003E1577-7011 remains excluded."
+  ]
+}
