@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-08-01T22:49:51+09:00",
+  "appliesTo": "diagnostics/consolidated-unicorn-products.json",
+  "newConfirmedMappings": [
+    {
+      "productName": "(BOOKFRIENDS) 프린센스 티니핑 판퍼즐 2종 세트 (각63조각/48조각), 유니콘, 캐치티니핑",
+      "productId": "9334593133",
+      "catalogItemId": "27669798639",
+      "indexedItemId": "27678756910",
+      "publisher": "유니콘",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "isbn": "8806328725418",
+      "kcNumber": "CB064H009-4003",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_coupang_product_id_and_isbn_retailer_record",
+      "identitySourceUrl": "https://www.coupang.com/vp/products/9334593133",
+      "kcSourceUrl": "https://www.yes24.com/product/goods/172520002",
+      "evidenceNotes": "The indexed Coupang product page identifies productId 9334593133 and ISBN 8806328725418. The exact same ISBN on YES24 is 프린세스 캐치티니핑 소퍼즐 1 by 유니콘 and lists KC CB064H009-4003. The catalog title is a two-item set; this confirms at least one exact set component uses CB064H009-4003."
+    }
+  ],
+  "summaryAdjustment": {
+    "productsWithConfirmedKcMapping": 11,
+    "acceptedProductsStillWithoutExactKcEvidence": 22
+  },
+  "safeguards": [
+    "KC mapping is based on exact ISBN identity, not title-family similarity.",
+    "The differing itemId is recorded and not concealed; productId and ISBN provide exact product identity for the mapped component.",
+    "Official SafetyKorea status for CB064H009-4003 remains unresolved, so this mapping alone does not create an expired-workbook row.",
+    "U003E1577-7011 is excluded."
+  ]
+}
