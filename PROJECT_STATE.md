@@ -1,6 +1,6 @@
 # Unicorn KC Audit — Persistent Project State
 
-Updated: 2026-08-01 01:46 KST
+Updated: 2026-08-01 22:49 KST
 
 ## Objective
 
@@ -69,6 +69,7 @@ Canonical files:
 
 - `diagnostics/consolidated-unicorn-products.json`
 - `diagnostics/kc-mapping-addendum-20260801.json`
+- `diagnostics/kc-mapping-addendum-20260801-run1.json`
 
 ## Plural endpoint result
 
@@ -83,7 +84,7 @@ This endpoint is retained for product metadata and link recovery only. It cannot
 
 ## KC evidence
 
-Exact product-to-KC mappings are currently confirmed for **10 products**.
+Exact product-to-KC mappings are currently confirmed for **11 products**.
 
 Confirmed unique KC numbers:
 
@@ -95,7 +96,12 @@ Confirmed unique KC numbers:
 - `CB064H009-8001`
 - `CB064H009-9002`
 
-Newest exact mappings:
+Newest exact mapping:
+
+- `9334593133` (BOOKFRIENDS) 프린센스 티니핑 판퍼즐 2종 세트 → indexed Coupang ISBN `8806328725418` → exact YES24 item `프린세스 캐치티니핑 소퍼즐 1` → `CB064H009-4003`.
+- The catalog and indexed Coupang item IDs differ, so both IDs are retained in the addendum. Exact product identity is established by matching productId and ISBN; the mapping confirms one component of the set.
+
+Earlier newest mappings:
 
 - `1318402202` 엉덩이탐정 스티커 컬렉션북 → `CB064H009-9002`
 - `8616958567` 슈팅스타 캐치티니핑 신기한 워터색칠북 2권 → ISBN `8806328724817` → `CB064H009-3003`
@@ -146,7 +152,7 @@ Rules:
 ## Current blockers
 
 - Publisher classification remains unresolved for 404 catalog products.
-- 23 accepted Unicorn products still lack exact product-level KC evidence.
+- **22** accepted Unicorn products still lack exact product-level KC evidence.
 - Six accepted KC numbers still need official SafetyKorea status resolution.
 - No current catalog product is yet exactly mapped to the known expired code `CB064H009-9003`.
 - No-KC conclusions are not yet complete enough for a final workbook.
@@ -161,7 +167,7 @@ Rules:
 
 ## Immediate next work
 
-1. Resolve exact KC mappings for the remaining 23 accepted publisher products.
+1. Resolve exact KC mappings for the remaining 22 accepted publisher products.
 2. Resolve official SafetyKorea status for `2001`, `3003`, `4001`, `4003`, `8001`, and `9002`.
 3. Search for exact current-catalog use of expired `9003`.
 4. Continue publisher recovery only through materially different evidence routes.
