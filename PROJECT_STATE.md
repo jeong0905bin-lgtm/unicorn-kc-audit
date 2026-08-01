@@ -1,6 +1,23 @@
 # Unicorn KC Audit — Persistent Project State
 
-Updated: 2026-08-01 22:49 KST
+Updated: 2026-08-01 23:18 KST
+
+## Conversation continuity rule
+
+This document is the authoritative handoff memory for this project.
+
+At the start of every continuation or after any upload/context reset:
+
+1. Read this file before proposing or running anything.
+2. Continue from the latest verified state below.
+3. Never restart from the old 120-product attempt, 2,230-product stale count, browser extension, snippet collector, broad GitHub access probes, OCR-only publisher inference, search-index-only publisher inference, archive probes, or BTF probe.
+4. Never ask the user to repeat information already recorded here.
+5. Never report a job as running unless its current live state was checked.
+6. Do not invent completion percentages.
+7. Do not promise background work.
+8. Do not merge PR #1.
+9. Preserve all exact mappings and unresolved cases; never replace exact evidence with guesses.
+10. When the user sends a new file, treat it as an addition to this state—not a replacement for prior work.
 
 ## Objective
 
@@ -81,6 +98,23 @@ Run `30643392302` scanned `/api/v2/store/individualInfo/products`.
 - Publisher attributes exposed: **0**
 
 This endpoint is retained for product metadata and link recovery only. It cannot classify publisher.
+
+## BTF JSON probe — failed route, do not repeat
+
+Probe run: `30565050631`
+
+Tested endpoint:
+
+`/next-api/products/btf?productId=...&vendorItemId=...&itemId=...`
+
+Results:
+
+- Ubuntu runner: both known Unicorn products returned HTTP 403 Access Denied.
+- macOS runner: both known Unicorn products returned HTTP 403 Access Denied.
+- Windows probe did not produce a usable route.
+- Overall route is **not usable from GitHub-hosted runners**.
+
+Do not repeat this probe unless a materially different execution environment or authenticated first-party session becomes available.
 
 ## KC evidence
 
@@ -164,6 +198,8 @@ Rules:
 - Keep exact confirmation separate from product-family similarity.
 - Do not promote a KC candidate until exact-product identity is established.
 - Do not create or deliver final workbooks until validation gates pass.
+- Browser snippet/extension bulk collection is not an accepted primary path because it triggered Coupang request blocking.
+- Open API is excluded by user instruction.
 
 ## Immediate next work
 
