@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-08-03T02:55:00+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve a new non-repeating subset of exact-KC-unmapped accepted Unicorn products using public official book/retailer records and indexed product pages without bypassing Coupang blocks.",
+  "checkedProducts": [
+    {
+      "productId": "109020782",
+      "itemId": "329855604",
+      "productName": "미니특공대X 스티커 컬렉션북, 유니콘",
+      "result": "no_new_exact_kc_mapping",
+      "notes": "No sufficiently exact ISBN/KC source was located in this pass."
+    },
+    {
+      "productId": "154363345",
+      "itemId": "445082014",
+      "productName": "요괴 메카드 스티커 컬렉션북, 유니콘",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "exact_title_official_retailer_catalog_record",
+      "officialRecordUrl": "https://event.yes24.com/template/p/Present?EventNo=215929",
+      "publicationDate": "2018-11",
+      "result": "publisher_confirmed_kc_unresolved",
+      "notes": "YES24 indexed catalog record exactly identifies the title and publisher as 유니콘. No exact KC number was exposed, so the item remains unresolved for KC."
+    },
+    {
+      "productId": "238001339",
+      "itemId": "756498891",
+      "productName": "쥬라기캅스 스티커 컬렉션북, 유니콘",
+      "result": "no_new_exact_kc_mapping",
+      "notes": "No sufficiently exact ISBN/KC source was located in this pass."
+    },
+    {
+      "productId": "238365275",
+      "itemId": "757275319",
+      "productName": "헬로카봇 쿵 스티커 컬렉션북, 유니콘",
+      "publisher": "유니콘",
+      "publisherStatus": "supported_by_existing_accepted_scope",
+      "indexedProductUrl": "https://www.coupang.com/vp/products/1066217418",
+      "result": "kc_unresolved",
+      "notes": "A matching indexed product page was found, but it exposes neither a reliable ISBN nor an exact KC number and therefore cannot close the mapping."
+    }
+  ],
+  "newExactPublisherConfirmations": [
+    {
+      "productId": "154363345",
+      "itemId": "445082014",
+      "productName": "요괴 메카드 스티커 컬렉션북, 유니콘",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "exact_title_official_retailer_catalog_record",
+      "officialRecordUrl": "https://event.yes24.com/template/p/Present?EventNo=215929"
+    }
+  ],
+  "newExactKcMappings": [],
+  "kcAbsenceConfirmedProducts": [],
+  "summary": {
+    "checked": 4,
+    "newExactPublisherConfirmations": 1,
+    "newExactKcMappings": 0,
+    "kcAbsenceConfirmed": 0
+  },
+  "safeguards": [
+    "U003E1577-7011 is excluded.",
+    "Blocked and empty responses are not counted as complete.",
+    "Missing KC is not treated as No-KC.",
+    "No anti-blocking or enforcement-evasion method was used.",
+    "Only exact identity evidence is accepted for product-to-KC mapping."
+  ]
+}
