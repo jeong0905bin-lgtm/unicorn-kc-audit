@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-08-02T23:18:00+09:00",
+  "sellerId": "A00214628",
+  "scope": "Integrate the complete official SafetyKorea probe and close newly exact publisher/KC mappings from the 99-product unresolved queue.",
+  "newExactPublisherConfirmations": [
+    {
+      "productId": "8542794955",
+      "itemId": "24734936068",
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "exact_normalized_title_official_retailer_record",
+      "isbn": "8806328724503",
+      "officialRecordUrl": "https://www.yes24.com/product/goods/140539361"
+    }
+  ],
+  "newExactKcMappings": [
+    {
+      "productId": "8542794955",
+      "itemId": "24734936068",
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01",
+      "publisher": "유니콘",
+      "isbn": "8806328724503",
+      "kcNumber": "CB064H009-4002",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_title_isbn_official_retailer_record",
+      "sourceUrl": "https://www.yes24.com/product/goods/140539361"
+    },
+    {
+      "productId": "6209404889",
+      "itemId": "12368820079",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 01, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "isbn": "8806328721298",
+      "kcNumber": "CB064H009-9001",
+      "mappingStatus": "confirmed",
+      "evidenceType": "normalized_exact_title_isbn_official_retailer_record",
+      "sourceUrl": "https://www.yes24.com/product/goods/109712634"
+    }
+  ],
+  "officialSafetyKoreaStatuses": {
+    "CB064H009-2001": {"status":"적합","officialExactMatch":true,"expired":false,"manufacturer":"주식회사 유니콘","modelName":"판퍼즐"},
+    "CB064H009-3002": {"status":"적합","officialExactMatch":true,"expired":false,"manufacturer":"주식회사 유니콘","modelName":"스티커 컬렉션"},
+    "CB064H009-3003": {"status":"적합","officialExactMatch":true,"expired":false,"manufacturer":"주식회사 유니콘","modelName":"워터색칠북"},
+    "CB064H009-4001": {"status":"적합","officialExactMatch":true,"expired":false,"manufacturer":"주식회사 유니콘","modelName":"떼었다 붙였다 캐릭터 스티커"},
+    "CB064H009-4002": {"status":"적합","officialExactMatch":true,"expired":false,"manufacturer":"주식회사 유니콘","modelName":"캐릭터색칠북"},
+    "CB064H009-4003": {"status":"적합","officialExactMatch":true,"expired":false,"manufacturer":"주식회사 유니콘","modelName":"캐릭터 퍼즐"},
+    "CB064H009-8001": {"status":"기간만료","officialExactMatch":true,"expired":true,"manufacturer":"주식회사 유니콘","modelName":"워터 색칠북"},
+    "CB064H009-9001": {"status":"기간만료","officialExactMatch":true,"expired":true,"manufacturer":"주식회사 유니콘","modelName":"캐릭터 색칠북"},
+    "CB064H009-9002": {"status":"기간만료","officialExactMatch":true,"expired":true,"manufacturer":"주식회사 유니콘","modelName":"캐릭터 스티커"},
+    "CB064H009-9003": {"status":"기간만료","officialExactMatch":true,"expired":true,"manufacturer":"주식회사 유니콘","modelName":"캐릭터 퍼즐"}
+  },
+  "summary": {
+    "newExactPublisherConfirmations": 1,
+    "newExactKcMappings": 2,
+    "newExpiredProductRowsEnabled": 1,
+    "newActiveProductRows": 1,
+    "officialSafetyKoreaResolved": 10
+  },
+  "safeguards": [
+    "U003E1577-7011 is excluded.",
+    "Blocked and empty responses are not counted as complete.",
+    "Missing KC is not treated as No-KC.",
+    "Only exact product identity is used for product-to-KC mapping."
+  ]
+}
