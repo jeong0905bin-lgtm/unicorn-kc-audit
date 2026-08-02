@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-08-02T17:59:00+09:00",
+  "sellerId": "A00214628",
+  "sourceArtifact": "unicorn-singular-link-merged-30703784365/unresolved-products.json",
+  "batchRange": "remaining unresolved records 201-389",
+  "reviewedCount": 189,
+  "summary": {
+    "confirmedUnicorn": 4,
+    "exactRejectedNonUnicorn": 17,
+    "publisherCandidates": 4,
+    "unresolvedLowSignal": 164
+  },
+  "confirmedUnicorn": [
+    {
+      "catalogIndex": 1590,
+      "productId": "8411161016",
+      "itemId": "24319968314",
+      "productName": "(BOOKFRIENDS) 위시캣 스티커퀸 300",
+      "evidence": "previous exact official book/component record"
+    },
+    {
+      "catalogIndex": 1591,
+      "productId": "8411259209",
+      "itemId": "24320290865",
+      "productName": "(BOOKFRIENDS) 위시캣 스티커색칠북 2종세트",
+      "evidence": "previous exact official book/component record"
+    },
+    {
+      "catalogIndex": 1653,
+      "productId": "8510972161",
+      "itemId": "24635835948",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치티니핑 판퍼즐 2종세트 (각77조각)",
+      "evidence": "previous exact official book/component record"
+    },
+    {
+      "catalogIndex": 1669,
+      "productId": "8542794955",
+      "itemId": "24734936068",
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01",
+      "evidence": "previous exact official book/component record"
+    }
+  ],
+  "exactRejectedNonUnicorn": [
+    {"catalogIndex":1263,"productId":"7218825389","itemId":"18282746239","productName":"슈퍼다이노 스티커 색칠북 2종세트 (2권)","publisher":"은하수미디어","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1264,"productId":"7218855764","itemId":"18282875389","productName":"슈퍼다이노 스티커 색칠북1","publisher":"은하수미디어","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1265,"productId":"7218864245","itemId":"18282908951","productName":"슈퍼다이노 스티커 색칠북2","publisher":"은하수미디어","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1266,"productId":"7218866027","itemId":"18282916012","productName":"슈퍼다이노 스티커 색칠북1","publisher":"은하수미디어","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1267,"productId":"7218867335","itemId":"18282921086","productName":"슈퍼다이노 스티커 색칠북2","publisher":"은하수미디어","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1606,"productId":"8440277164","itemId":"24413945305","productName":"(BOOKFRIENDS) 사랑의 하츄핑 티니핑 도감 벽그림 스티커","publisher":"도티도그","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1635,"productId":"8473632862","itemId":"24519213314","productName":"(BOOKFRIENDS) 슈팅스타 티니핑 스티커로 색칠 인기티니핑 + 스타티니핑 2종세트 (2권)","publisher":"도티도그","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1680,"productId":"8556070120","itemId":"24776694922","productName":"(BOOKFRIENDS) 슈팅스타 캐치! 티니핑 : 스크래치카드","publisher":"피티엘","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1681,"productId":"8556082529","itemId":"24776733861","productName":"(BOOKFRIENDS) 슈팅스타 캐치 티니핑 입체가방스티커 : 우주별정거장","publisher":"도티도그","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1682,"productId":"8556125127","itemId":"24776870749","productName":"(BOOKFRIENDS) 슈팅스타 캐치! 티니핑 빛을 나눠 줄게 - 마음을 채우는 동화 2","publisher":"아이휴먼","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1725,"productId":"8660507080","itemId":"25137132977","productName":"(BOOKFRIENDS) 내친구 바다동물 판퍼즐 (72조각)","publisher":"지원","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1729,"productId":"8670468947","itemId":"25169530699","productName":"(BOOKFRIENDS) 슈팅스타 캐치! 티니핑 한글 색칠 놀이 - 자음과 모음 기본 글자를 배워요","publisher":"아이휴먼","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1730,"productId":"8670483454","itemId":"25169570106","productName":"(BOOKFRIENDS) 슈팅스타 캐치! 티니핑 알파벳 색칠 놀이 - A부터 Z까지 배워요","publisher":"아이휴먼","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1731,"productId":"8670484868","itemId":"25169574091","productName":"(BOOKFRIENDS) 슈팅스타 캐치! 티니핑 숫자 색칠 놀이 - 1부터 20까지 배워요!","publisher":"아이휴먼","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1758,"productId":"8721902073","itemId":"25338712517","productName":"(BOOKFRIENDS) 마음을 채우는 동화 슈팅스타 캐치!티니핑 1~5권 세트 (전5권)","publisher":"아이휴먼","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1782,"productId":"8814607254","itemId":"25682068097","productName":"(BOOKFRIENDS) 플라워 퍼즐 (72조각)","publisher":"지원","evidence":"exact title/component public publisher record"},
+    {"catalogIndex":1937,"productId":"9145462391","itemId":"26852633541","productName":"(BOOKFRIENDS) 프린세스 캐치! 티니핑 색칠 놀이 한글/숫자/알파벳 3종 세트","publisher":"아이휴먼","evidence":"exact title/component public publisher record"}
+  ],
+  "publisherCandidates": [
+    {"catalogIndex":1291,"productId":"7263523268","itemId":"18496956337","productName":"다이너소어 스티커 색츨북","reason":"다이너소어 계열이나 정확한 판본 출판사 경쟁 신호가 있어 ISBN 확인 필요"},
+    {"catalogIndex":1292,"productId":"7263525829","itemId":"18496965402","productName":"다이너소어 스티커 색츨북","reason":"동일 다이너소어 스티커 색칠북 중복 상품; 정확한 판본 출판사 확인 필요"},
+    {"catalogIndex":1683,"productId":"8567193283","itemId":"24810518795","productName":"(BOOKFRIENDS) 시크릿쥬쥬 붙었다 떼었다 캐릭터 스티커 : 폭신폭신 쿠션 스티커","reason":"시크릿쥬쥬 쿠션 스티커 계열; 유니콘 인접 상품군이나 exact 출판사 미확정"},
+    {"catalogIndex":1684,"productId":"8567198502","itemId":"24810534869","productName":"(BOOKFRIENDS) 엉뚱발랄 콩순이 붙였다 떼었다 캐릭터 스티커 : 폭신폭신 쿠션 스티커","reason":"콩순이 쿠션 스티커 계열; 유니콘 인접 상품군이나 exact 출판사 미확정"}
+  ],
+  "unresolvedLowSignalCount": 164,
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "exactAndInferenceSeparated": true,
+    "noKcNotAssignedFromMissingData": true,
+    "excludedCertificationNumber": "U003E1577-7011"
+  }
+}
