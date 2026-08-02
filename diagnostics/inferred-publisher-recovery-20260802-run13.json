@@ -1,0 +1,174 @@
+{
+  "generatedAt": "2026-08-02T18:35:00+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Large-batch triage of unresolved catalog products using exact official publisher records, duplicate-title binding, and competing-publisher safeguards.",
+  "batch": {
+    "reviewedCount": 14,
+    "rejectedNonUnicornCount": 5,
+    "newInferredHighUnicornCount": 2,
+    "keptPendingCount": 7,
+    "newExactKcMappings": 0
+  },
+  "rejectedNonUnicorn": [
+    {
+      "catalogIndex": 1937,
+      "productId": "9145462391",
+      "itemId": "26923770616",
+      "productName": "(BOOKFRIENDS) 프린세스 캐치! 티니핑 색칠 놀이 한글/숫자/알파벳 3종 세트",
+      "publisher": "아이휴먼",
+      "evidenceType": "exact_three_component_official_records",
+      "componentIsbns": ["8809854880569", "8809854880576", "8809854880583"],
+      "sourceUrls": [
+        "https://www.kobic.net/book/bookInfo/view.do?isbn=8809854880569",
+        "https://www.yes24.com/product/goods/160140974",
+        "https://www.yes24.com/product/goods/160141558"
+      ]
+    },
+    {
+      "catalogIndex": 1682,
+      "productId": "8556125127",
+      "itemId": "24776892640",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치! 티니핑 빛을 나눠 줄게 - 마음을 채우는 동화 2",
+      "publisher": "아이휴먼",
+      "evidenceType": "exact_title_official_book_record",
+      "isbn13": "9791165384319",
+      "sourceUrls": [
+        "https://www.yes24.com/product/goods/139870891",
+        "https://www.daejeon.go.kr/hanbatlibrary/searchDetail.do?ctrl=000005528439&lang=kor&loca=H0000001&marcType=m&siteCodeGubun=home&sysDiv=TOT"
+      ]
+    },
+    {
+      "catalogIndex": 1758,
+      "productId": "8721902073",
+      "itemId": "25335403687",
+      "productName": "(BOOKFRIENDS) 마음을 채우는 동화 슈팅스타 캐치!티니핑 1~5권 세트",
+      "publisher": "아이휴먼",
+      "evidenceType": "exact_series_and_component_official_records",
+      "sourceUrls": [
+        "https://www.coupang.com/vp/products/8941890987",
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=353288454"
+      ]
+    },
+    {
+      "catalogIndex": 846,
+      "productId": "5774975486",
+      "itemId": "9824613452",
+      "productName": "캐릭터 스티커 핑크퐁 아기상어+핑크퐁 2종세트",
+      "publisher": "삼성출판사",
+      "evidenceType": "exact_bundle_component_official_records",
+      "sourceUrls": [
+        "https://www.yes24.com/product/goods/59296445",
+        "https://www.yes24.com/product/goods/128766497",
+        "https://www.coupang.com/vp/products/5774975486"
+      ]
+    },
+    {
+      "catalogIndex": 845,
+      "productId": "5768690462",
+      "itemId": "9793842734",
+      "productName": "캐릭터 스티커북 - 핑크퐁",
+      "publisher": "삼성출판사",
+      "evidenceType": "exact_title_official_book_record",
+      "sourceUrls": [
+        "https://www.yes24.com/product/goods/128766497",
+        "https://www.coupang.com/vp/products/5768690462"
+      ]
+    }
+  ],
+  "newInferredHighUnicorn": [
+    {
+      "catalogIndex": 215,
+      "productId": "276159001",
+      "itemId": "874119421",
+      "productName": "반짝이는 프리채널 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "status": "inferred_high_pending_official_component_isbn",
+      "evidenceType": "exact_catalog_title_plus_exact_marketplace_unicorn_listing",
+      "sourceUrls": [
+        "https://www.coupang.com/vp/products/276159001",
+        "https://www.coupang.com/np/search?q=%ED%94%84%EB%A6%AC%EC%B1%84%EB%84%90"
+      ],
+      "notes": "The exact 63-piece two-puzzle title is publicly listed as 유니콘. It remains outside exact scope until component ISBN or mandatory-disclosure publisher evidence is recovered."
+    },
+    {
+      "catalogIndex": 932,
+      "productId": "6310324329",
+      "itemId": "13094509431",
+      "productName": "반짝이는 프리채널 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "status": "inferred_high_duplicate_title_binding",
+      "evidenceType": "duplicate_exact_title_of_inferred_high_catalog_product",
+      "sourceUrls": [
+        "https://www.coupang.com/vp/products/276159001",
+        "https://www.coupang.com/np/search?q=%ED%94%84%EB%A6%AC%EC%B1%84%EB%84%90"
+      ],
+      "notes": "Same normalized title and piece-count as product 276159001. Exact publisher promotion waits for product-specific or component-level evidence."
+    }
+  ],
+  "keptPending": [
+    {
+      "catalogIndex": 1078,
+      "productId": "6729339522",
+      "itemId": "15674800890",
+      "productName": "캐치티니핑 스티커 퀸 300 + 신기한 워터색칠북 세트",
+      "status": "pending_mixed_or_ambiguous_publisher",
+      "reason": "The water-coloring component is publicly tied to 유니콘, while generic Catch Teenieping Sticker Queen 300 records also exist under 신세계. Exact edition/component binding is required."
+    },
+    {
+      "catalogIndex": 351,
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "status": "pending_competing_publisher_records",
+      "reason": "Exact marketplace listings exist, but public records for the broader Prichannel coloring/sticker family include multiple publishers."
+    },
+    {
+      "catalogIndex": 235,
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "status": "pending_duplicate_title_binding",
+      "reason": "Duplicate normalized title of product 1741474592; no exact component ISBN has yet closed publisher identity."
+    },
+    {
+      "catalogIndex": 172,
+      "productId": "210278112",
+      "itemId": "626290463",
+      "productName": "콩순이앤콩콩이 스티커 컬렉션북",
+      "status": "pending_exact_official_record",
+      "reason": "Character-family evidence is insufficient; exact publisher or ISBN record was not recovered in this batch."
+    },
+    {
+      "catalogIndex": 290,
+      "productId": "1066216134",
+      "itemId": "2013072266",
+      "productName": "미니특공대-스티커 킹300",
+      "status": "pending_competing_editions",
+      "reason": "Marketplace metadata uses 유니콘 on some editions, while official records identify other Mini Force Sticker King editions as 신세계. Exact edition identity is required."
+    },
+    {
+      "catalogIndex": 1684,
+      "productId": "8567198502",
+      "itemId": "24816068558",
+      "productName": "(BOOKFRIENDS) 엉뚱발랄 콩순이 붙였다 떼었다 캐릭터 스티커 : 폭신폭신 쿠션 스티커",
+      "status": "pending_exact_official_record",
+      "reason": "BOOKFRIENDS and character identity are not publisher evidence; exact ISBN or official publisher record is still missing."
+    },
+    {
+      "catalogIndex": 1683,
+      "productId": "8567193283",
+      "itemId": "24816049485",
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 붙었다 떼었다 캐릭터 스티커 : 폭신폭신 쿠션 스티커",
+      "status": "pending_exact_official_record",
+      "reason": "BOOKFRIENDS and character identity are not publisher evidence; exact ISBN or official publisher record is still missing."
+    }
+  ],
+  "safeguards": [
+    "A bundle is not promoted when its components may have different publishers.",
+    "Duplicate titles can transfer candidate priority, but not exact publisher or KC status without product-specific evidence.",
+    "Marketplace publisher labels are retained as inference only when official records are absent or competing.",
+    "Blocked responses remain unresolved and are never classified as No-KC.",
+    "U003E1577-7011 remains excluded."
+  ],
+  "nextBatchPolicy": "Continue with large grouped passes over unresolved BOOKFRIENDS, puzzle, sticker, coloring and water-coloring titles. Prioritize exact ISBN/component recovery and official SafetyKorea status resolution before workbook generation."
+}
