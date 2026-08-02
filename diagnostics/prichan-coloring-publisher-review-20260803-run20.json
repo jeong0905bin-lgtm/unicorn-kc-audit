@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-08-03T04:58:42+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve the two remaining near-duplicate PriChan sticker-coloring bundle candidates without using blocked Coupang paths or inference from character names.",
+  "reviewed": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "result": "unresolved_not_counted_complete",
+      "reason": "No exact ISBN, component title pair, mandatory publisher field, or official book record was found. Public search results contain multiple competing PriChan publishers and cannot bind this exact bundle to 유니콘."
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "result": "unresolved_not_counted_complete",
+      "reason": "The indexed Coupang page confirms only the exact product identity and seller 북프렌즈. It does not expose the publisher. Search results show similarly named PriChan coloring products from 은하수미디어, 두드림엠앤비, 신세계, and other publishers, so title similarity is insufficient."
+    }
+  ],
+  "evidenceSummary": [
+    "Exact Coupang product identity confirmed for productId 282727888 / itemId 897484443, but publisher not exposed in the indexed page.",
+    "Coupang search results separately identify a PriChan sticker album as UNICORN and a PriChan puzzle set as 유니콘, but these are different products and were not used to infer the coloring bundle publisher.",
+    "Official retailer records identify other PriChan coloring editions under 은하수미디어, proving that character/title-family similarity is not sufficient for publisher attribution."
+  ],
+  "decision": {
+    "addToUnicornSet": false,
+    "excludeAsOtherPublisher": false,
+    "retainPending": true,
+    "newKcMappings": 0,
+    "newNoKcRows": 0,
+    "newExpiredKcRows": 0
+  },
+  "doNotRepeat": [
+    "Generic exact-title web searches for the two bundle titles without ISBN or component volume numbers.",
+    "Using seller name 북프렌즈 as publisher evidence.",
+    "Inferring publisher from adjacent PriChan products or character-family matches."
+  ],
+  "nextBestPath": "Search retained HAR/detail-description assets or catalog-side image/HTML text for component volume numbers, ISBNs, or an explicit 저자·출판사 field for these two product IDs.",
+  "safeguards": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumber": "U003E1577-7011",
+    "openApiKeyUsed": false,
+    "coupangBlockBypassAttempted": false
+  }
+}
