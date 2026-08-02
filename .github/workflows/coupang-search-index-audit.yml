@@ -32,6 +32,13 @@ jobs:
         run: python -m py_compile tools/coupang_search_index_audit.py
       - name: Audit public search index
         run: python tools/coupang_search_index_audit.py
+      - name: Ensure result artifact exists
+        if: always()
+        run: |
+          mkdir -p diagnostics/search-index
+          if [ ! -f diagnostics/search-index/result.json ]; then
+            printf '%s\n' '{"candidateTotal":0,"processed":0,"exactUnicorn":0,"withKC":0,"results":[],"note":"No candidates were returned by the permitted public listing path in this run."}' > diagnostics/search-index/result.json
+          fi
       - name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
