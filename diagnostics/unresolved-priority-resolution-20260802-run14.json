@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-08-02T18:48:00+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Resolve the nine remaining high-priority inferred publisher candidates using exact component records, normalized marketplace identity, and the user's broadened publisher-inference rule while preserving evidence grades.",
+  "summary": {
+    "reviewed": 9,
+    "publisherConfirmedExact": 1,
+    "publisherPromotedInferredHigh": 6,
+    "stillPending": 2,
+    "newExactKcMappings": 1,
+    "newExactExpiredProductMappings": 1
+  },
+  "publisherConfirmedExact": [
+    {
+      "productId": "274995506",
+      "itemId": "868971526",
+      "productName": "미미 판퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "evidenceType": "exact_bundle_components_title_piece_count_official_book_records",
+      "componentRecords": [
+        {
+          "title": "리틀 미미 8절 퍼즐 1",
+          "publisher": "유니콘",
+          "pieceCount": 63
+        },
+        {
+          "title": "리틀 미미 8절 퍼즐 2",
+          "publisher": "유니콘",
+          "pieceCount": 63,
+          "isbn13": "8806328719820",
+          "kcNumber": "CB064H009-9003"
+        }
+      ],
+      "kcNumber": "CB064H009-9003",
+      "kcMappingStatus": "confirmed_for_exact_two-component_set",
+      "officialSafetyKoreaStatus": "기간만료"
+    }
+  ],
+  "publisherPromotedInferredHigh": [
+    {
+      "productId": "324552180",
+      "itemId": "1038983770",
+      "productName": "유니콘 반지의 비밀일기2 스티커 컬렉션북",
+      "publisher": "유니콘",
+      "evidenceType": "exact_marketplace_identity_publisher_prefix_plus_verified_unicorn_sibling_series",
+      "kcStatus": "pending exact product KC"
+    },
+    {
+      "productId": "1816795573",
+      "itemId": "3091871516",
+      "productName": "유니콘 신비아파트 스티커색칠북 2종세트",
+      "publisher": "유니콘",
+      "evidenceType": "exact_marketplace_identity_publisher_prefix_and_unicorn_editor_catalog_series",
+      "kcStatus": "pending exact bundle components"
+    },
+    {
+      "productId": "6729339522",
+      "itemId": "15674800890",
+      "productName": "캐치티니핑 스티커 퀸 300 + 신기한 워터색칠북 세트",
+      "publisher": "유니콘",
+      "evidenceType": "both named component product families publicly listed as Unicorn publications",
+      "kcStatus": "pending exact component edition binding"
+    },
+    {
+      "productId": "276159001",
+      "itemId": "874119421",
+      "productName": "반짝이는 프리채널 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "evidenceType": "exact marketplace title publicly labelled Unicorn",
+      "kcStatus": "pending exact component ISBN"
+    },
+    {
+      "productId": "6310324329",
+      "itemId": "13094509431",
+      "productName": "반짝이는 프리채널 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "evidenceType": "duplicate exact title of verified marketplace Unicorn listing",
+      "kcStatus": "pending exact product binding"
+    },
+    {
+      "productId": "276195692",
+      "itemId": "874223306",
+      "productName": "유니콘 열려라 코코밍 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "evidenceType": "exact marketplace identity with explicit Unicorn publisher prefix under broadened inference rule",
+      "kcStatus": "pending exact component ISBN"
+    }
+  ],
+  "stillPending": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "reason": "Competing official publishers exist for similarly named PriChan coloring editions; exact volume identity remains unresolved."
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "reason": "Duplicate/near-duplicate coloring title with competing official publishers; exact component identity remains unresolved."
+    }
+  ],
+  "rules": {
+    "publisherEvidenceGradesSeparated": true,
+    "blockedResponsesCountAsComplete": false,
+    "missingKcMeansNoKc": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  }
+}
