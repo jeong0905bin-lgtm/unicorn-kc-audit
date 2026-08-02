@@ -1,0 +1,20 @@
+{
+  "batch": 10,
+  "verifiedAt": "2026-08-03",
+  "method": "Direct product URL inspection plus public product/title cross-check. Exact product-to-KC evidence required; similar-series KC not reused.",
+  "products": [
+    {"productId":"338432152","itemId":"1078306428","productName":"미미 스티커 색칠북 2종세트, 유니콘","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인"},
+    {"productId":"1058484558","itemId":"2001655046","productName":"유니콘 반지의 비밀일기2 판퍼즐 2종세트","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인"},
+    {"productId":"1074457906","itemId":"2027232964","productName":"엉덩이탐정 스티커 색칠북 2종 세트, 유니콘","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인"},
+    {"productId":"1076170088","itemId":"2030230565","productName":"엉덩이탐정 스티커 색칠북 01, 유니콘","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인"},
+    {"productId":"1079913175","itemId":"2036419863","productName":"유니콘 엉덩이탐정 판퍼즐 2종세트 (63조각)","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인"},
+    {"productId":"1329308694","itemId":"2350228897","productName":"엉덩이탐정 스티커 2종 세트 컬렉션북 + 킹 300, 유니콘","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인"},
+    {"productId":"1741474604","itemId":"2964569596","productName":"신비아파트 고스트볼 더블X 6개의 예언 스티커 컬렉션북 + 킹 300 세트, 유니콘","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인"},
+    {"productId":"1741474611","itemId":"2964569605","productName":"반짝이는 프리채널 신기한 워터색칠북, 유니콘","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인"},
+    {"productId":"1816795573","itemId":"3091871516","productName":"유니콘 신비아파트 스티커색칠북 2종세트","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인"},
+    {"productId":"6303970235","itemId":"13058891655","productName":"미니특공대 애니멀트론 스티커 앨범, 유니콘, 1권","publisher":"유니콘","exactKc":null,"noKcConfirmed":false,"result":"KC 미확인; 동일 제목의 신세계 판본과 혼동 가능성 있어 KC 추정 금지"}
+  ],
+  "newExactKcCount": 0,
+  "newNoKcCount": 0,
+  "remainingUnresolvedAfterBatch": 14
+}
