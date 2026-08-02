@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-08-03T03:40:00+09:00",
+  "scope": "manual exact KC review batch 3",
+  "products": [
+    {
+      "productId": "274824520",
+      "itemId": "868302647",
+      "productName": "(BOOKFRIENDS) 시크릿 쥬쥬 스티커 퀸 300",
+      "publisher": "유니콘",
+      "isbn": "8806328724596",
+      "kcNumbers": [],
+      "kcMappingStatus": "unresolved",
+      "noKcConfirmed": false,
+      "evidence": [
+        "쿠팡 동일 ISBN 상품에서 출판사 (주)유니콘 확인",
+        "대상 쿠팡 상품에서 ISBN 8806328724596 확인",
+        "공개 자료에서 이 ISBN과 정확히 연결되는 KC 번호 미확보"
+      ]
+    },
+    {
+      "productId": "276159001",
+      "itemId": "874119421",
+      "productName": "반짝이는 프리채널 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "kcNumbers": [],
+      "kcMappingStatus": "unresolved",
+      "noKcConfirmed": false,
+      "evidence": [
+        "쿠팡 상품 및 유니콘 기획전/검색에서 동일 제목 확인",
+        "공개 자료에서 구성품별 또는 세트 exact KC 번호 미확보"
+      ]
+    },
+    {
+      "productId": "276195692",
+      "itemId": "874223306",
+      "productName": "유니콘 열려라 코코밍 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "kcNumbers": [],
+      "kcMappingStatus": "unresolved",
+      "noKcConfirmed": false,
+      "evidence": [
+        "쿠팡 상품명에서 유니콘 확인",
+        "공개 필수표기/검색 자료에서 exact KC 번호 미확보"
+      ]
+    },
+    {
+      "productId": "281434359",
+      "itemId": "891207698",
+      "productName": "시크릿쥬쥬 스티커색칠북 2종세트, 유니콘",
+      "publisher": "유니콘",
+      "kcNumbers": [],
+      "kcMappingStatus": "unresolved",
+      "noKcConfirmed": false,
+      "evidence": [
+        "유니콘 상품군 및 동일 제목 세트 판매기록 확인",
+        "다른 시즌/다른 구성의 시크릿쥬쥬 세트와 혼동 가능하여 KC 임의 전용 금지",
+        "대상 상품 exact KC 번호 미확보"
+      ]
+    },
+    {
+      "productId": "324552180",
+      "itemId": "1038983770",
+      "productName": "유니콘 반지의 비밀일기2 스티커 컬렉션북",
+      "publisher": "유니콘",
+      "kcNumbers": [],
+      "kcMappingStatus": "unresolved",
+      "noKcConfirmed": false,
+      "evidence": [
+        "쿠팡 정확 상품 확인",
+        "공식 서점 기록에서 동일 시리즈 유니콘 출판 확인",
+        "스티커 퀸 300 또는 판퍼즐의 KC를 컬렉션북에 임의 적용하지 않음",
+        "대상 상품 exact KC 번호 미확보"
+      ]
+    }
+  ],
+  "summary": {
+    "reviewed": 5,
+    "newExactKcMappings": 0,
+    "newNoKcConfirmations": 0,
+    "remainingUnresolvedAfterThisBatch": 24
+  }
+}
