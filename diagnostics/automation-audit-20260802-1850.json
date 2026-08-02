@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-08-02T18:50:39+09:00",
+  "sellerId": "A00214628",
+  "catalog": {
+    "count": 2229,
+    "detailSuccessful": 1849,
+    "detailUnresolved": 380,
+    "completionRatio": 0.8295199641094662,
+    "exactPublisherUnicorn": 37,
+    "newExactPublisherUnicorn": 7,
+    "unresolvedResponseTypes": {
+      "http=403;api=None;data=False": 186,
+      "http=200;api=None;data=False": 176,
+      "http=400;api=None;data=False": 18
+    }
+  },
+  "safetyKorea": {
+    "requestedCount": 12,
+    "exactResolved": 12,
+    "complete": true,
+    "expired": [
+      "CB064H009-8001",
+      "CB064H009-9001",
+      "CB064H009-9002",
+      "CB064H009-9003"
+    ],
+    "active": [
+      "CB064H009-2001",
+      "CB064H009-3002",
+      "CB064H009-3003",
+      "CB064H009-4001",
+      "CB064H009-4002",
+      "CB064H009-4003",
+      "CB064H208-3002",
+      "CB064H284-2001"
+    ],
+    "excludedCertificationNumbers": ["U003E1577-7011"]
+  },
+  "runIds": {
+    "singularRetry": 30741271264,
+    "pluralScan": 30741271266,
+    "safetyKorea": 30741271280,
+    "productsRecovery": 30741271277,
+    "emptyPayloadProbe": 30741271281,
+    "searchIndexAuditFailed": 30741271268
+  },
+  "completion": {
+    "full2230ReviewComplete": false,
+    "finalNoKcComplete": false,
+    "finalExpiredComplete": false,
+    "reason": "380 catalog products remain unresolved; blocked or empty responses are not counted as complete. SafetyKorea status resolution is complete for all 12 discovered KC numbers, but product-level publisher and KC coverage is not complete."
+  },
+  "nextAction": "Use non-repeated evidence paths (ISBN and official book metadata) to classify unresolved publisher candidates and exact product-to-KC mappings; do not repeat blocked Coupang detail routes."
+}
