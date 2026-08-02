@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-08-03T07:58:35+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve the two remaining near-duplicate PriChan coloring-set publisher candidates without using blocked Coupang detail calls or API-key services.",
+  "reviewed": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "publisherDecision": "not_verified_as_unicorn",
+      "catalogAction": "exclude_from_verified_unicorn_set_pending_exact_component_identity",
+      "reason": "No exact official book record was found tying this two-volume set to publisher 유니콘. Public records show multiple competing publishers for similarly named PriChan coloring/sticker products, so character/title similarity is insufficient."
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "publisherDecision": "not_verified_as_unicorn",
+      "catalogAction": "exclude_from_verified_unicorn_set_pending_exact_component_identity",
+      "reason": "The publicly indexed Coupang page confirms the exact product identity and seller, but does not expose an exact publisher field. Search results also show similarly named PriChan coloring products from 아이누리, 은하수미디어, 두드림M&B, 학산문화사 and other publishers. No ISBN or official record linked this exact set to 유니콘."
+    }
+  ],
+  "evidenceSummary": {
+    "exactCoupangIndexedProduct": "https://www.coupang.com/vp/products/282727888",
+    "competingOfficialPublisherExamples": [
+      "은하수(은하수미디어): 반짝이는 프리채널 시즌 3 색연필 색칠북",
+      "아이누리: 반짝이는 프리채널 미니스티커색칠",
+      "두드림M&B: 반짝이는 프리채널 스티커 코디북",
+      "학산문화사: 반짝이는 프리채널 만화 단행본"
+    ],
+    "verifiedUnicornAdjacentButNonIdentical": "프리채널 시즌3 신기한 워터색칠북, ISBN 8806328722929"
+  },
+  "result": {
+    "resolvedCandidates": 2,
+    "newVerifiedUnicornProducts": 0,
+    "newExactKcMappings": 0,
+    "remainingFromThisPair": 0
+  },
+  "safeguards": [
+    "No publisher inference from character name alone.",
+    "No blocked response counted as complete.",
+    "U003E1577-7011 remains excluded.",
+    "Missing KC was not treated as No-KC in this repository audit step."
+  ]
+}
