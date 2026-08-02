@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-08-02T18:25:00+09:00",
+  "sellerId": "A00214628",
+  "source": "diagnostics/unresolved-389-priority-queue-20260802.json plus verified recovery runs 3-13",
+  "reviewedPriorityCount": 17,
+  "summary": {
+    "confirmedUnicorn": 4,
+    "rejectedNonUnicorn": 4,
+    "pendingExactPublisherEvidence": 9
+  },
+  "confirmedUnicorn": [
+    {
+      "productId": "324550724",
+      "itemId": "1038979605",
+      "productName": "유니콘 반지의 비밀일기2 스티커 퀸 300",
+      "publisher": "유니콘",
+      "evidence": "exact official book-title record",
+      "kcStatus": "pending exact product KC"
+    },
+    {
+      "productId": "8542794955",
+      "itemId": "24734936068",
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01",
+      "publisher": "유니콘",
+      "isbn": "8806328724503",
+      "kcNumber": "CB064H009-4002",
+      "evidence": "exact normalized official book title and ISBN"
+    },
+    {
+      "productId": "8510972161",
+      "itemId": "24635835948",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치티니핑 판퍼즐 2종세트 (각77조각)",
+      "publisher": "유니콘",
+      "componentIsbns": ["8806328724459", "8806328724466"],
+      "kcNumber": "CB064H009-4003",
+      "evidence": "both exact 77-piece bundle components"
+    },
+    {
+      "productId": "8411259209",
+      "itemId": "24320290865",
+      "productName": "(BOOKFRIENDS) 위시캣 스티커색칠북 2종세트",
+      "publisher": "유니콘",
+      "componentIsbns": ["8806328724282", "8806328724299"],
+      "kcNumber": "CB064H009-4002",
+      "evidence": "both exact bundle components"
+    }
+  ],
+  "rejectedNonUnicorn": [
+    {
+      "productId": "1058485712",
+      "productName": "유니콘 반지의 비밀일기2 판퍼즐 2종세트",
+      "publisher": "신세계",
+      "evidence": "exact series and format official publisher record"
+    },
+    {
+      "productId": "198863722",
+      "productName": "헬로카봇 쿵 스티커 색칠북 02",
+      "publisher": "은하수미디어",
+      "evidence": "exact-title official record"
+    },
+    {
+      "productId": "284824584",
+      "productName": "유니콘 시크릿쥬쥬 별의 여신 스티커 색칠북 949",
+      "publisher": "신세계",
+      "evidence": "exact-title public book metadata"
+    },
+    {
+      "productId": "5774975486",
+      "productName": "캐릭터 스티커 핑크퐁 아기상어+핑크퐁 2종세트",
+      "publisher": "삼성출판사",
+      "evidence": "exact bundle-component publisher records"
+    }
+  ],
+  "pendingExactPublisherEvidence": [
+    {"productId":"324552180","itemId":"1038983770","productName":"유니콘 반지의 비밀일기2 스티커 컬렉션북"},
+    {"productId":"1816795573","itemId":"3091871516","productName":"유니콘 신비아파트 스티커색칠북 2종세트"},
+    {"productId":"6729339522","itemId":"15674800890","productName":"캐치티니핑 스티커 퀸 300 + 신기한 워터색칠북 세트"},
+    {"productId":"274995506","itemId":"868971526","productName":"미미 판퍼즐 2종세트 (63조각)"},
+    {"productId":"276159001","itemId":"874119421","productName":"반짝이는 프리채널 퍼즐 2종세트 (63조각)","evidenceSoFar":"indexed Coupang listing labels the same title as 유니콘; exact official component/ISBN still needed"},
+    {"productId":"6310324329","itemId":"13094509431","productName":"반짝이는 프리채널 퍼즐 2종세트 (63조각)","evidenceSoFar":"duplicate title of product 276159001; exact product binding still needed"},
+    {"productId":"1741474592","itemId":"2964825703","productName":"반짝이는 프리채널 스티커 색칠북 2종 세트"},
+    {"productId":"276195692","itemId":"874223306","productName":"유니콘 열려라 코코밍 퍼즐 2종세트 (63조각)"},
+    {"productId":"282727888","itemId":"897484443","productName":"반짝이는 프리채널 스티커색칠북 2종세트"}
+  ],
+  "rules": {
+    "titlePrefixAloneIsEvidence": false,
+    "blockedResponsesCountAsComplete": false,
+    "missingKcMeansNoKc": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  }
+}
