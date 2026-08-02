@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-08-03T05:58:09+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve the two remaining PriChan sticker-coloring candidates from the prior high-priority queue using public exact-title evidence without treating blocked or incomplete Coupang detail data as complete.",
+  "reviewed": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "result": "not_promoted_to_unicorn",
+      "reason": "No exact ISBN or official book record tying this exact two-volume set to 유니콘 was found. Multiple official PriChan coloring/sticker publications exist under other publishers, so character/title-family similarity is insufficient.",
+      "kcResult": "not_mapped",
+      "completionStatus": "review_complete_candidate_rejected",
+      "sources": [
+        "Public official records for PriChan coloring/sticker books under 은하수미디어, 아이누리, 두드림M&B and 학산문화사",
+        "Coupang public product/search pages where exact mandatory publisher details were not exposed"
+      ]
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "result": "not_promoted_to_unicorn",
+      "reason": "The public Coupang page confirms the exact marketplace identity but does not expose the mandatory publisher row. No exact ISBN/component edition record tying the set to 유니콘 was found, while competing official publishers exist for near-identical PriChan coloring titles.",
+      "kcResult": "not_mapped",
+      "completionStatus": "review_complete_candidate_rejected",
+      "sources": [
+        "https://www.coupang.com/vp/products/282727888",
+        "Public official book records for similarly named PriChan coloring/sticker titles from non-Unicorn publishers"
+      ]
+    }
+  ],
+  "summary": {
+    "reviewed": 2,
+    "newUnicornPublisherConfirmations": 0,
+    "newExactKcMappings": 0,
+    "candidatesRemovedFromUnresolvedPromotionQueue": 2,
+    "remainingFromThisPriorityQueue": 0
+  },
+  "safeguards": {
+    "blockedResponsesCountAsComplete": false,
+    "characterOrBrandNameAloneIsNotPublisherEvidence": true,
+    "missingKcMeansNoKc": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  },
+  "nextRecommendedWork": "Continue with the broader unresolved catalog queue, prioritizing rows with exact ISBN-bearing title matches or publicly indexed mandatory publisher details. Do not retry the same PriChan title-family searches unless new exact component evidence appears."
+}
