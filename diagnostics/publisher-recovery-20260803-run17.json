@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-08-03T06:55:12+09:00",
+  "sellerId": "A00214628",
+  "scope": "Continue publisher recovery from the 2,230-product catalog without treating blocked or missing KC responses as completion.",
+  "newExactPublisherConfirmations": [
+    {
+      "productId": "6209404899",
+      "itemId": "12368820141",
+      "vendorItemId": "80366520556",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 02, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "evidenceType": "normalized_exact_title_official_series_record",
+      "normalizedOfficialTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 2",
+      "officialRecordUrl": "https://m.yes24.com/category/seriesgoods/001?SeriesNumber=298386",
+      "identityNotes": [
+        "Catalog and official title differ only by spacing, leading-zero volume notation, and appended publisher/author tokens.",
+        "Official series record identifies author/publisher as 유니콘 편집부 / 유니콘."
+      ],
+      "kcStatus": "unresolved; no KC inferred from sibling products"
+    },
+    {
+      "productId": "6209404912",
+      "itemId": "12368820251",
+      "vendorItemId": "70734566994",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 놀이북, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "evidenceType": "normalized_exact_title_official_series_record",
+      "normalizedOfficialTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 놀이북",
+      "officialRecordUrl": "https://m.yes24.com/category/seriesgoods/001?SeriesNumber=298386",
+      "identityNotes": [
+        "Catalog and official title normalize to the same title.",
+        "Official series record identifies author/publisher as 유니콘 편집부 / 유니콘."
+      ],
+      "kcStatus": "unresolved; no KC inferred from sibling products"
+    }
+  ],
+  "summary": {
+    "reviewed": 2,
+    "newExactPublisherConfirmations": 2,
+    "newExactKcMappings": 0,
+    "newNoKcConfirmations": 0,
+    "newExpiredKcRows": 0
+  },
+  "safeguards": [
+    "No blocked response was counted as complete.",
+    "Missing or unmapped KC was not classified as No-KC.",
+    "No product-family KC inference was used.",
+    "U003E1577-7011 remains excluded."
+  ]
+}
