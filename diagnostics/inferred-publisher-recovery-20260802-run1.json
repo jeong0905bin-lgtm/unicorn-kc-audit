@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-02T03:10:00+09:00",
+  "generatedAt": "2026-08-02T12:55:00+09:00",
   "sellerId": "A00214628",
   "sourceArtifact": "unicorn-shop-plural-full-scan-30703784386",
   "scope": {
     "artifactUnresolvedProductsReviewed": 142,
-    "classificationTrack": "inferred_publisher",
-    "note": "These candidates are kept separate from exact publisher confirmations until ISBN, official retailer, or product-detail evidence closes the inference."
+    "classificationTrack": "publisher_recovery",
+    "note": "Inference candidates remain separate until exact official book or product-detail evidence closes identity."
   },
   "rules": {
     "acceptInferenceSignals": [
@@ -15,8 +15,31 @@
       "public Coupang campaign groups the exact title as a 유니콘 publication"
     ],
     "doNotInferKcFromFamily": true,
+    "blockedResponsesCountAsComplete": false,
     "excludedCertificationNumber": "U003E1577-7011"
   },
+  "exactConfirmations": [
+    {
+      "catalogIndex": 620,
+      "productId": "6209404889",
+      "itemId": "12368820079",
+      "vendorItemId": "80366499414",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 01, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "exact_normalized_title_official_book_record_plus_public_coupang_campaign",
+      "isbn": "8806328721298",
+      "kcNumbers": ["CB064H009-9001"],
+      "kcMappingStatus": "confirmed",
+      "officialSafetyKoreaStatus": "unresolved",
+      "evidence": [
+        "Official YES24 record title differs only by spacing and 01 versus 1",
+        "Official YES24 record identifies publisher 유니콘 and ISBN 8806328721298",
+        "Official YES24 record lists KC CB064H009-9001",
+        "Public Coupang campaign lists the same title under 유니콘"
+      ]
+    }
+  ],
   "candidates": [
     {
       "catalogIndex": 505,
@@ -26,10 +49,7 @@
       "productName": "유니콘 콩순이 판퍼즐 2종세트 (63조각)",
       "publisherInference": "유니콘",
       "confidence": "high",
-      "evidence": [
-        "catalog title explicitly prefixes 유니콘",
-        "the product form matches Unicorn character puzzle publications"
-      ],
+      "evidence": ["catalog title explicitly prefixes 유니콘"],
       "kcNumbers": [],
       "kcStatus": "pending_exact_product_evidence"
     },
@@ -41,28 +61,9 @@
       "productName": "유니콘 콩순이 판퍼즐 2종세트 (63조각), 엉덩이탐정 퍼즐 2종세트 (63조각)",
       "publisherInference": "유니콘",
       "confidence": "high",
-      "evidence": [
-        "catalog title explicitly prefixes 유니콘",
-        "bundle contains two Unicorn character puzzle lines"
-      ],
+      "evidence": ["catalog title explicitly prefixes 유니콘"],
       "kcNumbers": [],
       "kcStatus": "pending_component_exact_evidence"
-    },
-    {
-      "catalogIndex": 620,
-      "productId": "6209404889",
-      "itemId": "12368820079",
-      "vendorItemId": "80366499414",
-      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 01, UNICORN, 편집부",
-      "publisherInference": "유니콘",
-      "confidence": "high",
-      "evidence": [
-        "catalog title explicitly names UNICORN",
-        "public Coupang campaign lists the same title under the Unicorn publication line",
-        "official book-search results identify the related series as publisher 유니콘"
-      ],
-      "kcNumbers": [],
-      "kcStatus": "pending_exact_edition_record"
     },
     {
       "catalogIndex": 1364,
@@ -87,19 +88,16 @@
       "productName": "(BOOKFRIENDS) 슈팅스타 캐치티니핑 스티커 색칠북 1번",
       "publisherInference": "유니콘",
       "confidence": "medium_high",
-      "evidence": [
-        "official YES24 records identify the normalized Shooting Star Catch Teenieping coloring-book line as publisher 유니콘",
-        "public Coupang campaigns list adjacent Shooting Star Catch Teenieping activity-book titles as 유니콘"
-      ],
+      "evidence": ["official book records identify the normalized series as publisher 유니콘"],
       "kcNumbers": [],
       "kcStatus": "pending_exact_volume_record"
     }
   ],
   "summary": {
-    "newInferredCandidates": 5,
-    "highConfidence": 4,
-    "mediumHighConfidence": 1,
-    "newExactPublisherConfirmations": 0,
-    "newExactKcMappings": 0
+    "newInferredCandidates": 4,
+    "newExactPublisherConfirmations": 1,
+    "newExactKcMappings": 1,
+    "newUniqueKcNumbers": ["CB064H009-9001"],
+    "finalWorkbookReady": false
   }
 }
