@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-08-02T17:45:00+09:00",
+  "sellerId": "A00214628",
+  "sourceArtifact": "unicorn-singular-link-merged-30703784365/unresolved-products.json",
+  "reviewedCount": 200,
+  "batchRange": "first 200 unresolved records",
+  "summary": {
+    "confirmedUnicorn": 1,
+    "exactRejectedNonUnicorn": 3,
+    "publisherCandidates": 15,
+    "lowPriorityCompetingPublisherSignals": 149,
+    "unresolvedLowSignal": 32
+  },
+  "confirmedUnicorn": [
+    {"productId":"324550724","itemId":"1038979605","productName":"유니콘 반지의 비밀일기2 스티커 퀸 300","evidence":"existing exact official book record"}
+  ],
+  "exactRejectedNonUnicorn": [
+    {"productId":"198863722","productName":"헬로카봇 쿵 스티커 색칠북 02","publisher":"은하수미디어"},
+    {"productId":"284824584","productName":"유니콘 시크릿쥬쥬 별의 여신 스티커 색칠북 949","publisher":"신세계"},
+    {"productId":"1058485712","productName":"유니콘 반지의 비밀일기2 판퍼즐 2종세트","publisher":"신세계"}
+  ],
+  "publisherCandidates": [
+    {"productId":"210278112","productName":"콩순이앤콩콩이 스티커 컬렉션북"},
+    {"productId":"274995506","productName":"미미 판퍼즐 2종세트 (63조각)"},
+    {"productId":"276159001","productName":"반짝이는 프리채널 퍼즐 2종세트 (63조각)"},
+    {"productId":"276195692","productName":"유니콘 열려라 코코밍 퍼즐 2종세트 (63조각)"},
+    {"productId":"282727888","productName":"반짝이는 프리채널 스티커색칠북 2종세트"},
+    {"productId":"324552180","productName":"유니콘 반지의 비밀일기2 스티커 컬렉션북"},
+    {"productId":"1066216134","productName":"미니특공대-스티커 킹300"},
+    {"productId":"1741474592","productName":"반짝이는 프리채널 스티커 색칠북 2종 세트"},
+    {"productId":"1816795573","productName":"유니콘 신비아파트 스티커색칠북 2종세트"},
+    {"productId":"6310324329","productName":"반짝이는 프리채널 퍼즐 2종세트 (63조각)"},
+    {"productId":"6328615033","productName":"시크릿쥬쥬 스티커 색칠북 + 캐치티니핑 스티커 색칠북 세트"},
+    {"productId":"6399540750","productName":"반짝반짝 캐치티니핑 시계놀이"},
+    {"productId":"6537172351","productName":"캐치티니핑 오리기 + 스티커퀸 300 2종세트 (2권)"},
+    {"productId":"6729339522","productName":"캐치티니핑 스티커 퀸 300 + 신기한 워터색칠북 세트"},
+    {"productId":"6936644285","productName":"대격돌 공룡배틀 + 쿵쿵쿵 공룡대탐험 판퍼즐 2종세트 (72조각)"}
+  ],
+  "publicEvidenceNotes": [
+    "Coupang indexed search identifies 반짝이는 프리 채널 퍼즐 2종 세트 as 유니콘 product evidence.",
+    "The same search surface shows competing publishers for other 프리채널 coloring titles, so each edition remains product-specific.",
+    "Mini Force product-family search contains both Unicorn and non-Unicorn titles; exact edition identity is required."
+  ],
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "exactAndInferenceSeparated": true,
+    "noKcNotAssignedFromMissingData": true,
+    "excludedCertificationNumber": "U003E1577-7011"
+  }
+}
