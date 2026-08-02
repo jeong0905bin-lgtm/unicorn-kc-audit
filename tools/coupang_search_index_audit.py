@@ -16,10 +16,12 @@ def plain(s):
 def candidates():
     rows=[]
     page=0
+    diagnostics=[]
     with requests.Session() as s:
         while True:
             payload={'sellerId':'A00214628','storeId':79545,'outboundShippingPlaceId':1208642,'page':page,'size':20,'query':'유니콘'}
             r=s.post(LISTING,json=payload,headers={'User-Agent':UA,'Referer':'https://shop.coupang.com/A00214628'},timeout=30)
+            diagnostics.append({'page':page,'status':r.status_code,'contentType':r.headers.get('content-type',''),'bodyLength':len(r.content)})
             r.raise_for_status(); data=r.json()
             body=data.get('data') or data
             items=body.get('products') or body.get('content') or body.get('items') or []
@@ -34,7 +36,7 @@ def candidates():
             if not items or len(rows)>=total: break
             page+=1
     uniq={(x['productId'],x['itemId']):x for x in rows}
-    return list(uniq.values())
+    return list(uniq.values()), diagnostics
 
 def search_html(session,q):
     engines=[('bing','https://www.bing.com/search?q='),('duck','https://html.duckduckgo.com/html/?q=')]
@@ -47,9 +49,36 @@ def search_html(session,q):
         except Exception as e: attempts.append({'engine':name,'error':str(e)})
     return '',attempts
 
+def write_summary(products, results, listing_diagnostics, listing_error=None):
+    summary={
+        'candidateTotal':len(products),
+        'processed':len(results),
+        'exactUnicorn':sum(r['publisherExactUnicornFromIndex'] for r in results),
+        'withKC':sum(bool(r['kcCandidates']) for r in results),
+        'results':results,
+        'listingDiagnostics':listing_diagnostics,
+        'listingError':listing_error,
+        'complete': bool(products) and len(results)==len(products) and not listing_error,
+        'note': 'Zero candidates is retained as unresolved evidence, not completion.' if not products else '',
+    }
+    OUT.write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+    return summary
+
 def main():
     OUT.parent.mkdir(parents=True,exist_ok=True)
-    products=candidates(); results=[]
+    products=[]; listing_diagnostics=[]; results=[]
+    try:
+        products, listing_diagnostics=candidates()
+    except Exception as exc:
+        summary=write_summary(products, results, listing_diagnostics, repr(exc))
+        print(json.dumps(summary,ensure_ascii=False,indent=2))
+        return
+
+    # Persist an explicit unresolved result even when the permitted listing path
+    # returns no candidates. This avoids FileNotFoundError and prevents an empty
+    # response from being mistaken for completed coverage.
+    write_summary(products, results, listing_diagnostics)
+
     session=requests.Session()
     for i,p in enumerate(products,1):
         pid=p['productId']; title=p['sourceName']
@@ -66,8 +95,7 @@ def main():
             pos=evidence.find(needle)
             if pos>=0: snippets.append(evidence[max(0,pos-180):pos+420])
         results.append({**p,'publisherExactUnicornFromIndex':exact,'kcCandidates':kcs,'evidenceSnippets':snippets[:8],'attempts':attempts})
-        summary={'candidateTotal':len(products),'processed':len(results),'exactUnicorn':sum(r['publisherExactUnicornFromIndex'] for r in results),'withKC':sum(bool(r['kcCandidates']) for r in results),'results':results}
-        OUT.write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+        write_summary(products, results, listing_diagnostics)
         print(json.dumps({'i':i,'productId':pid,'exact':exact,'kcs':kcs},ensure_ascii=False),flush=True)
     print(OUT.read_text(encoding='utf-8'))
 
