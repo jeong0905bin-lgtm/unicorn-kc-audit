@@ -38,6 +38,7 @@ def normalize_product(row: dict[str, Any]) -> dict[str, Any]:
         "publisher": str(row.get("publisher") or "유니콘"),
         "publisherEvidenceType": str(row.get("publisherEvidenceType") or row.get("evidenceType") or ""),
         "kcNumbers": kc_numbers,
+        "kcAbsenceConfirmed": row.get("kcAbsenceConfirmed") is True,
     }
 
 
@@ -51,6 +52,7 @@ def merge_product(target: dict[str, dict[str, Any]], row: dict[str, Any]) -> Non
         target[key] = p
         return
     current["kcNumbers"] = sorted(set(current["kcNumbers"]) | set(p["kcNumbers"]))
+    current["kcAbsenceConfirmed"] = bool(current.get("kcAbsenceConfirmed") or p.get("kcAbsenceConfirmed"))
     for field in ("itemId", "productName", "coupangUniqueId", "publisherEvidenceType"):
         if not current.get(field) and p.get(field):
             current[field] = p[field]
@@ -83,6 +85,16 @@ def collect_products() -> dict[str, dict[str, Any]]:
         for row in priority.get(bucket, []):
             merge_product(products, row)
 
+    recovery = load_json(DIAG / "publisher-kc-recovery-20260802-run2.json")
+    for bucket in ("newExactPublisherConfirmations", "newExactKcMappings"):
+        for row in recovery.get(bucket, []):
+            merge_product(products, row)
+
+    latest = load_json(DIAG / "official-audit-addendum-20260802-run16.json")
+    for bucket in ("newExactPublisherConfirmations", "newExactKcMappings", "kcAbsenceConfirmedProducts"):
+        for row in latest.get(bucket, []):
+            merge_product(products, row)
+
     return products
 
 
@@ -96,6 +108,10 @@ def collect_statuses() -> dict[str, dict[str, Any]]:
     for kc, info in state.get("officialSafetyKorea", {}).items():
         if kc != EXCLUDED_KC and kc not in statuses:
             statuses[kc] = dict(info)
+    latest = load_json(DIAG / "official-audit-addendum-20260802-run16.json")
+    for kc, info in latest.get("officialSafetyKoreaStatuses", {}).items():
+        if kc != EXCLUDED_KC:
+            statuses[kc] = dict(info)
     return statuses
 
 
@@ -107,7 +123,6 @@ def style_header(ws, row: int, cols: int, fill: str) -> None:
 
 
 def save_no_kc(products: list[dict[str, Any]]) -> int:
-    # Strict gate: only include products whose evidence explicitly proves full KC inspection and absence.
     rows = [p for p in products if p.get("kcAbsenceConfirmed") is True]
     wb = Workbook()
     ws = wb.active
@@ -171,7 +186,7 @@ def save_expired(products: list[dict[str, Any]], statuses: dict[str, dict[str, A
     unresolved = wb.create_sheet("미해결 상품")
     unresolved.append(["상품명", "쿠팡 상품 고유번호", "사유"])
     for p in products:
-        if not p.get("kcNumbers"):
+        if not p.get("kcNumbers") and not p.get("kcAbsenceConfirmed"):
             unresolved.append([p["productName"], p["coupangUniqueId"], "상품별 exact KC 미매핑"])
         else:
             unknown = [kc for kc in p["kcNumbers"] if not statuses.get(kc, {}).get("officialExactMatch")]
