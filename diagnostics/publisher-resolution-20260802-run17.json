@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-08-02T23:53:57+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Continue publisher recovery using exact public catalog and official book records without treating blocked Coupang responses as complete.",
+  "reviewed": 1,
+  "resolved": [
+    {
+      "productId": "1816795573",
+      "itemId": "3091871516",
+      "vendorItemId": "71079703190",
+      "productName": "유니콘 신비아파트 스티커색칠북 2종세트",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "exact_coupang_title_plus_official_two_volume_set_and_component_records",
+      "evidence": [
+        {
+          "source": "Coupang public indexed product page",
+          "url": "https://www.coupang.com/vp/products/1816795573",
+          "fact": "Exact product title and identifiers: 유니콘 신비아파트 스티커색칠북 2종세트; productId 1816795573, itemId 3091871516."
+        },
+        {
+          "source": "YES24 official catalog",
+          "url": "https://m.yes24.com/goods/detail/105627327",
+          "fact": "Official two-volume set record identifies publisher 유니콘 and author 유니콘 편집부 for 신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 세트."
+        },
+        {
+          "source": "YES24 official component record",
+          "url": "https://www.yes24.com/product/goods/109712634",
+          "fact": "Volume 1 publisher 유니콘; ISBN 8806328721298; KC CB064H009-9001."
+        },
+        {
+          "source": "YES24 official component record",
+          "url": "https://www.yes24.com/product/goods/109712520",
+          "fact": "Volume 2 publisher 유니콘; ISBN 8806328721304; KC CB064H009-9001."
+        }
+      ],
+      "kcMappingStatus": "not_bound_to_exact_edition",
+      "kcNumbersNotPromoted": ["CB064H009-9001"],
+      "kcReason": "The Coupang title does not expose the exact season/edition or component ISBNs, so publisher is confirmed but product-KC binding remains unresolved."
+    }
+  ],
+  "summary": {
+    "newPublisherConfirmations": 1,
+    "newExactKcMappings": 0,
+    "blockedResponsesCountedComplete": 0
+  },
+  "rules": {
+    "titleAndOfficialBookEvidenceAllowed": true,
+    "characterNameAloneAllowed": false,
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  }
+}
