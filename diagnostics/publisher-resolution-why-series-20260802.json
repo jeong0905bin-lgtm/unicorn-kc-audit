@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-08-02T23:20:00+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve 29 of the 95 remaining publisher-unresolved catalog rows by exact series/title publisher evidence.",
+  "publisher": "예림당",
+  "classification": "confirmed_non_unicorn",
+  "evidence": [
+    {
+      "series": "Why? 한국사",
+      "source": "YES24 exact title record: Why? 와이 한국사 과학과 의학 — publisher 예림당"
+    },
+    {
+      "series": "Why? 인문사회교양",
+      "source": "YES24 official series and exact-volume records identify publisher 예림당"
+    },
+    {
+      "series": "Why? 인문고전",
+      "source": "YES24 official series sets and exact-volume records identify publisher 예림당"
+    },
+    {
+      "series": "Why? People",
+      "source": "YES24 official series sets and exact-volume records identify publisher 예림당"
+    },
+    {
+      "series": "Why? 스포츠",
+      "source": "YES24 official series set includes 배구 and identifies publisher 예림당"
+    }
+  ],
+  "resolvedProducts": [
+    ["4939128566","6503867164","Why? 한국사 ~ 과학과 의학 No.07"],
+    ["5155382320","7091192370","Why? 인문사회교양 - 철학 No.05"],
+    ["5155456680","7091397586","Why? 인문사회교양 - 정치 No.08"],
+    ["5155492309","7091530602","Why? 인문사회교양 - 집과 건축 No.09"],
+    ["5155724883","7092296188","Why? 인문사회교양 - 영화 No.16"],
+    ["5155754142","7092374562","Why? 인문사회교양 - 옷과 패션 No.17"],
+    ["5155790881","7092475345","Why? 인문사회교양 - 국가와 국기 No.18"],
+    ["5157095716","7095294530","Why? 인문사회교양 - 종교 No.23"],
+    ["5157352642","7095813328","Why? 인문사회교양 - 로마 이야기No.33"],
+    ["5157372984","7095859350","Why? 인문사회교양 - 뉴스와 미디어 No.35"],
+    ["5163550515","7111377333","Why? 인문고전 - 리바이어던 No.4"],
+    ["5163690983","7111631253","Why? 인문고전 - 국부론 No.7"],
+    ["5163873689","7111973313","Why? 인문고전 - 국화와 칼 No.11"],
+    ["5163992673","7112212276","Why? 인문고전 - 유토피아 No.14"],
+    ["5169894968","7131445656","Why? 인문고전 - 자유론 No.20"],
+    ["5169925655","7131530041","Why? 인문고전 - 맹자 No.22"],
+    ["5182837248","7174016682","Why? People - 에이브러햄 링컨 No.1"],
+    ["5182851134","7174049270","Why? People - 오프라 윈프리 No.3"],
+    ["5182886467","7174133445","Why? People - 정명훈 No.7"],
+    ["5182908690","7174192286","Why? People - 스티브 잡스 No.8"],
+    ["5185943438","7187039939","Why? People - 전태일 No.36"],
+    ["5185961700","7187086210","Why? People - 알프레드 노벨 No.37"],
+    ["5185984894","7187150621","Why? People - 마윈 No.38"],
+    ["5186018850","7187276960","Why? People - 장보고 No.40"],
+    ["5186055769","7187428933","Why? People - 마틴 루터 킹 No.43"],
+    ["5186096711","7187564015","Why? People - 존 F. 케네디 No.46"],
+    ["5186106010","7187596161","Why? People - 박지원 No.47"],
+    ["5189749804","7202032753","Why? 플러스 - 곤충 외 No.3"],
+    ["8721310017","25333264810","(BOOKFRIENDS) Why? 스포츠 배구"]
+  ],
+  "summary": {
+    "resolvedThisRun": 29,
+    "confirmedUnicorn": 0,
+    "confirmedNonUnicorn": 29,
+    "remainingPublisherUnresolved": 66
+  },
+  "safeguards": [
+    "BOOKFRIENDS is treated as seller/bundle labeling, not publisher.",
+    "No title-family inference is used across unrelated series.",
+    "Blocked Coupang responses are not counted as direct detail completion.",
+    "U003E1577-7011 remains excluded."
+  ]
+}
