@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-08-02T17:42:00+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Batch-review unresolved BOOKFRIENDS, Teenieping, puzzle and coloring-book products against exact official publisher records, removing non-Unicorn false positives in one large pass.",
+  "batch": {
+    "reviewedCount": 8,
+    "newExactUnicornConfirmations": 0,
+    "newExactKcMappings": 0,
+    "rejectedNonUnicornCount": 8
+  },
+  "rejectedNonUnicorn": [
+    {
+      "catalogIndex": 1606,
+      "productId": "8440277164",
+      "itemId": "24413945305",
+      "productName": "(BOOKFRIENDS) 사랑의 하츄핑 티니핑 도감 벽그림 스티커",
+      "publisher": "도티도그",
+      "evidenceType": "exact_title_official_book_record",
+      "isbn13": "8809854312862",
+      "sourceUrls": [
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=342389418",
+        "https://www.coupang.com/vp/products/8440277164"
+      ]
+    },
+    {
+      "catalogIndex": 1635,
+      "productId": "8473632862",
+      "itemId": "24519213314",
+      "productName": "(BOOKFRIENDS) 슈팅스타 티니핑 스티커로 색칠 인기티니핑 + 스타티니핑 2종세트 (2권)",
+      "publisher": "도티도그",
+      "evidenceType": "exact_bundle_component_official_book_records",
+      "componentIsbns": ["8809854313227", "8809854313234"],
+      "sourceUrls": [
+        "https://www.yes24.com/product/goods/135280245",
+        "https://www.yes24.com/product/goods/135280347"
+      ]
+    },
+    {
+      "catalogIndex": 1681,
+      "productId": "8556082529",
+      "itemId": "24776733861",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치 티니핑 입체가방스티커 : 우주별정거장",
+      "publisher": "도티도그",
+      "evidenceType": "exact_title_official_book_record",
+      "isbn13": "8809854313463",
+      "kcNumber": "CB064H284-2001",
+      "sourceUrls": [
+        "https://www.yes24.com/product/goods/139563347",
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=352563657"
+      ]
+    },
+    {
+      "catalogIndex": 1725,
+      "productId": "8660507080",
+      "itemId": "25137132977",
+      "productName": "(BOOKFRIENDS) 내친구 바다동물 판퍼즐 (72조각)",
+      "publisher": "지원",
+      "evidenceType": "exact_title_piece_count_isbn_official_book_record",
+      "isbn13": "8809255014037",
+      "sourceUrl": "https://www.yes24.com/product/goods/142966463"
+    },
+    {
+      "catalogIndex": 1782,
+      "productId": "8814607254",
+      "itemId": "25682068097",
+      "productName": "(BOOKFRIENDS) 플라워 퍼즐 (72조각)",
+      "publisher": "지원",
+      "evidenceType": "exact_title_piece_count_isbn_official_book_record",
+      "isbn13": "8809255014181",
+      "kcNumber": "CB064H208-3002",
+      "sourceUrls": [
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=365275593",
+        "https://www.coupang.com/vp/products/8797144199"
+      ]
+    },
+    {
+      "catalogIndex": 1729,
+      "productId": "8670468947",
+      "itemId": "25169530699",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치! 티니핑 한글 색칠 놀이 - 자음과 모음 기본 글자를 배워요",
+      "publisher": "아이휴먼",
+      "evidenceType": "exact_title_official_book_record",
+      "isbn13": "8809854880507",
+      "sourceUrl": "https://www.yes24.com/product/goods/142793024"
+    },
+    {
+      "catalogIndex": 1730,
+      "productId": "8670483454",
+      "itemId": "25169570106",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치! 티니핑 알파벳 색칠 놀이 - A부터 Z까지 배워요",
+      "publisher": "아이휴먼",
+      "evidenceType": "exact_title_official_book_record",
+      "isbn13": "8809854880514",
+      "sourceUrl": "https://m.yes24.com/goods/detail/143528027"
+    },
+    {
+      "catalogIndex": 1731,
+      "productId": "8670484868",
+      "itemId": "25169574091",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치! 티니핑 숫자 색칠 놀이 - 1부터 20까지 배워요!",
+      "publisher": "아이휴먼",
+      "evidenceType": "exact_title_official_book_record",
+      "isbn13": "8809854880491",
+      "sourceUrls": [
+        "https://www.kobic.net/book/bookInfo/view.do?isbn=8809854880491",
+        "https://www.yes24.com/product/goods/142793103"
+      ]
+    }
+  ],
+  "safeguards": [
+    "BOOKFRIENDS is treated only as seller merchandising metadata, never as publisher evidence.",
+    "Character and series similarity is insufficient when an exact competing publisher record exists.",
+    "Non-Unicorn KC numbers are retained only as exclusion evidence and never enter final Unicorn workbooks.",
+    "Blocked responses remain unresolved and are not classified as No-KC.",
+    "U003E1577-7011 remains excluded."
+  ],
+  "nextBatchPolicy": "Continue in larger batches. Report only after a material block of unresolved products has been classified or final workbooks are ready."
+}
