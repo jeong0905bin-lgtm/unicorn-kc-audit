@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-08-03T03:33:00+09:00",
+  "sellerId": "A00214628",
+  "method": "manual public-source verification",
+  "items": [
+    {
+      "productId": "109020782",
+      "itemId": "329855604",
+      "productName": "미니특공대X 스티커 컬렉션북, 유니콘",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "kcStatus": "unresolved",
+      "finding": "Public listings for a likely matching older '미니특공대 스티커 컬렉션북 [J0061]' identify manufacturer 주식회사 유니콘, but no exact KC number is exposed. CB064H009-3002 belongs to the distinct 2024 title '최강경찰 미니특공대 스티커 컬렉션북' and must not be assigned to this older product without exact identity evidence.",
+      "sources": [
+        "https://www.gsshop.com/prd/prd.gs?prdid=19178510",
+        "https://www.fashionplus.co.kr/goods/detail/130342275",
+        "https://www.yes24.com/product/goods/127158272"
+      ]
+    },
+    {
+      "productId": "154363345",
+      "itemId": "445082014",
+      "productName": "요괴 메카드 스티커 컬렉션북, 유니콘",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "kcStatus": "unresolved",
+      "finding": "Exact title and publisher 유니콘 are confirmed by public book records and Coupang campaign indexing. No exact KC number was found in the inspected public records, so it remains unresolved and is not classified as No-KC.",
+      "sources": [
+        "https://event.yes24.com/template/p/Present?EventNo=215929",
+        "https://www.coupang.com/np/campaigns/1923"
+      ]
+    }
+  ],
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "missingKcMeansNoKc": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  }
+}
