@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-08-02T14:55:35+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Correct title-prefix inference using exact public publisher records and prevent false Unicorn promotion.",
+  "reviewedProducts": [
+    {
+      "productId": "284824584",
+      "itemId": "903850449",
+      "productName": "유니콘 시크릿쥬쥬 별의 여신 스티커 색칠북 949",
+      "previousStatus": "inferred_high",
+      "newStatus": "rejected_non_unicorn",
+      "publisher": "신세계",
+      "confidence": "high",
+      "evidenceType": "exact_title_public_book_and_product_metadata",
+      "evidence": [
+        "교보문고 publisher search identifies 시크릿쥬쥬 별의 여신 스티커 색칠북 as 신세계 편집부 / 신세계.",
+        "Gmarket product-detail metadata identifies the matching 시크릿쥬쥬 별의 여신 스티커 색칠북 line as 신세계 출판사.",
+        "The leading word 유니콘 in the Coupang catalog title is therefore not accepted as publisher evidence for this product."
+      ],
+      "sourceUrls": [
+        "https://search.kyobobook.co.kr/search?gbCode=TOT&keyword=%EC%8B%A0%EC%84%B8%EA%B3%84&pbcmCode=PB26983&target=total",
+        "https://mg.gmarket.co.kr/ItemDetail?GdscCode=300029622&GoodsCode=2321144994"
+      ],
+      "kcStatus": "not_applicable_to_unicorn_audit"
+    },
+    {
+      "productId": "1058485712",
+      "itemId": "2001962757",
+      "productName": "유니콘 반지의 비밀일기2 판퍼즐 2종세트",
+      "previousStatus": "inferred_high",
+      "newStatus": "rejected_non_unicorn",
+      "publisher": "신세계",
+      "confidence": "high",
+      "evidenceType": "exact_series_and_format_public_book_record",
+      "evidence": [
+        "교보문고 publisher search identifies 반지의 비밀일기2 판퍼즐 861 as 신세계 편집부 / 신세계.",
+        "The catalog title's leading 유니콘 token is not sufficient to override the exact publisher record."
+      ],
+      "sourceUrls": [
+        "https://search.kyobobook.co.kr/search?gbCode=TOT&keyword=%EC%8B%A0%EC%84%B8%EA%B3%84&pbcmCode=PB26983&target=total"
+      ],
+      "kcStatus": "not_applicable_to_unicorn_audit"
+    }
+  ],
+  "retainedProducts": [
+    {
+      "productId": "324550724",
+      "productName": "유니콘 반지의 비밀일기2 스티커 퀸 300",
+      "status": "confirmed_unicorn",
+      "reason": "YES24 exact-title record explicitly lists 편집부 저 / 유니콘."
+    },
+    {
+      "productId": "324552180",
+      "productName": "유니콘 반지의 비밀일기2 스티커 컬렉션북",
+      "status": "inferred_pending",
+      "reason": "No exact official publisher record was recovered in this run; title prefix alone is not promoted."
+    }
+  ],
+  "summary": {
+    "reviewed": 4,
+    "newRejectedNonUnicorn": 2,
+    "retainedExactUnicorn": 1,
+    "retainedPendingInference": 1,
+    "newExactKcMappings": 0,
+    "finalWorkbookReady": false
+  },
+  "safeguards": [
+    "A leading 유니콘 token in a marketplace title is treated as ambiguous metadata, not proof of publisher.",
+    "Exact official publisher records override title-prefix inference.",
+    "Blocked responses remain unresolved and are never counted as No-KC.",
+    "U003E1577-7011 remains excluded."
+  ]
+}
