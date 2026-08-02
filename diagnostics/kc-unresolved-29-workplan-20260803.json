@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-08-03T00:47:00+09:00",
+  "sellerId": "A00214628",
+  "scope": {
+    "acceptedUnicornProducts": 42,
+    "productsWithExactKc": 13,
+    "productsPendingExactKc": 29
+  },
+  "goal": "Resolve exact product-to-KC mapping for all 29 pending Unicorn products and update the consolidated workbook.",
+  "rules": {
+    "doNotTreatMissingMappingAsNoKc": true,
+    "blockedOrEmptyResponsesAreNotComplete": true,
+    "requireExactProductEvidence": true,
+    "verifyOfficialStatusWithSafetyKorea": true,
+    "excludedCertificationNumber": "U003E1577-7011"
+  },
+  "priorityMethods": [
+    "Coupang mandatory disclosure extraction",
+    "public indexed product detail recovery",
+    "official ISBN/book metadata exact-title match",
+    "bundle component exact mapping",
+    "SafetyKorea exact certification status verification"
+  ]
+}
