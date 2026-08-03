@@ -1,0 +1,47 @@
+{
+  "schema": "unicorn-kc-audit-product-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03T18:56:00+09:00",
+  "product": {
+    "productId": "1329308694",
+    "itemId": "2350228897",
+    "productName": "엉덩이탐정 스티커 2종 세트 컬렉션북 + 킹 300, 유니콘",
+    "catalogEvidence": "Existing 2,230-item catalog and unresolved-product workbook",
+    "publisherDecision": "verified_unicorn",
+    "publisherEvidence": [
+      {
+        "component": "엉덩이탐정 스티커 컬렉션북",
+        "publisher": "유니콘",
+        "isbn13": "8806328718519",
+        "officialBookUrl": "https://www.yes24.com/product/goods/115101884"
+      },
+      {
+        "component": "엉덩이 탐정 스티커킹 300",
+        "publisher": "유니콘",
+        "isbn13": "8806328718564",
+        "officialBookUrl": "https://www.yes24.com/product/goods/115101896"
+      }
+    ],
+    "kcMapping": {
+      "decision": "exact_bundle_components_verified",
+      "kcNumbers": ["CB064H009-9002"],
+      "evidence": "Both exact named bundle components list CB064H009-9002 in official book metadata. This is product-level bundle evidence, not a series-level copy."
+    },
+    "safetyKoreaStatus": {
+      "decision": "pending_official_exact_status",
+      "reason": "No authoritative SafetyKorea status response was captured in this run; search-index or retailer claims are insufficient for active/expired classification."
+    },
+    "finalBucket": "not_promoted_pending_safetykorea_status"
+  },
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "seriesLevelKcCopyAllowed": false,
+    "excludedCertificationNumbers": ["U003E1577-7011"]
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
