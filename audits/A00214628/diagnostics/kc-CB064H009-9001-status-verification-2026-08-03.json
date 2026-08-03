@@ -1,0 +1,69 @@
+{
+  "schema": "unicorn-kc-audit-kc-status-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03T23:59:00+09:00",
+  "kcNumber": "CB064H009-9001",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false,
+    "openApiKeyRequiredSourcesAllowed": false
+  },
+  "verification": {
+    "exactProductMappingsConfirmed": [
+      {
+        "productId": "6209404899",
+        "itemId": "12368820141",
+        "vendorItemId": "80366520556",
+        "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 02, UNICORN, 편집부",
+        "publisher": "유니콘",
+        "isbn13": "8806328721304",
+        "kcNumber": "CB064H009-9001",
+        "evidenceType": "existing 2230-catalog identity plus official book metadata"
+      }
+    ],
+    "additionalPublicEvidence": [
+      {
+        "source": "YES24",
+        "title": "공룡 스티커 색칠북 DINOSAUR REX",
+        "publisher": "유니콘",
+        "isbn13": "8806328723193",
+        "kcNumber": "CB064H009-9001",
+        "url": "https://m.yes24.com/Goods/Detail/118285634"
+      },
+      {
+        "source": "Coupang public indexed page",
+        "productId": "7350140758",
+        "itemId": "18912280265",
+        "title": "미니특공대 브이레인저스 스티커 색칠북 2종세트",
+        "publisher": "유니콘",
+        "kcNumber": "CB064H009-9001",
+        "url": "https://www.coupang.com/vp/products/7350140758"
+      }
+    ],
+    "safetyKorea": {
+      "exactStatus": "unresolved",
+      "attemptedPublicPaths": [
+        "SafetyKorea indexed exact-number search",
+        "SafetyKorea public certification search page"
+      ],
+      "result": "No independently retrievable exact SafetyKorea certificate record for CB064H009-9001 was obtained in this run. Public book and product pages confirm the KC number, but they do not establish the current official certificate status.",
+      "retryPolicy": "Do not repeat the same indexed-search path unless new indexed data appears."
+    }
+  },
+  "decision": {
+    "publisherVerified": true,
+    "exactProductToKcMappingVerified": true,
+    "promoteToExpiredKcOutput": false,
+    "promoteToNoKcOutput": false,
+    "reason": "Current SafetyKorea exact status remains unresolved; KC presence is confirmed, so this is not No-KC."
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
