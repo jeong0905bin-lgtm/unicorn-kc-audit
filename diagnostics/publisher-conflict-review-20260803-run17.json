@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-08-03T14:55:33+09:00",
+  "sellerId": "A00214628",
+  "scope": "Re-check the two remaining PriChan publisher candidates with fresh public marketplace and official book evidence without treating blocked or incomplete product pages as completed.",
+  "reviewed": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "result": "still_unresolved",
+      "unicornIncluded": false,
+      "reason": "The exact two-volume bundle identity is not bound to an ISBN or mandatory publisher row. Public results show multiple competing PriChan coloring/sticker publishers, including 은하수미디어 and 도서출판 신세계. No exact evidence ties this catalog row to 유니콘.",
+      "evidence": [
+        {
+          "type": "marketplace_search",
+          "url": "https://www.coupang.com/np/search?q=%ED%94%84%EB%A6%AC%EC%B1%84%EB%84%90",
+          "note": "Search results expose similarly named PriChan coloring/sticker products from 은하수미디어, 두드림엠앤비, 도서출판 신세계, and others; the queried row lacks an exact publisher binding."
+        },
+        {
+          "type": "official_book_record",
+          "url": "https://www.yes24.com/product/goods/112939137",
+          "note": "Official PriChan coloring-book record published by 은하수미디어, demonstrating a competing publisher for near-identical title family."
+        },
+        {
+          "type": "official_book_record",
+          "url": "https://www.yes24.com/product/goods/90926548",
+          "note": "Another official PriChan coloring-book record published by 은하수미디어."
+        }
+      ]
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "result": "still_unresolved",
+      "unicornIncluded": false,
+      "reason": "The public Coupang page confirms the exact product and seller but does not expose the mandatory publisher value in the indexed body. Multiple competing official PriChan publishers remain, so title-only inference would create a false positive.",
+      "evidence": [
+        {
+          "type": "exact_marketplace_page",
+          "url": "https://www.coupang.com/vp/products/282727888",
+          "note": "Exact productId/itemId and title are confirmed; indexed page does not reveal a publisher row or ISBN."
+        },
+        {
+          "type": "marketplace_search",
+          "url": "https://www.coupang.com/np/search?q=%ED%94%84%EB%A6%AC%EC%B1%84%EB%84%90",
+          "note": "Near-identical PriChan coloring/sticker titles appear under several publishers; no exact 유니콘 binding for this row."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "reviewed": 2,
+    "newPublisherConfirmations": 0,
+    "newKcMappings": 0,
+    "excludedFromUnicornPendingExactEvidence": 2,
+    "stillPending": 2
+  },
+  "safeguards": {
+    "blockedResponsesCountAsComplete": false,
+    "titleOnlyInferenceAllowed": false,
+    "missingKcMeansNoKc": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  },
+  "nextAction": "Continue with unresolved catalog rows that have unique title/ISBN candidates; do not retry these two PriChan rows until exact ISBN, cover image identity, or mandatory publisher data becomes available."
+}
