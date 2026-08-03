@@ -1,0 +1,48 @@
+{
+  "schema": "unicorn-kc-audit-product-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03T21:51:00+09:00",
+  "product": {
+    "productId": "274824520",
+    "itemId": "868302647",
+    "productName": "(BOOKFRIENDS) 시크릿 쥬쥬 스티커 퀸 300, 유니콘, 시크릿쥬쥬",
+    "catalogEvidence": "Existing 2,230-item catalog and integrated unresolved-product workbook",
+    "publisherDecision": "excluded_not_unicorn",
+    "publisherEvidence": [
+      {
+        "sourceType": "coupang_indexed_product_detail",
+        "url": "https://www.coupang.com/vp/products/274824520",
+        "isbn13": "8806328724596",
+        "listedAuthorOrPublisher": "도서출판 신세계",
+        "coupangProductNumber": "274824520-868302647"
+      },
+      {
+        "sourceType": "official_book_record_cross_check",
+        "url": "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=182489429",
+        "recordTitle": "치링치링 시크릿 쥬쥬 스티커 퀸 300",
+        "publisher": "신세계",
+        "isbn13": "8806328714023",
+        "note": "Earlier edition/title-family record also identifies publisher as 신세계; it is supporting context only because the ISBN differs."
+      }
+    ],
+    "decisionReason": "The exact Coupang listing identifies ISBN 8806328724596 and author/publisher 도서출판 신세계. BOOKFRIENDS and the trailing word 유니콘 in the seller title are not sufficient publisher evidence and would be a brand/title false positive.",
+    "kcMapping": {
+      "decision": "not_applicable_non_unicorn_publisher",
+      "candidateKcRejected": "CB064H009-3002",
+      "reason": "SafetyKorea lists CB064H009-3002 as a 주식회사 유니콘 sticker-collection certification, but no product-level exact mapping exists and the product publisher is verified as 신세계."
+    },
+    "finalBucket": "excluded_from_unicorn_audit"
+  },
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "seriesLevelKcCopyAllowed": false,
+    "titleBrandFalsePositiveExcluded": true,
+    "excludedCertificationNumbers": ["U003E1577-7011"]
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
