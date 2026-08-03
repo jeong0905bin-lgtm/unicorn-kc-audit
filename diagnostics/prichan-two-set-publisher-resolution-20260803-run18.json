@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-08-03T11:53:49+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve the two remaining PriChan sticker-coloring two-book set candidates without treating character-family similarity as publisher evidence.",
+  "reviewed": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "result": "exclude_from_verified_unicorn_for_now",
+      "reason": "No exact ISBN, volume pair, mandatory publisher field, or official book record was found that binds this exact two-book set to 유니콘. Public marketplace results show multiple PriChan coloring/sticker publications from 은하수미디어, 도서출판 신세계, 두드림엠앤비, 학산문화사 and 유니콘, so title-family similarity is insufficient.",
+      "kcStatus": "not_evaluated_because_publisher_identity_unresolved"
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "result": "exclude_from_verified_unicorn_for_now",
+      "reason": "The indexed Coupang page confirms the exact product identity and seller but exposes no publisher value in the searchable mandatory-information text. Public search results show competing PriChan publishers and do not identify the two component editions, so an exact 유니콘 publisher determination cannot be made.",
+      "kcStatus": "not_evaluated_because_publisher_identity_unresolved"
+    }
+  ],
+  "evidence": [
+    {
+      "type": "indexed_exact_product_page",
+      "url": "https://www.coupang.com/vp/products/282727888",
+      "finding": "Exact productId-itemId and title confirmed; searchable page text does not expose publisher."
+    },
+    {
+      "type": "marketplace_search_crosscheck",
+      "url": "https://www.coupang.com/np/search?q=%ED%94%84%EB%A6%AC%EC%B1%84%EB%84%90",
+      "finding": "Same character family contains products attributed to 은하수미디어, 도서출판 신세계, 두드림엠앤비, 학산문화사 and 유니콘; therefore character/title family is not a valid exact publisher key."
+    },
+    {
+      "type": "official_retailer_crosscheck",
+      "url": "https://www.yes24.com/product/goods/112939137",
+      "finding": "Official PriChan coloring record exists for 은하수미디어, confirming competing official publisher records in this title family."
+    }
+  ],
+  "summary": {
+    "reviewed": 2,
+    "newVerifiedUnicorn": 0,
+    "newExactKcMappings": 0,
+    "removedFromPendingPublisherQueue": 2,
+    "classification": "not_verified_unicorn"
+  },
+  "safeguards": {
+    "blockedResponsesCountAsComplete": false,
+    "characterOrBrandNameAloneIsPublisherEvidence": false,
+    "missingKcMeansNoKc": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  }
+}
