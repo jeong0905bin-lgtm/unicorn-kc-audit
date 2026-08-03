@@ -1,0 +1,53 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03T22:00:00+09:00",
+  "verificationType": "SafetyKorea public exact-certificate lookup follow-up",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": ["U003E1577-7011"],
+    "seriesLevelKcCopyAllowed": false,
+    "coupangBypassUsed": false,
+    "apiKeyOpenApiUsed": false
+  },
+  "target": {
+    "productId": "6209404899",
+    "itemId": "12368820141",
+    "vendorItemId": "80366520556",
+    "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 02, UNICORN, 편집부",
+    "isbn13": "8806328721304",
+    "kcNumber": "CB064H009-9001"
+  },
+  "publicLookup": {
+    "officialService": "SafetyKorea 제품안전정보센터",
+    "queries": [
+      "site:safetykorea.kr CB064H009-9001",
+      "CB064H009-9001 SafetyKorea"
+    ],
+    "officialServiceReachable": true,
+    "exactCertificateRecordRetrieved": false,
+    "result": "The official SafetyKorea service was reachable, but no independently retrievable exact certificate-status record for CB064H009-9001 was obtained through the available public indexed path in this run."
+  },
+  "decision": {
+    "publisher": "verified_unicorn",
+    "productToKcMapping": "exact_product_mapping_verified",
+    "safetyKoreaStatus": "unresolved",
+    "finalBucket": "not_promoted_pending_safetykorea_exact_status"
+  },
+  "failurePathRegistry": {
+    "doNotRepeat": [
+      "generic public search for exact certificate CB064H009-9001 without a new indexed record or direct official certificate response"
+    ],
+    "nextAllowedPaths": [
+      "direct official SafetyKorea certificate detail response already present in repository or file library",
+      "another independently archived official public certificate record",
+      "verification of a different unresolved product"
+    ]
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
