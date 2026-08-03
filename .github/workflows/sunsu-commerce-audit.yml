@@ -33,6 +33,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r "$SELLER_ROOT/requirements.txt"
+      - run: python -m playwright install --with-deps chromium
       - name: Collect seller products
         run: |
           python "$SELLER_ROOT/src/stage1_enumerate_unicorn.py" \
@@ -70,6 +71,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r "$SELLER_ROOT/requirements.txt"
+      - run: python -m playwright install --with-deps chromium
       - uses: actions/download-artifact@v4
         with:
           name: sunsu-stage1
