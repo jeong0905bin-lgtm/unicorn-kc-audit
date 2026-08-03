@@ -2,29 +2,61 @@ name: Sunsu Commerce Audit
 
 on:
   push:
-    branches:
-      - main
-      - chatgpt/sunsu-commerce-audit
+    branches: [main, chatgpt/sunsu-commerce-audit]
     paths:
       - "sellers/sunsu-commerce/**"
       - ".github/workflows/sunsu-commerce-audit.yml"
   pull_request:
-    branches:
-      - main
+    branches: [main]
     paths:
       - "sellers/sunsu-commerce/**"
       - ".github/workflows/sunsu-commerce-audit.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   SELLER_ROOT: sellers/sunsu-commerce
 
 jobs:
-  stage1:
-    name: stage 1 - collect 195 products and publisher candidates
+  recover:
+    name: recover (${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r "$SELLER_ROOT/requirements.txt"
+      - run: python -m playwright install --with-deps chromium
+      - name: Multi-path recovery shard
+        continue-on-error: true
+        run: |
+          mkdir -p "$SELLER_ROOT/raw/shards"
+          python "$SELLER_ROOT/src/stage1_recover_shard.py" \
+            --shard "${{ matrix.shard }}" --shards 8 \
+            --out "$SELLER_ROOT/raw/shards/shard-${{ matrix.shard }}.json"
+      - name: Ensure diagnostic exists
+        if: always()
+        run: |
+          test -f "$SELLER_ROOT/raw/shards/shard-${{ matrix.shard }}.json" || \
+          printf '{"shard":%s,"count":0,"products":[],"fatal":"collector produced no file"}\n' "${{ matrix.shard }}" > "$SELLER_ROOT/raw/shards/shard-${{ matrix.shard }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sunsu-recover-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/raw/shards/shard-${{ matrix.shard }}.json
+
+  merge:
+    name: merge and verify 195 products
+    needs: recover
+    if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
@@ -33,36 +65,33 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r "$SELLER_ROOT/requirements.txt"
-      - run: python -m playwright install --with-deps chromium
-      - name: Collect seller products
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sunsu-recover-*
+          path: sellers/sunsu-commerce/raw/downloaded
+          merge-multiple: false
+      - name: Merge, deduplicate and verify seller
         run: |
-          python "$SELLER_ROOT/src/stage1_seed_collector.py" \
+          mkdir -p "$SELLER_ROOT/diagnostics"
+          python "$SELLER_ROOT/src/stage1_merge.py" \
+            --input-dir "$SELLER_ROOT/raw/downloaded" \
             --out "$SELLER_ROOT/diagnostics/seller-products.json" \
-            --confirmed-out "$SELLER_ROOT/diagnostics/publisher-candidates.json"
-      - name: Validate stage 1
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          root=Path('sellers/sunsu-commerce/diagnostics')
-          data=json.loads((root/'seller-products.json').read_text(encoding='utf-8'))
-          products=data['products']
-          ids=[str(x['productId']) for x in products]
-          print({'productIdCount':len(set(ids)),'rowCount':len(products)})
-          assert len(set(ids))==195, f'expected 195 unique productIds, got {len(set(ids))}'
-          PY
+            --candidates-out "$SELLER_ROOT/diagnostics/publisher-candidates.json" \
+            --summary-out "$SELLER_ROOT/diagnostics/stage1-summary.json"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sunsu-stage1
+          name: sunsu-stage1-merged
           path: |
             sellers/sunsu-commerce/diagnostics/seller-products.json
             sellers/sunsu-commerce/diagnostics/publisher-candidates.json
+            sellers/sunsu-commerce/diagnostics/stage1-summary.json
+            sellers/sunsu-commerce/raw/downloaded/**/*.json
           if-no-files-found: warn
 
   stage2:
-    name: stage 2 - find KC numbers for confirmed products
-    needs: stage1
+    name: stage 2 - exact KC collection
+    needs: merge
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -73,9 +102,13 @@ jobs:
       - run: pip install -r "$SELLER_ROOT/requirements.txt"
       - uses: actions/download-artifact@v4
         with:
-          name: sunsu-stage1
-          path: sellers/sunsu-commerce/diagnostics
-      - name: Run KC detail collection
+          name: sunsu-stage1-merged
+          path: sellers/sunsu-commerce/diagnostics-download
+      - name: Locate merged diagnostics
+        run: |
+          find sellers/sunsu-commerce/diagnostics-download -type f -maxdepth 5 -print
+          cp "$(find sellers/sunsu-commerce/diagnostics-download -name seller-products.json -print -quit)" "$SELLER_ROOT/diagnostics/seller-products.json"
+      - name: Run exact KC pipeline
         run: |
           python "$SELLER_ROOT/src/staged_pipeline.py" \
             --stage1-input "$SELLER_ROOT/diagnostics/seller-products.json" \
