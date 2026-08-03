@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-08-03T15:51:40+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve the two remaining near-duplicate 반짝이는 프리채널 스티커색칠북 2종세트 publisher candidates without treating title similarity as publisher proof.",
+  "reviewed": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "result": "exclude_from_unicorn_confirmed_set",
+      "publisherStatus": "not_verified_as_unicorn",
+      "reason": "No exact ISBN, official book record, Coupang mandatory publisher field, or detail evidence tying this exact two-volume set to 유니콘 was found. Public records show multiple competing publishers for similarly titled 프리채널 coloring/sticker books, so character/title similarity is insufficient."
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "result": "exclude_from_unicorn_confirmed_set",
+      "publisherStatus": "not_verified_as_unicorn",
+      "reason": "The exact Coupang listing is publicly indexed, but its accessible page does not expose an exact 유니콘 publisher value. Search results also show similarly named 프리채널 books from 은하수미디어, 학산문화사, 두드림엠앤비, and 도서출판 신세계. Without component ISBNs or an official exact-title record, it cannot be promoted to 유니콘."
+    }
+  ],
+  "publicEvidence": [
+    {
+      "type": "exact_coupang_listing",
+      "productId": "282727888",
+      "url": "https://www.coupang.com/vp/products/282727888",
+      "finding": "Exact product title and product/item IDs are indexed, but accessible text does not expose an exact publisher value."
+    },
+    {
+      "type": "market_search",
+      "url": "https://www.coupang.com/np/search?q=%ED%94%84%EB%A6%AC%EC%B1%84%EB%84%90",
+      "finding": "Similarly named 프리채널 coloring and sticker books are listed under multiple publishers, while only a different puzzle set is explicitly labelled 유니콘."
+    },
+    {
+      "type": "official_retailer_record",
+      "url": "https://www.yes24.com/product/goods/112939137",
+      "finding": "A similarly named 프리채널 coloring title is officially recorded under 은하수미디어, confirming publisher ambiguity within the character franchise."
+    }
+  ],
+  "summary": {
+    "reviewed": 2,
+    "newUnicornConfirmations": 0,
+    "excludedFromUnicornConfirmedSet": 2,
+    "remainingFromRun14StillPending": 0
+  },
+  "safeguards": [
+    "No character-name or title-family inference was used as publisher proof.",
+    "No blocked response was counted as complete.",
+    "No KC absence was inferred from missing public text.",
+    "U003E1577-7011 remains excluded."
+  ]
+}
