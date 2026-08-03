@@ -1,0 +1,1 @@
+Trigger full 4-stage audit after stage-1 completeness enforcement.
