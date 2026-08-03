@@ -1,0 +1,79 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-04T00:08:00+09:00",
+  "verificationType": "existing 2230-catalog exact product identity plus official component book metadata",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false,
+    "bundleMappingRequiresExactNamedComponents": true
+  },
+  "product": {
+    "productId": "338432152",
+    "itemId": "1078306428",
+    "vendorItemId": null,
+    "productName": "미미 스티커 색칠북 2종세트, 유니콘",
+    "publisherDecision": "verified_unicorn",
+    "publisherEvidence": {
+      "type": "exact bundle title plus official records for both named component volumes",
+      "publisher": "유니콘",
+      "components": [
+        {
+          "title": "미미 스티커 색칠북 01",
+          "publisher": "유니콘",
+          "author": "편집부",
+          "isbn13": "8806328721830",
+          "url": "https://www.yes24.com/product/goods/117714225"
+        },
+        {
+          "title": "미미 스티커 색칠북 02",
+          "publisher": "유니콘",
+          "author": "편집부",
+          "isbn13": "8806328721847",
+          "url": "https://www.yes24.com/Product/Goods/117714231"
+        }
+      ]
+    },
+    "kcMapping": {
+      "kcNumber": "CB064H009-9001",
+      "decision": "exact_bundle_component_mapping_verified",
+      "basis": "The catalog bundle title explicitly identifies the two-volume Mimi sticker coloring-book set, and both exact official component records independently carry the same KC number.",
+      "evidence": [
+        {
+          "type": "official book metadata",
+          "title": "미미 스티커 색칠북 01",
+          "isbn13": "8806328721830",
+          "kcNumber": "CB064H009-9001",
+          "url": "https://www.yes24.com/product/goods/117714225"
+        },
+        {
+          "type": "official book metadata",
+          "title": "미미 스티커 색칠북 02",
+          "isbn13": "8806328721847",
+          "kcNumber": "CB064H009-9001",
+          "url": "https://www.yes24.com/Product/Goods/117714231"
+        },
+        {
+          "type": "existing 2230-catalog candidate workbook",
+          "productId": "338432152",
+          "itemId": "1078306428",
+          "catalogTitle": "미미 스티커 색칠북 2종세트, 유니콘"
+        }
+      ]
+    },
+    "safetyKorea": {
+      "status": "unresolved_in_this_run",
+      "reason": "No independently retrievable exact SafetyKorea certificate-status record for CB064H009-9001 was obtained in this run. The product is not promoted to the expired-KC output until that official status is verified."
+    },
+    "finalBucket": "not_promoted_pending_safetykorea_exact_status"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
