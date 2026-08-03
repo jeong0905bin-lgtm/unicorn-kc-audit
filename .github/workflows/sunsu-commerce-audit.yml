@@ -8,6 +8,12 @@ on:
     paths:
       - "sellers/sunsu-commerce/**"
       - ".github/workflows/sunsu-commerce-audit.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "sellers/sunsu-commerce/**"
+      - ".github/workflows/sunsu-commerce-audit.yml"
   workflow_dispatch:
 
 permissions:
