@@ -46,11 +46,11 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-  merge:
-    name: merge and audit
+  audit:
+    name: ordered four-stage audit
     needs: recover
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -64,22 +64,23 @@ jobs:
           pattern: sunsu-shard-*
           path: sellers/sunsu-commerce/raw/downloaded
           merge-multiple: true
-      - name: Merge, validate, and generate workbook
+      - name: Stage 1-4 pipeline
         run: |
-          python "$SELLER_ROOT/src/merge_audit.py" \
+          python "$SELLER_ROOT/src/staged_pipeline.py" \
             --shards "$SELLER_ROOT/raw/downloaded" \
-            --output-root "$SELLER_ROOT"
-      - name: Validate hard constraints
+            --root "$SELLER_ROOT" \
+            --remembered-evidence "$SELLER_ROOT/diagnostics/safetykorea-status.json"
+      - name: Validate output
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          p = Path('sellers/sunsu-commerce/diagnostics/final-summary.json')
-          d = json.loads(p.read_text(encoding='utf-8'))
-          assert d['summary']['중복 수'] == 0, d
-          mappings = json.loads(Path('sellers/sunsu-commerce/diagnostics/kc-exact-mappings.json').read_text(encoding='utf-8'))
-          assert all(x.get('kcNumber') != 'U003E1577-7011' for x in mappings)
-          assert Path('sellers/sunsu-commerce/outputs/순수커머스_전체유니콘상품_KC최종.xlsx').exists()
+          root = Path('sellers/sunsu-commerce')
+          summary = json.loads((root/'diagnostics/final-summary.json').read_text(encoding='utf-8'))['summary']
+          assert summary['중복 수'] == 0, summary
+          assert (root/'outputs/순수커머스_전체유니콘상품_KC최종.xlsx').exists()
+          confirmed = json.loads((root/'diagnostics/publisher-confirmed.json').read_text(encoding='utf-8'))
+          assert all(x.get('kcNumber') != 'U003E1577-7011' for x in confirmed)
           PY
       - uses: actions/upload-artifact@v4
         with:
