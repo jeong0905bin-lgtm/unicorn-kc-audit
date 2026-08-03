@@ -1,0 +1,49 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03T17:58:18+09:00",
+  "verificationType": "SafetyKorea exact certificate status plus catalog product mapping review",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": ["U003E1577-7011"],
+    "seriesLevelKcCopyAllowed": false
+  },
+  "verified": [
+    {
+      "productId": "274995506",
+      "itemId": "868971526",
+      "productName": "미미 판퍼즐 2종세트 (63조각)",
+      "publisherDecision": "verified_unicorn",
+      "publisherEvidence": "Existing integrated catalog record: exact bundle components / official book-product evidence",
+      "kcNumber": "CB064H009-9003",
+      "kcMappingDecision": "exact_product_mapping_verified_in_existing_audit",
+      "safetyKorea": {
+        "status": "기간만료",
+        "manufacturer": "주식회사 유니콘",
+        "productName": "완구",
+        "modelName": "캐릭터 퍼즐",
+        "certificationDate": "2019-06-21",
+        "officialUrl": "https://www.safetykorea.kr/search/searchPop?certNum=CB064H009-9003&menu=search"
+      },
+      "finalBucket": "expired_kc"
+    }
+  ],
+  "notPromoted": [
+    {
+      "kcNumber": "CB064H009-8001",
+      "reason": "Existing files conflict: one progress workbook marks expired while the corrected integration workbook explicitly removed the expired label because official status confirmation was incomplete. No exact official SafetyKorea result was obtained in this run, so no rows were promoted."
+    },
+    {
+      "kcNumber": "CB064H009-9002",
+      "reason": "Existing file claims expired status, but no exact official SafetyKorea result was obtained in this run. The mapped catalog item IDs also differ across intermediate files, so no row was promoted without reconciliation."
+    }
+  ],
+  "noKcPromotedCount": 0,
+  "expiredKcPromotedCount": 1,
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
