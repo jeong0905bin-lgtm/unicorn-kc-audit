@@ -1,0 +1,100 @@
+name: Sunsu Commerce Unicorn KC Audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'sellers/sunsu-commerce/**'
+      - '.github/workflows/sunsu-commerce-audit.yml'
+
+permissions:
+  contents: write
+
+env:
+  SELLER_ROOT: sellers/sunsu-commerce
+  SHARD_COUNT: '8'
+
+jobs:
+  recover:
+    name: recover (${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: sellers/sunsu-commerce/requirements.txt
+      - run: pip install -r "$SELLER_ROOT/requirements.txt"
+      - name: Collect shard
+        run: |
+          mkdir -p "$SELLER_ROOT/raw/shards"
+          python "$SELLER_ROOT/src/collect_seller.py" \
+            --shard "${{ matrix.shard }}" \
+            --shards "$SHARD_COUNT" \
+            --out "$SELLER_ROOT/raw/shards/shard-${{ matrix.shard }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sunsu-shard-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/raw/shards/shard-${{ matrix.shard }}.json
+          if-no-files-found: error
+          retention-days: 14
+
+  merge:
+    name: merge and audit
+    needs: recover
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: sellers/sunsu-commerce/requirements.txt
+      - run: pip install -r "$SELLER_ROOT/requirements.txt"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sunsu-shard-*
+          path: sellers/sunsu-commerce/raw/downloaded
+          merge-multiple: true
+      - name: Merge, validate, and generate workbook
+        run: |
+          python "$SELLER_ROOT/src/merge_audit.py" \
+            --shards "$SELLER_ROOT/raw/downloaded" \
+            --output-root "$SELLER_ROOT"
+      - name: Validate hard constraints
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('sellers/sunsu-commerce/diagnostics/final-summary.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          assert d['summary']['중복 수'] == 0, d
+          mappings = json.loads(Path('sellers/sunsu-commerce/diagnostics/kc-exact-mappings.json').read_text(encoding='utf-8'))
+          assert all(x.get('kcNumber') != 'U003E1577-7011' for x in mappings)
+          assert Path('sellers/sunsu-commerce/outputs/순수커머스_전체유니콘상품_KC최종.xlsx').exists()
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 순수커머스-전체유니콘상품-KC최종
+          path: |
+            sellers/sunsu-commerce/outputs/순수커머스_전체유니콘상품_KC최종.xlsx
+            sellers/sunsu-commerce/diagnostics/*.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit diagnostics and workbook
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add sellers/sunsu-commerce/diagnostics sellers/sunsu-commerce/outputs
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update Sunsu Commerce audit outputs [skip ci]'
+            git push
+          fi
