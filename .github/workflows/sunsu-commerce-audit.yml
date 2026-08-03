@@ -36,7 +36,7 @@ jobs:
       - run: python -m playwright install --with-deps chromium
       - name: Collect seller products
         run: |
-          python "$SELLER_ROOT/src/stage1_enumerate_unicorn.py" \
+          python "$SELLER_ROOT/src/stage1_seed_collector.py" \
             --out "$SELLER_ROOT/diagnostics/seller-products.json" \
             --confirmed-out "$SELLER_ROOT/diagnostics/publisher-candidates.json"
       - name: Validate stage 1
@@ -46,8 +46,8 @@ jobs:
           from pathlib import Path
           root=Path('sellers/sunsu-commerce/diagnostics')
           data=json.loads((root/'seller-products.json').read_text(encoding='utf-8'))
-          products=data.get('products', data if isinstance(data,list) else [])
-          ids=[str(x.get('productId','')) for x in products if x.get('productId')]
+          products=data['products']
+          ids=[str(x['productId']) for x in products]
           print({'productIdCount':len(set(ids)),'rowCount':len(products)})
           assert len(set(ids))==195, f'expected 195 unique productIds, got {len(set(ids))}'
           PY
@@ -71,7 +71,6 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r "$SELLER_ROOT/requirements.txt"
-      - run: python -m playwright install --with-deps chromium
       - uses: actions/download-artifact@v4
         with:
           name: sunsu-stage1
