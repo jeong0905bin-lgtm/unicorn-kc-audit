@@ -1,0 +1,18 @@
+{
+  "sellerId": "A00214628",
+  "productId": "6209404912",
+  "itemId": "12368820251",
+  "vendorItemId": "70734566994",
+  "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 놀이북, UNICORN, 편집부",
+  "decision": "excluded_non_unicorn_publisher",
+  "verifiedPublisher": "신세계",
+  "verifiedAuthor": "신세계 편집부",
+  "verifiedPublishedDate": "2021-08-30",
+  "evidenceUrl": "https://search.kyobobook.co.kr/search?keyword=%EC%8B%A0%EC%84%B8%EA%B3%84&pbcmCode=PB26983",
+  "reason": "공식 도서정보의 정확한 상품명 일치 결과 출판사는 신세계다. 상품명에 포함된 UNICORN 표기만으로 유니콘 출판사로 확정하지 않는다.",
+  "kcDecision": "not_applicable_after_publisher_exclusion",
+  "excludedCertificationNumber": "U003E1577-7011",
+  "catalogReviewedCompletely": false,
+  "finalNoKcXlsxReady": false,
+  "finalExpiredKcXlsxReady": false
+}
