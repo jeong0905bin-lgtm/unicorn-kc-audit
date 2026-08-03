@@ -1,0 +1,56 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03T22:54:16+09:00",
+  "verificationType": "official book metadata plus indexed Coupang mandatory disclosure exact mapping",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false
+  },
+  "product": {
+    "productId": "6209404889",
+    "itemId": "12368820079",
+    "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 01, UNICORN, 편집부",
+    "publisherDecision": "verified_unicorn",
+    "publisherEvidence": {
+      "type": "exact normalized title plus official book record",
+      "officialBookTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 1",
+      "publisher": "유니콘",
+      "isbn13": "8806328721298",
+      "url": "https://www.yes24.com/product/goods/109712634"
+    },
+    "kcMapping": {
+      "kcNumber": "CB064H009-9001",
+      "decision": "exact_product_mapping_verified",
+      "evidence": [
+        {
+          "type": "official book metadata",
+          "title": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 1",
+          "isbn13": "8806328721298",
+          "kcNumber": "CB064H009-9001",
+          "url": "https://www.yes24.com/product/goods/109712634"
+        },
+        {
+          "type": "existing 2230-catalog integrated workbook",
+          "productId": "6209404889",
+          "itemId": "12368820079",
+          "mappedKcNumber": "CB064H009-9001"
+        }
+      ]
+    },
+    "safetyKorea": {
+      "status": "unresolved_in_this_run",
+      "reason": "No exact official SafetyKorea certificate result was obtained in this run. Search-indexed retailer and official book metadata verify the product-to-KC mapping but do not independently establish the current certificate status."
+    },
+    "finalBucket": "not_promoted_pending_safetykorea_exact_status"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
