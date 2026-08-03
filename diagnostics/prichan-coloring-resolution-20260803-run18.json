@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-08-03T13:55:38+09:00",
+  "sellerId": "A00214628",
+  "reviewed": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "publisherResult": "not_verified_as_unicorn",
+      "reason": "No exact title, ISBN, mandatory disclosure, or official book record connected this set to 유니콘. Similar PriChan coloring products have multiple publishers, so title similarity was rejected.",
+      "kcNumber": null
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "publisherResult": "not_verified_as_unicorn",
+      "reason": "The public product page confirmed product identity but did not provide publisher evidence. No exact ISBN or official book record connected this set to 유니콘.",
+      "kcNumber": null
+    }
+  ],
+  "officialComparisonRecords": [
+    {
+      "title": "반짝이는 프리채널 시즌 2 컬러링 코디북",
+      "publisher": "은하수미디어",
+      "isbn13": "8809255213454"
+    },
+    {
+      "title": "반짝이는 프리채널 시즌2 IQ EQ 색칠북",
+      "publisher": "학산문화사",
+      "isbn13": "9791134885700"
+    }
+  ],
+  "summary": {
+    "reviewed": 2,
+    "newVerifiedUnicorn": 0,
+    "notVerifiedAsUnicorn": 2,
+    "newExactKcMappings": 0,
+    "remainingFromThisQueue": 0
+  },
+  "excludedCertificationNumber": "U003E1577-7011"
+}
