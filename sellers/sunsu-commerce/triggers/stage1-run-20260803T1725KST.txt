@@ -1,0 +1,1 @@
+trigger stage 1 full 195-product enumeration
