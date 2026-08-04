@@ -1,0 +1,77 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-04T01:00:00+09:00",
+  "verificationType": "existing 2230-catalog identity plus public Coupang and official book metadata",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false,
+    "openApiKeysUsed": false,
+    "accessRestrictionBypassUsed": false
+  },
+  "product": {
+    "productId": "8616958567",
+    "itemId": "24997310598",
+    "vendorItemId": "92128061778",
+    "productName": "슈팅스타 캐치티니핑 신기한 워터색칠북, 유니콘, 2권",
+    "publisherDecision": "verified_unicorn",
+    "publisherEvidence": [
+      {
+        "type": "existing 2230-catalog candidate workbook",
+        "productId": "8616958567",
+        "itemId": "24997310598",
+        "vendorItemId": "92128061778",
+        "catalogTitle": "슈팅스타 캐치티니핑 신기한 워터색칠북, 유니콘, 2권"
+      },
+      {
+        "type": "public Coupang indexed product record",
+        "productId": "8616958567",
+        "itemId": "24997310598",
+        "isbn13": "8806328724817",
+        "title": "슈팅스타 캐치티니핑 신기한 워터색칠북",
+        "url": "https://www.coupang.com/vp/products/8616958567"
+      },
+      {
+        "type": "official book retailer metadata",
+        "title": "슈팅스타 캐치티니핑 신기한 워터색칠북02",
+        "publisher": "유니콘",
+        "author": "편집부",
+        "isbn13": "8806328724817",
+        "url": "https://www.yes24.com/product/goods/143376319"
+      }
+    ],
+    "kcMapping": {
+      "kcNumber": "CB064H009-3003",
+      "decision": "exact_product_mapping_verified",
+      "evidence": [
+        {
+          "type": "official book metadata",
+          "title": "슈팅스타 캐치티니핑 신기한 워터색칠북02",
+          "isbn13": "8806328724817",
+          "kcNumber": "CB064H009-3003",
+          "url": "https://www.yes24.com/product/goods/143376319"
+        },
+        {
+          "type": "catalog identity match",
+          "productId": "8616958567",
+          "itemId": "24997310598",
+          "vendorItemId": "92128061778"
+        }
+      ]
+    },
+    "safetyKorea": {
+      "status": "unresolved_in_this_run",
+      "reason": "No independently retrievable exact SafetyKorea certificate-status record for CB064H009-3003 was obtained in this run. The product is not promoted to the expired-KC output or No-KC output."
+    },
+    "finalBucket": "not_promoted_pending_safetykorea_exact_status"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
