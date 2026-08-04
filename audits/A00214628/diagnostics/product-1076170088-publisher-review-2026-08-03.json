@@ -1,0 +1,60 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03T22:00:00+09:00",
+  "verificationType": "existing 2230-catalog identity plus publicly indexed Coupang product and publisher evidence",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false
+  },
+  "product": {
+    "productId": "1076170088",
+    "itemId": "2026538164",
+    "vendorItemId": "78712561892",
+    "productName": "엉덩이탐정 스티커 색칠북 01, 유니콘",
+    "publisherDecision": "verified_unicorn",
+    "publisherEvidence": [
+      {
+        "type": "publicly indexed exact Coupang product page",
+        "title": "엉덩이탐정 스티커 색칠북 01",
+        "productId": "1076170088",
+        "itemId": "2026538164",
+        "url": "https://www.coupang.com/vp/products/1076170088"
+      },
+      {
+        "type": "publicly indexed Coupang publisher campaign listing",
+        "title": "엉덩이탐정 스티커 색칠북 01, 유니콘",
+        "publisher": "유니콘",
+        "url": "https://pages.coupang.com/p/14455"
+      },
+      {
+        "type": "existing 2230-catalog candidate workbook",
+        "productId": "1076170088",
+        "itemId": "2026538164",
+        "vendorItemId": "78712561892"
+      }
+    ],
+    "isbn": {
+      "status": "unresolved_in_this_run",
+      "reason": "No exact ISBN record for this numbered edition was independently retrieved from an official or established book-information source in this run."
+    },
+    "kcMapping": {
+      "status": "unresolved_in_this_run",
+      "reason": "No product-specific KC certification number was independently retrieved. No series-level KC number was copied."
+    },
+    "safetyKorea": {
+      "status": "not_checked_without_exact_kc",
+      "reason": "SafetyKorea status cannot be promoted without an exact product-to-KC mapping."
+    },
+    "finalBucket": "not_promoted_pending_exact_kc_mapping"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
