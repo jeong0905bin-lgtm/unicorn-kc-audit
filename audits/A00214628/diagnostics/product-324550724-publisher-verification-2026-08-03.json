@@ -1,0 +1,51 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verificationType": "exact catalog identity plus public official book metadata",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false
+  },
+  "product": {
+    "productId": "324550724",
+    "itemId": "1038979605",
+    "productName": "유니콘 반지의 비밀일기2 스티커 퀸 300",
+    "productUrl": "https://www.coupang.com/vp/products/324550724?itemId=1038979605",
+    "publisherDecision": "verified_unicorn",
+    "publisherEvidence": [
+      {
+        "type": "exact Coupang catalog identity",
+        "title": "유니콘 반지의 비밀일기2 스티커 퀸 300",
+        "productId": "324550724",
+        "itemId": "1038979605"
+      },
+      {
+        "type": "official bookseller metadata",
+        "source": "YES24",
+        "title": "반지의 비밀일기2 스티커 퀸 300",
+        "author": "편집부",
+        "publisher": "유니콘",
+        "publicationDate": "2019-09-01",
+        "url": "https://www.yes24.com/Product/Search?domain=STORE&query=300"
+      }
+    ],
+    "kcMapping": {
+      "status": "unresolved",
+      "reason": "No exact product-level KC certification number was established from the accessible catalog, official book metadata, or public SafetyKorea evidence in this run."
+    },
+    "safetyKorea": {
+      "status": "not_checked_without_exact_kc_number",
+      "reason": "An exact KC number is required before certificate-status classification."
+    },
+    "finalBucket": "not_promoted_pending_exact_kc_mapping"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
