@@ -1,0 +1,22 @@
+{
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedDate": "2026-08-03",
+  "productId": "6732125611",
+  "itemId": "14240107530",
+  "vendorItemId": "87009590602",
+  "productName": "신세계 인지향상 고도리 퍼즐 3종 세트, 혼합색상, 1개",
+  "publisher": "유니콘",
+  "publisherDecision": "verified_unicorn",
+  "publisherEvidence": "쿠팡 필수 표기 정보의 저자, 출판사 값이 유니콘으로 확인됨",
+  "kcNumber": "CB064H009-4003",
+  "kcMappingDecision": "exact_product_mapping_verified",
+  "kcEvidence": "동일 상품의 쿠팡 상품인증정보에서 번호 확인",
+  "safetyKoreaStatus": "unresolved_in_this_run",
+  "finalBucket": "not_promoted_pending_safetykorea_exact_status",
+  "excludedCertificationNumbers": ["U003E1577-7011"],
+  "blockedResponsesCountAsComplete": false,
+  "catalogReviewedCompletely": false,
+  "finalNoKcXlsxReady": false,
+  "finalExpiredKcXlsxReady": false
+}
