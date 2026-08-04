@@ -1,0 +1,66 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-04T07:00:00+09:00",
+  "verificationType": "public exact-title and exact-KC corroboration",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false,
+    "apiKeyOpenApiUsed": false,
+    "blockingBypassUsed": false
+  },
+  "product": {
+    "productId": "6209404899",
+    "itemId": "12368820141",
+    "vendorItemId": "80366520556",
+    "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 02, UNICORN, 편집부",
+    "publisherDecision": "verified_unicorn",
+    "publisherEvidence": {
+      "type": "exact normalized title plus official retail book metadata",
+      "publisher": "유니콘",
+      "author": "유니콘 편집부",
+      "isbn13": "8806328721304",
+      "sourceUrl": "https://www.yes24.com/product/goods/109712520"
+    },
+    "kcMapping": {
+      "kcNumber": "CB064H009-9001",
+      "decision": "exact_product_mapping_verified",
+      "evidence": [
+        {
+          "type": "official retail book metadata",
+          "title": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 2",
+          "isbn13": "8806328721304",
+          "kcNumber": "CB064H009-9001",
+          "sourceUrl": "https://www.yes24.com/product/goods/109712520"
+        },
+        {
+          "type": "public Coupang product metadata corroboration",
+          "observation": "Multiple current Unicorn-published sticker/coloring-book listings publicly expose KC number CB064H009-9001, supporting the publisher/product-family mapping but not replacing exact SafetyKorea status verification.",
+          "sourceUrls": [
+            "https://www.coupang.com/vp/products/7350140758",
+            "https://www.coupang.com/vp/products/7312539350?itemId=18736893706&vendorItemId=85869276994"
+          ]
+        }
+      ]
+    },
+    "safetyKorea": {
+      "status": "unresolved_in_this_run",
+      "reason": "Public web search did not yield an independently retrievable exact SafetyKorea certificate-status record for CB064H009-9001. No blocked or empty response was treated as completion.",
+      "attemptedQueries": [
+        "site:safetykorea.kr CB064H009-9001",
+        "CB064H009-9001 SafetyKorea",
+        "CB064H009-9001 기간만료"
+      ]
+    },
+    "finalBucket": "not_promoted_pending_safetykorea_exact_status"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
