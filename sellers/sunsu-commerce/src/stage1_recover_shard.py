@@ -15,6 +15,7 @@ TERMS=['순수커머스','순수커머스 퍼즐','순수커머스 색칠북','�
 PAGE_KEYS={'page','pageNo','pageNum','pageNumber','currentPage','pageIndex'}
 OFFSET_KEYS={'offset','start','from'}
 SIZE_KEYS={'size','pageSize','limit','count','rowsPerPage'}
+DEADLINE_SECONDS=780
 
 def now(): return datetime.now(timezone.utc).isoformat()
 
@@ -46,11 +47,13 @@ def extract_text(store,text,source):
             for m in PRODUCT_RE.finditer(x): add(store,m.group(0),source)
     walk(obj)
 
-def http_search(store,session,query):
-    for pg in range(1,6):
+def http_search(store,session,query,deadline):
+    for pg in range(1,4):
+        if time.monotonic()>=deadline:return
         urls=[f'https://www.bing.com/search?q={quote("site:coupang.com/vp/products "+query)}&count=50&first={1+(pg-1)*50}',f'https://html.duckduckgo.com/html/?q={quote("site:coupang.com/vp/products "+query)}&s={(pg-1)*30}',f'{BASE}/np/search?q={quote(query)}&channel=user&page={pg}',f'https://m.coupang.com/nm/search?q={quote(query)}&page={pg}']
         for u in urls:
-            try: extract_text(store,session.get(u,timeout=25,headers={'User-Agent':UA,'Accept-Language':'ko-KR,ko;q=0.9'}).text,u)
+            if time.monotonic()>=deadline:return
+            try: extract_text(store,session.get(u,timeout=12,headers={'User-Agent':UA,'Accept-Language':'ko-KR,ko;q=0.9'}).text,u)
             except Exception: pass
 
 def mutate_pages(obj,page,size=20):
@@ -71,15 +74,20 @@ def mutate_pages(obj,page,size=20):
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--shard',type=int,required=True); ap.add_argument('--shards',type=int,default=8); ap.add_argument('--out',type=Path,required=True); a=ap.parse_args()
+    start=time.monotonic(); deadline=start+DEADLINE_SECONDS
     store={}; events=[]; captured=[]; listing_requests=[]; session=requests.Session()
     selected=[t for i,t in enumerate(TERMS) if i%a.shards==a.shard]
-    for t in selected:http_search(store,session,t)
+    for t in selected:
+        if time.monotonic()>=deadline:break
+        http_search(store,session,t,deadline)
     with sync_playwright() as pw:
         browser=pw.chromium.launch(headless=True,args=['--no-sandbox','--disable-dev-shm-usage','--disable-blink-features=AutomationControlled'])
         ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',user_agent=UA,viewport={'width':1440,'height':1200})
+        ctx.set_default_timeout(5000)
         ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
         page=ctx.new_page()
         def on_response(resp):
+            if time.monotonic()>=deadline:return
             u=resp.url
             if '/api/v1/listing' in u:
                 req=resp.request
@@ -95,16 +103,18 @@ def main():
         page.on('response',on_response)
         targets=[f'{SHOP}/{SELLER_ID}?locale=ko_KR&platform=p',f'{SHOP}/{SELLER_ID}?locale=ko_KR&platform=m']
         for target in targets:
+            if time.monotonic()>=deadline:break
             try:
-                page.goto(target,wait_until='networkidle',timeout=90000); page.wait_for_timeout(2000)
-                for _ in range(60):
-                    page.mouse.wheel(0,2600); page.wait_for_timeout(250)
+                page.goto(target,wait_until='domcontentloaded',timeout=25000); page.wait_for_timeout(1200)
+                for _ in range(20):
+                    if time.monotonic()>=deadline:break
+                    page.mouse.wheel(0,2400); page.wait_for_timeout(120)
                 extract_text(store,page.content(),target)
                 events.append({'target':target,'title':page.title(),'count':len(store)})
             except Exception as e: events.append({'target':target,'error':f'{type(e).__name__}: {e}','count':len(store)})
-        # Replay the exact successful listing request while changing only pagination fields.
         seen_req=set()
         for lr in list(listing_requests):
+            if time.monotonic()>=deadline:break
             if lr['status']!=200: continue
             sig=(lr['method'],lr.get('postData') or '')
             if sig in seen_req: continue
@@ -112,27 +122,35 @@ def main():
             raw=lr.get('postData') or ''
             try: payload=json.loads(raw) if raw else None
             except Exception: payload=None
-            for pg in range(1,31):
+            zero_streak=0
+            for pg in range(1,16):
+                if time.monotonic()>=deadline:break
                 try:
-                    kwargs={'method':lr['method'],'headers':lr['headers'],'timeout':30000}
+                    kwargs={'method':lr['method'],'headers':lr['headers'],'timeout':10000}
                     if payload is not None:
                         p2,found=mutate_pages(payload,pg,20)
-                        if not found:
-                            if isinstance(p2,dict): p2.update({'page':pg,'pageSize':20,'storeId':STORE_ID,'vendorId':SELLER_ID})
+                        if not found and isinstance(p2,dict): p2.update({'page':pg,'pageSize':20,'storeId':STORE_ID,'vendorId':SELLER_ID})
                         kwargs['data']=json.dumps(p2,ensure_ascii=False)
                     elif raw: kwargs['data']=raw
                     r=ctx.request.fetch(lr['url'],**kwargs); txt=r.text(); before=len(store); extract_text(store,txt,f'{lr["url"]}#replay-{pg}')
-                    captured.append({'url':lr['url'],'status':r.status,'page':pg,'added':len(store)-before})
-                    if pg>=3 and len(store)-before==0 and r.status!=200: break
-                except Exception as e: captured.append({'url':lr['url'],'page':pg,'error':f'{type(e).__name__}: {e}'})
+                    added=len(store)-before; captured.append({'url':lr['url'],'status':r.status,'page':pg,'added':added})
+                    zero_streak = zero_streak+1 if added==0 else 0
+                    if zero_streak>=3: break
+                except Exception as e:
+                    captured.append({'url':lr['url'],'page':pg,'error':f'{type(e).__name__}: {e}'})
+                    zero_streak+=1
+                    if zero_streak>=3:break
         for term in selected:
-            for pg in range(1,16):
+            if time.monotonic()>=deadline:break
+            for pg in range(1,6):
+                if time.monotonic()>=deadline:break
                 for u in [f'{BASE}/np/search?q={quote(term)}&channel=user&page={pg}',f'https://m.coupang.com/nm/search?q={quote(term)}&page={pg}']:
-                    try: page.goto(u,wait_until='domcontentloaded',timeout=35000); page.wait_for_timeout(600); extract_text(store,page.content(),u)
+                    if time.monotonic()>=deadline:break
+                    try: page.goto(u,wait_until='domcontentloaded',timeout=15000); page.wait_for_timeout(250); extract_text(store,page.content(),u)
                     except Exception: pass
         browser.close()
     rows=sorted(store.values(),key=lambda x:int(x['productId']))
-    payload={'seller':SELLER,'sellerId':SELLER_ID,'storeId':STORE_ID,'shard':a.shard,'shards':a.shards,'count':len(rows),'terms':selected,'events':events,'listingRequests':listing_requests,'capturedResponses':captured[-1000:],'products':rows,'generatedAt':now()}
+    payload={'seller':SELLER,'sellerId':SELLER_ID,'storeId':STORE_ID,'shard':a.shard,'shards':a.shards,'count':len(rows),'terms':selected,'events':events,'listingRequests':listing_requests,'capturedResponses':captured[-1000:],'timedOut':time.monotonic()>=deadline,'elapsedSeconds':round(time.monotonic()-start,1),'products':rows,'generatedAt':now()}
     a.out.parent.mkdir(parents=True,exist_ok=True); a.out.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
-    print({'shard':a.shard,'count':len(rows),'listingRequests':len(listing_requests)},flush=True)
+    print({'shard':a.shard,'count':len(rows),'listingRequests':len(listing_requests),'elapsedSeconds':payload['elapsedSeconds'],'timedOut':payload['timedOut']},flush=True)
 if __name__=='__main__': main()
