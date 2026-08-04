@@ -1,0 +1,59 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03T22:05:00+09:00",
+  "verificationType": "existing 2230-catalog exact product identity plus official book metadata",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false
+  },
+  "product": {
+    "productId": "1318402202",
+    "itemId": "2338332785",
+    "vendorItemId": "5629560915",
+    "productName": "엉덩이탐정 스티커 컬렉션북, 유니콘",
+    "publisherDecision": "verified_unicorn",
+    "publisherEvidence": {
+      "type": "exact normalized title plus official book record",
+      "officialBookTitle": "엉덩이탐정 스티커 컬렉션북",
+      "publisher": "유니콘",
+      "isbn13": "8806328718519",
+      "url": "https://www.yes24.com/product/goods/115101884"
+    },
+    "kcMapping": {
+      "kcNumber": "CB064H009-9002",
+      "decision": "exact_product_mapping_verified",
+      "evidence": [
+        {
+          "type": "official book metadata",
+          "title": "엉덩이탐정 스티커 컬렉션북",
+          "isbn13": "8806328718519",
+          "publisher": "유니콘",
+          "kcNumber": "CB064H009-9002",
+          "url": "https://www.yes24.com/product/goods/115101884"
+        },
+        {
+          "type": "existing 2230-catalog candidate workbook",
+          "productId": "1318402202",
+          "itemId": "2338332785",
+          "vendorItemId": "5629560915",
+          "catalogTitle": "엉덩이탐정 스티커 컬렉션북, 유니콘"
+        }
+      ]
+    },
+    "safetyKorea": {
+      "status": "unresolved_in_this_run",
+      "reason": "An exact independently retrievable SafetyKorea certificate-status record for CB064H009-9002 was not obtained in this run. Search results established the exact product-to-KC mapping but are not sufficient to classify the certificate as active or expired."
+    },
+    "finalBucket": "not_promoted_pending_safetykorea_exact_status"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
