@@ -23,7 +23,7 @@ jobs:
   recover:
     name: recover (${{ matrix.shard }})
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 35
     strategy:
       fail-fast: false
       matrix:
@@ -34,7 +34,6 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r "$SELLER_ROOT/requirements.txt"
-      - run: python -m playwright install --with-deps chromium
       - name: Multi-path recovery shard
         continue-on-error: true
         run: |
@@ -45,6 +44,7 @@ jobs:
       - name: Ensure diagnostic exists
         if: always()
         run: |
+          mkdir -p "$SELLER_ROOT/raw/shards"
           test -f "$SELLER_ROOT/raw/shards/shard-${{ matrix.shard }}.json" || \
           printf '{"shard":%s,"count":0,"products":[],"fatal":"collector produced no file"}\n' "${{ matrix.shard }}" > "$SELLER_ROOT/raw/shards/shard-${{ matrix.shard }}.json"
       - uses: actions/upload-artifact@v4
@@ -58,7 +58,7 @@ jobs:
     needs: recover
     if: always()
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
