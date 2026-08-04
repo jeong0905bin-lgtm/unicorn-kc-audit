@@ -9,7 +9,12 @@ import requests
 SELLER='순수커머스'; SELLER_ID='A01593407'; STORE_ID=297717
 BASE='https://shop.coupang.com'; LISTING=f'{BASE}/api/v1/listing'
 HEADERS={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150.0.0.0 Safari/537.36','Accept':'application/json, text/plain, */*','Accept-Language':'ko-KR,ko;q=0.9,en-US;q=0.7','Content-Type':'application/json','Origin':BASE,'Referer':f'{BASE}/{SELLER_ID}'}
-QUERIES=['','퍼즐','판퍼즐','대판퍼즐','직소퍼즐','조각','색칠','색칠북','그림책','놀이북','스티커','스티커북','컬렉션북','워터','두들북','만들기','공부','한글','숫자','영어','알파벳','미로','색종이','종이접기','카드','보드게임','자석','가방','세트','2종','3종','4종','뽀로로','타요','핑크퐁','아기상어','캐치티니핑','티니핑','산리오','헬로키티','쿠로미','마이멜로디','시나모롤','포켓몬','피카츄','디즈니','겨울왕국','엘사','미키','미니','프린세스','공룡','로봇','자동차','동물','바다','곤충','한글용사','브레드이발소','신비아파트','콩순이','또봇','카봇','옥토넛','폴리','슈퍼윙스','미니특공대','시크릿쥬쥬','소피루비','레인보우루비','라바','짱구','도라에몽','귀멸','원피스','마블','스파이더맨','어몽어스','LOL','유니콘','BOOKFRIENDS','공구','낚시','베이커리','마녀','메탈카드봇','다이노스터','경찰','마그네틱','스탬프','스크래치','네일','퀸','킹','토이북','플랩북','사운드북','오리기','붙이기','그리기','꾸미기','물감','크레용','색연필','도장','블록','큐브','게임','교육','학습','유아','어린이','선물','캐릭터즈','쥬라기','핑크','레드','블루','1','2','3','4','5','6','7','8','9','가','나','다','라','마','바','사','아','자','차','카','타','파','하','고','구','기','도','로','모','보','소','오','우','이','주','코','키','토','포','핑','캐','티','스','북']
+BASE_QUERIES=['','퍼즐','판퍼즐','대판퍼즐','직소퍼즐','조각','색칠','색칠북','그림책','놀이북','스티커','스티커북','컬렉션북','워터','두들북','만들기','공부','한글','숫자','영어','알파벳','미로','색종이','종이접기','카드','보드게임','자석','가방','세트','뽀로로','타요','핑크퐁','아기상어','캐치티니핑','티니핑','산리오','헬로키티','쿠로미','마이멜로디','시나모롤','포켓몬','피카츄','디즈니','겨울왕국','엘사','미키','미니','프린세스','공룡','로봇','자동차','동물','바다','곤충','한글용사','브레드이발소','신비아파트','콩순이','또봇','카봇','옥토넛','폴리','슈퍼윙스','미니특공대','시크릿쥬쥬','소피루비','레인보우루비','라바','짱구','도라에몽','귀멸','원피스','마블','스파이더맨','어몽어스','LOL','유니콘','BOOKFRIENDS','공구','낚시','베이커리','마녀','메탈카드봇','다이노스터','경찰','마그네틱','스탬프','스크래치','네일','퀸','킹','토이북','플랩북','사운드북','오리기','붙이기','그리기','꾸미기','물감','크레용','색연필','도장','블록','큐브','게임','교육','학습','유아','어린이','선물']
+# Every Hangul onset/vowel combination without a final consonant. This avoids guessing
+# missing titles while keeping the request count bounded: 399 queries / 8 shards.
+HANGUL_OPEN=[chr(0xAC00 + onset*21*28 + vowel*28) for onset in range(19) for vowel in range(21)]
+ASCII_QUERIES=list('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
+QUERIES=list(dict.fromkeys(BASE_QUERIES + HANGUL_OPEN + ASCII_QUERIES))
 SORTS=['POPULARITY','LATEST','LOW_PRICE','HIGH_PRICE','SALE']
 
 def now(): return datetime.now(timezone.utc).isoformat()
@@ -34,7 +39,7 @@ def main():
         for sort in SORTS:
             payload={'storeId':STORE_ID,'brandId':0,'vendorId':SELLER_ID,'enableAdultItemDisplay':True,'nextPageKey':0,'filter':f'SORT_KEY:{sort}','query':query}
             try:
-                r=session.post(LISTING,headers=HEADERS,json=payload,timeout=20)
+                r=session.post(LISTING,headers=HEADERS,json=payload,timeout=12)
                 body=r.json() if r.status_code==200 else {}
                 data=body.get('data') or {}; products=data.get('products') or []; added=0
                 for raw in products:
@@ -46,11 +51,11 @@ def main():
                         store[pid]['sources']=sorted(set(store[pid]['sources']+row['sources']))
                         if not store[pid].get('productName') and row.get('productName'):store[pid]['productName']=row['productName']
                 events.append({'query':query,'sort':sort,'status':r.status_code,'count':len(products),'added':added,'total':len(store)})
-                print({'shard':a.shard,'query':query or 'ALL','sort':sort,'count':len(products),'added':added,'total':len(store)},flush=True)
+                if added: print({'shard':a.shard,'query':query or 'ALL','sort':sort,'count':len(products),'added':added,'total':len(store)},flush=True)
             except Exception as e: events.append({'query':query,'sort':sort,'error':f'{type(e).__name__}: {e}'})
-            time.sleep(.05)
+            time.sleep(.02)
     rows=sorted(store.values(),key=lambda x:int(x['productId']))
-    out={'seller':SELLER,'sellerId':SELLER_ID,'storeId':STORE_ID,'shard':a.shard,'shards':a.shards,'queries':selected,'count':len(rows),'events':events,'products':rows,'generatedAt':now()}
+    out={'seller':SELLER,'sellerId':SELLER_ID,'storeId':STORE_ID,'shard':a.shard,'shards':a.shards,'queryCount':len(selected),'count':len(rows),'events':events,'products':rows,'generatedAt':now()}
     a.out.parent.mkdir(parents=True,exist_ok=True); a.out.write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
     print({'shard':a.shard,'finalCount':len(rows)},flush=True)
 if __name__=='__main__':main()
