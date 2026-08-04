@@ -1,0 +1,38 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-04T00:00:00+09:00",
+  "verificationType": "catalog identity plus official bookseller publisher verification",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "titleOrBrandAloneProvesPublisher": false
+  },
+  "product": {
+    "productId": "6209404912",
+    "itemId": "12368820251",
+    "vendorItemId": "70734566994",
+    "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 놀이북, UNICORN, 편집부",
+    "catalogSource": "existing 2230-catalog candidate workbook",
+    "publisherDecision": "excluded_other_publisher",
+    "publisherEvidence": {
+      "type": "official bookseller exact-title record",
+      "normalizedTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 놀이북",
+      "author": "신세계 편집부",
+      "publisher": "신세계",
+      "publicationDate": "2021-08-30",
+      "source": "Kyobo Book Centre exact-title search result"
+    },
+    "falsePositiveReason": "The Coupang catalog title contains UNICORN, but the exact official book record identifies the author and publisher as 신세계. The UNICORN token is therefore not accepted as publisher evidence.",
+    "kcAuditDecision": "excluded_before_kc_classification",
+    "finalBucket": "excluded_non_unicorn_publisher"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
