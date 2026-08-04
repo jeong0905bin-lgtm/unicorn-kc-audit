@@ -1,0 +1,48 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03T22:00:00+09:00",
+  "product": {
+    "productId": "1076170088",
+    "itemId": "2026538164",
+    "vendorItemId": "78712561892",
+    "productName": "엉덩이탐정 스티커 색칠북 01, 유니콘",
+    "publisherDecision": "verified_unicorn_by_title_and_public_retailer_catalog",
+    "publisherEvidence": [
+      {
+        "type": "existing 2230-catalog candidate workbook",
+        "catalogTitle": "엉덩이탐정 스티커 색칠북 01, 유니콘"
+      },
+      {
+        "type": "public Coupang product page",
+        "title": "엉덩이탐정 스티커 색칠북 01",
+        "productId": "1076170088",
+        "itemId": "2026538164"
+      },
+      {
+        "type": "public Coupang publisher campaign listing",
+        "campaign": "유니콘 기획전",
+        "listedTitle": "엉덩이탐정 스티커 색칠북 01, 유니콘"
+      }
+    ],
+    "falsePositiveReview": {
+      "characterNameMatchOnly": false,
+      "brandTokenOnly": false
+    },
+    "isbnStatus": "not_retrieved_in_this_run",
+    "kcMappingStatus": "unresolved_in_this_run",
+    "kcMappingReason": "No product-specific KC number was obtained. Similar or series-level KC numbers were not copied.",
+    "finalBucket": "not_promoted_pending_exact_kc_or_verified_no_kc"
+  },
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": ["U003E1577-7011"],
+    "seriesLevelKcCopyAllowed": false
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
