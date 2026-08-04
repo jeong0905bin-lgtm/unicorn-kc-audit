@@ -9,8 +9,7 @@ import requests
 SELLER='순수커머스'; SELLER_ID='A01593407'; STORE_ID=297717
 BASE='https://shop.coupang.com'; LISTING=f'{BASE}/api/v1/listing'
 HEADERS={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150.0.0.0 Safari/537.36','Accept':'application/json, text/plain, */*','Accept-Language':'ko-KR,ko;q=0.9,en-US;q=0.7','Content-Type':'application/json','Origin':BASE,'Referer':f'{BASE}/{SELLER_ID}'}
-# Empty query returns only one page. Recover the full catalog by partitioning broad title queries.
-QUERIES=['','퍼즐','색칠','스티커','북','책','놀이','캐릭터','세트','판','색칠북','스티커북','컬러링','물감','워터','대판','미니','가방','만들기','공부','한글','숫자','영어','공룡','동물','자동차','공주','티니핑','뽀로로','산리오','타요','핑크퐁','아기상어','포켓몬','디즈니','마블','시크릿쥬쥬','캐치티니핑','헬로카봇','브레드이발소','신비아파트','옥토넛','콩순이','또봇','로보카폴리','미니특공대','1','2','3','4','5','6','7','8','9','A','B']
+QUERIES=['','퍼즐','판퍼즐','대판퍼즐','직소퍼즐','조각','색칠','색칠북','그림책','놀이북','스티커','스티커북','컬렉션북','워터','두들북','만들기','공부','한글','숫자','영어','알파벳','미로','색종이','종이접기','카드','보드게임','자석','가방','세트','2종','3종','4종','뽀로로','타요','핑크퐁','아기상어','캐치티니핑','티니핑','산리오','헬로키티','쿠로미','마이멜로디','시나모롤','포켓몬','피카츄','디즈니','겨울왕국','엘사','미키','미니','프린세스','공룡','로봇','자동차','동물','바다','곤충','한글용사','브레드이발소','신비아파트','콩순이','또봇','카봇','옥토넛','폴리','슈퍼윙스','미니특공대','시크릿쥬쥬','소피루비','레인보우루비','라바','짱구','도라에몽','귀멸','원피스','마블','스파이더맨','어몽어스','LOL','유니콘','BOOKFRIENDS','1','2','3','4','5','6','7','8','9']
 SORTS=['POPULARITY','LATEST','LOW_PRICE','HIGH_PRICE','SALE']
 
 def now(): return datetime.now(timezone.utc).isoformat()
@@ -20,9 +19,11 @@ def normalize(raw:dict[str,Any], source:str):
     if not pid:return None
     item=raw.get('itemId') or raw.get('catalogItemId') or ''
     vendor=raw.get('vendorItemId') or raw.get('catalogVendorItemId') or ''
-    name=raw.get('productName') or raw.get('catalogSourceName') or raw.get('name') or raw.get('title') or ''
-    url=f'https://www.coupang.com/vp/products/{pid}'
-    if item or vendor:url+=f'?itemId={item}&vendorItemId={vendor}'
+    area=raw.get('imageAndTitleArea') if isinstance(raw.get('imageAndTitleArea'),dict) else {}
+    name=raw.get('productName') or raw.get('catalogSourceName') or raw.get('name') or raw.get('title') or area.get('title') or area.get('groupTitle') or ''
+    link=raw.get('link') or ''
+    url='https://www.coupang.com'+link if link.startswith('/vp/products/') else f'https://www.coupang.com/vp/products/{pid}'
+    if '?' not in url and (item or vendor):url+=f'?itemId={item}&vendorItemId={vendor}'
     return {'productId':text(pid),'itemId':text(item),'vendorItemId':text(vendor),'productName':text(name).strip(),'productUrl':url,'sellerId':SELLER_ID,'storeId':STORE_ID,'verificationStatus':'seller-listing-api','rawListing':raw,'sources':[source]}
 
 def main():
@@ -37,15 +38,16 @@ def main():
                 body=r.json() if r.status_code==200 else {}
                 data=body.get('data') or {}; products=data.get('products') or []; added=0
                 for raw in products:
-                    row=normalize(raw,f'listing:q:{query}:sort:{sort}')
+                    row=normalize(raw,f'listing:q:{query or "ALL"}:sort:{sort}')
                     if not row:continue
                     pid=row['productId']
                     if pid not in store:store[pid]=row; added+=1
-                    else:store[pid]['sources']=sorted(set(store[pid]['sources']+row['sources']))
-                events.append({'query':query,'sort':sort,'status':r.status_code,'count':len(products),'added':added})
-                print({'shard':a.shard,'query':query,'sort':sort,'count':len(products),'added':added,'total':len(store)},flush=True)
-            except Exception as e:
-                events.append({'query':query,'sort':sort,'error':f'{type(e).__name__}: {e}'})
+                    else:
+                        store[pid]['sources']=sorted(set(store[pid]['sources']+row['sources']))
+                        if not store[pid].get('productName') and row.get('productName'):store[pid]['productName']=row['productName']
+                events.append({'query':query,'sort':sort,'status':r.status_code,'count':len(products),'added':added,'total':len(store)})
+                print({'shard':a.shard,'query':query or 'ALL','sort':sort,'count':len(products),'added':added,'total':len(store)},flush=True)
+            except Exception as e: events.append({'query':query,'sort':sort,'error':f'{type(e).__name__}: {e}'})
             time.sleep(.08)
     rows=sorted(store.values(),key=lambda x:int(x['productId']))
     out={'seller':SELLER,'sellerId':SELLER_ID,'storeId':STORE_ID,'shard':a.shard,'shards':a.shards,'queries':selected,'count':len(rows),'events':events,'products':rows,'generatedAt':now()}
