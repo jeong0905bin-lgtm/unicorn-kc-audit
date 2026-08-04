@@ -1,0 +1,64 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-03",
+  "verificationType": "public indexed Coupang product and campaign evidence",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false,
+    "apiKeyOpenApiUsed": false,
+    "coupangRestrictionBypassUsed": false
+  },
+  "product": {
+    "catalogIdentity": {
+      "productId": "1076170088",
+      "itemId": "2030230565",
+      "productName": "엉덩이탐정 스티커 색칠북 01, 유니콘"
+    },
+    "publicEvidence": [
+      {
+        "type": "indexed Coupang product page",
+        "url": "https://www.coupang.com/vp/products/1076170088",
+        "observedTitle": "엉덩이탐정 스티커 색칠북 01",
+        "observedProductId": "1076170088",
+        "observedItemId": "2026538164"
+      },
+      {
+        "type": "indexed Coupang Unicorn campaign page",
+        "url": "https://pages.coupang.com/p/14455",
+        "observedTitle": "엉덩이탐정 스티커 색칠북 01, 유니콘"
+      },
+      {
+        "type": "indexed Coupang Unicorn campaign page",
+        "url": "https://pages.coupang.com/m/65712",
+        "observedTitle": "엉덩이탐정 스티커 색칠북 01, 유니콘"
+      }
+    ],
+    "publisherDecision": "verified_unicorn_at_product_title_and_campaign_level",
+    "publisherDecisionReason": "The exact productId is indexed publicly and two Coupang Unicorn campaign pages identify the title with publisher label 유니콘. This is sufficient to retain the product as a Unicorn-publisher candidate under the expanded audit rule, while not treating the word 유니콘 as a character-only match.",
+    "sellerItemIdentityDecision": "not_exactly_reconciled",
+    "sellerItemIdentityReason": "The indexed public product page currently exposes itemId 2026538164, while the existing A00214628 catalog row records itemId 2030230565. The productId matches, but the seller-specific item identity is not exact in this run.",
+    "isbn": {
+      "status": "unresolved_in_this_run",
+      "reason": "No exact ISBN tied simultaneously to productId 1076170088 and catalog itemId 2030230565 was retrieved from the permitted public evidence used in this run."
+    },
+    "kcMapping": {
+      "status": "unresolved_in_this_run",
+      "reason": "No exact product-to-KC mapping was retrieved. No KC number is inferred from other products in the same series."
+    },
+    "safetyKorea": {
+      "status": "not_checked_without_exact_kc_number",
+      "reason": "SafetyKorea status cannot be assigned until an exact KC number is mapped to this product."
+    },
+    "finalBucket": "pending_exact_seller_item_and_kc_mapping"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
