@@ -1,0 +1,59 @@
+{
+  "schema": "unicorn-kc-audit-verification-v1",
+  "sellerId": "A00214628",
+  "catalogTotal": 2230,
+  "verifiedAt": "2026-08-04T00:00:00+09:00",
+  "verificationType": "existing 2230-catalog identity plus official book metadata and public product certification evidence",
+  "rules": {
+    "blockedResponsesCountAsComplete": false,
+    "excludedCertificationNumbers": [
+      "U003E1577-7011"
+    ],
+    "seriesLevelKcCopyAllowed": false,
+    "apiKeyOpenApiUsed": false,
+    "coupangBlockBypassUsed": false
+  },
+  "product": {
+    "productId": "8542794955",
+    "itemId": "24734936068",
+    "productName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01",
+    "publisherDecision": "verified_unicorn",
+    "publisherEvidence": {
+      "type": "exact normalized title plus official book record",
+      "officialBookTitle": "시크릿쥬쥬 스티커 색칠북 01",
+      "publisher": "유니콘",
+      "author": "편집부",
+      "isbn13": "8806328724503",
+      "url": "https://www.yes24.com/Product/Goods/140539361"
+    },
+    "kcMapping": {
+      "kcNumber": "CB064H009-4002",
+      "decision": "exact_product_mapping_verified",
+      "evidence": [
+        {
+          "type": "official book metadata",
+          "title": "시크릿쥬쥬 스티커 색칠북 01",
+          "isbn13": "8806328724503",
+          "kcNumber": "CB064H009-4002",
+          "url": "https://www.yes24.com/Product/Goods/140539361"
+        },
+        {
+          "type": "existing 2230-catalog candidate workbook",
+          "productId": "8542794955",
+          "itemId": "24734936068",
+          "catalogTitle": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01"
+        }
+      ]
+    },
+    "safetyKorea": {
+      "status": "unresolved_in_this_run",
+      "reason": "Public product and official book records verify the exact product-to-KC mapping, but an independently retrievable SafetyKorea exact certificate-status record was not obtained in this run. Public marketplace pages also show the same certification number reused across multiple distinct Unicorn titles, so no status is inferred from series-level reuse."
+    },
+    "finalBucket": "not_promoted_pending_safetykorea_exact_status"
+  },
+  "completion": {
+    "catalogReviewedCompletely": false,
+    "finalNoKcXlsxReady": false,
+    "finalExpiredKcXlsxReady": false
+  }
+}
