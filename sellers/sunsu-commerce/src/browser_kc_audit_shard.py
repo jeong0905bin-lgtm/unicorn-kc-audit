@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 import argparse, html, json, re, time
+from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urlparse
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
 UNICORN_RE = re.compile(r'(?:\(주\)\s*유니콘|주식회사\s*유니콘|BOOKFRIENDS|북프렌즈|(?<![A-Za-z])UNICORN(?![A-Za-z])|(?<![가-힣])유니콘(?![가-힣]))', re.I)
@@ -38,11 +39,15 @@ def normalized_queries(name: str) -> list[str]:
     if len(words)>5: parts.append(' '.join(words[:5]))
     return list(dict.fromkeys(x for x in parts if len(x)>=3))
 
+def title_tokens(name: str) -> list[str]:
+    stop={'유니콘','페이퍼백','컬렉션북','스티커','색칠북','도서'}
+    return [w for w in re.sub(r'[^0-9A-Za-z가-힣 ]',' ',name or '').split() if len(w)>=2 and w not in stop][:8]
+
 def rendered_text(page, url: str) -> tuple[str,int,str]:
     try:
-        response=page.goto(url,wait_until='domcontentloaded',timeout=20000)
-        page.wait_for_timeout(1200)
-        text=page.content()+' '+page.locator('body').inner_text(timeout=5000)
+        response=page.goto(url,wait_until='domcontentloaded',timeout=22000)
+        page.wait_for_timeout(1300)
+        text=page.content()+' '+page.locator('body').inner_text(timeout=6000)
         return text,(response.status if response else 0),'ok'
     except PlaywrightTimeout:
         return '',0,'timeout'
@@ -63,8 +68,8 @@ def main():
             if not unicorn: output.append(row); continue
 
             pid=str(row.get('productId') or ''); item=str(row.get('itemId') or ''); vendor=str(row.get('vendorItemId') or '')
-            name=(row.get('productName') or '').strip()
-            found=[]; source=''; evidence=[]
+            name=(row.get('productName') or '').strip(); tokens=title_tokens(name)
+            found=[]; source=''; evidence=[]; source_hits=defaultdict(set); title_hits=defaultdict(int)
 
             coupang_urls=[]
             if row.get('productUrl'): coupang_urls.append(row['productUrl'])
@@ -72,11 +77,14 @@ def main():
             for url in dict.fromkeys(coupang_urls):
                 body,status,state=rendered_text(page,url); cs=candidates(body)
                 logs.append({'productId':pid,'stage':'browser-coupang','url':url,'http':status,'state':state,'found':cs,'checkedAt':now()})
-                if cs:
-                    found=cs; source=url; evidence.append({'source':url,'candidates':cs}); break
-                time.sleep(0.8)
+                for c in cs:
+                    if c not in found: found.append(c)
+                    source_hits[c].add('coupang.com')
+                    title_hits[c]=max(title_hits[c],sum(t.lower() in body.lower() for t in tokens))
+                if cs: source=url; evidence.append({'source':url,'candidates':cs})
+                time.sleep(0.5)
 
-            if not found and name:
+            if name:
                 for q in normalized_queries(name):
                     urls=[
                         'https://search.naver.com/search.naver?query='+quote_plus(f'"{q}" "KC 인증번호"'),
@@ -86,37 +94,49 @@ def main():
                         'https://www.safetykorea.kr/release/certificationsearch?modelName='+quote_plus(q),
                     ]
                     for url in urls:
-                        body,status,state=rendered_text(page,url); cs=candidates(body)
+                        body,status,state=rendered_text(page,url); cs=candidates(body); domain=urlparse(url).netloc.lower()
                         logs.append({'productId':pid,'stage':'browser-search','query':q,'url':url,'http':status,'state':state,'found':cs,'checkedAt':now()})
-                        if cs:
-                            evidence.append({'source':url,'query':q,'candidates':cs})
-                            for c in cs:
-                                if c not in found: found.append(c)
-                            if 'safetykorea.kr' in url:
-                                source=url
-                        time.sleep(0.5)
+                        if cs: evidence.append({'source':url,'query':q,'candidates':cs})
+                        for c in cs:
+                            if c not in found: found.append(c)
+                            source_hits[c].add(domain)
+                            title_hits[c]=max(title_hits[c],sum(t.lower() in body.lower() for t in tokens))
+                        time.sleep(0.35)
                     if found: break
 
-            verified=''
-            verified_source=''
+            verified=''; verified_source=''; confidence=''
             for kc in found:
-                for url in [
+                exact_urls=[
                     'https://www.safetykorea.kr/release/certificationsearch?certNum='+quote_plus(kc),
                     'https://www.safetykorea.kr/release/certificationSearch?certNum='+quote_plus(kc),
-                ]:
-                    body,status,state=rendered_text(page,url); exact=kc in body.upper()
-                    logs.append({'productId':pid,'stage':'browser-safetykorea-exact','kc':kc,'url':url,'http':status,'state':state,'exact':exact,'checkedAt':now()})
+                    'https://search.naver.com/search.naver?query='+quote_plus(f'"{kc}" "{name}"'),
+                    'https://www.google.com/search?q='+quote_plus(f'"{kc}" "{name}"'),
+                    'https://www.bing.com/search?q='+quote_plus(f'"{kc}" "{name}"'),
+                ]
+                for url in exact_urls:
+                    body,status,state=rendered_text(page,url); domain=urlparse(url).netloc.lower(); exact=kc in body.upper(); overlap=sum(t.lower() in body.lower() for t in tokens)
+                    logs.append({'productId':pid,'stage':'browser-kc-exact','kc':kc,'url':url,'http':status,'state':state,'exact':exact,'titleTokenHits':overlap,'checkedAt':now()})
                     if exact:
-                        verified=kc; verified_source=url; break
+                        source_hits[kc].add(domain); title_hits[kc]=max(title_hits[kc],overlap)
+                        evidence.append({'source':url,'kc':kc,'exact':True,'titleTokenHits':overlap})
+                        if 'safetykorea.kr' in domain:
+                            verified=kc; verified_source=url; confidence='official-exact'; break
+                    time.sleep(0.35)
                 if verified: break
+                independent={d for d in source_hits[kc] if any(x in d for x in ('naver.com','google.com','bing.com','coupang.com','safetykorea.kr'))}
+                if len(independent)>=2 and title_hits[kc]>=1:
+                    verified=kc; verified_source='independent exact search evidence'; confidence='multi-source-high-confidence'; break
 
             row['kcCandidates']=found
             row['kcEvidence']=evidence
             row['kcNumber']=verified
-            row['kcSource']=verified_source if verified else (source if source else 'exact SafetyKorea 근거 없음')
-            row['kcStatus']='KC 적합' if verified else ('후보 발견-공식 미확정' if found else 'KC 공개표기 없음')
+            row['kcConfidence']=confidence
+            row['kcSource']=verified_source if verified else (source if source else 'exact 근거 없음')
+            if confidence=='official-exact': row['kcStatus']='KC 적합-공식조회 일치'
+            elif confidence=='multi-source-high-confidence': row['kcStatus']='KC 번호 고신뢰-공식상태 미확인'
+            else: row['kcStatus']='후보 발견-공식 미확정' if found else 'KC 공개표기 없음'
             output.append(row)
         context.close(); browser.close()
-    payload={'shard':data.get('shard'),'inputCount':len(rows),'unicornCount':sum(bool(r.get('isUnicorn')) for r in output),'kcFound':sum(bool(r.get('kcNumber')) for r in output),'kcCandidateListings':sum(bool(r.get('kcCandidates')) for r in output),'products':output,'logs':logs,'generatedAt':now()}
-    a.out.parent.mkdir(parents=True,exist_ok=True); a.out.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8'); print({k:payload[k] for k in ('shard','inputCount','unicornCount','kcFound','kcCandidateListings')})
+    payload={'shard':data.get('shard'),'inputCount':len(rows),'unicornCount':sum(bool(r.get('isUnicorn')) for r in output),'kcFound':sum(bool(r.get('kcNumber')) for r in output),'kcOfficial':sum(r.get('kcConfidence')=='official-exact' for r in output),'kcHighConfidence':sum(r.get('kcConfidence')=='multi-source-high-confidence' for r in output),'kcCandidateListings':sum(bool(r.get('kcCandidates')) for r in output),'products':output,'logs':logs,'generatedAt':now()}
+    a.out.parent.mkdir(parents=True,exist_ok=True); a.out.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8'); print({k:payload[k] for k in ('shard','inputCount','unicornCount','kcFound','kcOfficial','kcHighConfidence','kcCandidateListings')})
 if __name__=='__main__': main()
