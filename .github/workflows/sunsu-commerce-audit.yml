@@ -15,11 +15,90 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 env:
   SELLER_ROOT: sellers/sunsu-commerce
+  BASELINE_RUN_ID: 30949504450
 
 jobs:
+  baseline-audit:
+    name: baseline publisher+KC (${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r "$SELLER_ROOT/requirements.txt"
+      - name: Download existing 186-listing artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: sunsu-stage1-merged
+          repository: ${{ github.repository }}
+          run-id: ${{ env.BASELINE_RUN_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: sellers/sunsu-commerce/raw/baseline
+      - name: Locate baseline shard and audit immediately
+        run: |
+          INPUT="$(find sellers/sunsu-commerce/raw/baseline -name 'shard-${{ matrix.shard }}.json' -print -quit)"
+          test -n "$INPUT"
+          mkdir -p "$SELLER_ROOT/diagnostics/baseline-audit-shards"
+          python "$SELLER_ROOT/src/parallel_audit_shard.py" \
+            --input "$INPUT" --workers 12 \
+            --out "$SELLER_ROOT/diagnostics/baseline-audit-shards/audit-${{ matrix.shard }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sunsu-baseline-audit-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/diagnostics/baseline-audit-shards/audit-${{ matrix.shard }}.json
+
+  baseline-summary:
+    name: baseline publisher and KC summary
+    needs: baseline-audit
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sunsu-baseline-audit-*
+          path: sellers/sunsu-commerce/diagnostics/baseline-download
+          merge-multiple: false
+      - name: Merge baseline audit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('sellers/sunsu-commerce/diagnostics')
+          rows=[];logs=[];shards=[]
+          for f in sorted((root/'baseline-download').rglob('audit-*.json')):
+              d=json.loads(f.read_text(encoding='utf-8'))
+              shards.append({k:d.get(k) for k in ('shard','inputCount','unicornCount','kcFound')})
+              rows.extend(d.get('products',[])); logs.extend(d.get('logs',[]))
+          uniq={}
+          for r in rows:
+              key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
+              if key not in uniq or r.get('isUnicorn'): uniq[key]=r
+          allrows=list(uniq.values()); unicorn=[r for r in allrows if r.get('isUnicorn')]
+          summary={'auditedListings':len(allrows),'unicornListings':len(unicorn),'uniqueUnicornProductIds':len({str(r.get('productId')) for r in unicorn}),'kcFound':sum(bool(r.get('kcNumber')) for r in unicorn),'kcValid':sum(r.get('kcStatus')=='KC 적합' for r in unicorn),'kcExpired':sum(r.get('kcStatus')=='KC 기간만료' for r in unicorn),'kcMissing':sum(not r.get('kcNumber') for r in unicorn),'shards':shards}
+          (root/'baseline-publisher-kc.json').write_text(json.dumps({'summary':summary,'products':unicorn,'logs':logs},ensure_ascii=False,indent=2),encoding='utf-8')
+          (root/'baseline-publisher-kc-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(summary)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sunsu-baseline-publisher-kc
+          path: |
+            sellers/sunsu-commerce/diagnostics/baseline-publisher-kc.json
+            sellers/sunsu-commerce/diagnostics/baseline-publisher-kc-summary.json
+
   recover:
     name: recover (${{ matrix.shard }})
     runs-on: ubuntu-latest
@@ -79,7 +158,7 @@ jobs:
           INPUT="$(find sellers/sunsu-commerce/raw/audit-input -name 'shard-${{ matrix.shard }}.json' -print -quit)"
           mkdir -p "$SELLER_ROOT/diagnostics/audit-shards"
           python "$SELLER_ROOT/src/parallel_audit_shard.py" \
-            --input "$INPUT" --workers 10 \
+            --input "$INPUT" --workers 12 \
             --out "$SELLER_ROOT/diagnostics/audit-shards/audit-${{ matrix.shard }}.json"
       - uses: actions/upload-artifact@v4
         if: always()
