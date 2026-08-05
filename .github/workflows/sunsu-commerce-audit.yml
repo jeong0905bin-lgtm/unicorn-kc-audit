@@ -1,16 +1,16 @@
-name: Sunsu Commerce Audit
+name: Sunsu Commerce Fast KC
 
 on:
   push:
-    branches: [main, chatgpt/sunsu-commerce-audit]
+    branches: [chatgpt/sunsu-commerce-audit]
     paths:
-      - "sellers/sunsu-commerce/**"
       - ".github/workflows/sunsu-commerce-audit.yml"
+      - "sellers/sunsu-commerce/src/browser_kc_audit_shard.py"
   pull_request:
     branches: [main]
     paths:
-      - "sellers/sunsu-commerce/**"
       - ".github/workflows/sunsu-commerce-audit.yml"
+      - "sellers/sunsu-commerce/src/browser_kc_audit_shard.py"
   workflow_dispatch:
 
 permissions:
@@ -19,47 +19,13 @@ permissions:
 
 env:
   SELLER_ROOT: sellers/sunsu-commerce
-  BASELINE_RUN_ID: 30949504450
+  CANDIDATE_RUN_ID: 31018852316
 
 jobs:
-  recover:
-    name: recover (${{ matrix.shard }})
+  fast-kc-candidates:
+    name: validate 3 KC candidates now
     runs-on: ubuntu-latest
-    timeout-minutes: 35
-    strategy:
-      fail-fast: false
-      max-parallel: 8
-      matrix:
-        shard: [0,1,2,3,4,5,6,7]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
-      - run: pip install -r "$SELLER_ROOT/requirements.txt"
-      - name: Recover missing listings
-        continue-on-error: true
-        run: |
-          mkdir -p "$SELLER_ROOT/raw/shards"
-          python "$SELLER_ROOT/src/stage1_recover_shard.py" --shard "${{ matrix.shard }}" --shards 8 --out "$SELLER_ROOT/raw/shards/shard-${{ matrix.shard }}.json"
-      - name: Ensure shard exists
-        if: always()
-        run: |
-          test -f "$SELLER_ROOT/raw/shards/shard-${{ matrix.shard }}.json" || printf '{"shard":%s,"products":[]}\n' "${{ matrix.shard }}" > "$SELLER_ROOT/raw/shards/shard-${{ matrix.shard }}.json"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: sunsu-recover-${{ matrix.shard }}
-          path: sellers/sunsu-commerce/raw/shards/shard-${{ matrix.shard }}.json
-
-  browser-kc:
-    name: browser KC (${{ matrix.shard }})
-    runs-on: ubuntu-latest
-    timeout-minutes: 75
-    strategy:
-      fail-fast: false
-      max-parallel: 4
-      matrix:
-        shard: [0,1,2,3,4,5,6,7]
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -67,85 +33,37 @@ jobs:
       - run: pip install -r "$SELLER_ROOT/requirements.txt"
       - name: Install Chromium
         run: python -m playwright install --with-deps chromium
-      - name: Download existing 186-listing shard
+      - name: Download prior candidate artifact
         uses: actions/download-artifact@v4
         with:
-          name: sunsu-stage1-merged
+          name: sunsu-browser-kc-final
           repository: ${{ github.repository }}
-          run-id: ${{ env.BASELINE_RUN_ID }}
+          run-id: ${{ env.CANDIDATE_RUN_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: sellers/sunsu-commerce/raw/baseline
-      - name: Render Coupang detail and extract KC
-        run: |
-          INPUT="$(find sellers/sunsu-commerce/raw/baseline -name 'shard-${{ matrix.shard }}.json' -print -quit)"
-          test -n "$INPUT"
-          mkdir -p "$SELLER_ROOT/diagnostics/browser-kc"
-          python "$SELLER_ROOT/src/browser_kc_audit_shard.py" --input "$INPUT" --out "$SELLER_ROOT/diagnostics/browser-kc/browser-${{ matrix.shard }}.json"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: sunsu-browser-kc-${{ matrix.shard }}
-          path: sellers/sunsu-commerce/diagnostics/browser-kc/browser-${{ matrix.shard }}.json
-
-  merge-browser-kc:
-    name: merge browser KC results
-    needs: browser-kc
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: sunsu-browser-kc-*
-          path: sellers/sunsu-commerce/diagnostics/browser-download
-          merge-multiple: false
-      - name: Merge results
+          path: sellers/sunsu-commerce/raw/candidate-source
+      - name: Extract only candidate listings
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          root=Path('sellers/sunsu-commerce/diagnostics'); rows=[]; logs=[]; shards=[]
-          for f in sorted((root/'browser-download').rglob('browser-*.json')):
-              d=json.loads(f.read_text(encoding='utf-8')); rows.extend(d.get('products',[])); logs.extend(d.get('logs',[])); shards.append({k:d.get(k) for k in ('shard','inputCount','unicornCount','kcFound')})
-          uniq={}
-          for r in rows:
-              key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
-              if key not in uniq or r.get('kcNumber'): uniq[key]=r
-          allrows=list(uniq.values()); unicorn=[r for r in allrows if r.get('isUnicorn')]
-          summary={'auditedListings':len(allrows),'unicornListings':len(unicorn),'uniqueUnicornProductIds':len({str(r.get('productId')) for r in unicorn}),'kcFound':sum(bool(r.get('kcNumber')) for r in unicorn),'kcMissing':sum(not r.get('kcNumber') for r in unicorn),'shards':shards}
-          (root/'browser-kc-results.json').write_text(json.dumps({'summary':summary,'products':unicorn,'logs':logs},ensure_ascii=False,indent=2),encoding='utf-8')
-          (root/'browser-kc-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
-          print(summary)
+          src=next(Path('sellers/sunsu-commerce/raw/candidate-source').rglob('browser-kc-results.json'))
+          data=json.loads(src.read_text(encoding='utf-8'))
+          rows=[r for r in data.get('products',[]) if r.get('kcCandidates')]
+          out=Path('sellers/sunsu-commerce/raw/kc-candidates.json')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(json.dumps({'shard':'candidate-only','products':rows},ensure_ascii=False,indent=2),encoding='utf-8')
+          print({'candidateListings':len(rows),'candidateNumbers':sorted({c for r in rows for c in r.get('kcCandidates',[])})})
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: sunsu-browser-kc-final
-          path: |
-            sellers/sunsu-commerce/diagnostics/browser-kc-results.json
-            sellers/sunsu-commerce/diagnostics/browser-kc-summary.json
-
-  merge-listings:
-    name: merge recovered listings
-    needs: recover
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
-      - run: pip install -r "$SELLER_ROOT/requirements.txt"
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: sunsu-recover-*
-          path: sellers/sunsu-commerce/raw/downloaded
-          merge-multiple: false
-      - name: Merge and verify
-        continue-on-error: true
+      - name: Validate candidates only
         run: |
           mkdir -p "$SELLER_ROOT/diagnostics"
-          python "$SELLER_ROOT/src/stage1_merge.py" --input-dir "$SELLER_ROOT/raw/downloaded" --out "$SELLER_ROOT/diagnostics/seller-products.json" --candidates-out "$SELLER_ROOT/diagnostics/publisher-candidates.json" --summary-out "$SELLER_ROOT/diagnostics/stage1-summary.json"
+          python "$SELLER_ROOT/src/browser_kc_audit_shard.py" \
+            --input "$SELLER_ROOT/raw/kc-candidates.json" \
+            --out "$SELLER_ROOT/diagnostics/fast-kc-candidates.json"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sunsu-stage1-merged-latest
-          path: sellers/sunsu-commerce/diagnostics/*.json
+          name: sunsu-fast-kc-candidates
+          path: |
+            sellers/sunsu-commerce/raw/kc-candidates.json
+            sellers/sunsu-commerce/diagnostics/fast-kc-candidates.json
