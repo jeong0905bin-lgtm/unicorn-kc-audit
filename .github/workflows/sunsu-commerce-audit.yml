@@ -1,16 +1,14 @@
-name: Sunsu Commerce Fast KC
+name: Sunsu Commerce Official KC Exact
 
 on:
   push:
     branches: [chatgpt/sunsu-commerce-audit]
     paths:
       - ".github/workflows/sunsu-commerce-audit.yml"
-      - "sellers/sunsu-commerce/src/browser_kc_audit_shard.py"
   pull_request:
     branches: [main]
     paths:
       - ".github/workflows/sunsu-commerce-audit.yml"
-      - "sellers/sunsu-commerce/src/browser_kc_audit_shard.py"
   workflow_dispatch:
 
 permissions:
@@ -19,51 +17,80 @@ permissions:
 
 env:
   SELLER_ROOT: sellers/sunsu-commerce
-  CANDIDATE_RUN_ID: 31018852316
+  FAST_RUN_ID: 31031151977
 
 jobs:
-  fast-kc-candidates:
-    name: validate 3 KC candidates now
+  official-kc-exact:
+    name: official SafetyKorea exact status
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: pip install -r "$SELLER_ROOT/requirements.txt"
-      - name: Install Chromium
-        run: python -m playwright install --with-deps chromium
-      - name: Download prior candidate artifact
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - name: Download fast candidate artifact
         uses: actions/download-artifact@v4
         with:
-          name: sunsu-browser-kc-final
+          name: sunsu-fast-kc-candidates
           repository: ${{ github.repository }}
-          run-id: ${{ env.CANDIDATE_RUN_ID }}
+          run-id: ${{ env.FAST_RUN_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: sellers/sunsu-commerce/raw/candidate-source
-      - name: Extract only candidate listings
+          path: sellers/sunsu-commerce/raw/fast-source
+      - name: Probe official SafetyKorea exact pages
         run: |
           python - <<'PY'
-          import json
+          import json,re
           from pathlib import Path
-          src=next(Path('sellers/sunsu-commerce/raw/candidate-source').rglob('browser-kc-results.json'))
+          from urllib.parse import quote_plus
+          from playwright.sync_api import sync_playwright
+
+          src=next(Path('sellers/sunsu-commerce/raw/fast-source').rglob('fast-kc-candidates.json'))
           data=json.loads(src.read_text(encoding='utf-8'))
-          rows=[r for r in data.get('products',[]) if r.get('kcCandidates')]
-          out=Path('sellers/sunsu-commerce/raw/kc-candidates.json')
+          numbers=sorted({str(c).upper() for r in data.get('products',[]) for c in (r.get('kcCandidates') or [])})
+          results=[]
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-blink-features=AutomationControlled'])
+              ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36')
+              page=ctx.new_page(); page.set_default_timeout(12000)
+              for kc in numbers:
+                  urls=[
+                      'https://www.safetykorea.kr/search/searchPop?certNum='+quote_plus(kc),
+                      'https://www.safetykorea.kr/search/searchPop?certNum='+quote_plus(kc+'r'),
+                  ]
+                  row={'kcNumber':kc,'official':False,'status':'','certDate':'','manufacturer':'','modelName':'','source':'','http':0,'evidence':[]}
+                  for url in urls:
+                      try:
+                          resp=page.goto(url,wait_until='domcontentloaded',timeout=20000)
+                          page.wait_for_timeout(1000)
+                          text=page.locator('body').inner_text(timeout=6000)
+                          compact=' '.join(text.split())
+                          exact=kc.upper() in compact.upper()
+                          status=''
+                          for pat in [r'인증상태\s*[:|]?\s*([^\s|]+)',r'인증현황\s*[:|]?\s*([^\s|]+)']:
+                              m=re.search(pat,compact)
+                              if m: status=m.group(1); break
+                          def field(label):
+                              m=re.search(label+r'\s*[:|]?\s*([^|]{1,80}?)(?=\s+(?:인증|제품|모델|브랜드|제조|수입|리콜|$))',compact)
+                              return m.group(1).strip() if m else ''
+                          ev={'url':url,'http':resp.status if resp else 0,'exact':exact,'status':status,'snippet':compact[:1000]}
+                          row['evidence'].append(ev)
+                          if exact and status:
+                              row.update({'official':True,'status':status,'certDate':field('인증일자'),'manufacturer':field('제조사'),'modelName':field('모델명'),'source':url,'http':ev['http']})
+                              break
+                      except Exception as e:
+                          row['evidence'].append({'url':url,'error':type(e).__name__})
+                  results.append(row)
+              ctx.close(); browser.close()
+          out=Path('sellers/sunsu-commerce/diagnostics/kc-official-exact.json')
           out.parent.mkdir(parents=True,exist_ok=True)
-          out.write_text(json.dumps({'shard':'candidate-only','products':rows},ensure_ascii=False,indent=2),encoding='utf-8')
-          print({'candidateListings':len(rows),'candidateNumbers':sorted({c for r in rows for c in r.get('kcCandidates',[])})})
+          summary={'candidateNumbers':len(numbers),'officialMatched':sum(r['official'] for r in results),'suitable':sum(r.get('status')=='적합' for r in results),'results':results}
+          out.write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps({k:summary[k] for k in ('candidateNumbers','officialMatched','suitable')},ensure_ascii=False))
           PY
-      - name: Validate candidates only
-        run: |
-          mkdir -p "$SELLER_ROOT/diagnostics"
-          python "$SELLER_ROOT/src/browser_kc_audit_shard.py" \
-            --input "$SELLER_ROOT/raw/kc-candidates.json" \
-            --out "$SELLER_ROOT/diagnostics/fast-kc-candidates.json"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sunsu-fast-kc-candidates
-          path: |
-            sellers/sunsu-commerce/raw/kc-candidates.json
-            sellers/sunsu-commerce/diagnostics/fast-kc-candidates.json
+          name: sunsu-kc-official-exact
+          path: sellers/sunsu-commerce/diagnostics/kc-official-exact.json
