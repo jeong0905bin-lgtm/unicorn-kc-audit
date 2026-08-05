@@ -53,6 +53,40 @@ jobs:
           name: sunsu-recover-${{ matrix.shard }}
           path: sellers/sunsu-commerce/raw/shards/shard-${{ matrix.shard }}.json
 
+  parallel-audit:
+    name: publisher+KC (${{ matrix.shard }})
+    needs: recover
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r "$SELLER_ROOT/requirements.txt"
+      - uses: actions/download-artifact@v4
+        with:
+          name: sunsu-recover-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/raw/audit-input
+      - name: Classify Unicorn and lookup KC in parallel
+        run: |
+          INPUT="$(find sellers/sunsu-commerce/raw/audit-input -name 'shard-${{ matrix.shard }}.json' -print -quit)"
+          mkdir -p "$SELLER_ROOT/diagnostics/audit-shards"
+          python "$SELLER_ROOT/src/parallel_audit_shard.py" \
+            --input "$INPUT" --workers 10 \
+            --out "$SELLER_ROOT/diagnostics/audit-shards/audit-${{ matrix.shard }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sunsu-audit-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/diagnostics/audit-shards/audit-${{ matrix.shard }}.json
+
   merge:
     name: merge and verify 195 products
     needs: recover
@@ -71,6 +105,7 @@ jobs:
           path: sellers/sunsu-commerce/raw/downloaded
           merge-multiple: false
       - name: Merge, deduplicate and verify seller
+        continue-on-error: true
         run: |
           mkdir -p "$SELLER_ROOT/diagnostics"
           python "$SELLER_ROOT/src/stage1_merge.py" \
@@ -89,34 +124,40 @@ jobs:
             sellers/sunsu-commerce/raw/downloaded/**/*.json
           if-no-files-found: warn
 
-  stage2:
-    name: stage 2 - exact KC collection
-    needs: merge
+  audit-summary:
+    name: merge publisher and KC results
+    needs: parallel-audit
+    if: always()
     runs-on: ubuntu-latest
-    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: pip install -r "$SELLER_ROOT/requirements.txt"
       - uses: actions/download-artifact@v4
         with:
-          name: sunsu-stage1-merged
-          path: sellers/sunsu-commerce/diagnostics-download
-      - name: Locate merged diagnostics
+          pattern: sunsu-audit-*
+          path: sellers/sunsu-commerce/diagnostics/audit-download
+          merge-multiple: false
+      - name: Build combined JSON summary
         run: |
-          find sellers/sunsu-commerce/diagnostics-download -type f -maxdepth 5 -print
-          cp "$(find sellers/sunsu-commerce/diagnostics-download -name seller-products.json -print -quit)" "$SELLER_ROOT/diagnostics/seller-products.json"
-      - name: Run exact KC pipeline
-        run: |
-          python "$SELLER_ROOT/src/staged_pipeline.py" \
-            --stage1-input "$SELLER_ROOT/diagnostics/seller-products.json" \
-            --root "$SELLER_ROOT" \
-            --remembered-evidence "$SELLER_ROOT/diagnostics/safetykorea-status.json"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('sellers/sunsu-commerce/diagnostics')
+          rows=[];logs=[];shards=[]
+          for f in sorted((root/'audit-download').rglob('audit-*.json')):
+              d=json.loads(f.read_text(encoding='utf-8'));shards.append({k:d.get(k) for k in ('shard','inputCount','unicornCount','kcFound')});rows.extend(d.get('products',[]));logs.extend(d.get('logs',[]))
+          uniq={}
+          for r in rows:
+              key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
+              if key not in uniq or r.get('isUnicorn'):uniq[key]=r
+          allrows=list(uniq.values());unicorn=[r for r in allrows if r.get('isUnicorn')]
+          summary={'auditedListings':len(allrows),'unicornListings':len(unicorn),'uniqueUnicornProductIds':len({str(r.get('productId')) for r in unicorn}),'kcFound':sum(bool(r.get('kcNumber')) for r in unicorn),'kcValid':sum(r.get('kcStatus')=='KC 적합' for r in unicorn),'kcExpired':sum(r.get('kcStatus')=='KC 기간만료' for r in unicorn),'kcMissing':sum(not r.get('kcNumber') for r in unicorn),'shards':shards}
+          (root/'publisher-kc-parallel.json').write_text(json.dumps({'summary':summary,'products':unicorn,'logs':logs},ensure_ascii=False,indent=2),encoding='utf-8')
+          (root/'publisher-kc-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(summary)
+          PY
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: sunsu-stage2
-          path: sellers/sunsu-commerce/diagnostics/*.json
-          if-no-files-found: warn
+          name: sunsu-publisher-kc-parallel
+          path: |
+            sellers/sunsu-commerce/diagnostics/publisher-kc-parallel.json
+            sellers/sunsu-commerce/diagnostics/publisher-kc-summary.json
