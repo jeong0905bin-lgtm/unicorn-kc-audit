@@ -144,3 +144,5 @@ jobs:
         with:
           name: sunsu-stage1-merged-latest
           path: sellers/sunsu-commerce/diagnostics/*.json
+
+# force browser audit rerun 2026-08-05T22:21+09:00
