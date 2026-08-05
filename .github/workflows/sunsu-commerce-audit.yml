@@ -1,14 +1,16 @@
-name: Sunsu Commerce Official KC Exact
+name: Sunsu Commerce KC 10 Parallel
 
 on:
   push:
     branches: [chatgpt/sunsu-commerce-audit]
     paths:
       - ".github/workflows/sunsu-commerce-audit.yml"
+      - "sellers/sunsu-commerce/src/browser_kc_audit_shard.py"
   pull_request:
     branches: [main]
     paths:
       - ".github/workflows/sunsu-commerce-audit.yml"
+      - "sellers/sunsu-commerce/src/browser_kc_audit_shard.py"
   workflow_dispatch:
 
 permissions:
@@ -17,80 +19,109 @@ permissions:
 
 env:
   SELLER_ROOT: sellers/sunsu-commerce
-  FAST_RUN_ID: 31031151977
+  SOURCE_RUN_ID: 31018852316
 
 jobs:
-  official-kc-exact:
-    name: official SafetyKorea exact status
+  kc-extract:
+    name: KC extract (${{ matrix.shard }}/10)
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: pip install playwright
-      - run: python -m playwright install --with-deps chromium
-      - name: Download fast candidate artifact
+      - run: pip install -r "$SELLER_ROOT/requirements.txt"
+      - name: Install Chromium
+        run: python -m playwright install --with-deps chromium
+      - name: Download full prior KC result
         uses: actions/download-artifact@v4
         with:
-          name: sunsu-fast-kc-candidates
+          name: sunsu-browser-kc-final
           repository: ${{ github.repository }}
-          run-id: ${{ env.FAST_RUN_ID }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: sellers/sunsu-commerce/raw/fast-source
-      - name: Probe official SafetyKorea exact pages
+          path: sellers/sunsu-commerce/raw/source
+      - name: Build 10-way shard
         run: |
           python - <<'PY'
-          import json,re
+          import json, os
           from pathlib import Path
-          from urllib.parse import quote_plus
-          from playwright.sync_api import sync_playwright
-
-          src=next(Path('sellers/sunsu-commerce/raw/fast-source').rglob('fast-kc-candidates.json'))
+          shard=int(os.environ['SHARD'])
+          src=next(Path('sellers/sunsu-commerce/raw/source').rglob('browser-kc-results.json'))
           data=json.loads(src.read_text(encoding='utf-8'))
-          numbers=sorted({str(c).upper() for r in data.get('products',[]) for c in (r.get('kcCandidates') or [])})
-          results=[]
-          with sync_playwright() as p:
-              browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-blink-features=AutomationControlled'])
-              ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36')
-              page=ctx.new_page(); page.set_default_timeout(12000)
-              for kc in numbers:
-                  urls=[
-                      'https://www.safetykorea.kr/search/searchPop?certNum='+quote_plus(kc),
-                      'https://www.safetykorea.kr/search/searchPop?certNum='+quote_plus(kc+'r'),
-                  ]
-                  row={'kcNumber':kc,'official':False,'status':'','certDate':'','manufacturer':'','modelName':'','source':'','http':0,'evidence':[]}
-                  for url in urls:
-                      try:
-                          resp=page.goto(url,wait_until='domcontentloaded',timeout=20000)
-                          page.wait_for_timeout(1000)
-                          text=page.locator('body').inner_text(timeout=6000)
-                          compact=' '.join(text.split())
-                          exact=kc.upper() in compact.upper()
-                          status=''
-                          for pat in [r'인증상태\s*[:|]?\s*([^\s|]+)',r'인증현황\s*[:|]?\s*([^\s|]+)']:
-                              m=re.search(pat,compact)
-                              if m: status=m.group(1); break
-                          def field(label):
-                              m=re.search(label+r'\s*[:|]?\s*([^|]{1,80}?)(?=\s+(?:인증|제품|모델|브랜드|제조|수입|리콜|$))',compact)
-                              return m.group(1).strip() if m else ''
-                          ev={'url':url,'http':resp.status if resp else 0,'exact':exact,'status':status,'snippet':compact[:1000]}
-                          row['evidence'].append(ev)
-                          if exact and status:
-                              row.update({'official':True,'status':status,'certDate':field('인증일자'),'manufacturer':field('제조사'),'modelName':field('모델명'),'source':url,'http':ev['http']})
-                              break
-                      except Exception as e:
-                          row['evidence'].append({'url':url,'error':type(e).__name__})
-                  results.append(row)
-              ctx.close(); browser.close()
-          out=Path('sellers/sunsu-commerce/diagnostics/kc-official-exact.json')
+          rows=data.get('products',[])
+          selected=[r for i,r in enumerate(rows) if i % 10 == shard]
+          out=Path(f'sellers/sunsu-commerce/raw/kc-10/shard-{shard}.json')
           out.parent.mkdir(parents=True,exist_ok=True)
-          summary={'candidateNumbers':len(numbers),'officialMatched':sum(r['official'] for r in results),'suitable':sum(r.get('status')=='적합' for r in results),'results':results}
-          out.write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
-          print(json.dumps({k:summary[k] for k in ('candidateNumbers','officialMatched','suitable')},ensure_ascii=False))
+          out.write_text(json.dumps({'shard':shard,'products':selected},ensure_ascii=False,indent=2),encoding='utf-8')
+          print({'shard':shard,'inputCount':len(selected)})
           PY
+        env:
+          SHARD: ${{ matrix.shard }}
+      - name: Extract KC numbers
+        run: |
+          mkdir -p "$SELLER_ROOT/diagnostics/kc-10"
+          python "$SELLER_ROOT/src/browser_kc_audit_shard.py" \
+            --input "$SELLER_ROOT/raw/kc-10/shard-${{ matrix.shard }}.json" \
+            --out "$SELLER_ROOT/diagnostics/kc-10/result-${{ matrix.shard }}.json"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sunsu-kc-official-exact
-          path: sellers/sunsu-commerce/diagnostics/kc-official-exact.json
+          name: sunsu-kc-10-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/diagnostics/kc-10/result-${{ matrix.shard }}.json
+
+  merge-kc:
+    name: merge KC 10-way results
+    needs: kc-extract
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sunsu-kc-10-*
+          path: sellers/sunsu-commerce/diagnostics/kc-10-download
+          merge-multiple: false
+      - name: Merge and summarize
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('sellers/sunsu-commerce/diagnostics')
+          products=[]; logs=[]; shards=[]
+          for f in sorted((root/'kc-10-download').rglob('result-*.json')):
+              d=json.loads(f.read_text(encoding='utf-8'))
+              products.extend(d.get('products',[])); logs.extend(d.get('logs',[]))
+              shards.append({k:d.get(k) for k in ('shard','inputCount','unicornCount','kcFound','kcOfficial','kcHighConfidence','kcCandidateListings')})
+          uniq={}
+          for r in products:
+              key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
+              old=uniq.get(key)
+              if old is None or (r.get('kcNumber') and not old.get('kcNumber')) or len(r.get('kcCandidates') or [])>len(old.get('kcCandidates') or []):
+                  uniq[key]=r
+          rows=list(uniq.values())
+          summary={
+              'auditedListings':len(rows),
+              'kcFound':sum(bool(r.get('kcNumber')) for r in rows),
+              'kcOfficial':sum(r.get('kcConfidence')=='official-exact' for r in rows),
+              'kcHighConfidence':sum(r.get('kcConfidence')=='multi-source-high-confidence' for r in rows),
+              'kcCandidateListings':sum(bool(r.get('kcCandidates')) for r in rows),
+              'uniqueCandidateNumbers':len({c for r in rows for c in (r.get('kcCandidates') or [])}),
+              'shards':shards,
+          }
+          root.mkdir(parents=True,exist_ok=True)
+          (root/'kc-10-results.json').write_text(json.dumps({'summary':summary,'products':rows,'logs':logs},ensure_ascii=False,indent=2),encoding='utf-8')
+          (root/'kc-10-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(summary)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sunsu-kc-10-final
+          path: |
+            sellers/sunsu-commerce/diagnostics/kc-10-results.json
+            sellers/sunsu-commerce/diagnostics/kc-10-summary.json
