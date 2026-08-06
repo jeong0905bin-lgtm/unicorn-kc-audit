@@ -1,16 +1,14 @@
-name: Sunsu Commerce KC Discovery + Expiry Parallel
+name: Sunsu Commerce Coupang-Only KC Audit
 
 on:
   push:
     branches: [chatgpt/sunsu-commerce-audit]
     paths:
       - ".github/workflows/sunsu-commerce-audit.yml"
-      - "sellers/sunsu-commerce/src/browser_kc_audit_shard.py"
   pull_request:
     branches: [main]
     paths:
       - ".github/workflows/sunsu-commerce-audit.yml"
-      - "sellers/sunsu-commerce/src/browser_kc_audit_shard.py"
   workflow_dispatch:
 
 permissions:
@@ -22,8 +20,8 @@ env:
   SOURCE_RUN_ID: 31065354705
 
 jobs:
-  kc-discovery:
-    name: KC discovery (${{ matrix.shard }}/10)
+  coupang-only:
+    name: Coupang-only detail audit (${{ matrix.shard }}/10)
     runs-on: ubuntu-latest
     timeout-minutes: 55
     strategy:
@@ -35,9 +33,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: pip install -r "$SELLER_ROOT/requirements.txt"
+      - run: pip install playwright requests openpyxl
       - run: python -m playwright install --with-deps chromium
-      - name: Download current KC result
+      - name: Download 49-product baseline
         uses: actions/download-artifact@v4
         with:
           name: sunsu-kc-deep-final
@@ -45,186 +43,145 @@ jobs:
           run-id: ${{ env.SOURCE_RUN_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: sellers/sunsu-commerce/raw/source
-      - name: Build missing-only shard
+      - name: Audit Coupang pages only
         env:
           SHARD: ${{ matrix.shard }}
         run: |
+          mkdir -p "$SELLER_ROOT/diagnostics/coupang-only"
           python - <<'PY'
           import json, os, re
           from pathlib import Path
-          shard=int(os.environ['SHARD'])
-          src=next(Path('sellers/sunsu-commerce/raw/source').rglob('kc-deep-results.json'))
-          data=json.loads(src.read_text(encoding='utf-8'))
-          missing=[r for r in data.get('products',[]) if not r.get('kcNumber')]
-          selected=[r for i,r in enumerate(missing) if i%10==shard]
-          variants=[]
-          for r in selected:
-              original=str(r.get('productName') or '')
-              clean=re.sub(r'[^0-9A-Za-z가-힣 ]+',' ',original)
-              clean=re.sub(r'\s+',' ',clean).strip()
-              words=[w for w in clean.split() if len(w)>=2]
-              names=[original,clean,' '.join(words[:8]),' '.join(words[:6]),' '.join(words[:4])]
-              for k in ('isbn','ISBN','modelName','model','brand','manufacturer','publisherManufacturer'):
-                  v=str(r.get(k) or '').strip()
-                  if v: names.extend([f'{clean} {v}',v])
-              seen=set()
-              for idx,n in enumerate(names):
-                  n=re.sub(r'\s+',' ',n).strip()
-                  if len(n)<3 or n in seen: continue
-                  seen.add(n)
-                  x=dict(r); x['productName']=n; x['_originalProductName']=original; x['_queryVariant']=idx
-                  variants.append(x)
-          out=Path(f'sellers/sunsu-commerce/raw/kc-discovery/shard-{shard}.json')
-          out.parent.mkdir(parents=True,exist_ok=True)
-          out.write_text(json.dumps({'shard':shard,'products':variants},ensure_ascii=False,indent=2),encoding='utf-8')
-          print({'missingTotal':len(missing),'selected':len(selected),'variants':len(variants),'shard':shard})
-          PY
-      - name: Search missing KC numbers
-        run: |
-          mkdir -p "$SELLER_ROOT/diagnostics/kc-discovery"
-          python "$SELLER_ROOT/src/browser_kc_audit_shard.py" --input "$SELLER_ROOT/raw/kc-discovery/shard-${{ matrix.shard }}.json" --out "$SELLER_ROOT/diagnostics/kc-discovery/result-${{ matrix.shard }}.json"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: sunsu-kc-discovery-${{ matrix.shard }}
-          path: sellers/sunsu-commerce/diagnostics/kc-discovery/result-${{ matrix.shard }}.json
-
-  kc-expiry:
-    name: KC expiry (${{ matrix.shard }}/10)
-    runs-on: ubuntu-latest
-    timeout-minutes: 35
-    strategy:
-      fail-fast: false
-      max-parallel: 10
-      matrix:
-        shard: [0,1,2,3,4,5,6,7,8,9]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
-      - run: pip install playwright
-      - run: python -m playwright install --with-deps chromium
-      - name: Download current KC result
-        uses: actions/download-artifact@v4
-        with:
-          name: sunsu-kc-deep-final
-          repository: ${{ github.repository }}
-          run-id: ${{ env.SOURCE_RUN_ID }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: sellers/sunsu-commerce/raw/source
-      - name: Query SafetyKorea status and validity
-        env:
-          SHARD: ${{ matrix.shard }}
-        run: |
-          mkdir -p "$SELLER_ROOT/diagnostics/kc-expiry"
-          python - <<'PY'
-          import json, os, re
-          from pathlib import Path
-          from urllib.parse import quote_plus
           from playwright.sync_api import sync_playwright
           shard=int(os.environ['SHARD'])
           src=next(Path('sellers/sunsu-commerce/raw/source').rglob('kc-deep-results.json'))
           data=json.loads(src.read_text(encoding='utf-8'))
-          rows=[r for r in data.get('products',[]) if r.get('kcNumber')]
+          rows=data.get('products',[])
           selected=[r for i,r in enumerate(rows) if i%10==shard]
+          kc_patterns=[
+            r'\b(?:CB|CA|SU)\s*[- ]?\d{3}[A-Z]\d{3}\s*[- ]?\d{4}\b',
+            r'\bR\s*[- ]?[A-Z0-9]{2,8}\s*[- ]?[A-Z0-9]{3,20}\b',
+          ]
+          section_words=['KC','인증정보','안전인증','안전확인','공급자적합성','상품정보 제공고시','품명 및 모델명']
           out=[]
           with sync_playwright() as p:
               browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-blink-features=AutomationControlled'])
               ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36')
-              page=ctx.new_page(); page.set_default_timeout(12000)
+              page=ctx.new_page(); page.set_default_timeout(15000)
               for r in selected:
-                  kc=str(r.get('kcNumber') or '').upper(); result=dict(r)
-                  result.update({'officialMatched':False,'certStatus':'','certDate':'','expiryDate':'','validityText':'','officialSource':'','officialEvidence':[]})
-                  urls=[
-                    'https://www.safetykorea.kr/search/searchPop?certNum='+quote_plus(kc),
-                    'https://www.safetykorea.kr/search/searchPop?certNum='+quote_plus(kc+'r'),
-                    'https://www.safetykorea.kr/release/certificationsearch?certNum='+quote_plus(kc),
-                  ]
+                  x=dict(r)
+                  pid=str(r.get('productId') or '')
+                  iid=str(r.get('itemId') or '')
+                  vid=str(r.get('vendorItemId') or '')
+                  urls=[]
+                  if pid: urls.append(f'https://www.coupang.com/vp/products/{pid}')
+                  if pid and iid: urls.append(f'https://www.coupang.com/vp/products/{pid}?itemId={iid}')
+                  if pid and iid and vid: urls.append(f'https://www.coupang.com/vp/products/{pid}?itemId={iid}&vendorItemId={vid}')
+                  found=[]; evidence=[]; page_ok=False
                   for url in urls:
                       try:
-                          resp=page.goto(url,wait_until='domcontentloaded',timeout=20000)
-                          page.wait_for_timeout(900)
-                          text=' '.join(page.locator('body').inner_text(timeout=6000).split())
-                          exact=kc in text.upper()
-                          def first(patterns):
-                              for pat in patterns:
-                                  m=re.search(pat,text,re.I)
-                                  if m:return m.group(1).strip()
-                              return ''
-                          status=first([r'인증상태\s*[:|]?\s*([^|\s]+)',r'인증현황\s*[:|]?\s*([^|\s]+)',r'상태\s*[:|]?\s*([^|\s]+)'])
-                          cert=first([r'인증일자\s*[:|]?\s*(\d{4}[.\-/]\d{1,2}[.\-/]\d{1,2})',r'인증일\s*[:|]?\s*(\d{4}[.\-/]\d{1,2}[.\-/]\d{1,2})'])
-                          expiry=first([r'(?:유효기간|만료일자|만료일|유효기한)\s*[:|]?\s*(\d{4}[.\-/]\d{1,2}[.\-/]\d{1,2})'])
-                          validity=first([r'(유효기간\s*[:|]?\s*[^|]{1,80})',r'(인증유효[^|]{1,80})'])
-                          ev={'url':url,'http':resp.status if resp else 0,'exact':exact,'status':status,'certDate':cert,'expiryDate':expiry,'validityText':validity,'snippet':text[:1200]}
-                          result['officialEvidence'].append(ev)
-                          if exact:
-                              result.update({'officialMatched':True,'certStatus':status,'certDate':cert,'expiryDate':expiry,'validityText':validity,'officialSource':url})
-                              break
+                          resp=page.goto(url,wait_until='domcontentloaded',timeout=25000)
+                          page.wait_for_timeout(1800)
+                          text=' '.join(page.locator('body').inner_text(timeout=8000).split())
+                          http=resp.status if resp else 0
+                          blocked=(http in (403,429)) or ('Access Denied' in text) or ('접근이 제한' in text)
+                          if http and not blocked and len(text)>200: page_ok=True
+                          candidates=[]
+                          for pat in kc_patterns:
+                              candidates += re.findall(pat,text,re.I)
+                          candidates=[re.sub(r'\s+','',c.upper()).replace('–','-') for c in candidates]
+                          candidates=[c for c in candidates if c!='U003E1577-7011']
+                          for c in candidates:
+                              if c not in found: found.append(c)
+                          markers=[w for w in section_words if w in text]
+                          evidence.append({'url':url,'http':http,'blocked':blocked,'markers':markers,'snippet':text[:1800],'kcNumbers':candidates})
                       except Exception as e:
-                          result['officialEvidence'].append({'url':url,'error':type(e).__name__})
-                  out.append(result)
+                          evidence.append({'url':url,'error':type(e).__name__})
+                  x['coupangPageReached']=page_ok
+                  x['coupangKcNumbers']=found
+                  x['coupangKcNumber']=found[0] if found else ''
+                  x['coupangKcStatus']='표기됨' if found else ('없음' if page_ok else '조회실패')
+                  x['coupangEvidence']=evidence
+                  out.append(x)
               ctx.close(); browser.close()
-          payload={'shard':shard,'inputCount':len(selected),'officialMatched':sum(r['officialMatched'] for r in out),'expiryFound':sum(bool(r.get('expiryDate')) for r in out),'products':out}
-          dest=Path(f'sellers/sunsu-commerce/diagnostics/kc-expiry/result-{shard}.json')
+          payload={
+            'shard':shard,
+            'inputCount':len(selected),
+            'pageReached':sum(r['coupangPageReached'] for r in out),
+            'kcShown':sum(bool(r['coupangKcNumber']) for r in out),
+            'kcAbsent':sum(r['coupangKcStatus']=='없음' for r in out),
+            'lookupFailed':sum(r['coupangKcStatus']=='조회실패' for r in out),
+            'products':out,
+          }
+          dest=Path(f'sellers/sunsu-commerce/diagnostics/coupang-only/result-{shard}.json')
           dest.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
-          print({k:payload[k] for k in ('shard','inputCount','officialMatched','expiryFound')})
+          print({k:payload[k] for k in ('shard','inputCount','pageReached','kcShown','kcAbsent','lookupFailed')})
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sunsu-kc-expiry-${{ matrix.shard }}
-          path: sellers/sunsu-commerce/diagnostics/kc-expiry/result-${{ matrix.shard }}.json
+          name: sunsu-coupang-only-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/diagnostics/coupang-only/result-${{ matrix.shard }}.json
 
   merge:
-    name: merge KC discovery and expiry
-    needs: [kc-discovery, kc-expiry]
+    name: Merge Coupang-only audit
+    needs: coupang-only
     if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          pattern: sunsu-kc-discovery-*
-          path: sellers/sunsu-commerce/diagnostics/discovery-download
+          pattern: sunsu-coupang-only-*
+          path: sellers/sunsu-commerce/diagnostics/coupang-only-download
           merge-multiple: false
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: sunsu-kc-expiry-*
-          path: sellers/sunsu-commerce/diagnostics/expiry-download
-          merge-multiple: false
-      - name: Merge summaries
+      - name: Merge JSON and build simple workbook
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          from openpyxl import Workbook
+          from openpyxl.styles import PatternFill, Font, Alignment
           root=Path('sellers/sunsu-commerce/diagnostics')
-          discovery=[]; expiry=[]
-          for f in (root/'discovery-download').rglob('result-*.json'):
-              d=json.loads(f.read_text(encoding='utf-8')); discovery.extend(d.get('products',[]))
-          for f in (root/'expiry-download').rglob('result-*.json'):
-              d=json.loads(f.read_text(encoding='utf-8')); expiry.extend(d.get('products',[]))
-          dmap={}
-          for r in discovery:
+          rows=[]; shards=[]
+          for f in sorted((root/'coupang-only-download').rglob('result-*.json')):
+              d=json.loads(f.read_text(encoding='utf-8'))
+              rows.extend(d.get('products',[]))
+              shards.append({k:d.get(k) for k in ('shard','inputCount','pageReached','kcShown','kcAbsent','lookupFailed')})
+          uniq={}
+          for r in rows:
               key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
-              old=dmap.get(key)
-              score=lambda x:(2 if x.get('kcNumber') else 1 if x.get('kcCandidates') else 0,len(x.get('kcEvidence') or []))
-              if old is None or score(r)>score(old): dmap[key]=r
+              uniq[key]=r
+          rows=list(uniq.values())
           summary={
-            'discoveryListings':len(dmap),
-            'newKcFound':sum(bool(r.get('kcNumber')) for r in dmap.values()),
-            'newCandidateListings':sum(bool(r.get('kcCandidates')) for r in dmap.values()),
-            'expiryListings':len(expiry),
-            'officialMatched':sum(bool(r.get('officialMatched')) for r in expiry),
-            'expiryDateFound':sum(bool(r.get('expiryDate')) for r in expiry),
-            'expiredOrInvalid':sum(('만료' in str(r.get('certStatus')) or '취소' in str(r.get('certStatus')) or '정지' in str(r.get('certStatus'))) for r in expiry),
+            'auditedListings':len(rows),
+            'pageReached':sum(r.get('coupangPageReached') for r in rows),
+            'kcShown':sum(bool(r.get('coupangKcNumber')) for r in rows),
+            'kcAbsent':sum(r.get('coupangKcStatus')=='없음' for r in rows),
+            'lookupFailed':sum(r.get('coupangKcStatus')=='조회실패' for r in rows),
+            'shards':shards,
           }
-          (root/'kc-discovery-expiry-results.json').write_text(json.dumps({'summary':summary,'discoveryProducts':list(dmap.values()),'expiryProducts':expiry},ensure_ascii=False,indent=2),encoding='utf-8')
-          (root/'kc-discovery-expiry-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          root.mkdir(parents=True,exist_ok=True)
+          (root/'coupang-only-results.json').write_text(json.dumps({'summary':summary,'products':rows},ensure_ascii=False,indent=2),encoding='utf-8')
+          (root/'coupang-only-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          wb=Workbook(); ws=wb.active; ws.title='쿠팡상세 기준'
+          ws.append(['제품명','판매자명','쿠팡고유번호','KC번호'])
+          for r in sorted(rows,key=lambda x:str(x.get('productName',''))):
+              cid=f"{r.get('productId','')} - {r.get('itemId','')}".strip(' -')
+              kc=r.get('coupangKcNumber') or ('없음' if r.get('coupangKcStatus')=='없음' else '조회실패')
+              ws.append([r.get('productName',''),'순수커머스',cid,kc])
+          fill=PatternFill('solid',fgColor='17365D')
+          for c in ws[1]: c.fill=fill; c.font=Font(color='FFFFFF',bold=True); c.alignment=Alignment(horizontal='center')
+          ws.column_dimensions['A'].width=52; ws.column_dimensions['B'].width=16; ws.column_dimensions['C'].width=24; ws.column_dimensions['D'].width=22
+          for row in ws.iter_rows(min_row=2):
+              row[1].alignment=Alignment(horizontal='center'); row[2].alignment=Alignment(horizontal='center'); row[3].alignment=Alignment(horizontal='center')
+          out=Path('sellers/sunsu-commerce/outputs/순수커머스_쿠팡상세_KC최종.xlsx')
+          out.parent.mkdir(parents=True,exist_ok=True); wb.save(out)
           print(summary)
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: sunsu-kc-discovery-expiry-final
+          name: sunsu-coupang-only-final
           path: |
-            sellers/sunsu-commerce/diagnostics/kc-discovery-expiry-results.json
-            sellers/sunsu-commerce/diagnostics/kc-discovery-expiry-summary.json
+            sellers/sunsu-commerce/diagnostics/coupang-only-results.json
+            sellers/sunsu-commerce/diagnostics/coupang-only-summary.json
+            sellers/sunsu-commerce/outputs/순수커머스_쿠팡상세_KC최종.xlsx
