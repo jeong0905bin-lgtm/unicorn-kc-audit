@@ -1,4 +1,4 @@
-name: Sunsu Commerce KC Missing Deep 13 Parallel
+name: Sunsu Commerce KC Discovery + Expiry Parallel
 
 on:
   push:
@@ -19,141 +19,212 @@ permissions:
 
 env:
   SELLER_ROOT: sellers/sunsu-commerce
-  SOURCE_RUN_ID: 31064592820
+  SOURCE_RUN_ID: 31065354705
 
 jobs:
-  kc-missing-deep:
-    name: KC missing deep (${{ matrix.shard }}/13)
+  kc-discovery:
+    name: KC discovery (${{ matrix.shard }}/10)
     runs-on: ubuntu-latest
     timeout-minutes: 55
     strategy:
       fail-fast: false
-      max-parallel: 13
+      max-parallel: 10
       matrix:
-        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12]
+        shard: [0,1,2,3,4,5,6,7,8,9]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: pip install -r "$SELLER_ROOT/requirements.txt"
-      - name: Install Chromium
-        run: python -m playwright install --with-deps chromium
-      - name: Download current merged result
+      - run: python -m playwright install --with-deps chromium
+      - name: Download current KC result
         uses: actions/download-artifact@v4
         with:
-          name: sunsu-kc-missing-final
+          name: sunsu-kc-deep-final
           repository: ${{ github.repository }}
           run-id: ${{ env.SOURCE_RUN_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: sellers/sunsu-commerce/raw/source
-      - name: Build deep-search variants for missing-only shard
+      - name: Build missing-only shard
+        env:
+          SHARD: ${{ matrix.shard }}
         run: |
           python - <<'PY'
           import json, os, re
           from pathlib import Path
           shard=int(os.environ['SHARD'])
-          src=next(Path('sellers/sunsu-commerce/raw/source').rglob('kc-missing-results.json'))
+          src=next(Path('sellers/sunsu-commerce/raw/source').rglob('kc-deep-results.json'))
           data=json.loads(src.read_text(encoding='utf-8'))
           missing=[r for r in data.get('products',[]) if not r.get('kcNumber')]
-          selected=[r for i,r in enumerate(missing) if i % 13 == shard]
+          selected=[r for i,r in enumerate(missing) if i%10==shard]
           variants=[]
           for r in selected:
-              name=str(r.get('productName') or '')
-              clean=re.sub(r'[\[\]\(\),/|]+',' ',name)
+              original=str(r.get('productName') or '')
+              clean=re.sub(r'[^0-9A-Za-z가-힣 ]+',' ',original)
               clean=re.sub(r'\s+',' ',clean).strip()
               words=[w for w in clean.split() if len(w)>=2]
-              names=[name, clean, ' '.join(words[:7]), ' '.join(words[:5])]
-              for k in ('isbn','ISBN','modelName','model','itemName','brand','manufacturer','publisherManufacturer'):
+              names=[original,clean,' '.join(words[:8]),' '.join(words[:6]),' '.join(words[:4])]
+              for k in ('isbn','ISBN','modelName','model','brand','manufacturer','publisherManufacturer'):
                   v=str(r.get(k) or '').strip()
-                  if v: names.append(f'{clean} {v}')
+                  if v: names.extend([f'{clean} {v}',v])
               seen=set()
               for idx,n in enumerate(names):
                   n=re.sub(r'\s+',' ',n).strip()
                   if len(n)<3 or n in seen: continue
                   seen.add(n)
-                  x=dict(r); x['productName']=n; x['_originalProductName']=name; x['_queryVariant']=idx
+                  x=dict(r); x['productName']=n; x['_originalProductName']=original; x['_queryVariant']=idx
                   variants.append(x)
-          out=Path(f'sellers/sunsu-commerce/raw/kc-deep/shard-{shard}.json')
+          out=Path(f'sellers/sunsu-commerce/raw/kc-discovery/shard-{shard}.json')
           out.parent.mkdir(parents=True,exist_ok=True)
           out.write_text(json.dumps({'shard':shard,'products':variants},ensure_ascii=False,indent=2),encoding='utf-8')
-          print({'missingTotal':len(missing),'selectedListings':len(selected),'queryVariants':len(variants),'shard':shard})
+          print({'missingTotal':len(missing),'selected':len(selected),'variants':len(variants),'shard':shard})
           PY
-        env:
-          SHARD: ${{ matrix.shard }}
-      - name: Deep extract KC from every query variant
+      - name: Search missing KC numbers
         run: |
-          mkdir -p "$SELLER_ROOT/diagnostics/kc-deep"
-          python "$SELLER_ROOT/src/browser_kc_audit_shard.py" \
-            --input "$SELLER_ROOT/raw/kc-deep/shard-${{ matrix.shard }}.json" \
-            --out "$SELLER_ROOT/diagnostics/kc-deep/result-${{ matrix.shard }}.json"
+          mkdir -p "$SELLER_ROOT/diagnostics/kc-discovery"
+          python "$SELLER_ROOT/src/browser_kc_audit_shard.py" --input "$SELLER_ROOT/raw/kc-discovery/shard-${{ matrix.shard }}.json" --out "$SELLER_ROOT/diagnostics/kc-discovery/result-${{ matrix.shard }}.json"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sunsu-kc-deep-${{ matrix.shard }}
-          path: sellers/sunsu-commerce/diagnostics/kc-deep/result-${{ matrix.shard }}.json
+          name: sunsu-kc-discovery-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/diagnostics/kc-discovery/result-${{ matrix.shard }}.json
 
-  merge-deep:
-    name: merge KC deep-search results
-    needs: kc-missing-deep
+  kc-expiry:
+    name: KC expiry (${{ matrix.shard }}/10)
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - name: Download current KC result
+        uses: actions/download-artifact@v4
+        with:
+          name: sunsu-kc-deep-final
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: sellers/sunsu-commerce/raw/source
+      - name: Query SafetyKorea status and validity
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          mkdir -p "$SELLER_ROOT/diagnostics/kc-expiry"
+          python - <<'PY'
+          import json, os, re
+          from pathlib import Path
+          from urllib.parse import quote_plus
+          from playwright.sync_api import sync_playwright
+          shard=int(os.environ['SHARD'])
+          src=next(Path('sellers/sunsu-commerce/raw/source').rglob('kc-deep-results.json'))
+          data=json.loads(src.read_text(encoding='utf-8'))
+          rows=[r for r in data.get('products',[]) if r.get('kcNumber')]
+          selected=[r for i,r in enumerate(rows) if i%10==shard]
+          out=[]
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-blink-features=AutomationControlled'])
+              ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36')
+              page=ctx.new_page(); page.set_default_timeout(12000)
+              for r in selected:
+                  kc=str(r.get('kcNumber') or '').upper(); result=dict(r)
+                  result.update({'officialMatched':False,'certStatus':'','certDate':'','expiryDate':'','validityText':'','officialSource':'','officialEvidence':[]})
+                  urls=[
+                    'https://www.safetykorea.kr/search/searchPop?certNum='+quote_plus(kc),
+                    'https://www.safetykorea.kr/search/searchPop?certNum='+quote_plus(kc+'r'),
+                    'https://www.safetykorea.kr/release/certificationsearch?certNum='+quote_plus(kc),
+                  ]
+                  for url in urls:
+                      try:
+                          resp=page.goto(url,wait_until='domcontentloaded',timeout=20000)
+                          page.wait_for_timeout(900)
+                          text=' '.join(page.locator('body').inner_text(timeout=6000).split())
+                          exact=kc in text.upper()
+                          def first(patterns):
+                              for pat in patterns:
+                                  m=re.search(pat,text,re.I)
+                                  if m:return m.group(1).strip()
+                              return ''
+                          status=first([r'인증상태\s*[:|]?\s*([^|\s]+)',r'인증현황\s*[:|]?\s*([^|\s]+)',r'상태\s*[:|]?\s*([^|\s]+)'])
+                          cert=first([r'인증일자\s*[:|]?\s*(\d{4}[.\-/]\d{1,2}[.\-/]\d{1,2})',r'인증일\s*[:|]?\s*(\d{4}[.\-/]\d{1,2}[.\-/]\d{1,2})'])
+                          expiry=first([r'(?:유효기간|만료일자|만료일|유효기한)\s*[:|]?\s*(\d{4}[.\-/]\d{1,2}[.\-/]\d{1,2})'])
+                          validity=first([r'(유효기간\s*[:|]?\s*[^|]{1,80})',r'(인증유효[^|]{1,80})'])
+                          ev={'url':url,'http':resp.status if resp else 0,'exact':exact,'status':status,'certDate':cert,'expiryDate':expiry,'validityText':validity,'snippet':text[:1200]}
+                          result['officialEvidence'].append(ev)
+                          if exact:
+                              result.update({'officialMatched':True,'certStatus':status,'certDate':cert,'expiryDate':expiry,'validityText':validity,'officialSource':url})
+                              break
+                      except Exception as e:
+                          result['officialEvidence'].append({'url':url,'error':type(e).__name__})
+                  out.append(result)
+              ctx.close(); browser.close()
+          payload={'shard':shard,'inputCount':len(selected),'officialMatched':sum(r['officialMatched'] for r in out),'expiryFound':sum(bool(r.get('expiryDate')) for r in out),'products':out}
+          dest=Path(f'sellers/sunsu-commerce/diagnostics/kc-expiry/result-{shard}.json')
+          dest.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
+          print({k:payload[k] for k in ('shard','inputCount','officialMatched','expiryFound')})
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sunsu-kc-expiry-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/diagnostics/kc-expiry/result-${{ matrix.shard }}.json
+
+  merge:
+    name: merge KC discovery and expiry
+    needs: [kc-discovery, kc-expiry]
     if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download current merged result
-        uses: actions/download-artifact@v4
-        with:
-          name: sunsu-kc-missing-final
-          repository: ${{ github.repository }}
-          run-id: ${{ env.SOURCE_RUN_ID }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: sellers/sunsu-commerce/raw/prior
       - uses: actions/download-artifact@v4
         with:
-          pattern: sunsu-kc-deep-*
-          path: sellers/sunsu-commerce/diagnostics/kc-deep-download
+          pattern: sunsu-kc-discovery-*
+          path: sellers/sunsu-commerce/diagnostics/discovery-download
           merge-multiple: false
-      - name: Merge strongest evidence per original listing
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sunsu-kc-expiry-*
+          path: sellers/sunsu-commerce/diagnostics/expiry-download
+          merge-multiple: false
+      - name: Merge summaries
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           root=Path('sellers/sunsu-commerce/diagnostics')
-          prior=next(Path('sellers/sunsu-commerce/raw/prior').rglob('kc-missing-results.json'))
-          base=json.loads(prior.read_text(encoding='utf-8'))
-          merged={}
-          for r in base.get('products',[]):
+          discovery=[]; expiry=[]
+          for f in (root/'discovery-download').rglob('result-*.json'):
+              d=json.loads(f.read_text(encoding='utf-8')); discovery.extend(d.get('products',[]))
+          for f in (root/'expiry-download').rglob('result-*.json'):
+              d=json.loads(f.read_text(encoding='utf-8')); expiry.extend(d.get('products',[]))
+          dmap={}
+          for r in discovery:
               key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
-              merged[key]=r
-          logs=list(base.get('logs',[])); shards=[]
-          for f in sorted((root/'kc-deep-download').rglob('result-*.json')):
-              d=json.loads(f.read_text(encoding='utf-8')); logs.extend(d.get('logs',[]))
-              shards.append({k:d.get(k) for k in ('shard','inputCount','unicornCount','kcFound','kcOfficial','kcHighConfidence','kcCandidateListings')})
-              for r in d.get('products',[]):
-                  key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
-                  old=merged.get(key)
-                  score=lambda x:(3 if x.get('kcConfidence')=='official-exact' else 2 if x.get('kcNumber') else 1 if x.get('kcCandidates') else 0, len(x.get('kcCandidates') or []), len(x.get('kcEvidence') or []))
-                  if old is None or score(r)>score(old):
-                      if r.get('_originalProductName'): r['productName']=r['_originalProductName']
-                      merged[key]=r
-          rows=list(merged.values())
+              old=dmap.get(key)
+              score=lambda x:(2 if x.get('kcNumber') else 1 if x.get('kcCandidates') else 0,len(x.get('kcEvidence') or []))
+              if old is None or score(r)>score(old): dmap[key]=r
           summary={
-              'auditedListings':len(rows),
-              'kcFound':sum(bool(r.get('kcNumber')) for r in rows),
-              'kcMissing':sum(not r.get('kcNumber') for r in rows),
-              'kcOfficial':sum(r.get('kcConfidence')=='official-exact' for r in rows),
-              'kcHighConfidence':sum(r.get('kcConfidence')=='multi-source-high-confidence' for r in rows),
-              'kcCandidateListings':sum(bool(r.get('kcCandidates')) for r in rows),
-              'uniqueCandidateNumbers':len({c for r in rows for c in (r.get('kcCandidates') or [])}),
-              'shards':shards,
+            'discoveryListings':len(dmap),
+            'newKcFound':sum(bool(r.get('kcNumber')) for r in dmap.values()),
+            'newCandidateListings':sum(bool(r.get('kcCandidates')) for r in dmap.values()),
+            'expiryListings':len(expiry),
+            'officialMatched':sum(bool(r.get('officialMatched')) for r in expiry),
+            'expiryDateFound':sum(bool(r.get('expiryDate')) for r in expiry),
+            'expiredOrInvalid':sum(('만료' in str(r.get('certStatus')) or '취소' in str(r.get('certStatus')) or '정지' in str(r.get('certStatus'))) for r in expiry),
           }
-          root.mkdir(parents=True,exist_ok=True)
-          (root/'kc-deep-results.json').write_text(json.dumps({'summary':summary,'products':rows,'logs':logs},ensure_ascii=False,indent=2),encoding='utf-8')
-          (root/'kc-deep-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          (root/'kc-discovery-expiry-results.json').write_text(json.dumps({'summary':summary,'discoveryProducts':list(dmap.values()),'expiryProducts':expiry},ensure_ascii=False,indent=2),encoding='utf-8')
+          (root/'kc-discovery-expiry-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
           print(summary)
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: sunsu-kc-deep-final
+          name: sunsu-kc-discovery-expiry-final
           path: |
-            sellers/sunsu-commerce/diagnostics/kc-deep-results.json
-            sellers/sunsu-commerce/diagnostics/kc-deep-summary.json
+            sellers/sunsu-commerce/diagnostics/kc-discovery-expiry-results.json
+            sellers/sunsu-commerce/diagnostics/kc-discovery-expiry-summary.json
