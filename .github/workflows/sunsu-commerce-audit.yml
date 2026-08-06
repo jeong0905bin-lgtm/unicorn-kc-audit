@@ -1,14 +1,12 @@
-name: Sunsu Commerce Coupang-Only KC Audit
+name: Sunsu Commerce Coupang-Only Final Merge
 
 on:
   push:
     branches: [chatgpt/sunsu-commerce-audit]
-    paths:
-      - ".github/workflows/sunsu-commerce-audit.yml"
+    paths: [".github/workflows/sunsu-commerce-audit.yml"]
   pull_request:
     branches: [main]
-    paths:
-      - ".github/workflows/sunsu-commerce-audit.yml"
+    paths: [".github/workflows/sunsu-commerce-audit.yml"]
   workflow_dispatch:
 
 permissions:
@@ -17,124 +15,26 @@ permissions:
 
 env:
   SELLER_ROOT: sellers/sunsu-commerce
-  SOURCE_RUN_ID: 31065354705
+  SOURCE_RUN_ID: 31100791607
 
 jobs:
-  coupang-only:
-    name: Coupang-only detail audit (${{ matrix.shard }}/10)
+  merge:
+    name: Merge prior Coupang-only audit
     runs-on: ubuntu-latest
-    timeout-minutes: 55
-    strategy:
-      fail-fast: false
-      max-parallel: 10
-      matrix:
-        shard: [0,1,2,3,4,5,6,7,8,9]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: pip install playwright requests openpyxl
-      - run: python -m playwright install --with-deps chromium
-      - name: Download 49-product baseline
-        uses: actions/download-artifact@v4
-        with:
-          name: sunsu-kc-deep-final
-          repository: ${{ github.repository }}
-          run-id: ${{ env.SOURCE_RUN_ID }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: sellers/sunsu-commerce/raw/source
-      - name: Audit Coupang pages only
-        env:
-          SHARD: ${{ matrix.shard }}
-        run: |
-          mkdir -p "$SELLER_ROOT/diagnostics/coupang-only"
-          python - <<'PY'
-          import json, os, re
-          from pathlib import Path
-          from playwright.sync_api import sync_playwright
-          shard=int(os.environ['SHARD'])
-          src=next(Path('sellers/sunsu-commerce/raw/source').rglob('kc-deep-results.json'))
-          data=json.loads(src.read_text(encoding='utf-8'))
-          rows=data.get('products',[])
-          selected=[r for i,r in enumerate(rows) if i%10==shard]
-          kc_patterns=[
-            r'\b(?:CB|CA|SU)\s*[- ]?\d{3}[A-Z]\d{3}\s*[- ]?\d{4}\b',
-            r'\bR\s*[- ]?[A-Z0-9]{2,8}\s*[- ]?[A-Z0-9]{3,20}\b',
-          ]
-          section_words=['KC','인증정보','안전인증','안전확인','공급자적합성','상품정보 제공고시','품명 및 모델명']
-          out=[]
-          with sync_playwright() as p:
-              browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-blink-features=AutomationControlled'])
-              ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36')
-              page=ctx.new_page(); page.set_default_timeout(15000)
-              for r in selected:
-                  x=dict(r)
-                  pid=str(r.get('productId') or '')
-                  iid=str(r.get('itemId') or '')
-                  vid=str(r.get('vendorItemId') or '')
-                  urls=[]
-                  if pid: urls.append(f'https://www.coupang.com/vp/products/{pid}')
-                  if pid and iid: urls.append(f'https://www.coupang.com/vp/products/{pid}?itemId={iid}')
-                  if pid and iid and vid: urls.append(f'https://www.coupang.com/vp/products/{pid}?itemId={iid}&vendorItemId={vid}')
-                  found=[]; evidence=[]; page_ok=False
-                  for url in urls:
-                      try:
-                          resp=page.goto(url,wait_until='domcontentloaded',timeout=25000)
-                          page.wait_for_timeout(1800)
-                          text=' '.join(page.locator('body').inner_text(timeout=8000).split())
-                          http=resp.status if resp else 0
-                          blocked=(http in (403,429)) or ('Access Denied' in text) or ('접근이 제한' in text)
-                          if http and not blocked and len(text)>200: page_ok=True
-                          candidates=[]
-                          for pat in kc_patterns:
-                              candidates += re.findall(pat,text,re.I)
-                          candidates=[re.sub(r'\s+','',c.upper()).replace('–','-') for c in candidates]
-                          candidates=[c for c in candidates if c!='U003E1577-7011']
-                          for c in candidates:
-                              if c not in found: found.append(c)
-                          markers=[w for w in section_words if w in text]
-                          evidence.append({'url':url,'http':http,'blocked':blocked,'markers':markers,'snippet':text[:1800],'kcNumbers':candidates})
-                      except Exception as e:
-                          evidence.append({'url':url,'error':type(e).__name__})
-                  x['coupangPageReached']=page_ok
-                  x['coupangKcNumbers']=found
-                  x['coupangKcNumber']=found[0] if found else ''
-                  x['coupangKcStatus']='표기됨' if found else ('없음' if page_ok else '조회실패')
-                  x['coupangEvidence']=evidence
-                  out.append(x)
-              ctx.close(); browser.close()
-          payload={
-            'shard':shard,
-            'inputCount':len(selected),
-            'pageReached':sum(r['coupangPageReached'] for r in out),
-            'kcShown':sum(bool(r['coupangKcNumber']) for r in out),
-            'kcAbsent':sum(r['coupangKcStatus']=='없음' for r in out),
-            'lookupFailed':sum(r['coupangKcStatus']=='조회실패' for r in out),
-            'products':out,
-          }
-          dest=Path(f'sellers/sunsu-commerce/diagnostics/coupang-only/result-{shard}.json')
-          dest.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
-          print({k:payload[k] for k in ('shard','inputCount','pageReached','kcShown','kcAbsent','lookupFailed')})
-          PY
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: sunsu-coupang-only-${{ matrix.shard }}
-          path: sellers/sunsu-commerce/diagnostics/coupang-only/result-${{ matrix.shard }}.json
-
-  merge:
-    name: Merge Coupang-only audit
-    needs: coupang-only
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+      - run: pip install openpyxl
       - uses: actions/download-artifact@v4
         with:
           pattern: sunsu-coupang-only-*
           path: sellers/sunsu-commerce/diagnostics/coupang-only-download
           merge-multiple: false
-      - name: Merge JSON and build simple workbook
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Merge JSON and build workbook
         run: |
           python - <<'PY'
           import json
@@ -154,7 +54,7 @@ jobs:
           rows=list(uniq.values())
           summary={
             'auditedListings':len(rows),
-            'pageReached':sum(r.get('coupangPageReached') for r in rows),
+            'pageReached':sum(bool(r.get('coupangPageReached')) for r in rows),
             'kcShown':sum(bool(r.get('coupangKcNumber')) for r in rows),
             'kcAbsent':sum(r.get('coupangKcStatus')=='없음' for r in rows),
             'lookupFailed':sum(r.get('coupangKcStatus')=='조회실패' for r in rows),
@@ -170,12 +70,17 @@ jobs:
               kc=r.get('coupangKcNumber') or ('없음' if r.get('coupangKcStatus')=='없음' else '조회실패')
               ws.append([r.get('productName',''),'순수커머스',cid,kc])
           fill=PatternFill('solid',fgColor='17365D')
-          for c in ws[1]: c.fill=fill; c.font=Font(color='FFFFFF',bold=True); c.alignment=Alignment(horizontal='center')
-          ws.column_dimensions['A'].width=52; ws.column_dimensions['B'].width=16; ws.column_dimensions['C'].width=24; ws.column_dimensions['D'].width=22
+          for c in ws[1]:
+              c.fill=fill; c.font=Font(color='FFFFFF',bold=True); c.alignment=Alignment(horizontal='center')
+          ws.column_dimensions['A'].width=52
+          ws.column_dimensions['B'].width=16
+          ws.column_dimensions['C'].width=24
+          ws.column_dimensions['D'].width=22
           for row in ws.iter_rows(min_row=2):
-              row[1].alignment=Alignment(horizontal='center'); row[2].alignment=Alignment(horizontal='center'); row[3].alignment=Alignment(horizontal='center')
+              for c in row[1:]: c.alignment=Alignment(horizontal='center')
           out=Path('sellers/sunsu-commerce/outputs/순수커머스_쿠팡상세_KC최종.xlsx')
-          out.parent.mkdir(parents=True,exist_ok=True); wb.save(out)
+          out.parent.mkdir(parents=True,exist_ok=True)
+          wb.save(out)
           print(summary)
           PY
       - uses: actions/upload-artifact@v4
