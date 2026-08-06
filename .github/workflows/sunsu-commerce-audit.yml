@@ -1,4 +1,4 @@
-name: Sunsu Commerce KC 10 Parallel
+name: Sunsu Commerce KC Missing 10 Parallel
 
 on:
   push:
@@ -19,13 +19,13 @@ permissions:
 
 env:
   SELLER_ROOT: sellers/sunsu-commerce
-  SOURCE_RUN_ID: 31018852316
+  SOURCE_RUN_ID: 31032430192
 
 jobs:
-  kc-extract:
-    name: KC extract (${{ matrix.shard }}/10)
+  kc-missing:
+    name: KC missing (${{ matrix.shard }}/10)
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 40
     strategy:
       fail-fast: false
       max-parallel: 10
@@ -38,54 +38,62 @@ jobs:
       - run: pip install -r "$SELLER_ROOT/requirements.txt"
       - name: Install Chromium
         run: python -m playwright install --with-deps chromium
-      - name: Download full prior KC result
+      - name: Download prior 10-way result
         uses: actions/download-artifact@v4
         with:
-          name: sunsu-browser-kc-final
+          name: sunsu-kc-10-final
           repository: ${{ github.repository }}
           run-id: ${{ env.SOURCE_RUN_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: sellers/sunsu-commerce/raw/source
-      - name: Build 10-way shard
+      - name: Build missing-only 10-way shard
         run: |
           python - <<'PY'
           import json, os
           from pathlib import Path
           shard=int(os.environ['SHARD'])
-          src=next(Path('sellers/sunsu-commerce/raw/source').rglob('browser-kc-results.json'))
+          src=next(Path('sellers/sunsu-commerce/raw/source').rglob('kc-10-results.json'))
           data=json.loads(src.read_text(encoding='utf-8'))
-          rows=data.get('products',[])
-          selected=[r for i,r in enumerate(rows) if i % 10 == shard]
-          out=Path(f'sellers/sunsu-commerce/raw/kc-10/shard-{shard}.json')
+          missing=[r for r in data.get('products',[]) if not r.get('kcNumber')]
+          selected=[r for i,r in enumerate(missing) if i % 10 == shard]
+          out=Path(f'sellers/sunsu-commerce/raw/kc-missing/shard-{shard}.json')
           out.parent.mkdir(parents=True,exist_ok=True)
           out.write_text(json.dumps({'shard':shard,'products':selected},ensure_ascii=False,indent=2),encoding='utf-8')
-          print({'shard':shard,'inputCount':len(selected)})
+          print({'missingTotal':len(missing),'shard':shard,'inputCount':len(selected)})
           PY
         env:
           SHARD: ${{ matrix.shard }}
-      - name: Extract KC numbers
+      - name: Extract KC from missing listings
         run: |
-          mkdir -p "$SELLER_ROOT/diagnostics/kc-10"
+          mkdir -p "$SELLER_ROOT/diagnostics/kc-missing"
           python "$SELLER_ROOT/src/browser_kc_audit_shard.py" \
-            --input "$SELLER_ROOT/raw/kc-10/shard-${{ matrix.shard }}.json" \
-            --out "$SELLER_ROOT/diagnostics/kc-10/result-${{ matrix.shard }}.json"
+            --input "$SELLER_ROOT/raw/kc-missing/shard-${{ matrix.shard }}.json" \
+            --out "$SELLER_ROOT/diagnostics/kc-missing/result-${{ matrix.shard }}.json"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sunsu-kc-10-${{ matrix.shard }}
-          path: sellers/sunsu-commerce/diagnostics/kc-10/result-${{ matrix.shard }}.json
+          name: sunsu-kc-missing-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/diagnostics/kc-missing/result-${{ matrix.shard }}.json
 
-  merge-kc:
-    name: merge KC 10-way results
-    needs: kc-extract
+  merge-missing:
+    name: merge KC missing results
+    needs: kc-missing
     if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Download prior final
+        uses: actions/download-artifact@v4
+        with:
+          name: sunsu-kc-10-final
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: sellers/sunsu-commerce/raw/prior
       - uses: actions/download-artifact@v4
         with:
-          pattern: sunsu-kc-10-*
-          path: sellers/sunsu-commerce/diagnostics/kc-10-download
+          pattern: sunsu-kc-missing-*
+          path: sellers/sunsu-commerce/diagnostics/kc-missing-download
           merge-multiple: false
       - name: Merge and summarize
         run: |
@@ -93,21 +101,27 @@ jobs:
           import json
           from pathlib import Path
           root=Path('sellers/sunsu-commerce/diagnostics')
-          products=[]; logs=[]; shards=[]
-          for f in sorted((root/'kc-10-download').rglob('result-*.json')):
-              d=json.loads(f.read_text(encoding='utf-8'))
-              products.extend(d.get('products',[])); logs.extend(d.get('logs',[]))
-              shards.append({k:d.get(k) for k in ('shard','inputCount','unicornCount','kcFound','kcOfficial','kcHighConfidence','kcCandidateListings')})
-          uniq={}
-          for r in products:
+          prior=next(Path('sellers/sunsu-commerce/raw/prior').rglob('kc-10-results.json'))
+          base=json.loads(prior.read_text(encoding='utf-8'))
+          merged={}
+          for r in base.get('products',[]):
               key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
-              old=uniq.get(key)
-              if old is None or (r.get('kcNumber') and not old.get('kcNumber')) or len(r.get('kcCandidates') or [])>len(old.get('kcCandidates') or []):
-                  uniq[key]=r
-          rows=list(uniq.values())
+              merged[key]=r
+          logs=list(base.get('logs',[])); shards=[]
+          for f in sorted((root/'kc-missing-download').rglob('result-*.json')):
+              d=json.loads(f.read_text(encoding='utf-8'))
+              logs.extend(d.get('logs',[]))
+              shards.append({k:d.get(k) for k in ('shard','inputCount','unicornCount','kcFound','kcOfficial','kcHighConfidence','kcCandidateListings')})
+              for r in d.get('products',[]):
+                  key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
+                  old=merged.get(key)
+                  if old is None or (r.get('kcNumber') and not old.get('kcNumber')) or len(r.get('kcCandidates') or [])>len(old.get('kcCandidates') or []):
+                      merged[key]=r
+          rows=list(merged.values())
           summary={
               'auditedListings':len(rows),
               'kcFound':sum(bool(r.get('kcNumber')) for r in rows),
+              'kcMissing':sum(not r.get('kcNumber') for r in rows),
               'kcOfficial':sum(r.get('kcConfidence')=='official-exact' for r in rows),
               'kcHighConfidence':sum(r.get('kcConfidence')=='multi-source-high-confidence' for r in rows),
               'kcCandidateListings':sum(bool(r.get('kcCandidates')) for r in rows),
@@ -115,13 +129,13 @@ jobs:
               'shards':shards,
           }
           root.mkdir(parents=True,exist_ok=True)
-          (root/'kc-10-results.json').write_text(json.dumps({'summary':summary,'products':rows,'logs':logs},ensure_ascii=False,indent=2),encoding='utf-8')
-          (root/'kc-10-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          (root/'kc-missing-results.json').write_text(json.dumps({'summary':summary,'products':rows,'logs':logs},ensure_ascii=False,indent=2),encoding='utf-8')
+          (root/'kc-missing-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
           print(summary)
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: sunsu-kc-10-final
+          name: sunsu-kc-missing-final
           path: |
-            sellers/sunsu-commerce/diagnostics/kc-10-results.json
-            sellers/sunsu-commerce/diagnostics/kc-10-summary.json
+            sellers/sunsu-commerce/diagnostics/kc-missing-results.json
+            sellers/sunsu-commerce/diagnostics/kc-missing-summary.json
