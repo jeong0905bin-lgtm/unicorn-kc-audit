@@ -1,4 +1,4 @@
-name: Sunsu Commerce Coupang-Only Final Validation
+name: Sunsu Commerce Coupang-Only Retry
 
 on:
   push:
@@ -14,10 +14,113 @@ permissions:
   actions: read
 
 env:
-  SOURCE_RUN_ID: 31100791607
+  SOURCE_RUN_ID: 31065354705
+  ROOT: sellers/sunsu-commerce
 
 jobs:
-  validate:
+  retry:
+    name: Coupang-only retry (${{ matrix.shard }}/10)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - uses: actions/download-artifact@v4
+        with:
+          name: sunsu-kc-deep-final
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: sellers/sunsu-commerce/raw/source
+      - name: Retry desktop and mobile Coupang pages only
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          mkdir -p "$ROOT/diagnostics/coupang-retry"
+          python - <<'PY'
+          import json, os, re, time
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          shard=int(os.environ['SHARD'])
+          src=next(Path('sellers/sunsu-commerce/raw/source').rglob('kc-deep-results.json'))
+          rows=json.loads(src.read_text(encoding='utf-8')).get('products',[])
+          selected=[r for i,r in enumerate(rows) if i%10==shard]
+          pats=[r'\b(?:CB|CA|SU)[- ]?\d{3}[A-Z]\d{3}[- ]?\d{4}\b',r'\bR[- ]?[A-Z0-9]{2,8}[- ]?[A-Z0-9]{3,20}\b']
+          blocked_words=('Access Denied','접근이 제한','Reference #','Request blocked','Forbidden')
+          out=[]
+          with sync_playwright() as p:
+            browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-blink-features=AutomationControlled'])
+            profiles=[
+              dict(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',viewport={'width':1440,'height':1200},is_mobile=False),
+              dict(user_agent='Mozilla/5.0 (Linux; Android 14; SM-S918N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Mobile Safari/537.36',viewport={'width':412,'height':915},is_mobile=True),
+            ]
+            for r in selected:
+              x=dict(r); pid=str(r.get('productId') or ''); iid=str(r.get('itemId') or ''); vid=str(r.get('vendorItemId') or '')
+              found=[]; evidence=[]; reached=False
+              urls=[
+                f'https://www.coupang.com/vp/products/{pid}?itemId={iid}&vendorItemId={vid}',
+                f'https://www.coupang.com/vp/products/{pid}?itemId={iid}',
+                f'https://m.coupang.com/vm/products/{pid}?itemId={iid}&vendorItemId={vid}',
+                f'https://m.coupang.com/vm/products/{pid}?itemId={iid}',
+              ]
+              for prof in profiles:
+                ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',**prof)
+                page=ctx.new_page(); page.set_default_timeout(12000)
+                try:
+                  page.goto('https://www.coupang.com/',wait_until='domcontentloaded',timeout=20000)
+                  page.wait_for_timeout(900)
+                except Exception: pass
+                for url in urls:
+                  try:
+                    resp=page.goto(url,wait_until='domcontentloaded',timeout=25000)
+                    page.wait_for_timeout(2200)
+                    text=' '.join(page.locator('body').inner_text(timeout=7000).split())
+                    http=resp.status if resp else 0
+                    blocked=http in (403,429) or any(w in text for w in blocked_words)
+                    ok=(200 <= http < 400) and not blocked and len(text)>300
+                    if ok: reached=True
+                    nums=[]
+                    if ok:
+                      for pat in pats: nums += re.findall(pat,text,re.I)
+                      nums=[re.sub(r'\s+','',n.upper()).replace('–','-') for n in nums]
+                      nums=[n for n in nums if n not in ('U003E1577-7011','REFERENCE','ACCESS','DENIED')]
+                      for n in nums:
+                        if n not in found: found.append(n)
+                    evidence.append({'url':url,'http':http,'blocked':blocked,'ok':ok,'kcNumbers':nums,'snippet':text[:1000]})
+                    if found: break
+                  except Exception as e:
+                    evidence.append({'url':url,'error':type(e).__name__})
+                ctx.close()
+                if found: break
+              x['coupangPageReached']=reached
+              x['coupangKcNumbers']=found
+              x['coupangKcNumber']=found[0] if found else ''
+              x['coupangKcStatus']='표기됨' if found else ('없음' if reached else '조회실패')
+              x['coupangEvidence']=evidence
+              out.append(x)
+            browser.close()
+          payload={'shard':shard,'inputCount':len(selected),'pageReached':sum(r['coupangPageReached'] for r in out),'kcShown':sum(bool(r['coupangKcNumber']) for r in out),'kcAbsent':sum(r['coupangKcStatus']=='없음' for r in out),'lookupFailed':sum(r['coupangKcStatus']=='조회실패' for r in out),'products':out}
+          dest=Path(f'sellers/sunsu-commerce/diagnostics/coupang-retry/result-{shard}.json')
+          dest.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
+          print({k:payload[k] for k in ('shard','inputCount','pageReached','kcShown','kcAbsent','lookupFailed')})
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sunsu-coupang-retry-${{ matrix.shard }}
+          path: sellers/sunsu-commerce/diagnostics/coupang-retry/result-${{ matrix.shard }}.json
+
+  merge:
+    needs: retry
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,75 +129,39 @@ jobs:
       - run: pip install openpyxl
       - uses: actions/download-artifact@v4
         with:
-          pattern: sunsu-coupang-only-*
-          path: sellers/sunsu-commerce/diagnostics/coupang-only-download
+          pattern: sunsu-coupang-retry-*
+          path: sellers/sunsu-commerce/diagnostics/retry-download
           merge-multiple: false
-          repository: ${{ github.repository }}
-          run-id: ${{ env.SOURCE_RUN_ID }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Validate only successful Coupang page evidence
+      - name: Merge and build workbook
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           from openpyxl import Workbook
-          from openpyxl.styles import PatternFill, Font, Alignment
-          root=Path('sellers/sunsu-commerce/diagnostics')
-          rows=[]
-          for f in sorted((root/'coupang-only-download').rglob('result-*.json')):
-              rows.extend(json.loads(f.read_text(encoding='utf-8')).get('products',[]))
-          uniq={}
-          for r in rows:
-              key=(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId','')))
-              uniq[key]=r
-          rows=list(uniq.values())
-          for r in rows:
-              valid=[]
-              reached=False
-              for ev in r.get('coupangEvidence') or []:
-                  http=int(ev.get('http') or 0)
-                  if ev.get('blocked') or http in (403,429) or not (200 <= http < 400):
-                      continue
-                  reached=True
-                  for n in ev.get('kcNumbers') or []:
-                      n=str(n).strip().upper()
-                      if n and n not in ('REFERENCE','ACCESS','DENIED') and n not in valid:
-                          valid.append(n)
-              r['coupangPageReached']=reached
-              r['coupangKcNumbers']=valid
-              r['coupangKcNumber']=valid[0] if valid else ''
-              r['coupangKcStatus']='표기됨' if valid else ('없음' if reached else '조회실패')
-          summary={
-            'auditedListings':len(rows),
-            'pageReached':sum(bool(r.get('coupangPageReached')) for r in rows),
-            'kcShown':sum(bool(r.get('coupangKcNumber')) for r in rows),
-            'kcAbsent':sum(r.get('coupangKcStatus')=='없음' for r in rows),
-            'lookupFailed':sum(r.get('coupangKcStatus')=='조회실패' for r in rows),
-          }
-          root.mkdir(parents=True,exist_ok=True)
-          (root/'coupang-only-results.json').write_text(json.dumps({'summary':summary,'products':rows},ensure_ascii=False,indent=2),encoding='utf-8')
-          (root/'coupang-only-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
-          wb=Workbook(); ws=wb.active; ws.title='쿠팡상세 기준'
-          ws.append(['제품명','판매자명','쿠팡고유번호','KC번호'])
+          from openpyxl.styles import PatternFill,Font,Alignment
+          root=Path('sellers/sunsu-commerce/diagnostics'); rows=[]
+          for f in (root/'retry-download').rglob('result-*.json'):
+            rows.extend(json.loads(f.read_text(encoding='utf-8')).get('products',[]))
+          uniq={(str(r.get('productId','')),str(r.get('itemId','')),str(r.get('vendorItemId',''))):r for r in rows}; rows=list(uniq.values())
+          summary={'auditedListings':len(rows),'pageReached':sum(bool(r.get('coupangPageReached')) for r in rows),'kcShown':sum(bool(r.get('coupangKcNumber')) for r in rows),'kcAbsent':sum(r.get('coupangKcStatus')=='없음' for r in rows),'lookupFailed':sum(r.get('coupangKcStatus')=='조회실패' for r in rows)}
+          (root/'coupang-retry-results.json').write_text(json.dumps({'summary':summary,'products':rows},ensure_ascii=False,indent=2),encoding='utf-8')
+          (root/'coupang-retry-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          wb=Workbook(); ws=wb.active; ws.title='쿠팡상세 기준'; ws.append(['제품명','판매자명','쿠팡고유번호','KC번호'])
           for r in sorted(rows,key=lambda x:str(x.get('productName',''))):
-              cid=f"{r.get('productId','')} - {r.get('itemId','')}".strip(' -')
-              kc=r.get('coupangKcNumber') or ('없음' if r.get('coupangKcStatus')=='없음' else '조회실패')
-              ws.append([r.get('productName',''),'순수커머스',cid,kc])
+            cid=f"{r.get('productId','')} - {r.get('itemId','')}".strip(' -'); kc=r.get('coupangKcNumber') or ('없음' if r.get('coupangKcStatus')=='없음' else '조회실패')
+            ws.append([r.get('productName',''),'순수커머스',cid,kc])
           fill=PatternFill('solid',fgColor='17365D')
-          for c in ws[1]:
-              c.fill=fill; c.font=Font(color='FFFFFF',bold=True); c.alignment=Alignment(horizontal='center')
-          ws.column_dimensions['A'].width=52; ws.column_dimensions['B'].width=16
-          ws.column_dimensions['C'].width=24; ws.column_dimensions['D'].width=22
+          for c in ws[1]: c.fill=fill; c.font=Font(color='FFFFFF',bold=True); c.alignment=Alignment(horizontal='center')
+          ws.column_dimensions['A'].width=52; ws.column_dimensions['B'].width=16; ws.column_dimensions['C'].width=24; ws.column_dimensions['D'].width=22
           for row in ws.iter_rows(min_row=2):
-              for c in row[1:]: c.alignment=Alignment(horizontal='center')
-          out=Path('sellers/sunsu-commerce/outputs/순수커머스_쿠팡상세_KC최종_검증.xlsx')
-          out.parent.mkdir(parents=True,exist_ok=True); wb.save(out)
+            for c in row[1:]: c.alignment=Alignment(horizontal='center')
+          out=Path('sellers/sunsu-commerce/outputs/순수커머스_쿠팡상세_KC재검증.xlsx'); out.parent.mkdir(parents=True,exist_ok=True); wb.save(out)
           print(summary)
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: sunsu-coupang-only-validated-final
+          name: sunsu-coupang-retry-final
           path: |
-            sellers/sunsu-commerce/diagnostics/coupang-only-results.json
-            sellers/sunsu-commerce/diagnostics/coupang-only-summary.json
-            sellers/sunsu-commerce/outputs/순수커머스_쿠팡상세_KC최종_검증.xlsx
+            sellers/sunsu-commerce/diagnostics/coupang-retry-results.json
+            sellers/sunsu-commerce/diagnostics/coupang-retry-summary.json
+            sellers/sunsu-commerce/outputs/순수커머스_쿠팡상세_KC재검증.xlsx
