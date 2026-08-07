@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-08-02T11:50:27+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Promote inferred publisher candidates only when exact normalized title or exact bundle-component metadata closes the inference.",
+  "rules": {
+    "publisherPromotion": "Require exact title or exact series/component identity plus an official retailer/book record naming publisher 유니콘.",
+    "kcPromotion": "Require exact product identity and a product-level KC record; family similarity alone is insufficient.",
+    "excludedCertificationNumber": "U003E1577-7011"
+  },
+  "newExactPublisherConfirmations": [
+    {
+      "catalogIndex": 620,
+      "productId": "6209404889",
+      "itemId": "12368820079",
+      "vendorItemId": "80366499414",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 01, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "exact_normalized_title_official_book_record",
+      "normalizedOfficialTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 1",
+      "isbn": "8806328721298",
+      "officialBookSource": "https://www.yes24.com/product/goods/109712634",
+      "supportingCoupangCampaignSource": "https://pages.coupang.com/p/98225",
+      "identityNotes": "Catalog title differs only by spacing, 01/1 formatting, and appended UNICORN/편집부 metadata. The official record identifies publisher 유니콘 and the same volume title."
+    },
+    {
+      "productId": "8479335481",
+      "productName": "(BOOKFRIENDS) 슈팅스타 캐치티니핑 스티커 색칠북 1번",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "normalized_volume_title_official_book_record",
+      "normalizedOfficialTitle": "슈팅스타 캐치티니핑 색칠북 01",
+      "isbn": "8806328724398",
+      "officialBookSource": "https://www.yes24.com/product/goods/139757670",
+      "identityNotes": "BOOKFRIENDS prefix, '스티커' merchandising descriptor, and 1번/01 formatting were normalized. Official record confirms the same series, volume 1, publisher 유니콘."
+    },
+    {
+      "productId": "1732152888",
+      "productName": "유니콘 콩순이 판퍼즐 2종세트",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "exact_bundle_components_official_book_records",
+      "componentEvidence": [
+        {
+          "title": "엉뚱발랄 콩순이 판퍼즐 48조각",
+          "isbn": "8806328724879",
+          "sourceUrl": "https://www.yes24.com/product/goods/140128047"
+        },
+        {
+          "title": "엉뚱발랄 콩순이 판퍼즐 63조각",
+          "isbn": "8806328724862",
+          "sourceUrl": "https://www.yes24.com/product/goods/140128057"
+        }
+      ],
+      "identityNotes": "Both named bundle components are official 유니콘 publications. Character-name-only inference was not used."
+    }
+  ],
+  "newExactKcMappings": [
+    {
+      "productId": "6209404889",
+      "itemId": "12368820079",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 01, UNICORN, 편집부",
+      "isbn": "8806328721298",
+      "kcNumber": "CB064H009-9001",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_normalized_title_isbn_official_book_record",
+      "sourceUrl": "https://www.yes24.com/product/goods/109712634",
+      "officialSafetyKoreaStatus": "unresolved"
+    }
+  ],
+  "kcCandidatesPendingExactCatalogBinding": [
+    {
+      "productId": "8479335481",
+      "isbn": "8806328724398",
+      "kcNumber": "CB064H009-4002",
+      "sourceUrl": "https://www.yes24.com/product/goods/139757670",
+      "reason": "Official volume-1 record lists the KC, but an exact catalog productId-to-ISBN binding is still required before final KC promotion."
+    }
+  ],
+  "publisherConfirmedKcNumberUnavailable": [
+    {
+      "productId": "1732152888",
+      "reason": "Official component records expose certification type but no numeric KC value; do not classify as No-KC."
+    }
+  ],
+  "candidateUpdates": [
+    {
+      "productId": "7263548761",
+      "productName": "다이너소어 대판퍼즐 (130조각), 유니콘",
+      "status": "still_pending_exact_title_isbn_record",
+      "evidenceFound": "Unicorn dinosaur publications were confirmed, but no exact 130-piece large-puzzle record was retrieved in this run."
+    }
+  ],
+  "summary": {
+    "newExactPublisherConfirmations": 3,
+    "newExactKcMappings": 1,
+    "newUniqueKcNumbers": ["CB064H009-9001"],
+    "newPendingKcCandidates": ["CB064H009-4002"],
+    "remainingInferredCandidatesFromRun1": 2,
+    "finalWorkbookReady": false
+  },
+  "safeguards": [
+    "No character-name-only inference was promoted.",
+    "KC CB064H009-9001 is not classified as active or expired until official SafetyKorea status is resolved.",
+    "Blocked responses are not treated as processed or No-KC.",
+    "U003E1577-7011 remains excluded."
+  ],
+  "nextWork": [
+    "Resolve official SafetyKorea status for CB064H009-9001.",
+    "Bind product 8479335481 to ISBN 8806328724398 using exact catalog evidence before promoting CB064H009-4002.",
+    "Continue title/ISBN recovery across unresolved catalog products without repeating failed Coupang routes."
+  ]
+}

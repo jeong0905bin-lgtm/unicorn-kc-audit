@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-08-03T08:56:00+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve additional catalog candidates using exact normalized titles, official retailer book records, and public Coupang curated listing evidence without treating blocked responses as complete.",
+  "newExactPublisherConfirmations": [
+    {
+      "productId": "6209404899",
+      "itemId": "12368820141",
+      "vendorItemId": "80366520556",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 02, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "normalized_exact_title_official_book_record",
+      "normalizedOfficialTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 2",
+      "isbn13": "8806328721304",
+      "officialRecordUrl": "https://www.yes24.com/product/goods/109712520",
+      "kcNumber": "CB064H009-9001",
+      "kcMappingStatus": "confirmed",
+      "officialSafetyKoreaStatus": "기간만료"
+    },
+    {
+      "productId": "6209404912",
+      "itemId": "12368820251",
+      "vendorItemId": "70734566994",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 놀이북, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "normalized_exact_title_official_series_record",
+      "normalizedOfficialTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 놀이북",
+      "officialRecordUrl": "https://m.yes24.com/category/seriesgoods/001?SeriesNumber=298386",
+      "kcStatus": "pending exact product KC"
+    },
+    {
+      "productId": "1318404736",
+      "itemId": "2338338205",
+      "vendorItemId": "80511068757",
+      "productName": "엉덩이탐정 스티커 킹 300, UNICORN",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "publisherEvidenceType": "exact_marketplace_identity_public_coupang_curated_listing",
+      "officialRecordUrl": "https://pages.coupang.com/m/65712",
+      "kcStatus": "pending exact product KC"
+    }
+  ],
+  "summary": {
+    "reviewed": 3,
+    "newExactPublisherConfirmations": 3,
+    "newExactKcMappings": 1,
+    "newExpiredProductMappings": 1,
+    "stillPendingExactKc": 2
+  },
+  "safeguards": [
+    "No blocked or empty response was counted as complete.",
+    "No KC was inferred from product-family similarity.",
+    "U003E1577-7011 remains excluded.",
+    "The two products without exact product-level KC remain unresolved for final No-KC classification."
+  ]
+}

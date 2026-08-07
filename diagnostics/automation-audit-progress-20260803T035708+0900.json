@@ -1,0 +1,47 @@
+{
+  "runAt": "2026-08-03T03:57:08+09:00",
+  "sellerId": "A00214628",
+  "excludedCertificationNumber": "U003E1577-7011",
+  "verificationTask": "Inspect and reconcile the completed full plural-store scan and products-endpoint recovery artifacts triggered from commit c237b9a4f89ceb409ee7e67f6bc3e6d409aa4227.",
+  "completedWorkflowRuns": {
+    "pluralFullScan": 30761416635,
+    "productsEndpointRecovery": 30761416637,
+    "singularLinkRetry": 30761416638,
+    "emptyPayloadProbe": 30761416645,
+    "safetyKoreaExactStatusProbe": 30761416654,
+    "coupangSearchIndexAudit": 30761416667,
+    "buildFinalOfficialWorkbooks": 30761416664
+  },
+  "pluralFullScan": {
+    "artifactId": 8837655715,
+    "catalogCount": 2227,
+    "processedCount": 2227,
+    "successfulCount": 2091,
+    "unresolvedCount": 136,
+    "completionRatio": 0.9389312977099237,
+    "publisherFieldCount": 0,
+    "publisherExactUnicornCount": 0,
+    "blockedOrUnresolvedResponsesAreNotCompletion": true
+  },
+  "productsEndpointRecovery": {
+    "mergedArtifactId": 8837597762,
+    "inputUnresolved": 406,
+    "recoveredCount": 292,
+    "remainingUnresolved": 114,
+    "recoveryRatio": 0.7192118226600985,
+    "newExactUnicornCount": 0
+  },
+  "result": {
+    "newVerifiedUnicornProducts": 0,
+    "newExactKcMappings": 0,
+    "finalOutputsComplete": false,
+    "reason": "The completed network recovery paths produced no new exact Unicorn publisher evidence. The plural scan still has 136 unresolved responses and the merged endpoint recovery still has 114 unresolved products, so blocked or empty responses cannot be treated as reviewed completion.",
+    "doNotRepeat": [
+      "plural store full scan for the same catalog snapshot",
+      "products endpoint recovery for the same unresolved snapshot",
+      "singular-link retry for the same input",
+      "empty-payload probe for the same input"
+    ],
+    "nextVerificationClass": "Use non-network evidence already available in repository/File Library: ISBN extraction and exact matching against official book metadata, then SafetyKorea status validation only for exact product mappings."
+  }
+}

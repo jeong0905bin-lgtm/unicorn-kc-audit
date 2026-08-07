@@ -1,0 +1,55 @@
+name: Coupang same-session detail diagnostic
+
+# Hosted runners are blocked by Coupang. Manual diagnostics only.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            browser: chromium
+            label: ubuntu-chromium
+          - os: ubuntu-22.04
+            browser: firefox
+            label: ubuntu-firefox
+          - os: windows-2025
+            browser: chromium
+            label: windows-chromium
+          - os: macos-15
+            browser: webkit
+            label: macos-webkit
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install playwright
+      - name: Install browser with Linux dependencies
+        if: runner.os == 'Linux'
+        run: python -m playwright install --with-deps ${{ matrix.browser }}
+      - name: Install browser
+        if: runner.os != 'Linux'
+        run: python -m playwright install ${{ matrix.browser }}
+      - name: Validate source
+        run: python -m py_compile tools/coupang_same_session_detail.py
+      - name: Navigate seller to product in one session
+        run: python tools/coupang_same_session_detail.py --browser ${{ matrix.browser }} --output diagnostics/${{ matrix.label }}
+      - name: Upload diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coupang-same-session-${{ matrix.label }}
+          path: diagnostics/${{ matrix.label }}
+          if-no-files-found: error
+          retention-days: 7

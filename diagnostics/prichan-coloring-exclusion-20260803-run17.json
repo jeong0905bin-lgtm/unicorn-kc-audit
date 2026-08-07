@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-08-03T16:53:40+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve the two remaining near-duplicate 반짝이는 프리채널 스티커 색칠북 candidates without inferring publisher from character name or seller identity.",
+  "reviewed": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "decision": "exclude_from_verified_unicorn",
+      "reason": "No exact ISBN, exact component title, or official book record tying this two-volume set to 유니콘 was found. Public official records show multiple competing 프리채널 coloring/sticker-coloring editions from 은하수미디어, and similarly named items also exist from other publishers. Character-title similarity is insufficient under the audit rules."
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "decision": "exclude_from_verified_unicorn",
+      "reason": "The marketplace page identifies seller 북프렌즈, not publisher. No exact ISBN or official publication record ties the two-volume set to 유니콘. Public official records show competing 프리채널 coloring/sticker-coloring editions from 은하수미디어; seller identity and character name are not publisher evidence."
+    }
+  ],
+  "evidence": [
+    {
+      "type": "marketplace_exact_listing",
+      "url": "https://www.coupang.com/vp/products/282727888",
+      "finding": "Exact productId/itemId and seller 북프렌즈 were visible; no publisher confirmation was exposed in the accessible page text."
+    },
+    {
+      "type": "official_retailer_book_record",
+      "url": "https://www.yes24.com/product/goods/112939137",
+      "finding": "반짝이는 프리채널 시즌 3 색연필 색칠북 is published by 은하수(은하수미디어), ISBN 9788965794981."
+    },
+    {
+      "type": "official_retailer_book_record",
+      "url": "https://www.yes24.com/product/goods/105119409",
+      "finding": "반짝이는 프리채널 시즌 2 컬러링 코디북 is published by 은하수(은하수미디어)."
+    },
+    {
+      "type": "official_retailer_book_record",
+      "url": "https://m.yes24.com/goods/detail/105119376",
+      "finding": "반짝이는 프리채널 스페셜 카드 스티커북 2 is published by 은하수(은하수미디어)."
+    }
+  ],
+  "summary": {
+    "reviewed": 2,
+    "newVerifiedUnicorn": 0,
+    "excludedFromVerifiedUnicorn": 2,
+    "remainingCandidatesFromRun14": 0
+  },
+  "safeguards": [
+    "Seller 북프렌즈 was not treated as publisher evidence.",
+    "Character and franchise names were not treated as publisher evidence.",
+    "Blocked or incomplete marketplace responses were not counted as completed publisher verification.",
+    "No KC number was inferred from a related title or product family.",
+    "U003E1577-7011 remains excluded."
+  ]
+}

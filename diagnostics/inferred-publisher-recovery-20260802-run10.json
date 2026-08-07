@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-08-02T17:20:00+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Continue exact component recovery for unresolved 77-piece puzzle bundles using public official book records and catalog identity.",
+  "newPublisherConfirmations": [
+    {
+      "productId": "8511009040",
+      "itemId": "24638422795",
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 판퍼즐 2종세트 (각77조각), 유니콘",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed_by_exact_bundle_components",
+      "confidence": "high",
+      "componentEvidence": [
+        {
+          "title": "시크릿쥬쥬 판퍼즐 77조각 01",
+          "publisher": "유니콘",
+          "sourceUrl": "https://www.yes24.com/24/category/SpecialDisplay/001001027?FetchSize=40&GS=06&PageNumber=1&ParamSortTp=06&SortKind=PR&SortOption=06&TabNo=1"
+        },
+        {
+          "title": "시크릿쥬쥬 판퍼즐 77조각 02",
+          "publisher": "유니콘",
+          "isbn13": "8806328724534",
+          "kcNumber": "CB064H009-4003",
+          "sourceUrl": "https://www.yes24.com/product/goods/140128013"
+        }
+      ],
+      "identityNotes": "The catalog title specifies a two-item set with 77 pieces per component. Official records identify volumes 01 and 02 as 유니콘 publications."
+    },
+    {
+      "productId": "8603813579",
+      "itemId": "24951365973",
+      "productName": "핑크퐁 아기상어 판퍼즐 2종세트 (각77조각), 유니콘",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed_by_exact_bundle_components",
+      "confidence": "high",
+      "componentEvidence": [
+        {
+          "title": "핑크퐁 아기상어 판퍼즐",
+          "publisher": "유니콘",
+          "pieceCount": 77,
+          "kcNumber": "CB064H009-4003",
+          "sourceUrl": "https://www.11st.co.kr/products/8044943441"
+        },
+        {
+          "title": "핑크퐁 아기상어 SCHOOL BUS 판퍼즐",
+          "publisher": "유니콘",
+          "pieceCount": 77,
+          "sourceUrl": "https://www.yes24.com/24/category/SpecialDisplay/001001027?FetchSize=40&GS=06&PageNumber=1&ParamSortTp=06&SortKind=PR&SortOption=06&TabNo=1"
+        }
+      ],
+      "identityNotes": "The seller catalog set is an exact two-component 77-piece bundle matching the two official Unicorn titles."
+    }
+  ],
+  "kcCandidatesPendingExactSecondComponent": [
+    {
+      "productId": "8511009040",
+      "kcNumber": "CB064H009-4003",
+      "status": "high_confidence_pending_second_component_kc_field",
+      "reason": "Volume 02 has exact KC 4003; volume 01 publisher and identity are exact but its direct KC field was not independently retrieved in this run."
+    },
+    {
+      "productId": "8603813579",
+      "kcNumber": "CB064H009-4003",
+      "status": "high_confidence_pending_second_component_kc_field",
+      "reason": "The base Baby Shark 77-piece component has exact KC 4003; the SCHOOL BUS component publisher and identity are exact but its direct KC field was not independently retrieved in this run."
+    }
+  ],
+  "summary": {
+    "newPublisherConfirmations": 2,
+    "newExactKcMappings": 0,
+    "newHighConfidenceKcCandidates": 2,
+    "finalWorkbookReady": false
+  },
+  "safeguards": [
+    "Publisher confirmation requires both named bundle components to match official records.",
+    "KC is not promoted to exact mapping until every named component's KC field is independently recovered or the bundle mandatory disclosure confirms the number.",
+    "Blocked responses are not counted as processed or No-KC.",
+    "U003E1577-7011 remains excluded."
+  ]
+}

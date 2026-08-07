@@ -1,0 +1,52 @@
+name: Build final official workbooks
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+    paths:
+      - "tools/build_final_official_workbooks.py"
+      - ".github/workflows/build-final-official-workbooks.yml"
+      - "diagnostics/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install openpyxl
+      - name: Validate builder
+        run: python -m py_compile tools/build_final_official_workbooks.py
+      - name: Build verified workbooks
+        run: python tools/build_final_official_workbooks.py
+      - name: Validate outputs
+        run: |
+          test -s final-output/A00214628_유니콘_No-KC_최종.xlsx
+          test -s final-output/A00214628_유니콘_기간만료_KC_최종.xlsx
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('final-output/summary.json').read_text(encoding='utf-8'))
+          print(json.dumps(s,ensure_ascii=False,indent=2))
+          assert s['expiredRows'] >= 1
+          assert 'U003E1577-7011' not in s['uniqueKcNumbers']
+          PY
+      - name: Upload final workbooks
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-final-official-workbooks-${{ github.run_id }}
+          path: final-output
+          if-no-files-found: error
+          retention-days: 7

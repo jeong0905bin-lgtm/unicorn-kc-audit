@@ -1,0 +1,70 @@
+name: Unicorn empty payload probe
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+    paths:
+      - "tools/unicorn_empty_payload_probe.py"
+      - ".github/workflows/unicorn-empty-payload-probe.yml"
+      - "run/unicorn-empty-payload-probe.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: unicorn-empty-payload-probe-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          pip install requests playwright
+          python -m playwright install --with-deps chromium
+      - name: Validate probe
+        run: python -m py_compile tools/unicorn_empty_payload_probe.py
+      - name: Download latest unresolved artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p base output
+          gh run download 30627309021 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name unicorn-exact-retry-merged-30627309021 \
+            --dir base
+          test -f base/unresolved-products.json
+      - name: Probe listing metadata and payload variants
+        run: |
+          python tools/unicorn_empty_payload_probe.py \
+            --unresolved base/unresolved-products.json \
+            --output output/result.json
+      - name: Print result summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('output/result.json').read_text(encoding='utf-8'))
+          print(json.dumps(data.get('summary',{}),ensure_ascii=False,indent=2))
+          for row in data.get('attempts',[]):
+              if row.get('dataPresent') or (row.get('previousStatus')==200 and (row.get('length') or 0)>0):
+                  print(json.dumps({k:row.get(k) for k in ('productId','vendorItemId','sourceName','previousStatus','metadataFound','route','variant','status','length','code','message','dataPresent','prefix')},ensure_ascii=False))
+          PY
+      - name: Upload complete probe
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-empty-payload-probe-${{ github.run_id }}
+          path: output/result.json
+          if-no-files-found: error
+          retention-days: 7

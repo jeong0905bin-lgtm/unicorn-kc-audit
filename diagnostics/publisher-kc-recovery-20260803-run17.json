@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-08-03T12:59:04+09:00",
+  "sellerId": "A00214628",
+  "productId": "8479335481",
+  "productName": "(BOOKFRIENDS) 슈팅스타 캐치티니핑 스티커 색칠북 1번",
+  "publisher": "유니콘",
+  "publisherStatus": "confirmed_normalized_exact",
+  "normalizedOfficialTitle": "슈팅스타 캐치티니핑 캐릭터 색칠북 1",
+  "isbn13": "8806328724411",
+  "kcNumber": "CB064H009-4002",
+  "kcStatus": "적합",
+  "officialBookRecordUrl": "https://www.yes24.com/product/goods/142788189",
+  "resultImpact": {
+    "newPublisherConfirmations": 1,
+    "newExactKcMappings": 1,
+    "newNoKcRows": 0,
+    "newExpiredKcRows": 0,
+    "candidateRemovedFromPending": true
+  },
+  "excludedCertificationNumber": "U003E1577-7011"
+}

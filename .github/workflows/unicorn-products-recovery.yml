@@ -1,0 +1,81 @@
+name: Unicorn products endpoint recovery
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/unicorn-products-recovery.yml'
+      - 'tools/unicorn_products_recovery_shard.py'
+      - 'tools/merge_products_recovery.py'
+      - 'run/unicorn-products-recovery.trigger'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  recover:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install browser
+        run: |
+          pip install requests playwright
+          python -m playwright install --with-deps chromium
+      - name: Download current unresolved set
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p base
+          gh run download 30627309021 --repo "$GITHUB_REPOSITORY" --name unicorn-exact-retry-merged-30627309021 --dir base
+          test -f base/unresolved-products.json
+      - name: Recover shard
+        run: |
+          python tools/unicorn_products_recovery_shard.py \
+            --input base/unresolved-products.json \
+            --shard ${{ matrix.shard }} --shards 12 \
+            --output output/shard-${{ matrix.shard }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-products-recovery-shard-${{ matrix.shard }}-${{ github.run_id }}
+          path: output/shard-${{ matrix.shard }}.json
+          retention-days: 7
+
+  merge:
+    needs: recover
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download base
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p base
+          gh run download 30627309021 --repo "$GITHUB_REPOSITORY" --name unicorn-exact-retry-merged-30627309021 --dir base
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: unicorn-products-recovery-shard-*-${{ github.run_id }}
+          path: shards
+      - name: Merge
+        run: python tools/merge_products_recovery.py --base base/unresolved-products.json --shards shards --output merged
+      - name: Summary
+        run: cat merged/summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-products-recovery-merged-${{ github.run_id }}
+          path: merged
+          retention-days: 7

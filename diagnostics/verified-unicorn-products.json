@@ -1,0 +1,83 @@
+{
+  "sellerId": "A00214628",
+  "catalogCount": 2230,
+  "acceptanceRule": "mandatory disclosure row 저자, 출판사 normalizes exactly to 유니콘",
+  "verifiedAt": "2026-07-31T02:45:00+09:00",
+  "verifiedProducts": [
+    {
+      "productName": "(BOOKFRIENDS) 위시캣 스티커퀸 300",
+      "productId": "8411161016",
+      "itemId": "24319968314",
+      "coupangUniqueId": "8411161016 - 24319968314",
+      "publisher": "유니콘",
+      "kcNumbers": ["CB064H009-3002"],
+      "evidenceType": "user product-detail HAR exact HTML row"
+    },
+    {
+      "productName": "신세계 인지향상 고도리 퍼즐 3종 세트, 1개, 혼합색상",
+      "productId": "6732125611",
+      "itemId": "14240107530",
+      "coupangUniqueId": "6732125611 - 14240107530",
+      "publisher": "유니콘",
+      "kcNumbers": ["CB064H009-4003"],
+      "evidenceType": "indexed Coupang product detail exact disclosure row"
+    },
+    {
+      "productName": "유니콘 신기한 워터 색칠북 - 콩순이",
+      "productId": "1321324685",
+      "itemId": "2342362756",
+      "coupangUniqueId": "1321324685 - 2342362756",
+      "publisher": "유니콘",
+      "kcNumbers": ["CB064H009-8001"],
+      "evidenceType": "indexed Coupang product detail exact disclosure row"
+    },
+    {
+      "productName": "(BOOKFRIENDS) 프린세스 캐치티니핑 대판퍼즐 (130조각)",
+      "productId": "9326155490",
+      "itemId": "27645549036",
+      "coupangUniqueId": "9326155490 - 27645549036",
+      "publisher": "유니콘",
+      "kcNumbers": ["CB064H009-2001"],
+      "evidenceType": "indexed Coupang product detail exact disclosure row"
+    }
+  ],
+  "safetyKorea": {
+    "CB064H009-3002": {
+      "status": "적합",
+      "officialExactMatch": true,
+      "expired": false
+    },
+    "CB064H009-2001": {
+      "status": "unresolved",
+      "officialExactMatch": false
+    },
+    "CB064H009-4003": {
+      "status": "unresolved",
+      "officialExactMatch": false
+    },
+    "CB064H009-8001": {
+      "status": "unresolved",
+      "officialExactMatch": false
+    }
+  },
+  "excludedEvidence": [
+    {
+      "coupangUniqueId": "8423297103 - 24366045442",
+      "reason": "exact publisher evidence exists but product is not in the current 2230-product catalog"
+    },
+    {
+      "coupangUniqueId": "8586462963 - 24892748657",
+      "reason": "exact publisher evidence exists but product is not in the current 2230-product catalog"
+    },
+    {
+      "coupangUniqueId": "9237088992 - 24365968915",
+      "reason": "indexed disclosure is toy-form KC table, not exact row 저자, 출판사 = 유니콘"
+    }
+  ],
+  "safeguards": [
+    "No publisher inference from title or brand",
+    "No inaccessible product marked as no-KC",
+    "Never include U003E1577-7011",
+    "Do not create final workbooks until SafetyKorea statuses and coverage are verified"
+  ]
+}

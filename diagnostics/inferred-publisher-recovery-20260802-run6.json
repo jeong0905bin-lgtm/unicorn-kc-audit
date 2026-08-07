@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-08-02T13:53:05+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Promote unresolved catalog products when an exact normalized title is matched to an official book record naming publisher 유니콘, and preserve product-level KC evidence separately.",
+  "newPublisherConfirmations": [
+    {
+      "catalogIndex": 854,
+      "productId": "8542794955",
+      "itemId": "24734936068",
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed_by_exact_normalized_official_book_record",
+      "confidence": "high",
+      "officialRecord": {
+        "title": "시크릿쥬쥬 스티커 색칠북 01",
+        "publisher": "유니콘",
+        "isbn13": "8806328724503",
+        "sourceUrl": "https://www.yes24.com/Product/Goods/140539361"
+      },
+      "identityNotes": "The catalog title differs only by the BOOKFRIENDS merchandising prefix; the core title and volume number are exact."
+    }
+  ],
+  "newExactKcMappings": [
+    {
+      "productId": "8542794955",
+      "itemId": "24734936068",
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01",
+      "isbn13": "8806328724503",
+      "kcNumber": "CB064H009-4002",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_normalized_title_isbn_official_book_record",
+      "sourceUrl": "https://www.yes24.com/Product/Goods/140539361",
+      "officialSafetyKoreaStatus": "unresolved"
+    }
+  ],
+  "summary": {
+    "newPublisherConfirmations": 1,
+    "newExactKcMappings": 1,
+    "newUniqueKcNumbers": ["CB064H009-4002"],
+    "finalWorkbookReady": false
+  },
+  "safeguards": [
+    "No character-name-only or brand-name-only inference was used.",
+    "KC CB064H009-4002 is not classified as active or expired until official SafetyKorea status is resolved.",
+    "Blocked responses are not treated as processed or No-KC.",
+    "U003E1577-7011 remains excluded."
+  ],
+  "nextWork": [
+    "Resolve official SafetyKorea status for CB064H009-4002.",
+    "Continue exact title/ISBN matching across unresolved products, prioritizing BOOKFRIENDS, sticker-coloring, water-coloring and puzzle titles.",
+    "Do not generate final workbooks until all accepted products are classified and all mapped KC statuses are officially resolved."
+  ]
+}

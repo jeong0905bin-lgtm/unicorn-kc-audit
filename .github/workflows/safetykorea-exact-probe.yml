@@ -1,0 +1,54 @@
+name: SafetyKorea exact status probe
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+    paths:
+      - "tools/safetykorea_exact_probe.py"
+      - ".github/workflows/safetykorea-exact-probe.yml"
+      - "diagnostics/**"
+      - "run/safetykorea-probe.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Validate source
+        run: python -m py_compile tools/safetykorea_exact_probe.py
+      - name: Resolve every discovered exact official status
+        env:
+          PROBE_OUTPUT: diagnostics/safetykorea/result.json
+        run: python tools/safetykorea_exact_probe.py
+      - name: Print completion gate
+        if: always()
+        run: |
+          test -s diagnostics/safetykorea/result.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path('diagnostics/safetykorea/result.json').read_text(encoding='utf-8'))
+          print(json.dumps({k: result.get(k) for k in ('requestedCount','exactResolved','unresolved','expired','complete')}, ensure_ascii=False, indent=2))
+          PY
+      - name: Upload official status evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetykorea-exact-status-${{ github.run_id }}
+          path: diagnostics/safetykorea
+          if-no-files-found: error
+          retention-days: 7

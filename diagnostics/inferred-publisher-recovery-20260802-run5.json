@@ -1,0 +1,121 @@
+{
+  "generatedAt": "2026-08-02T13:05:00+09:00",
+  "sellerId": "A00214628",
+  "source": "unicorn-singular-link-merged-30703784365 unresolved catalog plus public indexed retailer/book records",
+  "rules": {
+    "publisherTracks": ["exact", "inferred_high", "inferred_medium"],
+    "exactPromotion": "Require exact mandatory disclosure, exact official book record, or exact normalized title/ISBN identity.",
+    "kcPromotion": "Require exact product-level KC evidence; family similarity alone is insufficient.",
+    "blockedResponsesComplete": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  },
+  "newPublisherRecoveries": [
+    {
+      "catalogIndex": 259,
+      "productId": "324550724",
+      "itemId": "1038979605",
+      "productName": "유니콘 반지의 비밀일기2 스티커 퀸 300",
+      "publisher": "유니콘",
+      "status": "confirmed",
+      "confidence": "exact_official_book_record",
+      "evidenceType": "exact_title_official_book_record",
+      "evidence": [
+        "Exact Coupang product identity 324550724 - 1038979605",
+        "YES24 exact title record lists 편집부 저 / 유니콘"
+      ],
+      "sourceUrls": [
+        "https://www.coupang.com/vp/products/324550724",
+        "https://event.yes24.com/template/p/Present?EventNo=215929"
+      ],
+      "kcStatus": "pending_exact_product_kc_record"
+    },
+    {
+      "catalogIndex": 216,
+      "productId": "276195692",
+      "itemId": "874223306",
+      "productName": "유니콘 열려라 코코밍 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "status": "inferred_high",
+      "confidence": "high",
+      "evidenceType": "exact_indexed_coupang_title_publisher_prefix",
+      "sourceUrl": "https://www.coupang.com/vp/products/276195692",
+      "kcStatus": "pending_exact_product_kc_record"
+    },
+    {
+      "catalogIndex": 238,
+      "productId": "284824584",
+      "itemId": "903850449",
+      "productName": "유니콘 시크릿쥬쥬 별의 여신 스티커 색칠북 949",
+      "publisher": "유니콘",
+      "status": "inferred_high",
+      "confidence": "high",
+      "evidenceType": "exact_catalog_title_publisher_prefix",
+      "kcStatus": "pending_exact_product_kc_record"
+    },
+    {
+      "catalogIndex": 260,
+      "productId": "324552180",
+      "itemId": "1038983770",
+      "productName": "유니콘 반지의 비밀일기2 스티커 컬렉션북",
+      "publisher": "유니콘",
+      "status": "inferred_high",
+      "confidence": "high",
+      "evidenceType": "exact_indexed_coupang_title_plus_retailer_consistency",
+      "sourceUrl": "https://www.coupang.com/vp/products/324552180",
+      "kcStatus": "pending_exact_product_kc_record"
+    },
+    {
+      "catalogIndex": 277,
+      "productId": "1058485712",
+      "itemId": "2001962757",
+      "productName": "유니콘 반지의 비밀일기2 판퍼즐 2종세트",
+      "publisher": "유니콘",
+      "status": "inferred_high",
+      "confidence": "high",
+      "evidenceType": "exact_catalog_title_publisher_prefix",
+      "kcStatus": "pending_exact_product_kc_record"
+    },
+    {
+      "catalogIndex": 361,
+      "productId": "1816795573",
+      "itemId": "3091871516",
+      "productName": "유니콘 신비아파트 스티커색칠북 2종세트",
+      "publisher": "유니콘",
+      "status": "inferred_high",
+      "confidence": "high",
+      "evidenceType": "exact_indexed_coupang_title_publisher_prefix",
+      "sourceUrl": "https://www.coupang.com/vp/products/1816795573",
+      "kcStatus": "pending_exact_product_kc_record"
+    },
+    {
+      "catalogIndex": 166,
+      "productId": "198863722",
+      "itemId": "575138948",
+      "productName": "헬로카봇 쿵 스티커 색칠북 02",
+      "publisher": "유니콘",
+      "status": "inferred_medium",
+      "confidence": "medium",
+      "evidenceType": "exact_title_family_and_indexed_bookfriends_listing",
+      "evidence": [
+        "Indexed Coupang results expose a BOOKFRIENDS listing for the exact title",
+        "The same sticker-coloring product family is sold as 헬로카봇 스티커색칠북 (주)유니콘"
+      ],
+      "kcStatus": "pending_exact_publisher_and_kc_confirmation"
+    }
+  ],
+  "summary": {
+    "newExactPublisherConfirmations": 1,
+    "newHighConfidenceInferred": 5,
+    "newMediumConfidenceInferred": 1,
+    "newExactKcMappings": 0,
+    "promotedExactPublisherProductIds": ["324550724"],
+    "finalWorkbookReady": false
+  },
+  "safeguards": [
+    "Only product 324550724 is promoted to exact publisher-confirmed scope in this run.",
+    "High and medium inferred products remain separate until official book/ISBN or mandatory-disclosure evidence is obtained.",
+    "No product is marked No-KC from a blocked or empty response.",
+    "No KC number is assigned from product-family similarity.",
+    "U003E1577-7011 remains excluded."
+  ]
+}

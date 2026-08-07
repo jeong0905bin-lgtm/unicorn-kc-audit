@@ -1,0 +1,53 @@
+name: Shop individualInfo browser matrix
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  matrix:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Validate matrix
+        run: python -m py_compile tools/shop_individual_matrix_browser_v2.py
+      - name: Run individualInfo request matrix
+        run: python tools/shop_individual_matrix_browser_v2.py --output matrix-output/result.json
+      - name: Print compact attempt results
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('matrix-output/result.json').read_text(encoding='utf-8'))
+          print(json.dumps(data.get('summary', {}), ensure_ascii=False, indent=2))
+          for row in data.get('attempts', []):
+              print(json.dumps({
+                  'route': row.get('route'),
+                  'variant': row.get('variant'),
+                  'status': row.get('status'),
+                  'length': row.get('length'),
+                  'contentType': row.get('contentType'),
+                  'topLevelKeys': row.get('topLevelKeys'),
+                  'hits': len(row.get('hits') or []),
+                  'prefix': (row.get('prefix') or '')[:500],
+              }, ensure_ascii=False))
+          PY
+      - name: Upload matrix result
+        uses: actions/upload-artifact@v4
+        with:
+          name: shop-individual-matrix-${{ github.run_id }}
+          path: matrix-output/result.json
+          if-no-files-found: error
+          retention-days: 7

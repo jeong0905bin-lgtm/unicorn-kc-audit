@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-08-03T01:52:30+09:00",
+  "sellerId": "A00214628",
+  "batch": 2,
+  "purpose": "Continue exact evidence review of the unresolved accepted-Unicorn set without treating blocked or empty responses as complete.",
+  "rulesApplied": {
+    "exactProductIdentityRequired": true,
+    "officialBookOrExactCoupangMetadataMayDeterminePublisher": true,
+    "blockedOrEmptyResponsesAreNotComplete": true,
+    "missingKcMappingIsNotNoKc": true,
+    "excludedCertificationNumber": "U003E1577-7011",
+    "noRestrictionBypassUsed": true
+  },
+  "results": [
+    {
+      "productName": "(BOOKFRIENDS) 시크릿 쥬쥬 스티커 퀸 300, 유니콘, 시크릿쥬쥬",
+      "catalogProductId": "274824520",
+      "catalogItemId": "868302647",
+      "exactIdentityEvidence": {
+        "source": "https://www.coupang.com/vp/products/274824520",
+        "coupangProductNumber": "274824520 - 868302647",
+        "isbn": "8806328724596",
+        "authorOrPublisherField": "도서출판 신세계"
+      },
+      "publisherVerdict": "exclude_non_unicorn",
+      "reason": "The exact Coupang productId-itemId pair resolves to ISBN 8806328724596 and identifies 도서출판 신세계, not 유니콘. The word 유니콘 in the retained title is not sufficient against exact publisher metadata.",
+      "exactKcNumber": null,
+      "kcVerdict": "not_applicable_after_publisher_exclusion",
+      "noKcVerdict": "not_applicable_after_publisher_exclusion"
+    }
+  ],
+  "supportingChecks": [
+    {
+      "query": "미미 스티커 색칠북 2종세트 유니콘 ISBN",
+      "finding": "Public search confirms the title family as UNICORN but did not expose an exact ISBN or exact product-level KC mapping; unresolved remains."
+    },
+    {
+      "query": "반짝이는 프리채널 신기한 워터색칠북 유니콘 ISBN",
+      "finding": "Public indexed listings identify 도서출판 신세계 for the title family, but the retained exact product pair was not exposed in this pass; no exclusion or KC conclusion recorded yet."
+    },
+    {
+      "query": "미니특공대 애니멀트론 스티커 앨범 유니콘 ISBN",
+      "finding": "Public indexed listings identify 신세계 for a matching title family, but a different Coupang product pair was returned; exact retained-pair conclusion deferred."
+    }
+  ],
+  "batchSummary": {
+    "productsWithNewDefinitiveOutcome": 1,
+    "newExactKcMappings": 0,
+    "newNoKcConfirmed": 0,
+    "newExpiredConfirmed": 0,
+    "newPublisherExclusions": 1,
+    "acceptedProductsAfterApplyingThisFinding": 41,
+    "unresolvedAcceptedProductsAfterApplyingThisFinding": 28,
+    "completion": false
+  }
+}

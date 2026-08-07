@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-08-03T03:40:00+09:00",
+  "sellerId": "A00214628",
+  "scope": "manual item-by-item KC verification batch 2",
+  "products": [
+    {
+      "productId": "238001339",
+      "itemId": "756498891",
+      "productName": "쥬라기캅스 스티커 컬렉션북, 유니콘",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "kcMappingStatus": "unresolved",
+      "noKcConfirmed": false,
+      "evidence": [
+        "Public marketplace listings confirm the exact title family and Unicorn publication context.",
+        "No exact product-level KC number was located in the available public sources searched.",
+        "A related listing shows 쥬라기캅스 스티커앨범 and 스티커킹300, but not an exact KC mapping for this 컬렉션북 product."
+      ]
+    },
+    {
+      "productId": "238365275",
+      "itemId": "757275319",
+      "productName": "헬로카봇 쿵 스티커 컬렉션북, 유니콘",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "kcMappingStatus": "unresolved",
+      "noKcConfirmed": false,
+      "evidence": [
+        "Coupang public product page confirms the exact title 헬로 카봇 쿵-스티커 컬렉션북.",
+        "Public Coupang campaign/search pages list the same exact product title.",
+        "No exact KC number or official SafetyKorea product-level mapping was found in the searched public sources."
+      ]
+    }
+  ],
+  "rules": {
+    "doNotInferKcFromSameSeries": true,
+    "missingKcIsNotNoKc": true,
+    "excludedCertificationNumber": "U003E1577-7011"
+  }
+}

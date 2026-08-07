@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-08-03T09:52:15+09:00",
+  "sellerId": "A00214628",
+  "scope": "Continue publisher recovery from the 2,230-product catalog without treating blocked or missing KC responses as completion.",
+  "newExactPublisherConfirmations": [
+    {
+      "productId": "6209404899",
+      "itemId": "12368820141",
+      "vendorItemId": "80366520556",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 색칠북 02, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "evidenceType": "normalized_exact_title_official_series_record",
+      "normalizedOfficialTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 2",
+      "officialRecordUrl": "https://m.yes24.com/category/seriesgoods/001?SeriesNumber=298386",
+      "identityNotes": [
+        "Catalog and official title differ only by spacing, leading-zero volume notation, and appended publisher/author tokens.",
+        "Official series record identifies author/publisher as 유니콘 편집부 / 유니콘."
+      ],
+      "kcStatus": "unresolved; no KC inferred from sibling products"
+    },
+    {
+      "productId": "6209404912",
+      "itemId": "12368820251",
+      "vendorItemId": "70734566994",
+      "productName": "신비아파트 고스트볼 Z 어둠의 퇴마사 스티커 놀이북, UNICORN, 편집부",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "evidenceType": "normalized_exact_title_official_series_record",
+      "normalizedOfficialTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 놀이북",
+      "officialRecordUrl": "https://m.yes24.com/category/seriesgoods/001?SeriesNumber=298386",
+      "identityNotes": [
+        "Catalog and official title normalize to the same title.",
+        "Official series record identifies author/publisher as 유니콘 편집부 / 유니콘."
+      ],
+      "kcStatus": "unresolved; no KC inferred from sibling products"
+    },
+    {
+      "productId": "1318404736",
+      "itemId": "2338338205",
+      "vendorItemId": "80511068757",
+      "productName": "엉덩이탐정 스티커 킹 300, UNICORN",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "evidenceType": "exact_product_id_plus_official_coupang_unicorn_campaign_title",
+      "productUrl": "https://www.coupang.com/vp/products/1318404736?itemId=2338338205",
+      "campaignUrl": "https://pages.coupang.com/p/14455",
+      "identityNotes": [
+        "The exact product ID resolves to 엉덩이탐정 스티커 킹 300.",
+        "Coupang's official 유니콘 campaign lists the same title with publisher token UNICORN."
+      ],
+      "kcStatus": "unresolved; exact product KC inspection still required"
+    },
+    {
+      "productId": "1076995474",
+      "itemId": "2027623876",
+      "vendorItemId": "78712734628",
+      "productName": "엉덩이탐정 스티커 색칠북, UNICORN",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "evidenceType": "exact_product_id_plus_official_coupang_unicorn_campaign_title",
+      "productUrl": "https://www.coupang.com/vp/products/1076995474?itemId=2027623876",
+      "campaignUrl": "https://pages.coupang.com/p/14455",
+      "identityNotes": [
+        "The exact product ID resolves to 엉덩이탐정 스티커 색칠북.",
+        "Coupang's official 유니콘 campaign lists the same title with publisher token UNICORN."
+      ],
+      "kcStatus": "unresolved; exact product KC inspection still required"
+    },
+    {
+      "productId": "343493915",
+      "itemId": "1091480145",
+      "vendorItemId": "5605556102",
+      "productName": "유니콘 엉덩이탐정 스티커 색칠북 2종세트",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "evidenceType": "normalized_exact_set_title_official_coupang_unicorn_campaign",
+      "campaignUrl": "https://pages.coupang.com/p/14455",
+      "identityNotes": [
+        "Catalog row and campaign listing normalize to the same two-volume set title.",
+        "The official campaign explicitly labels the set as 유니콘."
+      ],
+      "kcStatus": "unresolved; exact bundle KC inspection still required"
+    }
+  ],
+  "summary": {
+    "reviewed": 5,
+    "newExactPublisherConfirmations": 5,
+    "newExactKcMappings": 0,
+    "newNoKcConfirmations": 0,
+    "newExpiredKcRows": 0
+  },
+  "safeguards": [
+    "No character-name-only inference was used.",
+    "No blocked response was counted as complete.",
+    "Missing or unmapped KC was not classified as No-KC.",
+    "No product-family KC inference was used.",
+    "U003E1577-7011 remains excluded."
+  ]
+}

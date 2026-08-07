@@ -1,0 +1,151 @@
+{
+  "generatedAt": "2026-08-02T11:00:00+09:00",
+  "scope": "Resolve previously unresolved official SafetyKorea statuses and derive expired rows only where exact product-to-KC mapping already exists.",
+  "sourceEvidence": [
+    {
+      "type": "file_library_workbook",
+      "title": "유니콘_후보_KC매핑_20260802.xlsx",
+      "sheet": "유니콘 KC 레지스트리",
+      "description": "SafetyKorea exact 확인 유니콘 KC 번호 레지스트리"
+    },
+    {
+      "type": "repository_state",
+      "path": "diagnostics/consolidated-unicorn-products.json"
+    },
+    {
+      "type": "repository_state",
+      "path": "diagnostics/kc-mapping-addendum-20260801.json"
+    },
+    {
+      "type": "repository_state",
+      "path": "diagnostics/kc-mapping-addendum-20260801-run1.json"
+    }
+  ],
+  "officialSafetyKoreaStatuses": {
+    "CB064H009-2001": {
+      "status": "적합",
+      "manufacturer": "주식회사 유니콘",
+      "modelName": "캐릭터 퍼즐",
+      "officialExactMatch": true,
+      "expired": false
+    },
+    "CB064H009-3002": {
+      "status": "적합",
+      "manufacturer": "주식회사 유니콘",
+      "modelName": "스티커 컬렉션",
+      "officialExactMatch": true,
+      "expired": false
+    },
+    "CB064H009-3003": {
+      "status": "적합",
+      "manufacturer": "주식회사 유니콘",
+      "officialExactMatch": true,
+      "expired": false
+    },
+    "CB064H009-4001": {
+      "status": "적합",
+      "manufacturer": "주식회사 유니콘",
+      "officialExactMatch": true,
+      "expired": false
+    },
+    "CB064H009-4003": {
+      "status": "적합",
+      "manufacturer": "주식회사 유니콘",
+      "officialExactMatch": true,
+      "expired": false
+    },
+    "CB064H009-8001": {
+      "status": "기간만료",
+      "manufacturer": "주식회사 유니콘",
+      "officialExactMatch": true,
+      "expired": true
+    },
+    "CB064H009-9002": {
+      "status": "기간만료",
+      "manufacturer": "주식회사 유니콘",
+      "modelName": "캐릭터 스티커",
+      "officialExactMatch": true,
+      "expired": true
+    },
+    "CB064H009-9003": {
+      "status": "기간만료",
+      "manufacturer": "주식회사 유니콘",
+      "modelName": "캐릭터 퍼즐",
+      "officialExactMatch": true,
+      "expired": true,
+      "catalogProductMapping": "unresolved"
+    }
+  },
+  "expiredProductRowsConfirmedFromExistingExactMappings": [
+    {
+      "productId": "1321324685",
+      "itemId": "2342362756",
+      "productName": "유니콘 신기한 워터 색칠북 - 콩순이",
+      "kcNumber": "CB064H009-8001",
+      "productToKcMapping": "confirmed",
+      "officialStatus": "기간만료"
+    },
+    {
+      "productId": "5184666602",
+      "itemId": "7172499147",
+      "productName": "리틀미미 신기한 워터색칠북, 유니콘",
+      "kcNumber": "CB064H009-8001",
+      "productToKcMapping": "confirmed",
+      "officialStatus": "기간만료"
+    },
+    {
+      "productId": "7201864624",
+      "itemId": "18211327144",
+      "productName": "슈퍼다이노 신기한 워터색칠북, 유니콘",
+      "kcNumber": "CB064H009-8001",
+      "productToKcMapping": "confirmed",
+      "officialStatus": "기간만료"
+    },
+    {
+      "productId": "1318402202",
+      "itemId": "2336871425",
+      "productName": "엉덩이탐정 스티커 컬렉션북, 유니콘",
+      "kcNumber": "CB064H009-9002",
+      "productToKcMapping": "confirmed",
+      "officialStatus": "기간만료"
+    }
+  ],
+  "activeMappedProductsExcludedFromExpiredOutput": [
+    {
+      "productId": "8411161016",
+      "kcNumber": "CB064H009-3002"
+    },
+    {
+      "productId": "9237088992",
+      "kcNumber": "CB064H009-3002"
+    },
+    {
+      "productId": "8616958567",
+      "kcNumber": "CB064H009-3003"
+    },
+    {
+      "productId": "6732125611",
+      "kcNumber": "CB064H009-4003"
+    },
+    {
+      "productId": "9326155490",
+      "kcNumbers": ["CB064H009-2001", "CB064H009-4001"]
+    },
+    {
+      "productId": "9334593133",
+      "kcNumber": "CB064H009-4003"
+    }
+  ],
+  "safeguards": [
+    "U003E1577-7011 is excluded.",
+    "CB064H009-9003 remains excluded from product output until exact current-catalog mapping is established.",
+    "No blocked response is treated as complete.",
+    "No-KC rows are not created by absence of evidence alone."
+  ],
+  "remainingBlockers": {
+    "publisherUnresolvedCatalogProducts": 404,
+    "acceptedUnicornProductsWithoutExactKcEvidence": 22,
+    "noKcEvidenceComplete": false,
+    "finalWorkbooksReady": false
+  }
+}

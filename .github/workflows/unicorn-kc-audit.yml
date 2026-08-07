@@ -1,0 +1,57 @@
+name: Unicorn KC audit
+
+# Catalog collection is complete, but publisher-detail extraction is not yet
+# validated. Manual only until a real product-detail request template exists.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: unicorn-kc-audit-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  catalog:
+    name: Collect complete seller catalog from confirmed API
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests
+      - name: Validate source
+        run: python -m py_compile tools/unicorn_catalog.py
+      - name: Collect all seller products
+        run: |
+          mkdir -p work
+          python tools/unicorn_catalog.py \
+            --output work/catalog.json \
+            --diagnostics work/catalog_diagnostics.json \
+            --candidate-output work/unicorn_query_candidates.json
+      - name: Enforce completeness
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          catalog=json.loads(Path('work/catalog.json').read_text(encoding='utf-8'))
+          diagnostics=json.loads(Path('work/catalog_diagnostics.json').read_text(encoding='utf-8'))
+          expected=int(catalog.get('reportedTotal') or 0)
+          actual=int(catalog.get('count') or 0)
+          print(json.dumps({'reportedTotal':expected,'collected':actual,'coverage':diagnostics.get('coverageRatio')},ensure_ascii=False))
+          if expected < 1500 or actual < expected:
+              raise SystemExit(f'incomplete catalog: {actual}/{expected}')
+          PY
+      - name: Upload catalog and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-complete-catalog-api
+          path: work
+          if-no-files-found: error
+          retention-days: 7

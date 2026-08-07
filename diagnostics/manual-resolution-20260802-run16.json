@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-08-02T23:20:00+09:00",
+  "sellerId": "A00214628",
+  "source": "latest 99-product unresolved artifact plus exact retailer records",
+  "reviewed": 4,
+  "confirmedUnicorn": [
+    {
+      "productId": "8542794955",
+      "itemId": "24734936068",
+      "productName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01",
+      "publisher": "유니콘",
+      "isbn13": "8806328724503",
+      "kcNumber": "CB064H009-4002",
+      "evidenceType": "exact title publisher ISBN and KC retailer record"
+    }
+  ],
+  "rejectedNonUnicorn": [
+    {
+      "productId": "198863722",
+      "itemId": "575138948",
+      "productName": "헬로카봇 쿵 스티커 색칠북 02",
+      "publisher": "은하수미디어",
+      "evidenceType": "exact title official retailer record"
+    },
+    {
+      "productId": "5768690462",
+      "itemId": "9793842734",
+      "productName": "캐릭터 스티커북 - 핑크퐁",
+      "publisher": "삼성출판사",
+      "isbn13": "8809820504147",
+      "kcNumber": "CB064A003-4002",
+      "evidenceType": "exact title publisher ISBN and KC retailer record"
+    },
+    {
+      "productId": "7218867335",
+      "itemId": "18288481314",
+      "productName": "슈퍼다이노 스티커 색칠북2",
+      "publisher": "은하수미디어",
+      "evidenceType": "exact series and format official retailer record"
+    }
+  ],
+  "remainingUnresolvedAdjustment": {
+    "before": 99,
+    "resolvedThisRun": 4,
+    "after": 95
+  },
+  "safeguards": {
+    "blockedResponsesCountAsComplete": false,
+    "missingKcMeansNoKc": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  }
+}

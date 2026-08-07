@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-08-02T17:32:00+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Promote an unresolved BOOKFRIENDS two-volume coloring set through exact volume records and remove exact competing-publisher false positives.",
+  "newPublisherConfirmations": [
+    {
+      "catalogIndex": 1591,
+      "productId": "8411259209",
+      "itemId": "24320290865",
+      "productName": "(BOOKFRIENDS) 위시캣 스티커색칠북 2종세트",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed_by_exact_bundle_components",
+      "confidence": "high",
+      "componentRecords": [
+        {
+          "title": "위시캣 스티커 색칠북01",
+          "publisher": "유니콘",
+          "isbn13": "8806328724282",
+          "kcNumber": "CB064H009-4002",
+          "sourceUrl": "https://www.yes24.com/product/goods/135288421"
+        },
+        {
+          "title": "위시캣 스티커 색칠북02",
+          "publisher": "유니콘",
+          "isbn13": "8806328724299",
+          "kcNumber": "CB064H009-4002",
+          "sourceUrls": [
+            "https://www.yes24.com/24/category/SpecialDisplay/001?FetchSize=20&PageNumber=3&ParamSortTp=07&SortKind=PR&SortOption=06&TabNo=1",
+            "https://www.coupang.com/vp/products/8401616360"
+          ]
+        }
+      ],
+      "identityNotes": "The catalog title is a two-volume set. Official/public exact volume records identify volumes 01 and 02 as 유니콘 publications, with consecutive ISBNs and the same KC number. BOOKFRIENDS is only a merchandising prefix."
+    }
+  ],
+  "newExactKcMappings": [
+    {
+      "productId": "8411259209",
+      "itemId": "24320290865",
+      "productName": "(BOOKFRIENDS) 위시캣 스티커색칠북 2종세트",
+      "kcNumber": "CB064H009-4002",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_bundle_component_titles_volume_numbers_isbns_and_shared_kc",
+      "componentIsbns": [
+        "8806328724282",
+        "8806328724299"
+      ],
+      "officialSafetyKoreaStatus": "unresolved"
+    }
+  ],
+  "corrections": [
+    {
+      "productId": "7218825389",
+      "itemId": "18288304631",
+      "productName": "슈퍼다이노 스티커 색칠북 2종세트 (2권)",
+      "newStatus": "rejected_non_unicorn",
+      "publisher": "은하수미디어",
+      "reason": "Exact official title record identifies 슈퍼 다이노 스티커 색칠북 as 은하수미디어."
+    },
+    {
+      "productId": "7218855764",
+      "itemId": "18288428902",
+      "productName": "슈퍼다이노 스티커 색칠북1",
+      "newStatus": "rejected_non_unicorn",
+      "publisher": "은하수미디어",
+      "reason": "Exact official title record identifies the product line as 은하수미디어."
+    },
+    {
+      "productId": "7218864245",
+      "itemId": "18288468452",
+      "productName": "슈퍼다이노 스티커 색칠북2",
+      "newStatus": "rejected_non_unicorn",
+      "publisher": "은하수미디어",
+      "reason": "Exact official title record identifies the product line as 은하수미디어."
+    },
+    {
+      "productId": "7218866027",
+      "itemId": "18288475293",
+      "productName": "슈퍼다이노 스티커 색칠북1",
+      "newStatus": "rejected_non_unicorn",
+      "publisher": "은하수미디어",
+      "reason": "Exact official title record identifies the product line as 은하수미디어."
+    },
+    {
+      "productId": "7218867335",
+      "itemId": "18288481314",
+      "productName": "슈퍼다이노 스티커 색칠북2",
+      "newStatus": "rejected_non_unicorn",
+      "publisher": "은하수미디어",
+      "reason": "Exact official title record identifies the product line as 은하수미디어."
+    }
+  ],
+  "summary": {
+    "newPublisherConfirmations": 1,
+    "newExactKcMappings": 1,
+    "newUniqueKcNumbers": [],
+    "falsePositivePublisherCandidatesRemoved": 5,
+    "finalWorkbookReady": false
+  },
+  "safeguards": [
+    "Bundle promotion requires both named volumes to be identified.",
+    "Exact competing publisher records override title-family inference.",
+    "CB064H009-4002 is not classified active or expired until official SafetyKorea status is resolved.",
+    "Blocked responses are not treated as processed or No-KC.",
+    "U003E1577-7011 remains excluded."
+  ],
+  "nextWork": [
+    "Resolve official SafetyKorea status for CB064H009-4002.",
+    "Continue exact bundle-component recovery for unresolved BOOKFRIENDS products.",
+    "Prioritize products whose volume numbers and ISBNs can close exact identity."
+  ]
+}

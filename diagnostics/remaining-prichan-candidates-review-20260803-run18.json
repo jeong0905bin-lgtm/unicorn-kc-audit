@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-08-03T10:53:13+09:00",
+  "sellerId": "A00214628",
+  "scope": "Resolve the two remaining PriChan near-duplicate publisher candidates using exact title searches and official/public book records without bypassing Coupang controls.",
+  "reviewed": [
+    {
+      "productId": "1741474592",
+      "itemId": "2964825703",
+      "productName": "반짝이는 프리채널 스티커 색칠북 2종 세트",
+      "result": "not_promoted_to_unicorn",
+      "reason": "No exact official book record or ISBN tying this two-volume set to publisher 유니콘 was found. Public records show multiple competing PriChan coloring/sticker publishers, including 아이누리, 은하수미디어, and 두드림M&B, so character/title-family similarity is insufficient.",
+      "kcMapping": "not_attempted_without_exact_publisher_and_edition_identity"
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "result": "not_promoted_to_unicorn",
+      "reason": "The exact Coupang title is publicly indexed, but the page does not expose an exact publisher/ISBN record in accessible public text. Official/public book records for similarly named PriChan sticker/coloring products identify other publishers, so this row cannot be classified as 유니콘 from title alone.",
+      "kcMapping": "not_attempted_without_exact_publisher_and_edition_identity"
+    }
+  ],
+  "publicEvidence": [
+    {
+      "title": "반짝이는 프리채널 미니스티커색칠",
+      "publisher": "아이누리",
+      "isbn13": "8809731781149",
+      "kcNumber": "CB061A186-8001",
+      "source": "YES24"
+    },
+    {
+      "title": "반짝이는 프리채널 스티커 코디북",
+      "publisher": "두드림M&B",
+      "isbn13": "8809686480531",
+      "kcNumber": "CB064A166-0001A",
+      "source": "YES24"
+    },
+    {
+      "title": "반짝이는 프리채널 시즌 3 색연필 색칠북",
+      "publisher": "은하수미디어",
+      "source": "YES24"
+    },
+    {
+      "title": "프리채널 시즌3 신기한 워터색칠북",
+      "publisher": "유니콘",
+      "isbn13": "8806328722929",
+      "source": "YES24",
+      "note": "Confirms 유니콘 publishes some PriChan titles, but not the reviewed sticker-coloring two-volume sets."
+    }
+  ],
+  "summary": {
+    "reviewed": 2,
+    "newUnicornPublisherConfirmations": 0,
+    "newExactKcMappings": 0,
+    "removedFromUnresolvedPriorityQueue": 2,
+    "classification": "exclude_from_unicorn_until_exact edition-level evidence appears"
+  },
+  "safeguards": {
+    "blockedResponsesCountAsComplete": false,
+    "titleOrCharacterSimilarityAloneAccepted": false,
+    "excludedCertificationNumber": "U003E1577-7011",
+    "coupangBypassUsed": false,
+    "apiKeyOpenApiUsed": false
+  }
+}

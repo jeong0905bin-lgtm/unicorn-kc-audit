@@ -1,0 +1,123 @@
+name: Unicorn singular link retry
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+    paths:
+      - "tools/unicorn_singular_link_retry_shard.py"
+      - "tools/merge_unicorn_exact_retries.py"
+      - ".github/workflows/unicorn-exact-unresolved-retry.yml"
+      - "run/unicorn-exact-unresolved-retry.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: unicorn-singular-link-retry-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  retry:
+    name: Link retry shard ${{ matrix.shard }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 80
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Validate link retry scanner
+        run: python -m py_compile tools/unicorn_singular_link_retry_shard.py
+      - name: Download latest singular base
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p base
+          gh run download 30627309021 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name unicorn-exact-retry-merged-30627309021 \
+            --dir base
+          test -f base/unresolved-products.json
+      - name: Download plural metadata scan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p plural
+          gh run download 30643392302 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name unicorn-shop-plural-full-scan-30643392302 \
+            --dir plural
+          test -f plural/plural/all-detail-results.json
+      - name: Retry singular endpoint with plural link metadata
+        run: |
+          mkdir -p shard-output
+          python tools/unicorn_singular_link_retry_shard.py \
+            --unresolved base/unresolved-products.json \
+            --plural plural/plural/all-detail-results.json \
+            --output shard-output/result.json \
+            --shard-index ${{ matrix.shard }} \
+            --shard-count 12 \
+            --rounds 3
+      - name: Upload shard result
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-singular-link-shard-${{ matrix.shard }}-${{ github.run_id }}
+          path: shard-output/result.json
+          if-no-files-found: error
+          retention-days: 7
+
+  merge:
+    name: Merge singular link results
+    needs: retry
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download latest singular base
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p base
+          gh run download 30627309021 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name unicorn-exact-retry-merged-30627309021 \
+            --dir base
+      - name: Download link retry shards
+        uses: actions/download-artifact@v4
+        with:
+          pattern: unicorn-singular-link-shard-*-${{ github.run_id }}
+          path: shards
+      - name: Merge and validate
+        run: |
+          python tools/merge_unicorn_exact_retries.py \
+            --base base \
+            --base-run-id 30627309021 \
+            --shards shards \
+            --output merged
+      - name: Print merged summary
+        run: cat merged/summary.json
+      - name: Upload merged singular results
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-singular-link-merged-${{ github.run_id }}
+          path: merged
+          if-no-files-found: error
+          retention-days: 7

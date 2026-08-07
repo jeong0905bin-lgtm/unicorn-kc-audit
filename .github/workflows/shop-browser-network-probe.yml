@@ -1,0 +1,36 @@
+name: Shop browser network probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Validate probe
+        run: python -m py_compile tools/shop_browser_network_probe.py
+      - name: Capture real browser API traffic
+        run: python tools/shop_browser_network_probe.py --output diagnostics/shop-browser-network/result.json
+      - name: Commit sanitized browser result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add diagnostics/shop-browser-network/result.json
+          git diff --cached --quiet || git commit -m "Record shop browser network probe"
+          git pull --rebase origin chatgpt/run-unicorn-audit-20260730
+          git push origin HEAD:chatgpt/run-unicorn-audit-20260730

@@ -1,0 +1,28 @@
+{
+  "sellerId": "A00214628",
+  "generatedAt": "2026-08-02T23:10:00+09:00",
+  "scope": "Conservative disposition of the 99 products still unresolved by the product-detail API.",
+  "policy": {
+    "acceptedUnicornRule": "Accept only when exact public evidence establishes publisher=유니콘.",
+    "blockedResponseCompletion": false,
+    "noExactUnicornEvidence": "not accepted into the Unicorn scope",
+    "excludedCertificationNumber": "U003E1577-7011"
+  },
+  "summary": {
+    "input": 99,
+    "acceptedUnicorn": 3,
+    "rejectedNonUnicorn": 73,
+    "notAcceptedInsufficientExactUnicornEvidence": 23,
+    "operationalPublisherUnresolved": 0
+  },
+  "acceptedUnicorn": [
+    {"productId":"324552180","itemId":"1038983770","productName":"유니콘 반지의 비밀일기2 스티커 컬렉션북","publisher":"유니콘","evidence":"exact indexed Coupang title plus independent exact retail title"},
+    {"productId":"343493915","itemId":"1093341554","productName":"유니콘 엉덩이탐정 스티커 색칠북 2종세트","publisher":"유니콘","evidence":"Coupang Unicorn campaign exact product-family title"},
+    {"productId":"8542794955","itemId":"24734936068","productName":"(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01","publisher":"유니콘","evidence":"exact official book title and ISBN previously verified"}
+  ],
+  "classificationNotes": {
+    "rejectedNonUnicornCount": 73,
+    "notAcceptedCount": 23,
+    "meaning": "The 23 no-evidence rows are not claimed to have a specific other publisher. They are conservatively excluded because the final inclusion gate requires exact publisher=유니콘 evidence."
+  }
+}

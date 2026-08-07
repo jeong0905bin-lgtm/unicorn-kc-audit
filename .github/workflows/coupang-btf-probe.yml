@@ -1,0 +1,36 @@
+name: Coupang BTF JSON probe
+
+# Confirmed blocked on GitHub-hosted runners. Manual only; do not repeat.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependency
+        run: pip install requests
+      - name: Validate source
+        run: python -m py_compile tools/coupang_btf_probe.py
+      - name: Probe lightweight BTF JSON
+        env:
+          RUNNER_LABEL: ubuntu24
+          PROBE_OUTPUT: diagnostics/btf/ubuntu24/result.json
+        run: python tools/coupang_btf_probe.py
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coupang-btf-probe-ubuntu24
+          path: diagnostics/btf/ubuntu24
+          if-no-files-found: error
+          retention-days: 7

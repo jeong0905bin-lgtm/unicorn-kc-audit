@@ -1,0 +1,70 @@
+{
+  "generatedAt": "2026-08-02T16:59:48+09:00",
+  "sellerId": "A00214628",
+  "sourceBatch": "diagnostics/unresolved-200-batch-triage-20260802.json",
+  "reviewedCandidates": 6,
+  "confirmedUnicorn": [
+    {
+      "productId": "324550724",
+      "itemId": "1038979605",
+      "productName": "유니콘 반지의 비밀일기2 스티커 퀸 300",
+      "publisher": "유니콘",
+      "evidenceType": "exact_title_official_book_record",
+      "publicationDate": "2019-09-01",
+      "sourceUrls": [
+        "https://www.yes24.com/Product/Search?domain=STORE&query=300",
+        "https://event.yes24.com/template/p/Present?EventNo=215929",
+        "https://www.coupang.com/vp/products/324550724"
+      ],
+      "kcStatus": "not_yet_mapped",
+      "classification": "verified_unicorn_pending_kc"
+    }
+  ],
+  "strongRetailerPublisherEvidencePendingOfficialCrosscheck": [
+    {
+      "productId": "276159001",
+      "itemId": "874119421",
+      "productName": "반짝이는 프리채널 퍼즐 2종세트 (63조각)",
+      "publisherSignal": "유니콘",
+      "evidenceType": "exact_title_retailer_publisher_metadata",
+      "sourceUrls": [
+        "https://www.coupang.com/vp/products/276159001",
+        "https://www.coupang.com/np/search?q=%ED%94%84%EB%A6%AC%EC%B1%84%EB%84%90"
+      ],
+      "classification": "candidate_not_final"
+    }
+  ],
+  "deferredInsufficientEvidence": [
+    {
+      "productId": "324552180",
+      "itemId": "1038983770",
+      "productName": "유니콘 반지의 비밀일기2 스티커 컬렉션북",
+      "reason": "Exact product page and title found, but no independent official book record or ISBN publisher record was located in this pass. Title token alone is not accepted."
+    },
+    {
+      "productId": "276195692",
+      "itemId": "874223306",
+      "productName": "유니콘 열려라 코코밍 퍼즐 2종세트 (63조각)",
+      "reason": "Exact product page found; independent official publisher record still missing."
+    },
+    {
+      "productId": "282727888",
+      "itemId": "897484443",
+      "productName": "반짝이는 프리채널 스티커색칠북 2종세트",
+      "reason": "Exact product page found, but publisher metadata was not exposed in the indexed detail and competing editions exist."
+    },
+    {
+      "productId": "1816795573",
+      "itemId": "3091871516",
+      "productName": "유니콘 신비아파트 스티커색칠북 2종세트",
+      "reason": "Exact product page found; title prefix is not sufficient because multiple publishers issue similar character titles."
+    }
+  ],
+  "rulesApplied": {
+    "blockedResponsesCountAsComplete": false,
+    "titleBrandTokenAloneAccepted": false,
+    "missingKcMeansNoKc": false,
+    "excludedCertificationNumber": "U003E1577-7011"
+  },
+  "nextAction": "Map KC for productId 324550724 using existing HAR/detail artifacts or public exact certification evidence; separately seek official ISBN/book records for the five deferred candidates."
+}

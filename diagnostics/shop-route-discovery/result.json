@@ -1,0 +1,2667 @@
+{
+  "sellerId": "A00214628",
+  "storeUrl": "https://shop.coupang.com/A00214628?source=brandstore_sdp_atf&ocid=1208642&checkBatchDelivery=true&pid=9402620761&viid=94889588242&platform=p&brandId=0&btcEnableForce=false",
+  "storeStatus": 200,
+  "scripts": [
+    "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/c2c87a3.js",
+    "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/ea5db74.js",
+    "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/a9888a9.js",
+    "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/8c193ea.js",
+    "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/986cfd3.js",
+    "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/c53df4e.js",
+    "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/f6ae536.js",
+    "https://assets.coupangcdn.com/front/front-web-next/_next/static/web-adapter/index-Bal5D9nr.js",
+    "https://assets.coupangcdn.com/customjs/seo-js-sdk/1.2.0/seo-js-sdk.umd.min.js"
+  ],
+  "routes": [
+    {
+      "source": "store-html",
+      "route": "https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_top_right_cta&amp;utm_medium=non_paid&amp;utm_campaign=seller_registration"
+    },
+    {
+      "source": "store-html",
+      "route": "https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_top_left_cta&amp;utm_medium=non_paid&amp;utm_campaign=openmarket"
+    },
+    {
+      "source": "store-html",
+      "route": "https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_category_cta&amp;utm_medium=non_paid&amp;utm_campaign=category"
+    },
+    {
+      "source": "store-html",
+      "route": "https://image.coupangcdn.com/image/coupang/home/icons/web/kr/new-item-of-month.png"
+    },
+    {
+      "source": "store-html",
+      "route": "https://wing.coupang.com/tenants/vendor-signup/signup?utm_source=button_pc_coupang_shortcut_1&amp;utm_medium=non_paid&amp;utm_id=onsite_ca&amp;utm_content=202411"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/getStoreInfo"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/sub/getStoreFollowInfo"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/sub/web/subscribeStore"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/sub/web/notificationSwitch"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/getStoreReview"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/pages/getPage"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/creative_module/data/"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/filter_recommended_for"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/fashion_category"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/main_category"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/main_sub_category"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/category_tree"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v2/store/individualInfo/products"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v2/store/individualInfo/product"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/menu/checkCompatibility"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/download-coupon/"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/coupon/"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/download-promotion/coupons/preview"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/filter"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/promotions/items"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/listing"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/promotions/listing"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v2/store/promotion_widget"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/promotions/top_selling"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v2/store/top_selling"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v2/store_display/top_selling_vis"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/sub/landing/notifications"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/sub/nc/messages"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v2/store/newsfeed/unread"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/widget/live-widget"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/widget/live-widget/subscribe"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/widget/live-widget/unsubscribe"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/layout/getMemberInfo"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/layout/defaultWithMemberInfo"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/layout/?type=DEFAULT"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/features"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/review/details?vendorId="
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/benefit/preview/getStoreBenefitInfo"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/benefit/getStoreBenefitInfo"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v2/ads/nca/products?page="
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/user/login-status"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/cart/push"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v3/ads/widgets/performance"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/cart/bmsm_push"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/btc"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/seller_btc"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/seemore/get_btc_categories"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/seemore/get_btc"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/btc/get_progress"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/brands/getBrand"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/brands/getCmsBrand"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/getStoreInfoWithXPC"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/cart/getItemCount"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v2/ads/errorReport"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/store/abtests"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v2/store/abtests"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/sdp/ads/fetch"
+    },
+    {
+      "source": "script-6",
+      "route": "/api/v1/layout/templateV2"
+    }
+  ],
+  "listingQueries": [
+    {
+      "query": "위시캣 스티커퀸 300",
+      "status": 200,
+      "length": 4031,
+      "reportedTotal": 1,
+      "productCount": 1,
+      "matches": [
+        {
+          "path": "$.data.products[0].link",
+          "value": "/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=37cac516e8c447208361a265f75a2591"
+        },
+        {
+          "path": "$.data.products[0].mlink",
+          "value": "coupang://product?sourceType=brandstore_sdp_atf&pId=8411161016&vendorItemId=91335726263&searchId=37cac516e8c447208361a265f75a2591&q=%EC%9C%84%EC%8B%9C%EC%BA%A3+%EC%8A%A4%ED%8B%B0%EC%BB%A4%ED%80%B8+300&title=%28BOOKFRIENDS%29+%EC%9C%84%EC%8B%9C%EC%BA%A3+%EC%8A%A4%ED%8B%B0%EC%BB%A4%ED%80%B8+300&sdpImageUrl=https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg"
+        },
+        {
+          "path": "$.data.products[0].vendorItemId",
+          "value": "91335726263"
+        },
+        {
+          "path": "$.data.products[0].productId",
+          "value": "8411161016"
+        },
+        {
+          "path": "$.data.products[0].itemId",
+          "value": "24319968314"
+        }
+      ],
+      "productKeySets": [
+        [
+          "adult",
+          "afterServiceArea",
+          "attributes",
+          "benefitBadgeArea",
+          "bestAwardArea",
+          "bestPriceArea",
+          "bizOnlyArea",
+          "brandAuthenticityBadge",
+          "brandInfo",
+          "btcInfo",
+          "cashBackArea",
+          "ccidArea",
+          "coupangGlobal",
+          "couponArea",
+          "deliveryBadgeArea",
+          "deliveryInfo",
+          "deliverySpeedBadgeArea",
+          "divisionType",
+          "eligibleFalconArea",
+          "freebiesInfo",
+          "imageAndTitleArea",
+          "instantDiscountBundlePriceArea",
+          "isFreeExposurePromotion",
+          "itemId",
+          "link",
+          "mlink",
+          "offsiteGmLink",
+          "preOrderArea",
+          "priceArea",
+          "priceLabel",
+          "productId",
+          "productType",
+          "promisedDeliveryDateArea",
+          "promotionClosingArea",
+          "reviewArea",
+          "rluxBrandInfo",
+          "rocketArea",
+          "rocketMerchant",
+          "salesStartDate",
+          "setPromotionItemDto",
+          "shopHomeLink",
+          "soldoutArea",
+          "storeInfoArea",
+          "subscriptionPriceArea",
+          "telcoBadgeArea",
+          "topBadgeAreas",
+          "topBrandArea",
+          "ueLoggingArea",
+          "unitPrice",
+          "usedProductArea",
+          "valid",
+          "vendorItemId",
+          "wowBenefitArea"
+        ]
+      ],
+      "products": [
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "6,900",
+            "lowestPrice": "6,900",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "6,900",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "(BOOKFRIENDS) 위시캣 스티커퀸 300",
+            "description": "",
+            "defaultUrl": "//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+            "oriDefaultUrl": "vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+            "completeHttpUrl": "https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "(BOOKFRIENDS) 위시캣 스티커퀸 300",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 345원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": null,
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=37cac516e8c447208361a265f75a2591",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=8411161016&vendorItemId=91335726263&searchId=37cac516e8c447208361a265f75a2591&q=%EC%9C%84%EC%8B%9C%EC%BA%A3+%EC%8A%A4%ED%8B%B0%EC%BB%A4%ED%80%B8+300&title=%28BOOKFRIENDS%29+%EC%9C%84%EC%8B%9C%EC%BA%A3+%EC%8A%A4%ED%8B%B0%EC%BB%A4%ED%80%B8+300&sdpImageUrl=https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 91335726263,
+          "productId": 8411161016,
+          "itemId": 24319968314,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2024-10-22T06:03:26Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        }
+      ]
+    },
+    {
+      "query": "8411161016",
+      "status": 200,
+      "length": 3973,
+      "reportedTotal": 1,
+      "productCount": 1,
+      "matches": [
+        {
+          "path": "$.data.products[0].link",
+          "value": "/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=991ea96e664547bf913d23161c013a5c"
+        },
+        {
+          "path": "$.data.products[0].mlink",
+          "value": "coupang://product?sourceType=brandstore_sdp_atf&pId=8411161016&vendorItemId=91335726263&searchId=991ea96e664547bf913d23161c013a5c&q=8411161016&title=%28BOOKFRIENDS%29+%EC%9C%84%EC%8B%9C%EC%BA%A3+%EC%8A%A4%ED%8B%B0%EC%BB%A4%ED%80%B8+300&sdpImageUrl=https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg"
+        },
+        {
+          "path": "$.data.products[0].vendorItemId",
+          "value": "91335726263"
+        },
+        {
+          "path": "$.data.products[0].productId",
+          "value": "8411161016"
+        },
+        {
+          "path": "$.data.products[0].itemId",
+          "value": "24319968314"
+        }
+      ],
+      "productKeySets": [
+        [
+          "adult",
+          "afterServiceArea",
+          "attributes",
+          "benefitBadgeArea",
+          "bestAwardArea",
+          "bestPriceArea",
+          "bizOnlyArea",
+          "brandAuthenticityBadge",
+          "brandInfo",
+          "btcInfo",
+          "cashBackArea",
+          "ccidArea",
+          "coupangGlobal",
+          "couponArea",
+          "deliveryBadgeArea",
+          "deliveryInfo",
+          "deliverySpeedBadgeArea",
+          "divisionType",
+          "eligibleFalconArea",
+          "freebiesInfo",
+          "imageAndTitleArea",
+          "instantDiscountBundlePriceArea",
+          "isFreeExposurePromotion",
+          "itemId",
+          "link",
+          "mlink",
+          "offsiteGmLink",
+          "preOrderArea",
+          "priceArea",
+          "priceLabel",
+          "productId",
+          "productType",
+          "promisedDeliveryDateArea",
+          "promotionClosingArea",
+          "reviewArea",
+          "rluxBrandInfo",
+          "rocketArea",
+          "rocketMerchant",
+          "salesStartDate",
+          "setPromotionItemDto",
+          "shopHomeLink",
+          "soldoutArea",
+          "storeInfoArea",
+          "subscriptionPriceArea",
+          "telcoBadgeArea",
+          "topBadgeAreas",
+          "topBrandArea",
+          "ueLoggingArea",
+          "unitPrice",
+          "usedProductArea",
+          "valid",
+          "vendorItemId",
+          "wowBenefitArea"
+        ]
+      ],
+      "products": [
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "6,900",
+            "lowestPrice": "6,900",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "6,900",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "(BOOKFRIENDS) 위시캣 스티커퀸 300",
+            "description": "",
+            "defaultUrl": "//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+            "oriDefaultUrl": "vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+            "completeHttpUrl": "https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "(BOOKFRIENDS) 위시캣 스티커퀸 300",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 345원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": null,
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=991ea96e664547bf913d23161c013a5c",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=8411161016&vendorItemId=91335726263&searchId=991ea96e664547bf913d23161c013a5c&q=8411161016&title=%28BOOKFRIENDS%29+%EC%9C%84%EC%8B%9C%EC%BA%A3+%EC%8A%A4%ED%8B%B0%EC%BB%A4%ED%80%B8+300&sdpImageUrl=https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 91335726263,
+          "productId": 8411161016,
+          "itemId": 24319968314,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2024-10-22T06:03:26Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        }
+      ]
+    },
+    {
+      "query": "유니콘",
+      "status": 200,
+      "length": 76891,
+      "reportedTotal": 73,
+      "productCount": 20,
+      "matches": [
+        {
+          "path": "$.data.products[0].imageAndTitleArea.title",
+          "value": "(BOOKFRIENDS) 프린세스 캐치티니핑 대판퍼즐 (130조각), 유니콘, 하드커버"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.title",
+          "value": "유니콘 신비아파트 대판퍼즐1 (130조각), 1개, 130피스"
+        },
+        {
+          "path": "$.data.products[3].imageAndTitleArea.groupTitle",
+          "value": "유니콘 신비아파트 대판퍼즐1 (130조각)"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.title",
+          "value": "유니콘 반지의 비밀일기2 스티커 퀸 300"
+        },
+        {
+          "path": "$.data.products[4].imageAndTitleArea.groupTitle",
+          "value": "유니콘 반지의 비밀일기2 스티커 퀸 300"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.title",
+          "value": "유니콘 반지의 비밀일기2 스티커 컬렉션북"
+        },
+        {
+          "path": "$.data.products[5].imageAndTitleArea.groupTitle",
+          "value": "유니콘 반지의 비밀일기2 스티커 컬렉션북"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.title",
+          "value": "유니콘 콩순이 판퍼즐 2종세트 (63조각), 카봇 퍼즐 2종세트 (63조각)"
+        },
+        {
+          "path": "$.data.products[6].imageAndTitleArea.groupTitle",
+          "value": "유니콘 콩순이 판퍼즐 2종세트 (63조각)"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.title",
+          "value": "유니콘 신기한 워터 색칠북 - 콩순이"
+        },
+        {
+          "path": "$.data.products[7].imageAndTitleArea.groupTitle",
+          "value": "유니콘 신기한 워터 색칠북 - 콩순이"
+        },
+        {
+          "path": "$.data.products[8].imageAndTitleArea.title",
+          "value": "슈퍼다이노 신기한 워터색칠북, 유니콘"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.title",
+          "value": "유니콘 콩순이 판퍼즐 2종세트 (63조각), 엉덩이탐정 판퍼즐 2종세트 (63조각)"
+        },
+        {
+          "path": "$.data.products[9].imageAndTitleArea.groupTitle",
+          "value": "유니콘 콩순이 판퍼즐 2종세트 (63조각)"
+        },
+        {
+          "path": "$.data.products[11].imageAndTitleArea.title",
+          "value": "엉덩이탐정 스티커 색칠북 01, 유니콘"
+        },
+        {
+          "path": "$.data.products[12].imageAndTitleArea.title",
+          "value": "미미 스티커 색칠북 2종세트, 유니콘"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.title",
+          "value": "유니콘 콩순이 판퍼즐 2종세트 (63조각), 코코밍 퍼즐 2종세트 (63조각)"
+        },
+        {
+          "path": "$.data.products[14].imageAndTitleArea.groupTitle",
+          "value": "유니콘 콩순이 판퍼즐 2종세트 (63조각)"
+        },
+        {
+          "path": "$.data.products[16].imageAndTitleArea.title",
+          "value": "슈팅스타 캐치티니핑 신기한 워터색칠북, 유니콘, 2권"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.title",
+          "value": "유니콘 엉덩이탐정 판퍼즐 2종세트 (63조각)"
+        },
+        {
+          "path": "$.data.products[19].imageAndTitleArea.groupTitle",
+          "value": "유니콘 엉덩이탐정 판퍼즐 2종세트 (63조각)"
+        }
+      ],
+      "productKeySets": [
+        [
+          "adult",
+          "afterServiceArea",
+          "attributes",
+          "benefitBadgeArea",
+          "bestAwardArea",
+          "bestPriceArea",
+          "bizOnlyArea",
+          "brandAuthenticityBadge",
+          "brandInfo",
+          "btcInfo",
+          "cashBackArea",
+          "ccidArea",
+          "coupangGlobal",
+          "couponArea",
+          "deliveryBadgeArea",
+          "deliveryInfo",
+          "deliverySpeedBadgeArea",
+          "divisionType",
+          "eligibleFalconArea",
+          "freebiesInfo",
+          "imageAndTitleArea",
+          "instantDiscountBundlePriceArea",
+          "isFreeExposurePromotion",
+          "itemId",
+          "link",
+          "mlink",
+          "offsiteGmLink",
+          "preOrderArea",
+          "priceArea",
+          "priceLabel",
+          "productId",
+          "productType",
+          "promisedDeliveryDateArea",
+          "promotionClosingArea",
+          "reviewArea",
+          "rluxBrandInfo",
+          "rocketArea",
+          "rocketMerchant",
+          "salesStartDate",
+          "setPromotionItemDto",
+          "shopHomeLink",
+          "soldoutArea",
+          "storeInfoArea",
+          "subscriptionPriceArea",
+          "telcoBadgeArea",
+          "topBadgeAreas",
+          "topBrandArea",
+          "ueLoggingArea",
+          "unitPrice",
+          "usedProductArea",
+          "valid",
+          "vendorItemId",
+          "wowBenefitArea"
+        ],
+        [
+          "adult",
+          "afterServiceArea",
+          "attributes",
+          "benefitBadgeArea",
+          "bestAwardArea",
+          "bestPriceArea",
+          "bizOnlyArea",
+          "brandAuthenticityBadge",
+          "brandInfo",
+          "btcInfo",
+          "cashBackArea",
+          "ccidArea",
+          "coupangGlobal",
+          "couponArea",
+          "deliveryBadgeArea",
+          "deliveryInfo",
+          "deliverySpeedBadgeArea",
+          "divisionType",
+          "eligibleFalconArea",
+          "freebiesInfo",
+          "imageAndTitleArea",
+          "instantDiscountBundlePriceArea",
+          "isFreeExposurePromotion",
+          "itemId",
+          "link",
+          "mlink",
+          "offsiteGmLink",
+          "preOrderArea",
+          "priceArea",
+          "priceLabel",
+          "productId",
+          "productType",
+          "promisedDeliveryDateArea",
+          "promotionClosingArea",
+          "reviewArea",
+          "rluxBrandInfo",
+          "rocketArea",
+          "rocketMerchant",
+          "salesStartDate",
+          "setPromotionItemDto",
+          "shopHomeLink",
+          "soldoutArea",
+          "storeInfoArea",
+          "subscriptionPriceArea",
+          "telcoBadgeArea",
+          "topBadgeAreas",
+          "topBrandArea",
+          "ueLoggingArea",
+          "unitPrice",
+          "usedProductArea",
+          "valid",
+          "vendorItemId",
+          "wowBenefitArea"
+        ],
+        [
+          "adult",
+          "afterServiceArea",
+          "attributes",
+          "benefitBadgeArea",
+          "bestAwardArea",
+          "bestPriceArea",
+          "bizOnlyArea",
+          "brandAuthenticityBadge",
+          "brandInfo",
+          "btcInfo",
+          "cashBackArea",
+          "ccidArea",
+          "coupangGlobal",
+          "couponArea",
+          "deliveryBadgeArea",
+          "deliveryInfo",
+          "deliverySpeedBadgeArea",
+          "divisionType",
+          "eligibleFalconArea",
+          "freebiesInfo",
+          "imageAndTitleArea",
+          "instantDiscountBundlePriceArea",
+          "isFreeExposurePromotion",
+          "itemId",
+          "link",
+          "mlink",
+          "offsiteGmLink",
+          "preOrderArea",
+          "priceArea",
+          "priceLabel",
+          "productId",
+          "productType",
+          "promisedDeliveryDateArea",
+          "promotionClosingArea",
+          "reviewArea",
+          "rluxBrandInfo",
+          "rocketArea",
+          "rocketMerchant",
+          "salesStartDate",
+          "setPromotionItemDto",
+          "shopHomeLink",
+          "soldoutArea",
+          "storeInfoArea",
+          "subscriptionPriceArea",
+          "telcoBadgeArea",
+          "topBadgeAreas",
+          "topBrandArea",
+          "ueLoggingArea",
+          "unitPrice",
+          "usedProductArea",
+          "valid",
+          "vendorItemId",
+          "wowBenefitArea"
+        ],
+        [
+          "adult",
+          "afterServiceArea",
+          "attributes",
+          "benefitBadgeArea",
+          "bestAwardArea",
+          "bestPriceArea",
+          "bizOnlyArea",
+          "brandAuthenticityBadge",
+          "brandInfo",
+          "btcInfo",
+          "cashBackArea",
+          "ccidArea",
+          "coupangGlobal",
+          "couponArea",
+          "deliveryBadgeArea",
+          "deliveryInfo",
+          "deliverySpeedBadgeArea",
+          "divisionType",
+          "eligibleFalconArea",
+          "freebiesInfo",
+          "imageAndTitleArea",
+          "instantDiscountBundlePriceArea",
+          "isFreeExposurePromotion",
+          "itemId",
+          "link",
+          "mlink",
+          "offsiteGmLink",
+          "preOrderArea",
+          "priceArea",
+          "priceLabel",
+          "productId",
+          "productType",
+          "promisedDeliveryDateArea",
+          "promotionClosingArea",
+          "reviewArea",
+          "rluxBrandInfo",
+          "rocketArea",
+          "rocketMerchant",
+          "salesStartDate",
+          "setPromotionItemDto",
+          "shopHomeLink",
+          "soldoutArea",
+          "storeInfoArea",
+          "subscriptionPriceArea",
+          "telcoBadgeArea",
+          "topBadgeAreas",
+          "topBrandArea",
+          "ueLoggingArea",
+          "unitPrice",
+          "usedProductArea",
+          "valid",
+          "vendorItemId",
+          "wowBenefitArea"
+        ],
+        [
+          "adult",
+          "afterServiceArea",
+          "attributes",
+          "benefitBadgeArea",
+          "bestAwardArea",
+          "bestPriceArea",
+          "bizOnlyArea",
+          "brandAuthenticityBadge",
+          "brandInfo",
+          "btcInfo",
+          "cashBackArea",
+          "ccidArea",
+          "coupangGlobal",
+          "couponArea",
+          "deliveryBadgeArea",
+          "deliveryInfo",
+          "deliverySpeedBadgeArea",
+          "divisionType",
+          "eligibleFalconArea",
+          "freebiesInfo",
+          "imageAndTitleArea",
+          "instantDiscountBundlePriceArea",
+          "isFreeExposurePromotion",
+          "itemId",
+          "link",
+          "mlink",
+          "offsiteGmLink",
+          "preOrderArea",
+          "priceArea",
+          "priceLabel",
+          "productId",
+          "productType",
+          "promisedDeliveryDateArea",
+          "promotionClosingArea",
+          "reviewArea",
+          "rluxBrandInfo",
+          "rocketArea",
+          "rocketMerchant",
+          "salesStartDate",
+          "setPromotionItemDto",
+          "shopHomeLink",
+          "soldoutArea",
+          "storeInfoArea",
+          "subscriptionPriceArea",
+          "telcoBadgeArea",
+          "topBadgeAreas",
+          "topBrandArea",
+          "ueLoggingArea",
+          "unitPrice",
+          "usedProductArea",
+          "valid",
+          "vendorItemId",
+          "wowBenefitArea"
+        ]
+      ],
+      "products": [
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "8,900",
+            "lowestPrice": "8,900",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "8,900",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "(BOOKFRIENDS) 프린세스 캐치티니핑 대판퍼즐 (130조각), 유니콘, 하드커버",
+            "description": "",
+            "defaultUrl": "//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/560e/d2c563b3d229c5e41a602080030daca75eb8e6c4c232b725434b806d10f8.jpg",
+            "oriDefaultUrl": "vendor_inventory/560e/d2c563b3d229c5e41a602080030daca75eb8e6c4c232b725434b806d10f8.jpg",
+            "completeHttpUrl": "https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/560e/d2c563b3d229c5e41a602080030daca75eb8e6c4c232b725434b806d10f8.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "(BOOKFRIENDS) 프린세스 캐치티니핑 대판퍼즐 (130조각)",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 445원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 4.5,
+            "ratingCount": 26,
+            "ratingRatio": 90,
+            "link": null,
+            "mlink": null
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/9326155490?itemId=27645549036&vendorItemId=82742752015&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=9326155490&vendorItemId=82742752015&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%28BOOKFRIENDS%29+%ED%94%84%EB%A6%B0%EC%84%B8%EC%8A%A4+%EC%BA%90%EC%B9%98%ED%8B%B0%EB%8B%88%ED%95%91+%EB%8C%80%ED%8C%90%ED%8D%BC%EC%A6%90+%28130%EC%A1%B0%EA%B0%81%29&sdpImageUrl=https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/560e/d2c563b3d229c5e41a602080030daca75eb8e6c4c232b725434b806d10f8.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 82742752015,
+          "productId": 9326155490,
+          "itemId": 27645549036,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2026-02-06T05:00:37Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "7,900",
+            "lowestPrice": "7,900",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "7,900",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "똘똘이 판퍼즐 2종세트 (63조각), 1개",
+            "description": "",
+            "defaultUrl": "//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/9d2f/b67a0ba34df535f0f321afd1cdf42939c5f6af5ceef6af50fd7d0fd7c3c2.jpg",
+            "oriDefaultUrl": "vendor_inventory/9d2f/b67a0ba34df535f0f321afd1cdf42939c5f6af5ceef6af50fd7d0fd7c3c2.jpg",
+            "completeHttpUrl": "https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/9d2f/b67a0ba34df535f0f321afd1cdf42939c5f6af5ceef6af50fd7d0fd7c3c2.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "똘똘이 판퍼즐 2종세트 (63조각)",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 395원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": {
+            "price": "7,900",
+            "cnt": "1",
+            "unitDescription": "개"
+          },
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 4.5,
+            "ratingCount": 7,
+            "ratingRatio": 90,
+            "link": null,
+            "mlink": null
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/5033741540?itemId=6762130488&vendorItemId=74101910564&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=5033741540&vendorItemId=74101910564&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%EB%98%98%EB%98%98%EC%9D%B4+%ED%8C%90%ED%8D%BC%EC%A6%90+2%EC%A2%85%EC%84%B8%ED%8A%B8+%2863%EC%A1%B0%EA%B0%81%29&sdpImageUrl=https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/9d2f/b67a0ba34df535f0f321afd1cdf42939c5f6af5ceef6af50fd7d0fd7c3c2.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 74101910564,
+          "productId": 5033741540,
+          "itemId": 6762130488,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2025-02-07T02:15:48Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "13,600",
+            "lowestPrice": "13,600",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "13,600",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "(BOOKFRIENDS) 프린세스 캐치!티니핑 스티커 색칠북 2종세트",
+            "description": "",
+            "defaultUrl": "//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/de86/07224ea2b50131ae18354548f986948beaca5e3a433ea5cd999bb4af721b.jpg",
+            "oriDefaultUrl": "vendor_inventory/de86/07224ea2b50131ae18354548f986948beaca5e3a433ea5cd999bb4af721b.jpg",
+            "completeHttpUrl": "https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/de86/07224ea2b50131ae18354548f986948beaca5e3a433ea5cd999bb4af721b.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "(BOOKFRIENDS) 프린세스 캐치!티니핑 스티커 색칠북 2종세트",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 680원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 5.0,
+            "ratingCount": 2,
+            "ratingRatio": 100,
+            "link": null,
+            "mlink": null
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/8463259198?itemId=24485254877&vendorItemId=70734065398&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=8463259198&vendorItemId=70734065398&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%28BOOKFRIENDS%29+%ED%94%84%EB%A6%B0%EC%84%B8%EC%8A%A4+%EC%BA%90%EC%B9%98%21%ED%8B%B0%EB%8B%88%ED%95%91+%EC%8A%A4%ED%8B%B0%EC%BB%A4+%EC%83%89%EC%B9%A0%EB%B6%81+2%EC%A2%85%EC%84%B8%ED%8A%B8&sdpImageUrl=https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/de86/07224ea2b50131ae18354548f986948beaca5e3a433ea5cd999bb4af721b.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 70734065398,
+          "productId": 8463259198,
+          "itemId": 24485254877,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2025-11-22T00:14:10Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "8,500",
+            "lowestPrice": "8,500",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "8,500",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "유니콘 신비아파트 대판퍼즐1 (130조각), 1개, 130피스",
+            "description": "",
+            "defaultUrl": "//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/09d4/8022fc1e5b75cfe31dc6a6ad32dfc11c2ccaf40241063cc7c3ed75a24bea.jpg",
+            "oriDefaultUrl": "vendor_inventory/09d4/8022fc1e5b75cfe31dc6a6ad32dfc11c2ccaf40241063cc7c3ed75a24bea.jpg",
+            "completeHttpUrl": "https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/09d4/8022fc1e5b75cfe31dc6a6ad32dfc11c2ccaf40241063cc7c3ed75a24bea.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "유니콘 신비아파트 대판퍼즐1 (130조각)",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 425원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": {
+            "price": "8,500",
+            "cnt": "1",
+            "unitDescription": "개"
+          },
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 5.0,
+            "ratingCount": 26,
+            "ratingRatio": 100,
+            "link": null,
+            "mlink": null
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/8371476889?itemId=24191170539&vendorItemId=71088229103&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=8371476889&vendorItemId=71088229103&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%EC%9C%A0%EB%8B%88%EC%BD%98+%EC%8B%A0%EB%B9%84%EC%95%84%ED%8C%8C%ED%8A%B8+%EB%8C%80%ED%8C%90%ED%8D%BC%EC%A6%901+%28130%EC%A1%B0%EA%B0%81%29&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/09d4/8022fc1e5b75cfe31dc6a6ad32dfc11c2ccaf40241063cc7c3ed75a24bea.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 71088229103,
+          "productId": 8371476889,
+          "itemId": 24191170539,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2024-09-30T07:02:08Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "6,500",
+            "lowestPrice": "6,500",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "6,500",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "유니콘 반지의 비밀일기2 스티커 퀸 300",
+            "description": "",
+            "defaultUrl": "//thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/658a/2ba6a2064c8c09f5db2ab15ca4f0a64e0a1353297c05d90965598afee758.jpg",
+            "oriDefaultUrl": "vendor_inventory/658a/2ba6a2064c8c09f5db2ab15ca4f0a64e0a1353297c05d90965598afee758.jpg",
+            "completeHttpUrl": "https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/658a/2ba6a2064c8c09f5db2ab15ca4f0a64e0a1353297c05d90965598afee758.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "유니콘 반지의 비밀일기2 스티커 퀸 300",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 325원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 5.0,
+            "ratingCount": 2,
+            "ratingRatio": 100,
+            "link": null,
+            "mlink": null
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/324550724?itemId=1038979605&vendorItemId=5521774792&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=324550724&vendorItemId=5521774792&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%EC%9C%A0%EB%8B%88%EC%BD%98+%EB%B0%98%EC%A7%80%EC%9D%98+%EB%B9%84%EB%B0%80%EC%9D%BC%EA%B8%B02+%EC%8A%A4%ED%8B%B0%EC%BB%A4+%ED%80%B8+300&sdpImageUrl=https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/658a/2ba6a2064c8c09f5db2ab15ca4f0a64e0a1353297c05d90965598afee758.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 5521774792,
+          "productId": 324550724,
+          "itemId": 1038979605,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2021-03-03T08:49:34Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "6,500",
+            "lowestPrice": "6,500",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "6,500",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "유니콘 반지의 비밀일기2 스티커 컬렉션북",
+            "description": "",
+            "defaultUrl": "//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/ee72/b5af1e54bc4e9641f23dfffc92d2a47cb2af50c6199dd3d97e1e7bdd44df.jpg",
+            "oriDefaultUrl": "vendor_inventory/ee72/b5af1e54bc4e9641f23dfffc92d2a47cb2af50c6199dd3d97e1e7bdd44df.jpg",
+            "completeHttpUrl": "https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/ee72/b5af1e54bc4e9641f23dfffc92d2a47cb2af50c6199dd3d97e1e7bdd44df.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "유니콘 반지의 비밀일기2 스티커 컬렉션북",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 325원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 5.0,
+            "ratingCount": 5,
+            "ratingRatio": 100,
+            "link": null,
+            "mlink": null
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/324552180?itemId=1038983770&vendorItemId=5521758183&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=324552180&vendorItemId=5521758183&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%EC%9C%A0%EB%8B%88%EC%BD%98+%EB%B0%98%EC%A7%80%EC%9D%98+%EB%B9%84%EB%B0%80%EC%9D%BC%EA%B8%B02+%EC%8A%A4%ED%8B%B0%EC%BB%A4+%EC%BB%AC%EB%A0%89%EC%85%98%EB%B6%81&sdpImageUrl=https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/ee72/b5af1e54bc4e9641f23dfffc92d2a47cb2af50c6199dd3d97e1e7bdd44df.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 5521758183,
+          "productId": 324552180,
+          "itemId": 1038983770,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2021-03-03T08:41:26Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "6,400",
+            "lowestPrice": "6,400",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "6,400",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "유니콘 콩순이 판퍼즐 2종세트 (63조각), 카봇 퍼즐 2종세트 (63조각)",
+            "description": "",
+            "defaultUrl": "//thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/da06/4c946ab7b274a100bebd6e48ca3255a23494bc09a22d97cef3b743cd20d9.jpg",
+            "oriDefaultUrl": "vendor_inventory/da06/4c946ab7b274a100bebd6e48ca3255a23494bc09a22d97cef3b743cd20d9.jpg",
+            "completeHttpUrl": "https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/da06/4c946ab7b274a100bebd6e48ca3255a23494bc09a22d97cef3b743cd20d9.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "유니콘 콩순이 판퍼즐 2종세트 (63조각)",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 320원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": null,
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 4.5,
+            "ratingCount": 43,
+            "ratingRatio": 90,
+            "link": null,
+            "mlink": null
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/5033750728?itemId=6762142285&vendorItemId=70937065870&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=5033750728&vendorItemId=70937065870&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%EC%9C%A0%EB%8B%88%EC%BD%98+%EC%BD%A9%EC%88%9C%EC%9D%B4+%ED%8C%90%ED%8D%BC%EC%A6%90+2%EC%A2%85%EC%84%B8%ED%8A%B8+%2863%EC%A1%B0%EA%B0%81%29&sdpImageUrl=https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/da06/4c946ab7b274a100bebd6e48ca3255a23494bc09a22d97cef3b743cd20d9.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 70937065870,
+          "productId": 5033750728,
+          "itemId": 6762142285,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2022-10-31T07:42:52Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 9800,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 2500,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "8,500",
+            "lowestPrice": "8,500",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "8,500",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "유니콘 신기한 워터 색칠북 - 콩순이",
+            "description": "",
+            "defaultUrl": "//thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/3123/e406b39d660413503ebc502b89e4db55ec4394b684d399db62758e12279e.jpg",
+            "oriDefaultUrl": "vendor_inventory/3123/e406b39d660413503ebc502b89e4db55ec4394b684d399db62758e12279e.jpg",
+            "completeHttpUrl": "https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/3123/e406b39d660413503ebc502b89e4db55ec4394b684d399db62758e12279e.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "유니콘 신기한 워터 색칠북 - 콩순이",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 425원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 5.0,
+            "ratingCount": 4,
+            "ratingRatio": 100,
+            "link": null,
+            "mlink": null
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/1321324685?itemId=2342362756&vendorItemId=75250297328&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=1321324685&vendorItemId=75250297328&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%EC%9C%A0%EB%8B%88%EC%BD%98+%EC%8B%A0%EA%B8%B0%ED%95%9C+%EC%9B%8C%ED%84%B0+%EC%83%89%EC%B9%A0%EB%B6%81+-+%EC%BD%A9%EC%88%9C%EC%9D%B4&sdpImageUrl=https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/3123/e406b39d660413503ebc502b89e4db55ec4394b684d399db62758e12279e.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 75250297328,
+          "productId": 1321324685,
+          "itemId": 2342362756,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2021-04-19T03:21:04Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "7,200",
+            "lowestPrice": "7,200",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "7,200",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "슈퍼다이노 신기한 워터색칠북, 유니콘",
+            "description": "",
+            "defaultUrl": "//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/8097/6fb71ecc52c2632d52f208282ca7b0f75b7566f09041cfdb66c8ee17179c.jpg",
+            "oriDefaultUrl": "vendor_inventory/8097/6fb71ecc52c2632d52f208282ca7b0f75b7566f09041cfdb66c8ee17179c.jpg",
+            "completeHttpUrl": "https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/8097/6fb71ecc52c2632d52f208282ca7b0f75b7566f09041cfdb66c8ee17179c.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "슈퍼다이노 신기한 워터색칠북",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 360원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": {
+            "badgeAreaContents": [
+              {
+                "css": "",
+                "title": "무료배송",
+                "iconUrl": "",
+                "type": "FREE_SHIPPING",
+                "discountInfo": null,
+                "freeDeliveryStandard": null
+              }
+            ]
+          },
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [
+            {
+              "id": "SHIPPINGTYPE",
+              "type": "TEXT",
+              "icon": null,
+              "text": "무료배송"
+            }
+          ],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": null,
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/7201864624?itemId=18206100939&vendorItemId=85434184149&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=7201864624&vendorItemId=85434184149&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%EC%8A%88%ED%8D%BC%EB%8B%A4%EC%9D%B4%EB%85%B8+%EC%8B%A0%EA%B8%B0%ED%95%9C+%EC%9B%8C%ED%84%B0%EC%83%89%EC%B9%A0%EB%B6%81&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/8097/6fb71ecc52c2632d52f208282ca7b0f75b7566f09041cfdb66c8ee17179c.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 85434184149,
+          "productId": 7201864624,
+          "itemId": 18206100939,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2023-03-24T02:05:36Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 0,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 0,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        },
+        {
+          "priceArea": {
+            "originalPrice": "0",
+            "salesPrice": "6,400",
+            "lowestPrice": "6,400",
+            "instantDiscountPrice": "0",
+            "criteriaPriceInfo": "",
+            "basePrice": "0",
+            "price": "6,400",
+            "discountRate": 0,
+            "instantDiscountDescription": "",
+            "instantDiscountExpiryDateUTCV2": null,
+            "currencyPrefix": "",
+            "currencyPostfix": "원",
+            "discountDescription": null,
+            "salesPriceForBtc": 0,
+            "finalPriceForBtc": 0,
+            "priceWithIdForBtc": 0,
+            "hasCouponForBtc": false,
+            "discount": false,
+            "instantDiscount": false,
+            "badDiscount": false
+          },
+          "imageAndTitleArea": {
+            "title": "유니콘 콩순이 판퍼즐 2종세트 (63조각), 엉덩이탐정 판퍼즐 2종세트 (63조각)",
+            "description": "",
+            "defaultUrl": "//thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/7839/edd3d602a2c4aabcf6edadcdfb9b934c1d5bc239efaac0d0a675a9fced1e.jpg",
+            "oriDefaultUrl": "vendor_inventory/7839/edd3d602a2c4aabcf6edadcdfb9b934c1d5bc239efaac0d0a675a9fced1e.jpg",
+            "completeHttpUrl": "https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/7839/edd3d602a2c4aabcf6edadcdfb9b934c1d5bc239efaac0d0a675a9fced1e.jpg",
+            "detailImageUrls": [],
+            "completeHttpDetailImageUrls": [],
+            "groupTitle": "유니콘 콩순이 판퍼즐 2종세트 (63조각)",
+            "adultImageReplaced": false
+          },
+          "soldoutArea": {
+            "soldOutText": "품절",
+            "soldout": false
+          },
+          "rocketArea": {
+            "badgeImage": null,
+            "deliveryBadgeImage": null,
+            "deliveryBadgeIcon": null,
+            "deliveryBadgePDD": null,
+            "deliveryUnificationBadgeArea": null,
+            "show": false,
+            "rocketLuxury": false
+          },
+          "subscriptionPriceArea": null,
+          "cashBackArea": {
+            "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+            "cashRewardText": "최대 320원 적립"
+          },
+          "ccidArea": null,
+          "promisedDeliveryDateArea": {
+            "contents": [
+              {
+                "text": "8/4(화) ",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              },
+              {
+                "text": "도착 예정",
+                "size": 14,
+                "color": "#212B36",
+                "bold": false
+              }
+            ]
+          },
+          "usedProductArea": {
+            "usedProductInfo": [],
+            "usedProductPrice": null,
+            "usedOnlyItem": false
+          },
+          "instantDiscountBundlePriceArea": null,
+          "eligibleFalconArea": null,
+          "telcoBadgeArea": null,
+          "afterServiceArea": null,
+          "benefitBadgeArea": null,
+          "deliveryBadgeArea": null,
+          "deliverySpeedBadgeArea": null,
+          "topBrandArea": null,
+          "topBadgeAreas": [],
+          "preOrderArea": null,
+          "brandAuthenticityBadge": null,
+          "couponArea": null,
+          "reviewArea": {
+            "ratingAverage": 4.5,
+            "ratingCount": 43,
+            "ratingRatio": 90,
+            "link": null,
+            "mlink": null
+          },
+          "bestPriceArea": null,
+          "bizOnlyArea": null,
+          "bestAwardArea": null,
+          "link": "/vp/products/5033750728?itemId=6762142272&vendorItemId=73915549813&sourceType=brandstore_sdp_atf&vendorId=A00214628&storeId=79545&searchId=13097a467f234080a6df069c12acbf86",
+          "mlink": "coupang://product?sourceType=brandstore_sdp_atf&pId=5033750728&vendorItemId=73915549813&searchId=13097a467f234080a6df069c12acbf86&q=%EC%9C%A0%EB%8B%88%EC%BD%98&title=%EC%9C%A0%EB%8B%88%EC%BD%98+%EC%BD%A9%EC%88%9C%EC%9D%B4+%ED%8C%90%ED%8D%BC%EC%A6%90+2%EC%A2%85%EC%84%B8%ED%8A%B8+%2863%EC%A1%B0%EA%B0%81%29&sdpImageUrl=https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/7839/edd3d602a2c4aabcf6edadcdfb9b934c1d5bc239efaac0d0a675a9fced1e.jpg",
+          "offsiteGmLink": null,
+          "vendorItemId": 73915549813,
+          "productId": 5033750728,
+          "itemId": 6762142272,
+          "unitPrice": "",
+          "priceLabel": "",
+          "salesStartDate": "2022-10-31T07:42:52Z",
+          "isFreeExposurePromotion": null,
+          "productType": "PRODUCT",
+          "ueLoggingArea": null,
+          "shopHomeLink": null,
+          "storeInfoArea": null,
+          "rluxBrandInfo": null,
+          "freebiesInfo": null,
+          "wowBenefitArea": null,
+          "divisionType": null,
+          "btcInfo": {
+            "freeShipOverAmountEx": 9800,
+            "salesPrice": 0,
+            "finalPrice": 0,
+            "priceWithID": 0,
+            "hasCoupon": false,
+            "deliveryFee": 2500,
+            "outboundShippingPlaceId": 1208642,
+            "batchShipment": true,
+            "rocketDelivery": false
+          },
+          "setPromotionItemDto": null,
+          "promotionClosingArea": null,
+          "attributes": null,
+          "brandInfo": null,
+          "deliveryInfo": null,
+          "valid": true,
+          "adult": false,
+          "rocketMerchant": false,
+          "coupangGlobal": false
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "storeLength": 92557,
+  "scriptResults": [
+    {
+      "url": "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/c2c87a3.js",
+      "status": 200,
+      "length": 3230,
+      "routeCount": 0
+    },
+    {
+      "url": "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/ea5db74.js",
+      "status": 200,
+      "length": 9646,
+      "routeCount": 0
+    },
+    {
+      "url": "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/a9888a9.js",
+      "status": 200,
+      "length": 7730,
+      "routeCount": 0
+    },
+    {
+      "url": "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/8c193ea.js",
+      "status": 200,
+      "length": 1658439,
+      "routeCount": 0
+    },
+    {
+      "url": "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/986cfd3.js",
+      "status": 200,
+      "length": 285849,
+      "routeCount": 0
+    },
+    {
+      "url": "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/c53df4e.js",
+      "status": 200,
+      "length": 326217,
+      "routeCount": 0
+    },
+    {
+      "url": "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/f6ae536.js",
+      "status": 200,
+      "length": 258982,
+      "routeCount": 58
+    },
+    {
+      "url": "https://assets.coupangcdn.com/front/front-web-next/_next/static/web-adapter/index-Bal5D9nr.js",
+      "status": 403,
+      "length": 482
+    },
+    {
+      "url": "https://assets.coupangcdn.com/customjs/seo-js-sdk/1.2.0/seo-js-sdk.umd.min.js",
+      "status": 403,
+      "length": 470
+    }
+  ],
+  "routeCount": 63
+}

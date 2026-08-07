@@ -1,0 +1,38 @@
+name: Shop Coupang route discovery
+
+on:
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
+    paths:
+      - "run/shop-route-discovery.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Validate probe
+        run: python -m py_compile tools/shop_coupang_route_discovery.py
+      - name: Inspect accessible shop API responses and JS routes
+        run: python tools/shop_coupang_route_discovery.py --output diagnostics/shop-route-discovery/result.json
+      - name: Commit sanitized discovery result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add diagnostics/shop-route-discovery/result.json
+          git diff --cached --quiet || git commit -m "Record shop Coupang route discovery"
+          git pull --rebase origin chatgpt/run-unicorn-audit-20260730
+          git push origin HEAD:chatgpt/run-unicorn-audit-20260730

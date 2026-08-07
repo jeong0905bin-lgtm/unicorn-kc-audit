@@ -1,0 +1,33 @@
+name: Coupang archive detail probe
+
+# Archive route did not recover control or target publisher values. Manual only.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests warcio
+      - name: Validate source
+        run: python -m py_compile tools/coupang_archive_detail_probe.py
+      - name: Probe Common Crawl and Wayback
+        run: python tools/coupang_archive_detail_probe.py --output diagnostics/archive-detail/result.json
+      - name: Upload diagnostic result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coupang-archive-detail-probe
+          path: diagnostics/archive-detail
+          if-no-files-found: error
+          retention-days: 7

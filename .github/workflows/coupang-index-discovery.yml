@@ -1,0 +1,50 @@
+name: Coupang safe index discovery
+
+on:
+  push:
+    branches: [chatgpt/run-unicorn-audit-20260730]
+    paths:
+      - "run/index-discovery.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Validate sources
+        run: |
+          python -m py_compile tools/unicorn_catalog.py
+          python -m py_compile tools/coupang_index_discovery.py
+      - name: Collect current complete catalog
+        run: |
+          mkdir -p work diagnostics/index-discovery
+          python tools/unicorn_catalog.py \
+            --output work/catalog.json \
+            --diagnostics work/catalog_diagnostics.json \
+            --candidate-output work/unicorn_query_candidates.json
+      - name: Discover exact indexed disclosure evidence
+        run: |
+          python tools/coupang_index_discovery.py \
+            --catalog work/catalog.json \
+            --candidates work/unicorn_query_candidates.json \
+            --output diagnostics/index-discovery/result.json
+      - name: Commit sanitized discovery result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add diagnostics/index-discovery/result.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Record safe Coupang index discovery result"
+          git push origin HEAD:chatgpt/run-unicorn-audit-20260730

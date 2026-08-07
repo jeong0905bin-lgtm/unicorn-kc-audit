@@ -1,0 +1,553 @@
+{
+  "script": "https://front.coupangcdn.com/coupang-store-display/20260324160003_kr/f6ae536.js",
+  "contexts": {
+    "/api/v2/store/individualInfo/product": [
+      "evel,o=t.brandId,c=t.promotionId,\"object\"===(\"undefined\"==typeof window?\"undefined\":Object(l.a)(window))&&(d=j(),h=d.brandId,d.needAddBrandId&&h&&(o=parseInt(h))),e.prev=1,e.next=2,f.a.post(\"/api/v1/main_category\",P({vendorId:n,brandId:o,categoryLevel:r},c&&c>0?{promotionId:c}:{}));case 2:return m=e.sent,data=m.data,e.abrupt(\"return\",data.data.categories);case 3:return e.prev=3,v=e.catch(1),console.log(\"error when fetchMainCategory, error is \".concat(v)),e.abrupt(\"return\",[]);case 4:case\"end\":return e.stop()}},e,null,[[1,3]])}));return function(t){return e.apply(this,arguments)}}()),V=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,d,h,m,data,v;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorId,r=t.categoryLevel,o=t.brandId,c=t.promotionId,\"object\"===(\"undefined\"==typeof window?\"undefined\":Object(l.a)(window))&&(d=j(),h=d.brandId,d.needAddBrandId&&h&&(o=parseInt(h))),e.prev=1,e.next=2,f.a.post(\"/api/v1/main_sub_category\",P({vendorId:n,brandId:o,categoryLevel:r},c&&c>0?{promotionId:c}:{}));case 2:return m=e.sent,data=m.data,e.abrupt(\"return\",data.data.filters);case 3:return e.prev=3,v=e.catch(1),console.log(\"error when fetchMainCategory, error is \".concat(v)),e.abrupt(\"return\",[]);case 4:case\"end\":return e.stop()}},e,null,[[1,3]])}));return function(t){return e.apply(this,arguments)}}()),W=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,filter,l,d,h,m,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorId,r=t.categoryId,o=t.brandId,c=t.promotionId,filter=t.filter,l=t.additionalComponentIds,e.next=1,f.a.post(\"/api/v1/category_tree\",P(P(P({vendorId:n,componentId:r,brandId:o,disableCached:!0},filter?{filter:filter}:{}),c&&c>0?{promotionId:c}:{}),l?{additionalComponentIds:l}:{}));case 1:return m=e.sent,data=m.data,e.abrupt(\"return\",null===(h=null===(d=null==data?void 0:data.data)||void 0===d?void 0:d.filters)||void 0===h?void 0:h[0]);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),z=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,h,m,v,y,w,O,I,_,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorItemIds,r=t.storeId,o=t.vendorId,c=t.sourceFeedId,l=t.sourceSearchId,d=t.clickEventId,h=t.lptag,m=t.spec,v=t.src,y=t.wPcid,w=t.pageType,O=t.productListRules,e.next=1,f.a.post(\"/api/v2/store/individualInfo/products\",S({vendorItemIds:n,isVIBased:!0,storeId:r,vendorId:o,ignoreAdultCheck:A(),sourceFeedId:c,sourceSearchId:l,clickEventId:d,lptag:h,spec:m,src:v,wPcid:y,pageType:w,productListRules:O}));case 1:return I=e.sent,_=I.data,data=_.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),X=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,h,m,v,y,w,source,O,I,_,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorItemId,r=t.storeId,o=t.vendorId,c=t.sourceFeedId,l=t.sourceSearchId,d=t.clickEventId,h=t.lptag,m=t.spec,v=t.src,y=t.wPcid,w=t.pageType,source=t.source,O=t.productListRules,e.next=1,f.a.post(\"/api/v2/store/individualInfo/product\",S({vendorItemIds:[n],isVIBased:!0,storeId:r,vendorId:o,ignoreAdultCheck:A(),sourceFeedId:c,sourceSearchId:l,clickEventId:d,lptag:h,spec:m,src:v,wPcid:y,pageType:w,source:source,productListRules:O}));case 1:return I=e.sent,_=I.data,data=_.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),K=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.storeId,r=t.checkList,o=t.menuId,c=t.preview,l=t.vendorId,e.next=1,f.a.post(\"/api/v1/menu/checkCompatibility\",{storeId:n,checkList:r,menuId:o,preview:c,vendorId:l});case 1:return d=e.sent,data=d.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),Y=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.sourceId,e.next=1,f.a.get(\"/api/v1/store/download-coupon/\".concat(n));case 1:return r=e.sent,data=r.data,e.abrupt(\"return\",data.result.data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),Q=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.promotionId,r=t.npsPromotionId,e.next=1,f.a.get(\"/api/v1/store/coupon/\".concat(Math.max(n,0)),{params:{npsPromotionId:r}});case 1:return o=e.sent,data=o.data,e.abrupt(\"return\",data.result);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),J=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.promotionId,r=t.npsPromotionId,o=n>0?{vfpId:n}:{npsPromotionId:r},e.next=1,f.a.post(\"/api/v1/store/download-promotion/coupons/preview\",o);case 1:return c=e.sent,data=c.data,e.abrupt(\"return\",data.result);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),Z=(y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=\"\".concat(\"/sell/evt/Data/GetProductsByPagePartId\",\"/\").concat(t),e.next=1,f.a.get(n).then(function(e){var t=e.data;if(t&&200===Number(t.Code))return t.Data}).catch(function(){});case 1:return r=e.sent,e.abrupt(\"return\",r&&r.Data?r.Data:{});case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),function(e){return\"\".concat(ee(e),\"@VENDOR\")}),ee=function(e){return!e||Object(h.a)(e)?null:Object.entries(e).filter(function(e){var t=Object(r.a)(e,2)[1];return Object(h.c)(t)}).map(function(e){var t=Object(r.a)(e,2),n=t[0],o=t[1];return\"\".concat(Object(d.a)(n),\":\").concat(Array.isArray(o)?o.join(\",\"):o)}).join(\"|\")},te=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,d,h,m,v,y,code,w,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorId,r=t.brandId,o=t.promotionId,c=t.category,d=void 0===c?[34793]:c,\"object\"===(\"undefined\"==typeof window?\"undefined\":Object(l.a)(window))&&(h=j(),m=h.brandId,h.needAddBrandId&&m&&(r=m.toString())),e.next=1,f.a.post(\"/api/v1/filter\",P({filterQuery:Z({vendorId:n,category:d}),brandId:r},o&&o>0?{promotionId:o}:{}));case 1:if(v=e.sent,y=v.data,code=y.code,w=y.message,data=y.data,code===C){e.next=2;break}throw new Error(w);case 2:return e.abrupt(\"return\",data.extraFilters);case 3:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),ne=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,h,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.storeId,r=t.promotionId,o=t.npsPromotionId,c=t.vendorId,l=t.page,d=r>0?{promotionId:r}:{npsPromotionId:o},e.next=1,f.a.get(\"/api/v1/promotions/items\",{params:P(P({storeId:n},d),{",
+      ".categoryLevel,o=t.brandId,c=t.promotionId,\"object\"===(\"undefined\"==typeof window?\"undefined\":Object(l.a)(window))&&(d=j(),h=d.brandId,d.needAddBrandId&&h&&(o=parseInt(h))),e.prev=1,e.next=2,f.a.post(\"/api/v1/main_sub_category\",P({vendorId:n,brandId:o,categoryLevel:r},c&&c>0?{promotionId:c}:{}));case 2:return m=e.sent,data=m.data,e.abrupt(\"return\",data.data.filters);case 3:return e.prev=3,v=e.catch(1),console.log(\"error when fetchMainCategory, error is \".concat(v)),e.abrupt(\"return\",[]);case 4:case\"end\":return e.stop()}},e,null,[[1,3]])}));return function(t){return e.apply(this,arguments)}}()),W=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,filter,l,d,h,m,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorId,r=t.categoryId,o=t.brandId,c=t.promotionId,filter=t.filter,l=t.additionalComponentIds,e.next=1,f.a.post(\"/api/v1/category_tree\",P(P(P({vendorId:n,componentId:r,brandId:o,disableCached:!0},filter?{filter:filter}:{}),c&&c>0?{promotionId:c}:{}),l?{additionalComponentIds:l}:{}));case 1:return m=e.sent,data=m.data,e.abrupt(\"return\",null===(h=null===(d=null==data?void 0:data.data)||void 0===d?void 0:d.filters)||void 0===h?void 0:h[0]);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),z=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,h,m,v,y,w,O,I,_,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorItemIds,r=t.storeId,o=t.vendorId,c=t.sourceFeedId,l=t.sourceSearchId,d=t.clickEventId,h=t.lptag,m=t.spec,v=t.src,y=t.wPcid,w=t.pageType,O=t.productListRules,e.next=1,f.a.post(\"/api/v2/store/individualInfo/products\",S({vendorItemIds:n,isVIBased:!0,storeId:r,vendorId:o,ignoreAdultCheck:A(),sourceFeedId:c,sourceSearchId:l,clickEventId:d,lptag:h,spec:m,src:v,wPcid:y,pageType:w,productListRules:O}));case 1:return I=e.sent,_=I.data,data=_.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),X=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,h,m,v,y,w,source,O,I,_,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorItemId,r=t.storeId,o=t.vendorId,c=t.sourceFeedId,l=t.sourceSearchId,d=t.clickEventId,h=t.lptag,m=t.spec,v=t.src,y=t.wPcid,w=t.pageType,source=t.source,O=t.productListRules,e.next=1,f.a.post(\"/api/v2/store/individualInfo/product\",S({vendorItemIds:[n],isVIBased:!0,storeId:r,vendorId:o,ignoreAdultCheck:A(),sourceFeedId:c,sourceSearchId:l,clickEventId:d,lptag:h,spec:m,src:v,wPcid:y,pageType:w,source:source,productListRules:O}));case 1:return I=e.sent,_=I.data,data=_.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),K=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.storeId,r=t.checkList,o=t.menuId,c=t.preview,l=t.vendorId,e.next=1,f.a.post(\"/api/v1/menu/checkCompatibility\",{storeId:n,checkList:r,menuId:o,preview:c,vendorId:l});case 1:return d=e.sent,data=d.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),Y=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.sourceId,e.next=1,f.a.get(\"/api/v1/store/download-coupon/\".concat(n));case 1:return r=e.sent,data=r.data,e.abrupt(\"return\",data.result.data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),Q=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.promotionId,r=t.npsPromotionId,e.next=1,f.a.get(\"/api/v1/store/coupon/\".concat(Math.max(n,0)),{params:{npsPromotionId:r}});case 1:return o=e.sent,data=o.data,e.abrupt(\"return\",data.result);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),J=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.promotionId,r=t.npsPromotionId,o=n>0?{vfpId:n}:{npsPromotionId:r},e.next=1,f.a.post(\"/api/v1/store/download-promotion/coupons/preview\",o);case 1:return c=e.sent,data=c.data,e.abrupt(\"return\",data.result);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),Z=(y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=\"\".concat(\"/sell/evt/Data/GetProductsByPagePartId\",\"/\").concat(t),e.next=1,f.a.get(n).then(function(e){var t=e.data;if(t&&200===Number(t.Code))return t.Data}).catch(function(){});case 1:return r=e.sent,e.abrupt(\"return\",r&&r.Data?r.Data:{});case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),function(e){return\"\".concat(ee(e),\"@VENDOR\")}),ee=function(e){return!e||Object(h.a)(e)?null:Object.entries(e).filter(function(e){var t=Object(r.a)(e,2)[1];return Object(h.c)(t)}).map(function(e){var t=Object(r.a)(e,2),n=t[0],o=t[1];return\"\".concat(Object(d.a)(n),\":\").concat(Array.isArray(o)?o.join(\",\"):o)}).join(\"|\")},te=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,d,h,m,v,y,code,w,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorId,r=t.brandId,o=t.promotionId,c=t.category,d=void 0===c?[34793]:c,\"object\"===(\"undefined\"==typeof window?\"undefined\":Object(l.a)(window))&&(h=j(),m=h.brandId,h.needAddBrandId&&m&&(r=m.toString())),e.next=1,f.a.post(\"/api/v1/filter\",P({filterQuery:Z({vendorId:n,category:d}),brandId:r},o&&o>0?{promotionId:o}:{}));case 1:if(v=e.sent,y=v.data,code=y.code,w=y.message,data=y.data,code===C){e.next=2;break}throw new Error(w);case 2:return e.abrupt(\"return\",data.extraFilters);case 3:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),ne=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,h,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.storeId,r=t.promotionId,o=t.npsPromotionId,c=t.vendorId,l=t.page,d=r>0?{promotionId:r}:{npsPromotionId:o},e.next=1,f.a.get(\"/api/v1/promotions/items\",{params:P(P({storeId:n},d),{},{vendorId:c,page:l})});case 1:return h=e.sent,data=h.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),re=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,d,h,m,v,y,w,O,I,_,x,P,R,source,k,T,L,E,D,N,F,U,M,B,$,H,G,V,W,code,data,z,X,K,Y,Q,J,Z;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.storeId,r=t.vendorId,o=t.brandId,c=t.brandName,d=t.filters,h=t.customAdditionalParams,m=t.sourceFeedId,v=t.sourceSearchId,y=t.query,w=t.page,O=t.outboundShippingPlaceId,I=t.clickEventId,_=t.sourceProductId,x=t.sourceProductIds,P=t.sourceVendorItemId,R=t.sourceVendorItemIds,source=t.source,k=t.sourceQuery,T=t.lptag,L=t.spec,E=t.src,D=t.wPcid,N=t.se"
+    ],
+    "/api/v2/store/individualInfo/products": [
+      "evel,o=t.brandId,c=t.promotionId,\"object\"===(\"undefined\"==typeof window?\"undefined\":Object(l.a)(window))&&(d=j(),h=d.brandId,d.needAddBrandId&&h&&(o=parseInt(h))),e.prev=1,e.next=2,f.a.post(\"/api/v1/main_category\",P({vendorId:n,brandId:o,categoryLevel:r},c&&c>0?{promotionId:c}:{}));case 2:return m=e.sent,data=m.data,e.abrupt(\"return\",data.data.categories);case 3:return e.prev=3,v=e.catch(1),console.log(\"error when fetchMainCategory, error is \".concat(v)),e.abrupt(\"return\",[]);case 4:case\"end\":return e.stop()}},e,null,[[1,3]])}));return function(t){return e.apply(this,arguments)}}()),V=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,d,h,m,data,v;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorId,r=t.categoryLevel,o=t.brandId,c=t.promotionId,\"object\"===(\"undefined\"==typeof window?\"undefined\":Object(l.a)(window))&&(d=j(),h=d.brandId,d.needAddBrandId&&h&&(o=parseInt(h))),e.prev=1,e.next=2,f.a.post(\"/api/v1/main_sub_category\",P({vendorId:n,brandId:o,categoryLevel:r},c&&c>0?{promotionId:c}:{}));case 2:return m=e.sent,data=m.data,e.abrupt(\"return\",data.data.filters);case 3:return e.prev=3,v=e.catch(1),console.log(\"error when fetchMainCategory, error is \".concat(v)),e.abrupt(\"return\",[]);case 4:case\"end\":return e.stop()}},e,null,[[1,3]])}));return function(t){return e.apply(this,arguments)}}()),W=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,filter,l,d,h,m,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorId,r=t.categoryId,o=t.brandId,c=t.promotionId,filter=t.filter,l=t.additionalComponentIds,e.next=1,f.a.post(\"/api/v1/category_tree\",P(P(P({vendorId:n,componentId:r,brandId:o,disableCached:!0},filter?{filter:filter}:{}),c&&c>0?{promotionId:c}:{}),l?{additionalComponentIds:l}:{}));case 1:return m=e.sent,data=m.data,e.abrupt(\"return\",null===(h=null===(d=null==data?void 0:data.data)||void 0===d?void 0:d.filters)||void 0===h?void 0:h[0]);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),z=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,h,m,v,y,w,O,I,_,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorItemIds,r=t.storeId,o=t.vendorId,c=t.sourceFeedId,l=t.sourceSearchId,d=t.clickEventId,h=t.lptag,m=t.spec,v=t.src,y=t.wPcid,w=t.pageType,O=t.productListRules,e.next=1,f.a.post(\"/api/v2/store/individualInfo/products\",S({vendorItemIds:n,isVIBased:!0,storeId:r,vendorId:o,ignoreAdultCheck:A(),sourceFeedId:c,sourceSearchId:l,clickEventId:d,lptag:h,spec:m,src:v,wPcid:y,pageType:w,productListRules:O}));case 1:return I=e.sent,_=I.data,data=_.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),X=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,h,m,v,y,w,source,O,I,_,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorItemId,r=t.storeId,o=t.vendorId,c=t.sourceFeedId,l=t.sourceSearchId,d=t.clickEventId,h=t.lptag,m=t.spec,v=t.src,y=t.wPcid,w=t.pageType,source=t.source,O=t.productListRules,e.next=1,f.a.post(\"/api/v2/store/individualInfo/product\",S({vendorItemIds:[n],isVIBased:!0,storeId:r,vendorId:o,ignoreAdultCheck:A(),sourceFeedId:c,sourceSearchId:l,clickEventId:d,lptag:h,spec:m,src:v,wPcid:y,pageType:w,source:source,productListRules:O}));case 1:return I=e.sent,_=I.data,data=_.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),K=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.storeId,r=t.checkList,o=t.menuId,c=t.preview,l=t.vendorId,e.next=1,f.a.post(\"/api/v1/menu/checkCompatibility\",{storeId:n,checkList:r,menuId:o,preview:c,vendorId:l});case 1:return d=e.sent,data=d.data,e.abrupt(\"return\",data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),Y=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.sourceId,e.next=1,f.a.get(\"/api/v1/store/download-coupon/\".concat(n));case 1:return r=e.sent,data=r.data,e.abrupt(\"return\",data.result.data);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),Q=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.promotionId,r=t.npsPromotionId,e.next=1,f.a.get(\"/api/v1/store/coupon/\".concat(Math.max(n,0)),{params:{npsPromotionId:r}});case 1:return o=e.sent,data=o.data,e.abrupt(\"return\",data.result);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),J=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.promotionId,r=t.npsPromotionId,o=n>0?{vfpId:n}:{npsPromotionId:r},e.next=1,f.a.post(\"/api/v1/store/download-promotion/coupons/preview\",o);case 1:return c=e.sent,data=c.data,e.abrupt(\"return\",data.result);case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),Z=(y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=\"\".concat(\"/sell/evt/Data/GetProductsByPagePartId\",\"/\").concat(t),e.next=1,f.a.get(n).then(function(e){var t=e.data;if(t&&200===Number(t.Code))return t.Data}).catch(function(){});case 1:return r=e.sent,e.abrupt(\"return\",r&&r.Data?r.Data:{});case 2:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),function(e){return\"\".concat(ee(e),\"@VENDOR\")}),ee=function(e){return!e||Object(h.a)(e)?null:Object.entries(e).filter(function(e){var t=Object(r.a)(e,2)[1];return Object(h.c)(t)}).map(function(e){var t=Object(r.a)(e,2),n=t[0],o=t[1];return\"\".concat(Object(d.a)(n),\":\").concat(Array.isArray(o)?o.join(\",\"):o)}).join(\"|\")},te=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,d,h,m,v,y,code,w,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.vendorId,r=t.brandId,o=t.promotionId,c=t.category,d=void 0===c?[34793]:c,\"object\"===(\"undefined\"==typeof window?\"undefined\":Object(l.a)(window))&&(h=j(),m=h.brandId,h.needAddBrandId&&m&&(r=m.toString())),e.next=1,f.a.post(\"/api/v1/filter\",P({filterQuery:Z({vendorId:n,category:d}),brandId:r},o&&o>0?{promotionId:o}:{}));case 1:if(v=e.sent,y=v.data,code=y.code,w=y.message,data=y.data,code===C){e.next=2;break}throw new Error(w);case 2:return e.abrupt(\"return\",data.extraFilters);case 3:case\"end\":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()),ne=y(function(){var e=Object(c.a)(regeneratorRuntime.mark(function e(t){var n,r,o,c,l,d,h,data;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=t.storeId,r=t.promotionId,o=t.npsPromotionId,c=t.vendorId,l=t.page,d=r>0?{promotionId:r}:{npsPromotionId:o},e.next=1,f.a.get(\"/api/v1/promotions/items\",{params:P(P({storeId:n},d),{"
+    ]
+  },
+  "attempts": [
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "method": "POST",
+      "payloadId": "exact-js-vi",
+      "payload": {
+        "vendorItemIds": [
+          "91335726263"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "source": "brandstore_sdp_atf",
+        "pageType": "STORE"
+      },
+      "status": 400,
+      "contentType": "application/json",
+      "length": 233,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/product",
+      "bodyPrefix": "{\"timestamp\":1785470464413,\"path\":\"/api/v2/store/individualInfo/product\",\"status\":\"BAD_REQUEST\",\"error\":\"Bad Request\",\"requestId\":null,\"exception\":\"ServerWebInputException\",\"message\":\"400 BAD_REQUEST \\\"Failed to read HTTP message\\\"\"}"
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "method": "POST",
+      "payloadId": "exact-js-vi-minimal",
+      "payload": {
+        "vendorItemIds": [
+          "91335726263"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 0,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/product",
+      "bodyPrefix": "",
+      "jsonError": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "method": "POST",
+      "payloadId": "singular-vi",
+      "payload": {
+        "vendorItemId": "91335726263",
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 70,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/product",
+      "bodyPrefix": "{\"code\":400,\"msg\":\"vendorItemId is required\",\"data\":null,\"extra\":null}",
+      "jsonHits": [],
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "jsonPreview": {
+        "code": 400,
+        "msg": "vendorItemId is required",
+        "data": null,
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "method": "POST",
+      "payloadId": "pi-array",
+      "payload": {
+        "productIds": [
+          "8411161016"
+        ],
+        "isVIBased": false,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 70,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/product",
+      "bodyPrefix": "{\"code\":400,\"msg\":\"vendorItemId is required\",\"data\":null,\"extra\":null}",
+      "jsonHits": [],
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "jsonPreview": {
+        "code": 400,
+        "msg": "vendorItemId is required",
+        "data": null,
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/product",
+      "method": "POST",
+      "payloadId": "pi-singular",
+      "payload": {
+        "productId": "8411161016",
+        "isVIBased": false,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 70,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/product",
+      "bodyPrefix": "{\"code\":400,\"msg\":\"vendorItemId is required\",\"data\":null,\"extra\":null}",
+      "jsonHits": [],
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "jsonPreview": {
+        "code": 400,
+        "msg": "vendorItemId is required",
+        "data": null,
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "method": "POST",
+      "payloadId": "exact-js-vi",
+      "payload": {
+        "vendorItemIds": [
+          "91335726263"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true,
+        "source": "brandstore_sdp_atf",
+        "pageType": "STORE"
+      },
+      "status": 400,
+      "contentType": "application/json",
+      "length": 234,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/products",
+      "bodyPrefix": "{\"timestamp\":1785470466010,\"path\":\"/api/v2/store/individualInfo/products\",\"status\":\"BAD_REQUEST\",\"error\":\"Bad Request\",\"requestId\":null,\"exception\":\"ServerWebInputException\",\"message\":\"400 BAD_REQUEST \\\"Failed to read HTTP message\\\"\"}"
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "method": "POST",
+      "payloadId": "exact-js-vi-minimal",
+      "payload": {
+        "vendorItemIds": [
+          "91335726263"
+        ],
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 5749,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/products",
+      "bodyPrefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"products\":[{\"priceArea\":{\"originalPrice\":\"0\",\"salesPrice\":\"6,900\",\"lowestPrice\":\"6,900\",\"instantDiscountPrice\":\"0\",\"criteriaPriceInfo\":\"\",\"basePrice\":\"0\",\"price\":\"6,900\",\"discountRate\":0,\"instantDiscountDescription\":\"\",\"instantDiscountExpiryDateUTCV2\":null,\"currencyPrefix\":\"\",\"currencyPostfix\":\"원\",\"discountDescription\":null,\"salesPriceForBtc\":6900,\"finalPriceForBtc\":6900,\"priceWithIdForBtc\":6900,\"hasCouponForBtc\":false,\"discount\":false,\"instantDiscount\":false,\"badDiscount\":false},\"imageAndTitleArea\":{\"title\":\"(BOOKFRIENDS) 위시캣 스티커퀸 300\",\"description\":\"\",\"defaultUrl\":\"//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg\",\"oriDefaultUrl\":\"vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg\",\"completeHttpUrl\":\"https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b5",
+      "jsonHits": [
+        {
+          "path": "$.data.products[0].link",
+          "value": "/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=05b8f20fe88448899f9401b1f7fe8d2f"
+        },
+        {
+          "path": "$.data.products[0].mlink",
+          "value": "coupang://product?sourceType=brandstore&pId=8411161016&vendorItemId=91335726263&searchId=05b8f20fe88448899f9401b1f7fe8d2f&src=1139998&spec=10799999&lptag=A00214628&wPcid=21968274571889985239063&redirect=landing&title=%28BOOKFRIENDS%29+%EC%9C%84%EC%8B%9C%EC%BA%A3+%EC%8A%A4%ED%8B%B0%EC%BB%A4%ED%80%B8+300&sdpImageUrl=https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg"
+        },
+        {
+          "path": "$.data.products[0].vendorItemId",
+          "value": "91335726263"
+        },
+        {
+          "path": "$.data.products[0].productId",
+          "value": "8411161016"
+        },
+        {
+          "path": "$.data.products[0].itemId",
+          "value": "24319968314"
+        },
+        {
+          "path": "$.data.products[0].storeInfoArea.link",
+          "value": "https://shop.coupang.com/vid/A00214628?pid=8411161016&viid=91335726263"
+        },
+        {
+          "path": "$.data.products[0].storeInfoArea.mlink",
+          "value": "coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26pid%3D8411161016%26viid%3D91335726263&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y"
+        }
+      ],
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "jsonPreview": {
+        "code": 200,
+        "msg": "SUCCESS",
+        "data": {
+          "products": [
+            {
+              "priceArea": {
+                "originalPrice": "0",
+                "salesPrice": "6,900",
+                "lowestPrice": "6,900",
+                "instantDiscountPrice": "0",
+                "criteriaPriceInfo": "",
+                "basePrice": "0",
+                "price": "6,900",
+                "discountRate": 0,
+                "instantDiscountDescription": "",
+                "instantDiscountExpiryDateUTCV2": null,
+                "currencyPrefix": "",
+                "currencyPostfix": "원",
+                "discountDescription": null,
+                "salesPriceForBtc": 6900,
+                "finalPriceForBtc": 6900,
+                "priceWithIdForBtc": 6900,
+                "hasCouponForBtc": false,
+                "discount": false,
+                "instantDiscount": false,
+                "badDiscount": false
+              },
+              "imageAndTitleArea": {
+                "title": "(BOOKFRIENDS) 위시캣 스티커퀸 300",
+                "description": "",
+                "defaultUrl": "//thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+                "oriDefaultUrl": "vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+                "completeHttpUrl": "https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+                "detailImageUrls": [],
+                "completeHttpDetailImageUrls": [],
+                "groupTitle": "(BOOKFRIENDS) 위시캣 스티커퀸 300",
+                "adultImageReplaced": false
+              },
+              "soldoutArea": {
+                "soldOutText": "품절",
+                "soldout": false
+              },
+              "rocketArea": {
+                "badgeImage": null,
+                "deliveryBadgeImage": null,
+                "deliveryBadgeIcon": null,
+                "deliveryBadgePDD": null,
+                "deliveryUnificationBadgeArea": null,
+                "show": false,
+                "rocketLuxury": false
+              },
+              "subscriptionPriceArea": null,
+              "cashBackArea": {
+                "iconUrl": "//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png",
+                "cashRewardText": "최대 345원 적립"
+              },
+              "ccidArea": null,
+              "promisedDeliveryDateArea": {
+                "contents": [
+                  {
+                    "text": "8/4(화) ",
+                    "size": 14,
+                    "color": "#212B36",
+                    "bold": false
+                  },
+                  {
+                    "text": "도착 예정",
+                    "size": 14,
+                    "color": "#212B36",
+                    "bold": false
+                  }
+                ]
+              },
+              "usedProductArea": {
+                "usedProductInfo": null,
+                "usedProductPrice": [],
+                "usedOnlyItem": false
+              },
+              "instantDiscountBundlePriceArea": null,
+              "eligibleFalconArea": null,
+              "telcoBadgeArea": null,
+              "afterServiceArea": null,
+              "benefitBadgeArea": null,
+              "deliveryBadgeArea": {
+                "badgeAreaContents": [
+                  {
+                    "css": "",
+                    "title": "무료배송",
+                    "iconUrl": "",
+                    "type": "FREE_SHIPPING",
+                    "discountInfo": null,
+                    "freeDeliveryStandard": null
+                  },
+                  {
+                    "css": "",
+                    "title": "",
+                    "iconUrl": "",
+                    "type": "FREE",
+                    "discountInfo": null,
+                    "freeDeliveryStandard": null
+                  }
+                ]
+              },
+              "deliverySpeedBadgeArea": null,
+              "topBrandArea": null,
+              "topBadgeAreas": [
+                {
+                  "id": "SHIPPINGTYPE",
+                  "type": "TEXT",
+                  "icon": null,
+                  "text": "무료배송"
+                }
+              ],
+              "preOrderArea": null,
+              "brandAuthenticityBadge": null,
+              "couponArea": null,
+              "reviewArea": null,
+              "bestPriceArea": null,
+              "bizOnlyArea": null,
+              "bestAwardArea": null,
+              "link": "/vp/products/8411161016?itemId=24319968314&vendorItemId=91335726263&sourceType=brandstore&vendorId=A00214628&storeId=79545&searchId=05b8f20fe88448899f9401b1f7fe8d2f",
+              "mlink": "coupang://product?sourceType=brandstore&pId=8411161016&vendorItemId=91335726263&searchId=05b8f20fe88448899f9401b1f7fe8d2f&src=1139998&spec=10799999&lptag=A00214628&wPcid=21968274571889985239063&redirect=landing&title=%28BOOKFRIENDS%29+%EC%9C%84%EC%8B%9C%EC%BA%A3+%EC%8A%A4%ED%8B%B0%EC%BB%A4%ED%80%B8+300&sdpImageUrl=https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/a67e/421e1491ec452985a9f1c26b51072591bd5103e171f910556250a4b8da36.jpg",
+              "offsiteGmLink": null,
+              "vendorItemId": 91335726263,
+              "productId": 8411161016,
+              "itemId": 24319968314,
+              "unitPrice": "",
+              "priceLabel": null,
+              "salesStartDate": "2024-10-22T06:03:26Z",
+              "isFreeExposurePromotion": null,
+              "productType": "PRODUCT",
+              "ueLoggingArea": null,
+              "shopHomeLink": null,
+              "storeInfoArea": {
+                "storeId": 79545,
+                "vendorId": "A00214628",
+                "logoUrl": "https://image8.coupangcdn.com/image/cmg/store/sdp/img_store_default_logo@4x.png",
+                "displayName": "북프렌즈",
+                "link": "https://shop.coupang.com/vid/A00214628?pid=8411161016&viid=91335726263",
+                "mlink": "coupang://webview?url=https%3A%2F%2Fshop.coupang.com%2Fvid%2FA00214628%3Fplatform%3Dm%26pid%3D8411161016%26viid%3D91335726263&tab=Y&title=%E2%80%81&auth=false&pushEvent=true&allowsInlineMediaPlayback=Y&hideNavigationBar=Y",
+                "brandInfoArea": null,
+                "maxDiscountAmount": null,
+                "maxDiscountAmountText": null,
+                "uiVersion": null,
+                "storeAttributes": {
+                  "benefit_discount_type": "PRICE",
+                  "benefit_title": "이 판매자의 쿠폰을 받아보세요",
+                  "brandshop_type": "0",
+                  "has_sdp_btc": "false",
+                  "is_manufacturer": "N",
+                  "official": "N",
+                  "official_brands": "[]",
+                  "render_type": "COUMALL_DEFAULT",
+                  "seller_type": "Reseller / Distributor",
+                  "total_vi_cnt": "4263",
+                  "truncate_display_name": "북프렌즈",
+                  "ui_version": "1"
+                },
+                "officialBrands": []
+              },
+              "rluxBrandInfo": null,
+              "freebiesInfo": null,
+              "wowBenefitArea": null,
+              "divisionType": "GOODS",
+              "btcInfo": {
+                "freeShipOverAmountEx": 0,
+                "salesPrice": 6900,
+                "finalPrice": 6900,
+                "priceWithID": 6900,
+                "hasCoupon": false,
+                "deliveryFee": 0,
+                "outboundShippingPlaceId": 1208642,
+                "batchShipment": true,
+                "rocketDelivery": false
+              },
+              "setPromotionItemDto": null,
+              "promotionClosingArea": null,
+              "attributes": null,
+              "brandInfo": {
+                "description": "위시캣",
+                "id": 116444,
+                "logoUrl": "brandLogo/brandLogo_ff16d31b-67b6-46f7-b268-154e0bcc4700.jpg",
+                "name": "위시캣",
+                "properties": null,
+                "shopAvailable": false
+              },
+              "deliveryInfo": {
+                "batchShipment": null,
+                "cashOnDeliveries": [],
+                "deliveryCharge": null,
+                "deliveryChargeOnReturn": null,
+                "deliveryChargeType": null,
+                "deliveryCompanyCode": null,
+                "deliveryCompanyName": null,
+                "deliveryMethod": null,
+                "deliveryType": null,
+                "deliveryTypes": [
+                  "FREE"
+                ],
+                "finalFreeShipOverAmount": null,
+                "freeShipOverAmount": null,
+                "isLogistics": null,
+                "outboundShippingDuration": null,
+                "outboundShippingPlaceId": null,
+                "pickUpBranchGroupCodes": [],
+                "remoteArea": null,
+                "remoteAreaDeliverable": null,
+                "remoteAreaFeeChargeable": null,
+                "remoteShippingFee": null
+              },
+              "valid": true,
+              "adult": false,
+              "rocketMerchant": false,
+              "coupangGlobal": false
+            }
+          ],
+          "totalCount": 1,
+          "validCount": null,
+          "token": null,
+          "searchId": null,
+          "sortingDescription": null,
+          "topCuratedProducts": null,
+          "nonFilterByShippingConsolidation": null
+        },
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "method": "POST",
+      "payloadId": "singular-vi",
+      "payload": {
+        "vendorItemId": "91335726263",
+        "isVIBased": true,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 218,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/products",
+      "bodyPrefix": "{\"code\":200,\"msg\":\"SUCCESS\",\"data\":{\"products\":[],\"totalCount\":0,\"validCount\":null,\"token\":null,\"searchId\":null,\"sortingDescription\":null,\"topCuratedProducts\":null,\"nonFilterByShippingConsolidation\":null},\"extra\":null}",
+      "jsonHits": [],
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "jsonPreview": {
+        "code": 200,
+        "msg": "SUCCESS",
+        "data": {
+          "products": [],
+          "totalCount": 0,
+          "validCount": null,
+          "token": null,
+          "searchId": null,
+          "sortingDescription": null,
+          "topCuratedProducts": null,
+          "nonFilterByShippingConsolidation": null
+        },
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "method": "POST",
+      "payloadId": "pi-array",
+      "payload": {
+        "productIds": [
+          "8411161016"
+        ],
+        "isVIBased": false,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 74,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/products",
+      "bodyPrefix": "{\"code\":400,\"msg\":\"neither vi based or pi based\",\"data\":null,\"extra\":null}",
+      "jsonHits": [],
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "jsonPreview": {
+        "code": 400,
+        "msg": "neither vi based or pi based",
+        "data": null,
+        "extra": null
+      }
+    },
+    {
+      "route": "/api/v2/store/individualInfo/products",
+      "method": "POST",
+      "payloadId": "pi-singular",
+      "payload": {
+        "productId": "8411161016",
+        "isVIBased": false,
+        "storeId": 79545,
+        "vendorId": "A00214628",
+        "ignoreAdultCheck": true
+      },
+      "status": 200,
+      "contentType": "application/json",
+      "length": 74,
+      "url": "https://shop.coupang.com/api/v2/store/individualInfo/products",
+      "bodyPrefix": "{\"code\":400,\"msg\":\"neither vi based or pi based\",\"data\":null,\"extra\":null}",
+      "jsonHits": [],
+      "topLevelKeys": [
+        "code",
+        "data",
+        "extra",
+        "msg"
+      ],
+      "jsonPreview": {
+        "code": 400,
+        "msg": "neither vi based or pi based",
+        "data": null,
+        "extra": null
+      }
+    }
+  ],
+  "scriptStatus": 200,
+  "scriptLength": 258982
+}

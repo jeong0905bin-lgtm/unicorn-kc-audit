@@ -1,0 +1,32 @@
+name: Shop bundle binding resolver
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  resolve:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install parser
+        run: npm install --no-save acorn
+      - name: Resolve minified bindings
+        run: node tools/resolve_shop_bundle_binding.mjs --output diagnostics/shop-bundle-binding/result.json
+      - name: Commit sanitized result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add diagnostics/shop-bundle-binding/result.json
+          git diff --cached --quiet || git commit -m "Record shop bundle binding resolution"
+          git pull --rebase origin chatgpt/run-unicorn-audit-20260730
+          git push origin HEAD:chatgpt/run-unicorn-audit-20260730

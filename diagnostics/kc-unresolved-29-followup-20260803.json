@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-08-03T00:48:00+09:00",
+  "sellerId": "A00214628",
+  "scope": "29 accepted Unicorn products without exact product-level KC mapping",
+  "status": "followup_started",
+  "rules": {
+    "requireExactProductEvidence": true,
+    "blockedOrEmptyIsNotNoKc": true,
+    "doNotInferKcFromFamily": true,
+    "verifySafetyKoreaOfficialStatus": true,
+    "excludedCertificationNumber": "U003E1577-7011"
+  },
+  "nextPasses": [
+    "re-scan Coupang product detail mandatory disclosures",
+    "search repository diagnostics and archived payloads by exact productId/itemId",
+    "match official book/product records by exact normalized title",
+    "probe discovered KC numbers against SafetyKorea"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "catalogReportedTotal": 2230,
+  "catalogCount": 2230,
+  "candidateCount": 73,
+  "queryCount": 149,
+  "rawResultCount": 1523,
+  "dedupResultCount": 1392,
+  "exactCurrentProductCount": 0,
+  "exactCurrentProducts": [],
+  "exactExternalEvidenceCount": 0,
+  "failures": [
+    {
+      "source": "ddg",
+      "query": "site:coupang.com/vp/products \"판매자:북프렌즈\" \"저자, 출판사\" \"유니콘\"",
+      "error": "RuntimeError: DDG HTTP 202: <!-- <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<hea"
+    },
+    {
+      "source": "ddg",
+      "query": "site:coupang.com/vp/products \"북프렌즈\" \"저자, 출판사 | 유니콘\"",
+      "error": "RuntimeError: DDG HTTP 202: <!-- <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<hea"
+    },
+    {
+      "source": "ddg",
+      "query": "site:coupang.com/vp/products \"107-27-94844\" \"저자, 출판사\" \"유니콘\"",
+      "error": "RuntimeError: DDG HTTP 202: <!-- <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<hea"
+    },
+    {
+      "source": "ddg",
+      "query": "site:coupang.com/vp/products \"저자, 출판사\" \"유니콘\" \"쿠팡상품번호\"",
+      "error": "RuntimeError: DDG HTTP 202: <!-- <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<hea"
+    }
+  ]
+}

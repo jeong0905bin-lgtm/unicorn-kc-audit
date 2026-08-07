@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-08-02T15:56:39+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Validate CB064H009-4002 usage and review unresolved title-prefix publisher candidates against competing publisher records.",
+  "kcStatusReview": [
+    {
+      "kcNumber": "CB064H009-4002",
+      "mappedCatalogProductId": "8542794955",
+      "mappedProductName": "(BOOKFRIENDS) 시크릿쥬쥬 스티커 색칠북 01",
+      "productMappingStatus": "confirmed",
+      "officialSafetyKoreaStatus": "unresolved",
+      "publicUsageEvidence": [
+        {
+          "title": "시크릿쥬쥬 스티커 색칠북 01",
+          "publisher": "유니콘",
+          "isbn13": "8806328724503",
+          "kcNumber": "CB064H009-4002",
+          "sourceUrl": "https://www.yes24.com/Product/Goods/140539361"
+        },
+        {
+          "title": "헬로카봇 스티커 색칠북",
+          "publisher": "유니콘",
+          "isbn13": "8806328725319",
+          "kcNumber": "CB064H009-4002",
+          "sourceUrl": "https://www.yes24.com/product/goods/179708750"
+        },
+        {
+          "title": "슈팅스타 캐치티니핑 캐릭터 색칠북 1",
+          "publisher": "유니콘",
+          "isbn13": "8806328724411",
+          "kcNumber": "CB064H009-4002",
+          "sourceUrl": "https://www.yes24.com/product/goods/142788189"
+        }
+      ],
+      "statusNotes": "The certification number is repeatedly used on exact 유니콘 product records through 2025, but no exact SafetyKorea certificate page was retrieved. Do not classify active or expired from retailer usage alone."
+    }
+  ],
+  "publisherCandidateReview": [
+    {
+      "productId": "324552180",
+      "itemId": "1038983770",
+      "productName": "유니콘 반지의 비밀일기2 스티커 컬렉션북",
+      "status": "pending_not_promoted",
+      "reason": "The exact current Coupang title contains 유니콘 and marketplace listings repeat it, but no official book record or mandatory-disclosure publisher field was recovered. The same 반지의 비밀일기2 family contains exact 신세계 publisher records, so title prefix alone is insufficient."
+    },
+    {
+      "productId": "276195692",
+      "itemId": "874223306",
+      "productName": "유니콘 열려라 코코밍 퍼즐 2종세트 (63조각)",
+      "status": "pending_not_promoted",
+      "reason": "The exact marketplace title contains 유니콘, but official records show multiple competing publishers for 열려라 코코밍 products. Exact component ISBN or mandatory disclosure is required."
+    }
+  ],
+  "summary": {
+    "kcNumbersReviewed": 1,
+    "officialStatusesResolved": 0,
+    "publisherCandidatesKeptPending": 2,
+    "newExactPublisherConfirmations": 0,
+    "newExactKcMappings": 0,
+    "finalWorkbookReady": false
+  },
+  "safeguards": [
+    "Retailer KC usage does not substitute for official SafetyKorea status.",
+    "Marketplace title prefixes do not override competing official publisher records.",
+    "Blocked responses remain unresolved.",
+    "U003E1577-7011 remains excluded."
+  ],
+  "nextWork": [
+    "Resolve the exact SafetyKorea record for CB064H009-4002 through official searchable data or a materially different public route.",
+    "Recover exact component ISBN or mandatory disclosure for products 324552180 and 276195692.",
+    "Continue exact title and ISBN matching across the unresolved catalog."
+  ]
+}

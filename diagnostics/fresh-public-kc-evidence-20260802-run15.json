@@ -1,0 +1,67 @@
+{
+  "generatedAt": "2026-08-02T17:55:00+09:00",
+  "sellerId": "A00214628",
+  "purpose": "Record fresh exact-product public evidence found in this run without treating unresolved SafetyKorea status as complete.",
+  "newEvidence": [
+    {
+      "productId": "1321324685",
+      "itemId": "2342362756",
+      "productName": "유니콘 신기한 워터 색칠북 - 콩순이",
+      "publisher": "유니콘",
+      "kcNumber": "CB064H009-8001",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_coupang_product_detail_kc_row",
+      "sourceUrl": "https://www.coupang.com/vp/products/1321324685?itemId=2342362756",
+      "officialSafetyKoreaStatus": "unresolved"
+    },
+    {
+      "productId": "1318402202",
+      "productName": "엉덩이탐정 스티커 컬렉션북",
+      "publisher": "유니콘",
+      "kcNumber": "CB064H009-9002",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_title_and_isbn_official_retailer_record",
+      "sourceUrl": "https://www.yes24.com/product/goods/115101884",
+      "officialSafetyKoreaStatus": "unresolved"
+    },
+    {
+      "productName": "프린세스 캐치티니핑 소퍼즐 2종 세트",
+      "publisher": "유니콘",
+      "isbn13": "8806328716836",
+      "kcNumber": "CB064H009-4003",
+      "mappingStatus": "confirmed_component_family_reference",
+      "evidenceType": "exact_official_retailer_title_publisher_isbn_kc",
+      "sourceUrl": "https://www.yes24.com/product/goods/172520136",
+      "officialSafetyKoreaStatus": "unresolved"
+    }
+  ],
+  "additionalProductFamilyEvidence": [
+    {
+      "productId": "8921692660",
+      "itemId": "26071705787",
+      "productName": "유니콘 미니특공대 최강공룡 퍼즐 2종세트",
+      "kcNumber": "CB064H009-4003",
+      "evidenceType": "exact_coupang_mandatory_disclosure",
+      "sourceUrl": "https://www.coupang.com/vp/products/8921692660?itemId=26071705787"
+    },
+    {
+      "productId": "7186789187",
+      "itemId": "18136486944",
+      "productName": "유니콘 어몽어스 스티커 4종 세트",
+      "kcNumber": "CB064H009-9002",
+      "evidenceType": "exact_coupang_mandatory_disclosure",
+      "sourceUrl": "https://www.coupang.com/vp/products/7186789187?itemId=18136486944"
+    }
+  ],
+  "safeguards": {
+    "blockedResponsesCountAsComplete": false,
+    "missingKcMeansNoKc": false,
+    "excludedCertificationNumber": "U003E1577-7011",
+    "expiredWorkbookRowsAdded": 0,
+    "noKcRowsAdded": 0
+  },
+  "next": [
+    "Resolve official SafetyKorea status for CB064H009-8001, CB064H009-9002 and CB064H009-4003 using exact official records.",
+    "Bind additional exact catalog products to the product-family records only when title/ISBN/GTIN identity is exact."
+  ]
+}

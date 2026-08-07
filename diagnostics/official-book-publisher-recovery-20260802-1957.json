@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-08-02T19:57:06+09:00",
+  "sellerId": "A00214628",
+  "scope": "Non-repeated publisher recovery for unresolved priority products using public official book metadata and indexed exact-title records; blocked Coupang detail routes were not retried.",
+  "verified": [
+    {
+      "productId": "324550724",
+      "itemId": "1038979605",
+      "vendorItemId": "5521774792",
+      "productName": "유니콘 반지의 비밀일기2 스티커 퀸 300",
+      "publisher": "유니콘",
+      "publisherStatus": "confirmed",
+      "evidence": [
+        {
+          "type": "exact_catalog_identity",
+          "source": "Coupang indexed product page",
+          "finding": "Exact title and Coupang product number 324550724 - 1038979605 match the current seller catalog row."
+        },
+        {
+          "type": "official_book_metadata",
+          "source": "YES24 book record/event catalog",
+          "finding": "Exact book title '반지의 비밀일기2 스티커 퀸 300' is listed with publisher 유니콘 and publication month 2019-09."
+        }
+      ],
+      "kcMapping": "unresolved",
+      "classificationEffect": "Include as verified Unicorn publisher product; do not add to No-KC or expired output until exact product-to-KC evidence is obtained."
+    }
+  ],
+  "reviewedButUnresolved": [
+    {
+      "productId": "1058485712",
+      "itemId": "2001962757",
+      "productName": "유니콘 반지의 비밀일기2 판퍼즐 2종세트",
+      "reason": "No exact official book metadata or exact product-to-KC evidence found in this run."
+    },
+    {
+      "productId": "324552180",
+      "itemId": "1038983770",
+      "productName": "유니콘 반지의 비밀일기2 스티커 컬렉션북",
+      "reason": "Exact indexed Coupang identity exists, but no independent official publisher/KC record was found in this run."
+    },
+    {
+      "productId": "1816795573",
+      "itemId": "3091871516",
+      "productName": "유니콘 신비아파트 스티커색칠북 2종세트",
+      "reason": "Exact indexed Coupang identity exists, but exact component ISBN/publisher and KC mapping remain unresolved."
+    }
+  ],
+  "safeguards": [
+    "U003E1577-7011 excluded.",
+    "Title token alone was not treated as sufficient evidence.",
+    "Blocked or empty Coupang responses were not counted as complete.",
+    "No-KC was not inferred from missing KC evidence."
+  ],
+  "netProgress": {
+    "newPublisherConfirmed": 1,
+    "newKcMapped": 0,
+    "newExpiredRows": 0,
+    "newNoKcRows": 0
+  },
+  "nextAction": "Resolve exact ISBN/component identities for the remaining priority A products, then bind only exact product-level KC evidence."
+}

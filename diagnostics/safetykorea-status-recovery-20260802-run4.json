@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-08-02T09:56:22+09:00",
+  "sellerId": "A00214628",
+  "targetKcNumber": "CB064H009-9001",
+  "reason": "This KC was newly mapped exactly to product 6209404889 and requires official SafetyKorea status before any expired classification.",
+  "publicEvidenceReviewed": [
+    {
+      "evidenceType": "exact_official_book_record",
+      "productTitle": "신비아파트 고스트볼Z 어둠의 퇴마사 스티커 색칠북 1",
+      "publisher": "유니콘",
+      "isbn13": "8806328721298",
+      "kcNumber": "CB064H009-9001",
+      "mappingStatus": "confirmed"
+    },
+    {
+      "evidenceType": "multiple_exact_retail_records",
+      "finding": "Multiple Unicorn sticker and coloring publications independently expose CB064H009-9001, supporting that the number is a genuine Unicorn product certification rather than a title-only inference."
+    }
+  ],
+  "officialSafetyKorea": {
+    "status": "unresolved",
+    "officialExactMatch": false,
+    "expired": null,
+    "attemptResult": "No parseable official SafetyKorea exact record was returned through the currently permitted public search route."
+  },
+  "classificationEffect": {
+    "expiredWorkbook": "excluded_until_official_status_resolved",
+    "noKcWorkbook": "excluded_because_exact_kc_exists"
+  },
+  "safeguards": [
+    "Retailer status is not substituted for official SafetyKorea status.",
+    "No blocked response is counted as completion.",
+    "U003E1577-7011 remains excluded."
+  ]
+}

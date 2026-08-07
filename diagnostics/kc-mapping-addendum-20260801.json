@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-08-01T01:46:00+09:00",
+  "appliesTo": "diagnostics/consolidated-unicorn-products.json",
+  "summaryAdjustment": {
+    "productsWithConfirmedKcMapping": 10,
+    "uniqueConfirmedKcNumbers": [
+      "CB064H009-2001",
+      "CB064H009-3002",
+      "CB064H009-3003",
+      "CB064H009-4001",
+      "CB064H009-4003",
+      "CB064H009-8001",
+      "CB064H009-9002"
+    ]
+  },
+  "newConfirmedMappings": [
+    {
+      "productName": "엉덩이탐정 스티커 컬렉션북, 유니콘",
+      "productId": "1318402202",
+      "publisher": "유니콘",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "kcNumber": "CB064H009-9002",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_title_and_isbn_retailer_record",
+      "sourceUrl": "https://www.yes24.com/product/goods/115101884"
+    },
+    {
+      "productName": "슈팅스타 캐치티니핑 신기한 워터색칠북, 유니콘, 2권",
+      "productId": "8616958567",
+      "publisher": "유니콘",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "isbn": "8806328724817",
+      "kcNumber": "CB064H009-3003",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_coupang_product_id_and_isbn_retailer_record",
+      "identitySourceUrl": "https://www.coupang.com/vp/products/8616958567",
+      "sourceUrl": "https://www.yes24.com/product/goods/143376319"
+    },
+    {
+      "productName": "슈퍼다이노 신기한 워터색칠북, 유니콘",
+      "productId": "7201864624",
+      "itemId": "18206100939",
+      "publisher": "유니콘",
+      "publisherEvidenceType": "shop_individualInfo_product_attribute_exact",
+      "isbn": "8806328723063",
+      "kcNumber": "CB064H009-8001",
+      "mappingStatus": "confirmed",
+      "evidenceType": "exact_title_isbn_and_retailer_kc_record",
+      "sourceUrl": "https://m.yes24.com/Goods/Detail/117976555"
+    }
+  ],
+  "officialSafetyKoreaStatus": {
+    "CB064H009-3003": "unresolved",
+    "CB064H009-8001": "unresolved",
+    "CB064H009-9002": "unresolved"
+  },
+  "safeguards": [
+    "These mappings use exact product title or exact product ID plus ISBN identity evidence.",
+    "No KC is treated as expired until official SafetyKorea status is resolved."
+  ]
+}

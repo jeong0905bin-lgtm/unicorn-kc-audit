@@ -1,0 +1,110 @@
+{
+  "batch": "remaining-public-evidence-check",
+  "checkedAt": "2026-08-03T03:00:00+09:00",
+  "rules": {
+    "exactOnly": true,
+    "blockedOrMissingIsNotNoKc": true,
+    "excludedCertificationNumber": "U003E1577-7011"
+  },
+  "products": [
+    {
+      "productId": "6310324329",
+      "itemId": "13094509431",
+      "productName": "반짝이는 프리채널 퍼즐 2종세트 (63조각)",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "공개 페이지에서 번호 비노출",
+      "result": "KC 표기 없음(공개 페이지 기준), No-KC 미확정",
+      "evidence": ["Coupang exact product page 276159001-874119421", "Coupang search result identifies 유니콘 edition"]
+    },
+    {
+      "productId": "6729339522",
+      "itemId": "15674800890",
+      "productName": "캐치티니핑 스티커 퀸 300 + 신기한 워터색칠북 세트",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "구성품 판매정보는 확인되나 exact 세트 KC 번호 비노출",
+      "result": "KC 표기 없음(공개 페이지 기준), No-KC 미확정"
+    },
+    {
+      "productId": "6919959387",
+      "itemId": "16706628336",
+      "productName": "구스구스덕 신기한 워터 색칠북",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "쿠팡 exact 페이지에 KC 번호 비노출",
+      "result": "KC 표기 없음(공개 페이지 기준), No-KC 미확정",
+      "evidence": ["Coupang exact product page 6919959387-16706628336"]
+    },
+    {
+      "productId": "7263547110",
+      "itemId": "18497053974",
+      "productName": "다이너소어 대판퍼즐 (130조각)",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "exact KC 번호 공개 근거 미확보",
+      "result": "KC 표기 없음(공개 페이지 기준), No-KC 미확정"
+    },
+    {
+      "productId": "8511009040",
+      "itemId": "24638422795",
+      "productName": "시크릿쥬쥬 판퍼즐 2종세트 (각77조각)",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "유사 exact 페이지 필수표기에서 KC 인증정보가 '상세페이지 별도 표기'로만 노출",
+      "result": "KC 번호 비노출, No-KC 미확정"
+    },
+    {
+      "productId": "8511112309",
+      "itemId": "24638695165",
+      "productName": "콩순이 판퍼즐 (130조각)",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "동일 모델 공개 판매정보는 확인되나 exact KC 번호 비노출",
+      "result": "KC 표기 없음(공개 페이지 기준), No-KC 미확정"
+    },
+    {
+      "productId": "8603813579",
+      "itemId": "24951365973",
+      "productName": "핑크퐁 아기상어 판퍼즐 2종세트 (각77조각)",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "쿠팡 exact 페이지 필수표기 영역은 존재하나 번호 비노출",
+      "result": "KC 번호 비노출, No-KC 미확정",
+      "evidence": ["Coupang exact product page 8603813579-24949150768"]
+    },
+    {
+      "productId": "9339894602",
+      "itemId": "27686559926",
+      "productName": "시크릿쥬쥬 스티커컬렉션",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "exact 공개 KC 번호 미확보",
+      "result": "KC 표기 없음(공개 페이지 기준), No-KC 미확정"
+    },
+    {
+      "productId": "9339915074",
+      "itemId": "27686638985",
+      "productName": "시크릿 쥬쥬 스티커 컬렉션북",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "exact 공개 KC 번호 미확보",
+      "result": "KC 표기 없음(공개 페이지 기준), No-KC 미확정"
+    },
+    {
+      "productId": "9628068962",
+      "itemId": "29430446906",
+      "productName": "나를 위한 힐링 타임 : 인지 향상 컬러링북 - 세계의 명소",
+      "publisher": "유니콘",
+      "kcNumber": null,
+      "pageKcDisclosure": "일반 도서형 컬러링북으로 공개 판매정보에 KC 번호 비노출",
+      "result": "KC 표기 없음(공개 페이지 기준), No-KC 미확정"
+    }
+  ],
+  "summary": {
+    "checked": 10,
+    "newExactKc": 0,
+    "pageKcNumberNotExposed": 10,
+    "noKcConfirmed": 0
+  }
+}

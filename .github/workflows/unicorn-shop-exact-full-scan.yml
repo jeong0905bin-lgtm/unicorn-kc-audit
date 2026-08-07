@@ -1,0 +1,115 @@
+name: Unicorn shop plural full scan
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+    paths:
+      - "tools/unicorn_catalog.py"
+      - "tools/unicorn_shop_exact_scan_fast.py"
+      - ".github/workflows/unicorn-shop-exact-full-scan.yml"
+      - "run/unicorn-shop-plural.trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unicorn-shop-plural-full-scan-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/run-unicorn-audit-20260730
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          pip install requests playwright
+          python -m playwright install --with-deps chromium
+      - name: Build plural-endpoint scanner
+        run: |
+          python -m py_compile tools/unicorn_catalog.py tools/unicorn_shop_exact_scan_fast.py
+          python - <<'PY'
+          from pathlib import Path
+
+          source = Path('tools/unicorn_shop_exact_scan_fast.py')
+          target = Path('tools/unicorn_shop_plural_scan_fast.py')
+          text = source.read_text(encoding='utf-8')
+
+          replacements = [
+              (
+                  'ENDPOINT = "/api/v2/store/individualInfo/product"',
+                  'ENDPOINT = "/api/v2/store/individualInfo/products"',
+              ),
+              (
+                  "const data = parsed && parsed.data && typeof parsed.data === 'object' ? parsed.data : null;",
+                  "const container = parsed && parsed.data && typeof parsed.data === 'object' ? parsed.data : null;\n                const data = container && Array.isArray(container.products)\n                  ? (container.products.find(row => String((row && row.vendorItemId) || '') === String(item.vendorItemId)) || container.products[0] || null)\n                  : container;",
+              ),
+              (
+                  "responsePrefix:text.slice(0,500),\n                  productId:data ? String(data.productId || '') : '',",
+                  "responsePrefix:text.slice(0,500),\n                  dataPresent:Boolean(data),\n                  productId:data ? String(data.productId || item.productId || '') : '',",
+              ),
+              (
+                  "return row.get(\"httpStatus\") == 200 and int(row.get(\"apiCode\") or 0) == 200",
+                  "return row.get(\"httpStatus\") == 200 and int(row.get(\"apiCode\") or 0) == 200 and bool(row.get(\"dataPresent\"))",
+              ),
+              (
+                  'items.append({"catalogIndex":index,"vendorItemId":vi})',
+                  'items.append({"catalogIndex":index,"vendorItemId":vi,"productId":str(product.get("productId") or ""),"itemId":str(product.get("itemId") or "")})',
+              ),
+              (
+                  'batch = [{"catalogIndex":i,"vendorItemId":str(catalog[i].get("vendorItemId") or "")} for i in indices]',
+                  'batch = [{"catalogIndex":i,"vendorItemId":str(catalog[i].get("vendorItemId") or ""),"productId":str(catalog[i].get("productId") or ""),"itemId":str(catalog[i].get("itemId") or "")} for i in indices]',
+              ),
+          ]
+          for old, new in replacements:
+              if old not in text:
+                  raise SystemExit(f'plural scanner patch target missing: {old[:100]}')
+              text = text.replace(old, new)
+
+          target.write_text(text, encoding='utf-8')
+          PY
+          python -m py_compile tools/unicorn_shop_plural_scan_fast.py
+      - name: Collect current complete seller catalog
+        run: |
+          mkdir -p work/catalog work/plural
+          python tools/unicorn_catalog.py \
+            --output work/catalog/catalog.json \
+            --diagnostics work/catalog/catalog-diagnostics.json \
+            --candidate-output work/catalog/title-query-only-not-final.json
+      - name: Scan all catalog rows through plural detail API
+        run: |
+          python tools/unicorn_shop_plural_scan_fast.py \
+            --catalog work/catalog/catalog.json \
+            --output-dir work/plural \
+            --chunk-size 100 \
+            --concurrency 8
+      - name: Print plural scan summary
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for path in (Path('work/plural/summary.json'), Path('work/plural/checkpoint.json')):
+              if path.exists():
+                  data = json.loads(path.read_text(encoding='utf-8'))
+                  print(json.dumps(data.get('summary', data), ensure_ascii=False, indent=2))
+                  break
+          else:
+              print('No plural-scan summary or checkpoint was produced.')
+          PY
+      - name: Upload catalog and plural-detail results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unicorn-shop-plural-full-scan-${{ github.run_id }}
+          path: work
+          if-no-files-found: warn
+          retention-days: 7
