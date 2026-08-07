@@ -1,4 +1,4 @@
-name: Sunsu Commerce Bookfriends Audit Round 3 Forced 3
+name: Sunsu Commerce Full Coupang KC Scan
 
 on:
   push:
@@ -16,11 +16,13 @@ permissions:
 
 env:
   SOURCE_RUN_ID: 31065354705
+  SELLER_ID: A01593407
+  STORE_ID: 297717
 
 jobs:
   audit:
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       max-parallel: 10
@@ -30,8 +32,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: pip install playwright
-      - run: python -m playwright install --with-deps chromium
+      - name: Install browser and OCR
+        run: |
+          pip install playwright requests pillow pytesseract
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-kor
+          python -m playwright install --with-deps chromium
       - uses: actions/download-artifact@v4
         with:
           name: sunsu-kc-deep-final
@@ -39,76 +45,186 @@ jobs:
           run-id: ${{ env.SOURCE_RUN_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: source
-      - name: Audit Coupang detail pages
+      - name: Scan product info, required notices and detail images
         env:
           SHARD: ${{ matrix.shard }}
         run: |
           mkdir -p result
           python - <<'PY'
-          import json, os, re, urllib.parse
+          import json, os, re, time, random
+          from io import BytesIO
           from pathlib import Path
+          import requests, pytesseract
+          from PIL import Image, ImageOps, ImageEnhance
           from playwright.sync_api import sync_playwright
-          shard=int(os.environ['SHARD'])
+
+          SHARD=int(os.environ['SHARD']); SHARDS=10
+          SELLER=os.environ['SELLER_ID']; STORE=int(os.environ['STORE_ID'])
+          BASE='https://shop.coupang.com'; ENDPOINT='/api/v2/store/individualInfo/product'
           src=next(Path('source').rglob('kc-deep-results.json'))
-          rows=json.loads(src.read_text(encoding='utf-8')).get('products',[])
-          rows=[r for i,r in enumerate(rows) if i%10==shard]
-          pats=[re.compile(r'\b(?:CB|CA|SU)[- ]?\d{3}[A-Z]\d{3}[- ]?\d{4}[A-Z]?\b',re.I),re.compile(r'\bB\d{3}[A-Z]\d{3}-\d{4}[A-Z]?\b',re.I),re.compile(r'\bR-[A-Z0-9]{2,8}-[A-Z0-9]{3,20}\b',re.I)]
-          blocked=('Access Denied','접근이 제한','Reference #','Request blocked','Forbidden')
-          out=[]
-          with sync_playwright() as p:
-            browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-blink-features=AutomationControlled'])
-            for r in rows:
-              x=dict(r); pid=str(r.get('productId') or ''); iid=str(r.get('itemId') or ''); vid=str(r.get('vendorItemId') or ''); title=str(r.get('productName') or '')
-              urls=[f'https://www.coupang.com/vp/products/{pid}?itemId={iid}&vendorItemId={vid}',f'https://www.coupang.com/vp/products/{pid}?itemId={iid}',f'https://m.coupang.com/vm/products/{pid}?itemId={iid}&vendorItemId={vid}']
-              found=[]; reached=False; evidence=[]
-              ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36',viewport={'width':1440,'height':1200})
-              page=ctx.new_page(); page.set_default_timeout(15000)
-              for q in [f'"{vid}" site:coupang.com/vp/products',f'"{title}" site:coupang.com/vp/products']:
-                for search in ['https://www.google.com/search?q=','https://www.bing.com/search?q=']:
-                  try:
-                    page.goto(search+urllib.parse.quote(q),wait_until='domcontentloaded',timeout=25000); page.wait_for_timeout(1000)
-                    html=page.content().replace('&amp;','&')
-                    for u in re.findall(r'https://(?:www|m)\.coupang\.com/v[pm]/products/\d+\?[^\s"<>]+',html,re.I):
-                      if vid in u and u not in urls: urls.append(u)
-                  except Exception: pass
-              for url in urls[:15]:
+          all_rows=json.loads(src.read_text(encoding='utf-8')).get('products',[])
+          rows=[r for i,r in enumerate(all_rows) if i%SHARDS==SHARD]
+
+          pats=[
+            re.compile(r'(?<![A-Z0-9])(?:CB|CA|SU|JU|XU|YU)\d{2,4}[A-Z0-9]{0,8}-\d{4,6}[A-Z]?(?![A-Z0-9])',re.I),
+            re.compile(r'(?<![A-Z0-9])B\d{3}[A-Z]\d{3}-\d{4}[A-Z]?(?![A-Z0-9])',re.I),
+            re.compile(r'(?<![A-Z0-9])R-[A-Z0-9]{2,10}-[A-Z0-9]{2,30}(?![A-Z0-9])',re.I),
+          ]
+
+          def extract(text):
+            out=[]
+            for p in pats:
+              for n in p.findall(text or ''):
+                n=re.sub(r'\s+','',n.upper())
+                if n not in out: out.append(n)
+            return out
+
+          def norm_cdn(raw):
+            v=str(raw or '').replace('\\/','/').replace('&amp;','&')
+            if v.startswith('//'): v='https:'+v
+            if not v.startswith('http') or 'coupangcdn.com' not in v: return ''
+            m=re.search(r'/thumbnails/remote/(?:[^/]+/)?image/(.+)$',v)
+            if m: return 'https://image1.coupangcdn.com/image/'+m.group(1).split('?')[0]
+            return v.split('?')[0]
+
+          def collect_signals(node,path='$',out=None,depth=0):
+            if out is None: out=[]
+            if depth>10 or len(out)>250: return out
+            if isinstance(node,dict):
+              for k,v in node.items():
+                p=f'{path}.{k}'
+                keymatch=re.search(r'kc|cert|safety|auth|인증|안전|품질|신고',str(k),re.I)
+                if keymatch:
+                  s=v if isinstance(v,str) else json.dumps(v,ensure_ascii=False)
+                  nums=extract(str(s))
+                  out.append({'path':p,'value':str(s)[:2000],'kcNumbers':nums})
+                collect_signals(v,p,out,depth+1)
+            elif isinstance(node,list):
+              for i,v in enumerate(node[:200]): collect_signals(v,f'{path}[{i}]',out,depth+1)
+            elif isinstance(node,str):
+              nums=extract(node)
+              if nums: out.append({'path':path,'value':node[:2000],'kcNumbers':nums})
+            return out
+
+          def ocr(raw):
+            im=Image.open(BytesIO(raw)).convert('L')
+            if im.width<1500:
+              scale=min(3.0,1500/max(1,im.width)); im=im.resize((int(im.width*scale),int(im.height*scale)))
+            variants=[im,ImageOps.autocontrast(im),ImageEnhance.Contrast(ImageOps.autocontrast(im)).enhance(1.8)]
+            txt=[]
+            for v in variants:
+              for psm in (6,11):
+                try: txt.append(pytesseract.image_to_string(v,lang='kor+eng',config=f'--psm {psm}'))
+                except Exception: pass
+            return '\n'.join(txt)
+
+          def prepare(context):
+            page=context.new_page(); page.set_default_timeout(45000)
+            nav=[]
+            for url in [f'{BASE}/{SELLER}?cb={random.randint(100000,999999)}',BASE]:
+              try:
+                resp=page.goto(url,wait_until='domcontentloaded',timeout=60000)
+                nav.append({'url':url,'http':resp.status if resp else None,'final':page.url})
+                if page.url.startswith(BASE): break
+              except Exception as e: nav.append({'url':url,'error':type(e).__name__})
+            return page,nav
+
+          def fetch_info(page,vid,retries=6):
+            last=None
+            for attempt in range(1,retries+1):
+              try:
+                res=page.evaluate("""async ({endpoint,storeId,vendorId,vid})=>{const r=await fetch(endpoint,{method:'POST',credentials:'include',headers:{'content-type':'application/json','accept':'application/json, text/plain, */*'},body:JSON.stringify({vendorItemIds:[vid],isVIBased:true,storeId,vendorId,ignoreAdultCheck:true})}); const t=await r.text(); let j=null; try{j=JSON.parse(t)}catch(e){}; return {http:r.status,text:t.slice(0,1500),json:j};}""",{'endpoint':ENDPOINT,'storeId':STORE,'vendorId':SELLER,'vid':vid})
+                j=res.get('json') or {}; data=j.get('data') if isinstance(j,dict) else None
+                last={'http':res.get('http'),'apiCode':j.get('code') if isinstance(j,dict) else None,'prefix':res.get('text'),'data':data,'attempt':attempt}
+                if res.get('http')==200 and int((j.get('code') if isinstance(j,dict) else 0) or 0)==200 and isinstance(data,dict): return last
+              except Exception as e: last={'error':f'{type(e).__name__}:{e}','attempt':attempt}
+              time.sleep(min(12,1.4*(2**(attempt-1))+random.random()))
+            return last
+
+          session=requests.Session(); session.headers.update({'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150 Safari/537.36','Accept-Language':'ko-KR,ko;q=0.9'})
+          output=[]
+          with sync_playwright() as pw:
+            browser=pw.chromium.launch(headless=True,args=['--disable-blink-features=AutomationControlled'])
+            context=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',viewport={'width':1440,'height':1200},user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150 Safari/537.36')
+            page,nav=prepare(context)
+            for idx,r in enumerate(rows,1):
+              x={k:r.get(k) for k in ('productId','itemId','vendorItemId','productName','productUrl')}
+              vid=str(r.get('vendorItemId') or '')
+              info=fetch_info(page,vid)
+              if not (info and info.get('http')==200 and int(info.get('apiCode') or 0)==200 and isinstance(info.get('data'),dict)):
+                try: page.close()
+                except Exception: pass
+                time.sleep(3); page,more=prepare(context); nav+=more
+                info=fetch_info(page,vid)
+              data=(info or {}).get('data') if isinstance((info or {}).get('data'),dict) else None
+              found=[]; evidence=[]; image_urls=[]; ocr_done=0; image_downloaded=0
+              if data:
+                for sig in collect_signals(data):
+                  for n in sig.get('kcNumbers') or []:
+                    if n not in found: found.append(n)
+                  if sig.get('kcNumbers'): evidence.append({'type':'상품정보/고시','path':sig['path'],'value':sig['value'][:1000],'kcNumbers':sig['kcNumbers']})
+                area=data.get('imageAndTitleArea') or {}
+                for key in ('completeHttpUrl','defaultUrl'):
+                  u=norm_cdn(area.get(key));
+                  if u and u not in image_urls: image_urls.append(u)
+                for key in ('completeHttpDetailImageUrls','detailImageUrls'):
+                  for rawu in area.get(key) or []:
+                    u=norm_cdn(rawu)
+                    if u and u not in image_urls: image_urls.append(u)
+                # Any additional Coupang CDN URLs nested anywhere in the product JSON.
+                rawjson=json.dumps(data,ensure_ascii=False)
+                for rawu in re.findall(r'https?:\\?/\\?/[^\"\\s]+coupangcdn\.com[^\"\\s]+',rawjson,re.I):
+                  u=norm_cdn(rawu)
+                  if u and u not in image_urls: image_urls.append(u)
+              # Add listing API image URLs already captured in the source row.
+              area=(r.get('rawListing') or {}).get('imageAndTitleArea') or {}
+              for key in ('completeHttpUrl','defaultUrl'):
+                u=norm_cdn(area.get(key));
+                if u and u not in image_urls: image_urls.append(u)
+              for key in ('completeHttpDetailImageUrls','detailImageUrls'):
+                for rawu in area.get(key) or []:
+                  u=norm_cdn(rawu)
+                  if u and u not in image_urls: image_urls.append(u)
+              # OCR product/description images, not external sites.
+              for u in image_urls[:30]:
                 try:
-                  resp=page.goto(url,wait_until='domcontentloaded',timeout=30000); page.wait_for_timeout(2200)
-                  text=' '.join(page.locator('body').inner_text(timeout=9000).split()); code=resp.status if resp else 0
-                  ok=200<=code<400 and code not in (403,429) and not any(w in text for w in blocked) and len(text)>500
-                  nums=[]
-                  if ok:
-                    reached=True
-                    for pat in pats: nums += pat.findall(text)
-                    nums=[re.sub(r'\s+','',n.upper()) for n in nums if n.upper() not in ('REFERENCE','RELATIONS')]
+                  rr=session.get(u,timeout=30)
+                  if rr.status_code!=200 or 'image' not in (rr.headers.get('content-type') or '').lower() or not (500<len(rr.content)<25000000): continue
+                  image_downloaded+=1
+                  text=ocr(rr.content); ocr_done+=1
+                  nums=extract(text)
+                  if nums:
                     for n in nums:
                       if n not in found: found.append(n)
-                  evidence.append({'url':url,'http':code,'ok':ok,'kcNumbers':nums})
-                  if found: break
-                except Exception as e: evidence.append({'url':url,'error':type(e).__name__})
-              ctx.close(); x['coupangPageReached']=reached; x['coupangKcNumber']=found[0] if found else ''; x['coupangKcStatus']='표기됨' if found else ('없음' if reached else '미확정'); x['coupangEvidence']=evidence; out.append(x)
+                    evidence.append({'type':'상품설명 이미지 OCR','url':u,'kcNumbers':nums,'snippet':re.sub(r'\s+',' ',text)[:1200]})
+                except Exception: pass
+              success=bool(data)
+              status='표기됨' if found else ('없음' if success else '재조회필요')
+              x.update({'kcNumber':found[0] if found else '','kcNumbers':found,'status':status,'endpointSuccess':success,'endpoint':{k:(info or {}).get(k) for k in ('http','apiCode','attempt','error')},'evidence':evidence,'imageUrlsScanned':len(image_urls),'imagesDownloaded':image_downloaded,'imagesOcrProcessed':ocr_done})
+              output.append(x)
+              print(json.dumps({'shard':SHARD,'done':idx,'total':len(rows),'productId':x['productId'],'status':status,'kc':found[:3],'images':ocr_done},ensure_ascii=False),flush=True)
             browser.close()
-          Path(f'result/result-{shard}.json').write_text(json.dumps({'products':out},ensure_ascii=False,indent=2),encoding='utf-8')
-          print({'shard':shard,'count':len(out),'reached':sum(bool(x['coupangPageReached']) for x in out),'kc':sum(bool(x['coupangKcNumber']) for x in out),'unresolved':sum(x['coupangKcStatus']=='미확정' for x in out)})
+          Path(f'result/result-{SHARD}.json').write_text(json.dumps({'products':output},ensure_ascii=False,indent=2),encoding='utf-8')
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: sunsu-bookfriends-${{ matrix.shard }}
+          name: sunsu-full-kc-${{ matrix.shard }}
           path: result/result-${{ matrix.shard }}.json
 
   merge:
     needs: audit
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: pip install openpyxl
       - uses: actions/download-artifact@v4
         with:
-          pattern: sunsu-bookfriends-*
+          pattern: sunsu-full-kc-*
           path: all
-      - run: |
+      - name: Merge and require final classification
+        run: |
           python - <<'PY'
           import json
           from pathlib import Path
@@ -116,15 +232,22 @@ jobs:
           rows=[]
           for f in Path('all').rglob('result-*.json'): rows += json.loads(f.read_text(encoding='utf-8')).get('products',[])
           uniq={(str(r.get('productId','')),str(r.get('itemId',''))):r for r in rows}; rows=list(uniq.values())
-          summary={'전체':len(rows),'상세페이지접속':sum(bool(r.get('coupangPageReached')) for r in rows),'KC번호확인':sum(bool(r.get('coupangKcNumber')) for r in rows),'없음':sum(r.get('coupangKcStatus')=='없음' for r in rows),'미확정':sum(r.get('coupangKcStatus')=='미확정' for r in rows)}
-          Path('bookfriends-results.json').write_text(json.dumps({'summary':summary,'products':rows},ensure_ascii=False,indent=2),encoding='utf-8')
-          wb=Workbook(); ws=wb.active; ws.title='쿠팡상세 기준'; ws.append(['제품명','판매자명','쿠팡고유번호','KC번호'])
-          for r in sorted(rows,key=lambda x:str(x.get('productName',''))): ws.append([r.get('productName',''),'순수커머스',f"{r.get('productId','')} - {r.get('itemId','')}",r.get('coupangKcNumber') or ('없음' if r.get('coupangKcStatus')=='없음' else '미확정')])
-          wb.save('순수커머스_북프렌즈방식_KC최종.xlsx'); print(summary)
+          unresolved=[r for r in rows if r.get('status')=='재조회필요']
+          summary={'전체':len(rows),'KC번호확인':sum(r.get('status')=='표기됨' for r in rows),'없음':sum(r.get('status')=='없음' for r in rows),'재조회필요':len(unresolved)}
+          Path('full-kc-results.json').write_text(json.dumps({'summary':summary,'products':rows},ensure_ascii=False,indent=2),encoding='utf-8')
+          wb=Workbook(); ws=wb.active; ws.title='쿠팡 전체확인'; ws.append(['제품명','판매자명','쿠팡고유번호','KC번호'])
+          for r in sorted(rows,key=lambda x:str(x.get('productName',''))):
+            value=r.get('kcNumber') if r.get('status')=='표기됨' else ('없음' if r.get('status')=='없음' else '재조회필요')
+            ws.append([r.get('productName',''),'순수커머스',f"{r.get('productId','')} - {r.get('itemId','')}",value])
+          ws.column_dimensions['A'].width=55; ws.column_dimensions['B'].width=16; ws.column_dimensions['C'].width=25; ws.column_dimensions['D'].width=24
+          wb.save('순수커머스_쿠팡전체확인_KC최종.xlsx')
+          print(summary)
+          if unresolved: raise SystemExit(f"still unresolved: {len(unresolved)}")
           PY
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: sunsu-bookfriends-final
+          name: sunsu-full-kc-final
           path: |
-            bookfriends-results.json
-            순수커머스_북프렌즈방식_KC최종.xlsx
+            full-kc-results.json
+            순수커머스_쿠팡전체확인_KC최종.xlsx
