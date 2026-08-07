@@ -1,8 +1,12 @@
-name: Sunsu Commerce Bookfriends Audit Round 3 Forced 2
+name: Sunsu Commerce Bookfriends Audit Round 3 Forced 3
 
 on:
   push:
     branches: [chatgpt/sunsu-commerce-audit]
+    paths: [".github/workflows/sunsu-commerce-audit.yml"]
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
     paths: [".github/workflows/sunsu-commerce-audit.yml"]
   workflow_dispatch:
 
