@@ -1,0 +1,273 @@
+name: BabyAndKids Full KC Recheck 15
+
+on:
+  push:
+    branches: [chatgpt/sunsu-commerce-audit]
+    paths: [".github/workflows/babyandkids-full-recheck-15.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  SELLER_ID: A00234884
+  SHOP_URL: https://shop.coupang.com/A00234884?source=brandstore_sdp_atf&platform=p
+
+jobs:
+  catalog:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install browser
+        run: |
+          pip install playwright requests
+          python -m playwright install --with-deps chromium
+      - name: Capture complete seller catalog from Coupang shop listing API
+        run: |
+          mkdir -p out
+          python - <<'PY'
+          import json, os, re, time
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          seller=os.environ['SELLER_ID']; shop=os.environ['SHOP_URL']
+          captured=[]
+          with sync_playwright() as pw:
+            browser=pw.chromium.launch(headless=True,args=['--disable-blink-features=AutomationControlled'])
+            ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',viewport={'width':1440,'height':1200},user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150 Safari/537.36')
+            page=ctx.new_page(); page.set_default_timeout(90000)
+            def on_response(resp):
+              try:
+                if '/api/v1/listing' not in resp.url: return
+                req=resp.request
+                body=req.post_data or ''
+                data=resp.json()
+                captured.append({'url':resp.url,'method':req.method,'post':body,'json':data})
+              except Exception:
+                pass
+            page.on('response',on_response)
+            for u in [shop, shop+'&cb=1']:
+              try:
+                page.goto(u,wait_until='domcontentloaded',timeout=90000)
+                page.wait_for_timeout(5000)
+                for _ in range(8):
+                  page.mouse.wheel(0,5000); page.wait_for_timeout(1000)
+              except Exception: pass
+              if captured: break
+            if not captured:
+              raise SystemExit('listing API was not captured')
+            first=captured[0]
+            seed=json.loads(first['post']) if first['post'] else {}
+            endpoint=first['url']
+            # normalize to API data
+            def unwrap(j):
+              if isinstance(j,dict) and isinstance(j.get('data'),dict): return j['data']
+              return j if isinstance(j,dict) else {}
+            d0=unwrap(first['json'])
+            products=list(d0.get('products') or [])
+            total=int(d0.get('totalCount') or 0)
+            # replay same request in page context; advance nextPageKey until no more products
+            seen={(str(x.get('productId') or ''),str(x.get('itemId') or '')) for x in products}
+            key=1
+            empty=0
+            while len(seen)<max(total,400) and key<100:
+              payload=dict(seed); payload['nextPageKey']=key
+              result=page.evaluate("""async ({url,payload})=>{const r=await fetch(url,{method:'POST',credentials:'include',headers:{'content-type':'application/json','accept':'application/json, text/plain, */*'},body:JSON.stringify(payload)}); let j=null; try{j=await r.json()}catch(e){}; return {status:r.status,j};}""",{'url':endpoint,'payload':payload})
+              j=result.get('j') or {}; d=unwrap(j); batch=list(d.get('products') or [])
+              added=0
+              for x in batch:
+                k=(str(x.get('productId') or ''),str(x.get('itemId') or ''))
+                if k not in seen and k!=('',''):
+                  seen.add(k); products.append(x); added+=1
+              print(json.dumps({'page':key,'http':result.get('status'),'batch':len(batch),'added':added,'total':total,'collected':len(seen)},ensure_ascii=False),flush=True)
+              if not batch or added==0: empty+=1
+              else: empty=0
+              if empty>=3: break
+              key+=1; page.wait_for_timeout(250)
+            browser.close()
+          rows=[]
+          def val(x,*keys):
+            for k in keys:
+              if x.get(k) not in (None,''): return x.get(k)
+            return ''
+          for x in products:
+            area=x.get('imageAndTitleArea') or {}
+            pid=str(val(x,'productId')); iid=str(val(x,'itemId')); vid=str(val(x,'vendorItemId'))
+            if not pid or not iid: continue
+            urls=[]
+            for k in ('completeHttpUrl','defaultUrl'):
+              if area.get(k): urls.append(area.get(k))
+            for k in ('completeHttpDetailImageUrls','detailImageUrls'):
+              urls += list(area.get(k) or [])
+            rows.append({'productId':pid,'itemId':iid,'vendorItemId':vid,'productName':str(area.get('title') or x.get('title') or ''),'productUrl':f'https://www.coupang.com/vp/products/{pid}?itemId={iid}&vendorItemId={vid}','listing':x,'imageUrls':urls})
+          uniq={(r['productId'],r['itemId']):r for r in rows}; rows=list(uniq.values())
+          out={'sellerId':seller,'expectedTotal':total,'collected':len(rows),'products':rows}
+          Path('out/catalog.json').write_text(json.dumps(out,ensure_ascii=False),encoding='utf-8')
+          print(json.dumps({'expectedTotal':total,'collected':len(rows)},ensure_ascii=False))
+          if len(rows)<400: raise SystemExit(f'catalog too small: {len(rows)}')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: babyandkids-catalog
+          path: out/catalog.json
+
+  audit:
+    needs: catalog
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 15
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install browser and OCR
+        run: |
+          pip install playwright requests pillow pytesseract
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-kor
+          python -m playwright install --with-deps chromium
+      - uses: actions/download-artifact@v4
+        with:
+          name: babyandkids-catalog
+          path: source
+      - name: Full KC scan
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          mkdir -p result
+          python - <<'PY'
+          import json, os, re, time, random
+          from io import BytesIO
+          from pathlib import Path
+          import requests, pytesseract
+          from PIL import Image,ImageOps,ImageEnhance
+          from playwright.sync_api import sync_playwright
+          shard=int(os.environ['SHARD']); shards=15
+          doc=json.loads(Path('source/catalog.json').read_text(encoding='utf-8')); allrows=doc['products']
+          rows=[r for i,r in enumerate(allrows) if i%shards==shard]
+          pats=[re.compile(r'(?<![A-Z0-9])(?:CB|CA|SU|JU|XU|YU)\d{2,4}[A-Z0-9]{0,8}-\d{4,6}[A-Z]?(?![A-Z0-9])',re.I),re.compile(r'(?<![A-Z0-9])B\d{3}[A-Z]\d{3}-\d{4}[A-Z]?(?![A-Z0-9])',re.I),re.compile(r'(?<![A-Z0-9])R-[A-Z0-9]{2,10}-[A-Z0-9]{2,30}(?![A-Z0-9])',re.I)]
+          def extract(t):
+            out=[]
+            for p in pats:
+              for n in p.findall(t or ''):
+                n=re.sub(r'\s+','',n.upper())
+                if n not in out: out.append(n)
+            return out
+          def norm(u):
+            u=str(u or '').replace('\\/','/').replace('&amp;','&')
+            if u.startswith('//'): u='https:'+u
+            if 'coupangcdn.com' not in u: return ''
+            m=re.search(r'/thumbnails/remote/(?:[^/]+/)?image/(.+)$',u)
+            if m: return 'https://image1.coupangcdn.com/image/'+m.group(1).split('?')[0]
+            return u.split('?')[0]
+          def ocr(b):
+            im=Image.open(BytesIO(b)).convert('L')
+            if im.width<1500:
+              s=min(3,1500/max(1,im.width)); im=im.resize((int(im.width*s),int(im.height*s)))
+            texts=[]
+            for v in [im,ImageOps.autocontrast(im),ImageEnhance.Contrast(ImageOps.autocontrast(im)).enhance(1.8)]:
+              for psm in (6,11):
+                try:texts.append(pytesseract.image_to_string(v,lang='kor+eng',config=f'--psm {psm}'))
+                except Exception: pass
+            return '\n'.join(texts)
+          sess=requests.Session(); sess.headers.update({'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150 Safari/537.36','Accept-Language':'ko-KR,ko;q=0.9'})
+          out=[]
+          with sync_playwright() as pw:
+            browser=pw.chromium.launch(headless=True,args=['--disable-blink-features=AutomationControlled'])
+            ctx=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',viewport={'width':1440,'height':1200},user_agent=sess.headers['User-Agent'])
+            for n,r in enumerate(rows,1):
+              found=[]; evidence=[]; imgs=[]; page=ctx.new_page(); page.set_default_timeout(60000)
+              url=r['productUrl']; http=None; html=''; title=''
+              try:
+                resp=page.goto(url,wait_until='domcontentloaded',timeout=60000); http=resp.status if resp else None; page.wait_for_timeout(2500); html=page.content(); title=page.title()
+                text=page.locator('body').inner_text(timeout=10000)
+                nums=extract(text+'\n'+html)
+                for x in nums:
+                  if x not in found: found.append(x)
+                if nums: evidence.append({'type':'상세페이지본문','numbers':nums})
+                for el in page.locator('img').all()[:120]:
+                  try:
+                    u=norm(el.get_attribute('src') or el.get_attribute('data-src') or '')
+                    if u and u not in imgs: imgs.append(u)
+                  except Exception: pass
+              except Exception as e:
+                evidence.append({'type':'pageError','value':f'{type(e).__name__}:{e}'[:300]})
+              try: page.close()
+              except Exception: pass
+              for raw in r.get('imageUrls') or []:
+                u=norm(raw)
+                if u and u not in imgs: imgs.append(u)
+              # nested listing JSON can contain additional KC text + image URLs
+              rawj=json.dumps(r.get('listing') or {},ensure_ascii=False)
+              for x in extract(rawj):
+                if x not in found: found.append(x); evidence.append({'type':'상품목록JSON','numbers':[x]})
+              for u in re.findall(r'https?:\\?/\\?/[^\"\\s]+coupangcdn\.com[^\"\\s]+',rawj,re.I):
+                u=norm(u)
+                if u and u not in imgs: imgs.append(u)
+              ocrn=0
+              for u in imgs[:40]:
+                try:
+                  rr=sess.get(u,timeout=25)
+                  if rr.status_code!=200 or 'image' not in (rr.headers.get('content-type') or '').lower() or not (500<len(rr.content)<25000000): continue
+                  txt=ocr(rr.content); ocrn+=1; nums=extract(txt)
+                  if nums:
+                    for x in nums:
+                      if x not in found: found.append(x)
+                    evidence.append({'type':'상품설명이미지OCR','url':u,'numbers':nums})
+                except Exception: pass
+              status='표기됨' if found else ('없음' if http==200 else '재조회필요')
+              out.append({'productId':r['productId'],'itemId':r['itemId'],'vendorItemId':r.get('vendorItemId',''),'productName':r.get('productName',''),'productUrl':url,'http':http,'pageTitle':title,'kcNumbers':found,'status':status,'imagesScanned':ocrn,'evidence':evidence[:30]})
+              print(json.dumps({'shard':shard,'done':n,'total':len(rows),'productId':r['productId'],'status':status,'kc':found[:4],'images':ocrn},ensure_ascii=False),flush=True)
+            browser.close()
+          Path(f'result/result-{shard}.json').write_text(json.dumps({'products':out},ensure_ascii=False),encoding='utf-8')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: babyandkids-kc-${{ matrix.shard }}
+          path: result/result-${{ matrix.shard }}.json
+
+  merge:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install openpyxl
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: babyandkids-kc-*
+          path: all
+      - name: Merge all results and build workbook
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from openpyxl import Workbook
+          rows=[]
+          for f in Path('all').rglob('result-*.json'): rows+=json.loads(f.read_text(encoding='utf-8')).get('products',[])
+          rows=list({(r['productId'],r['itemId']):r for r in rows}.values())
+          summary={'전체':len(rows),'KC번호표기':sum(r['status']=='표기됨' for r in rows),'없음':sum(r['status']=='없음' for r in rows),'재조회필요':sum(r['status']=='재조회필요' for r in rows),'고유KC번호':len({n for r in rows for n in r.get('kcNumbers',[])})}
+          Path('babyandkids-full-recheck.json').write_text(json.dumps({'summary':summary,'products':rows},ensure_ascii=False,indent=2),encoding='utf-8')
+          wb=Workbook(); ws=wb.active; ws.title='전체 재검수'; ws.append(['제품명','판매자명','쿠팡고유번호','KC번호','조회상태'])
+          for r in sorted(rows,key=lambda x:x.get('productName','')):
+            nums=', '.join(r.get('kcNumbers') or []) if r['status']=='표기됨' else ('없음' if r['status']=='없음' else '재조회필요')
+            ws.append([r.get('productName',''),'베이비앤키즈',f"{r.get('productId','')} - {r.get('itemId','')}",nums,r['status']])
+          ws.column_dimensions['A'].width=55; ws.column_dimensions['B'].width=16; ws.column_dimensions['C'].width=25; ws.column_dimensions['D'].width=36; ws.column_dimensions['E'].width=16
+          wb.save('베이비앤키즈_KC_전체재검수_최종.xlsx')
+          print(summary)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: babyandkids-full-recheck-final
+          path: |
+            babyandkids-full-recheck.json
+            베이비앤키즈_KC_전체재검수_최종.xlsx
