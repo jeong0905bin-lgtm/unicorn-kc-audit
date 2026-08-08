@@ -1,0 +1,251 @@
+name: Sunsu KC 47 Recheck + SafetyKorea
+
+on:
+  push:
+    branches: [chatgpt/sunsu-commerce-audit]
+    paths: [".github/workflows/sunsu-kc-recheck-47.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PREVIOUS_RUN_ID: 31148090031
+  SELLER_ID: A01593407
+  STORE_ID: 297717
+
+jobs:
+  recheck:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install dependencies
+        run: |
+          pip install playwright requests pillow pytesseract
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-kor
+          python -m playwright install --with-deps chromium
+      - uses: actions/download-artifact@v4
+        with:
+          name: sunsu-full-kc-final
+          repository: ${{ github.repository }}
+          run-id: ${{ env.PREVIOUS_RUN_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: previous
+      - name: Recheck only previous no-KC products
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          mkdir -p result
+          python - <<'PY'
+          import json, os, random, re, time
+          from io import BytesIO
+          from pathlib import Path
+          import requests, pytesseract
+          from PIL import Image, ImageOps, ImageEnhance, ImageFilter
+          from playwright.sync_api import sync_playwright
+
+          SHARD=int(os.environ['SHARD']); SHARDS=10
+          SELLER=os.environ['SELLER_ID']; STORE=int(os.environ['STORE_ID'])
+          BASE='https://shop.coupang.com'; ENDPOINT='/api/v2/store/individualInfo/product'
+          src=next(Path('previous').rglob('full-kc-results.json'))
+          prev=json.loads(src.read_text(encoding='utf-8'))
+          targets=[r for r in prev.get('products',[]) if r.get('status')=='없음']
+          rows=[r for i,r in enumerate(targets) if i%SHARDS==SHARD]
+
+          pats=[
+            re.compile(r'(?<![A-Z0-9])(?:CB|CA|SU|JU|XU|YU)\d{2,4}[A-Z0-9]{0,8}-\d{4,6}[A-Z]?(?![A-Z0-9])',re.I),
+            re.compile(r'(?<![A-Z0-9])B\d{3}[A-Z]\d{3}-\d{4}[A-Z]?(?![A-Z0-9])',re.I),
+            re.compile(r'(?<![A-Z0-9])R-[A-Z0-9]{2,10}-[A-Z0-9]{2,30}(?![A-Z0-9])',re.I),
+          ]
+          def extract(text):
+            out=[]
+            for p in pats:
+              for n in p.findall(text or ''):
+                n=re.sub(r'\s+','',n.upper())
+                if n not in out: out.append(n)
+            return out
+          def norm_cdn(raw):
+            v=str(raw or '').replace('\\/','/').replace('&amp;','&')
+            if v.startswith('//'): v='https:'+v
+            if not v.startswith('http') or 'coupangcdn.com' not in v: return ''
+            m=re.search(r'/thumbnails/remote/(?:[^/]+/)?image/(.+)$',v)
+            if m: return 'https://image1.coupangcdn.com/image/'+m.group(1).split('?')[0]
+            return v.split('?')[0]
+          def walk(node, values, urls, depth=0):
+            if depth>12: return
+            if isinstance(node,dict):
+              for k,v in node.items():
+                if re.search(r'kc|cert|safety|auth|인증|안전|품질|신고',str(k),re.I): values.append(str(v))
+                walk(v,values,urls,depth+1)
+            elif isinstance(node,list):
+              for v in node[:300]: walk(v,values,urls,depth+1)
+            elif isinstance(node,str):
+              values.append(node)
+              u=norm_cdn(node)
+              if u and u not in urls: urls.append(u)
+          def ocr(raw):
+            im=Image.open(BytesIO(raw)).convert('L')
+            if im.width<1800:
+              s=min(3.5,1800/max(1,im.width)); im=im.resize((int(im.width*s),int(im.height*s)))
+            ac=ImageOps.autocontrast(im)
+            variants=[im,ac,ImageEnhance.Contrast(ac).enhance(2.0),ac.filter(ImageFilter.SHARPEN)]
+            texts=[]
+            for v in variants:
+              for psm in (3,4,6,11,12):
+                try: texts.append(pytesseract.image_to_string(v,lang='kor+eng',config=f'--psm {psm}'))
+                except Exception: pass
+            return '\n'.join(texts)
+          def prepare(context):
+            page=context.new_page(); page.set_default_timeout(60000)
+            for url in [f'{BASE}/{SELLER}?cb={random.randint(100000,999999)}',BASE]:
+              try:
+                page.goto(url,wait_until='domcontentloaded',timeout=60000)
+                if page.url.startswith(BASE): break
+              except Exception: pass
+            return page
+          def fetch_info(page,vid):
+            last=None
+            for attempt in range(1,8):
+              try:
+                res=page.evaluate("""async ({endpoint,storeId,vendorId,vid})=>{const r=await fetch(endpoint,{method:'POST',credentials:'include',headers:{'content-type':'application/json','accept':'application/json, text/plain, */*'},body:JSON.stringify({vendorItemIds:[vid],isVIBased:true,storeId,vendorId,ignoreAdultCheck:true})}); const t=await r.text(); let j=null; try{j=JSON.parse(t)}catch(e){}; return {http:r.status,json:j};}""",{'endpoint':ENDPOINT,'storeId':STORE,'vendorId':SELLER,'vid':vid})
+                j=res.get('json') or {}; data=j.get('data') if isinstance(j,dict) else None
+                last={'http':res.get('http'),'apiCode':j.get('code') if isinstance(j,dict) else None,'data':data,'attempt':attempt}
+                if res.get('http')==200 and int((j.get('code') if isinstance(j,dict) else 0) or 0)==200 and isinstance(data,dict): return last
+              except Exception as e: last={'error':f'{type(e).__name__}:{e}','attempt':attempt}
+              time.sleep(min(14,1.5*(2**(attempt-1))+random.random()))
+            return last
+
+          session=requests.Session(); session.headers.update({'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150 Safari/537.36','Accept-Language':'ko-KR,ko;q=0.9'})
+          out=[]
+          with sync_playwright() as pw:
+            browser=pw.chromium.launch(headless=True,args=['--disable-blink-features=AutomationControlled'])
+            context=browser.new_context(locale='ko-KR',timezone_id='Asia/Seoul',viewport={'width':1440,'height':1200},user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150 Safari/537.36')
+            page=prepare(context)
+            for i,r in enumerate(rows,1):
+              vid=str(r.get('vendorItemId') or '')
+              info=fetch_info(page,vid)
+              if not (info and isinstance(info.get('data'),dict)):
+                try: page.close()
+                except Exception: pass
+                time.sleep(3); page=prepare(context); info=fetch_info(page,vid)
+              data=(info or {}).get('data') if isinstance((info or {}).get('data'),dict) else None
+              found=[]; evidence=[]; urls=[]; values=[]
+              if data:
+                walk(data,values,urls)
+                for val in values:
+                  nums=extract(val)
+                  for n in nums:
+                    if n not in found: found.append(n)
+                  if nums: evidence.append({'type':'상품정보/고시','kcNumbers':nums,'snippet':str(val)[:1000]})
+              # Re-scan every discoverable Coupang image, with broader OCR settings.
+              downloaded=0; processed=0
+              for u in urls[:60]:
+                try:
+                  rr=session.get(u,timeout=35)
+                  if rr.status_code!=200 or 'image' not in (rr.headers.get('content-type') or '').lower() or not (500<len(rr.content)<30000000): continue
+                  downloaded+=1; text=ocr(rr.content); processed+=1; nums=extract(text)
+                  if nums:
+                    for n in nums:
+                      if n not in found: found.append(n)
+                    evidence.append({'type':'상품설명 이미지 재OCR','url':u,'kcNumbers':nums,'snippet':re.sub(r'\s+',' ',text)[:1400]})
+                except Exception: pass
+              row=dict(r)
+              row.update({'recheckEndpointSuccess':bool(data),'recheckKcNumbers':found,'recheckKcNumber':found[0] if found else '','recheckEvidence':evidence,'recheckImageUrls':len(urls),'recheckImagesDownloaded':downloaded,'recheckImagesProcessed':processed,'recheckStatus':'표기됨' if found else ('없음' if data else '재조회필요')})
+              out.append(row)
+              print(json.dumps({'shard':SHARD,'done':i,'total':len(rows),'productId':r.get('productId'),'status':row['recheckStatus'],'kc':found},ensure_ascii=False),flush=True)
+            browser.close()
+          Path(f'result/result-{SHARD}.json').write_text(json.dumps({'products':out},ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sunsu-kc-recheck47-${{ matrix.shard }}
+          path: result/result-${{ matrix.shard }}.json
+
+  merge_and_verify:
+    needs: recheck
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install openpyxl requests beautifulsoup4
+      - uses: actions/download-artifact@v4
+        with:
+          name: sunsu-full-kc-final
+          repository: ${{ github.repository }}
+          run-id: ${{ env.PREVIOUS_RUN_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: previous
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sunsu-kc-recheck47-*
+          path: recheck
+      - name: Merge and verify official SafetyKorea status
+        run: |
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          import requests
+          from bs4 import BeautifulSoup
+          from openpyxl import Workbook
+
+          prev=json.loads(next(Path('previous').rglob('full-kc-results.json')).read_text(encoding='utf-8'))
+          base={(str(r.get('productId','')),str(r.get('itemId',''))):r for r in prev.get('products',[])}
+          rechecked=[]
+          for f in Path('recheck').rglob('result-*.json'):
+            rechecked += json.loads(f.read_text(encoding='utf-8')).get('products',[])
+          for r in rechecked:
+            k=(str(r.get('productId','')),str(r.get('itemId','')))
+            old=base.get(k,{})
+            nums=r.get('recheckKcNumbers') or []
+            if nums:
+              old['kcNumbers']=nums; old['kcNumber']=nums[0]; old['status']='표기됨'; old['evidence']=(old.get('evidence') or [])+(r.get('recheckEvidence') or [])
+            old['secondCheck']=r
+            base[k]=old
+          rows=list(base.values())
+
+          certs=sorted({n for r in rows for n in (r.get('kcNumbers') or []) if n})
+          statuses={}
+          s=requests.Session(); s.headers.update({'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/138 Safari/537.36','Accept-Language':'ko-KR,ko;q=0.9'})
+          for cert in certs:
+            url='https://www.safetykorea.kr/search/searchPop?certNum='+cert
+            item={'certificationNumber':cert,'url':url,'status':'','exact':False}
+            try:
+              resp=s.get(url,timeout=30); item['http']=resp.status_code
+              if resp.ok:
+                text=re.sub(r'\s+',' ',BeautifulSoup(resp.text,'html.parser').get_text(' ')).strip()
+                item['exact']=cert.upper() in text.upper()
+                m=re.search(r'인증상태\s*[:|]?\s*(기간만료|적합|취소|반납|정지|부적합)',text)
+                if m: item['status']=m.group(1)
+                item['textPrefix']=text[:700]
+            except Exception as e: item['error']=repr(e)
+            statuses[cert]=item
+
+          summary={'전체':len(rows),'1차KC번호확인':sum(bool(r.get('kcNumber')) and not r.get('secondCheck') for r in rows),'2차신규KC번호확인':sum(bool((r.get('secondCheck') or {}).get('recheckKcNumber')) for r in rows),'최종KC번호확인':sum(bool(r.get('kcNumber')) for r in rows),'최종없음':sum(not bool(r.get('kcNumber')) for r in rows),'2차재조회필요':sum((r.get('secondCheck') or {}).get('recheckStatus')=='재조회필요' for r in rows),'공식상태':statuses}
+          Path('recheck47-final.json').write_text(json.dumps({'summary':summary,'products':rows},ensure_ascii=False,indent=2),encoding='utf-8')
+
+          wb=Workbook(); ws=wb.active; ws.title='최종 재검수'; ws.append(['제품명','판매자명','쿠팡고유번호','KC번호','SafetyKorea 공식상태'])
+          for r in sorted(rows,key=lambda x:str(x.get('productName',''))):
+            cert=r.get('kcNumber') or ''; st=(statuses.get(cert) or {}).get('status') if cert else ''
+            ws.append([r.get('productName',''),'순수커머스',f"{r.get('productId','')} - {r.get('itemId','')}",cert or '없음',st or ('공식확인실패' if cert else '')])
+          ws.column_dimensions['A'].width=55; ws.column_dimensions['B'].width=16; ws.column_dimensions['C'].width=25; ws.column_dimensions['D'].width=24; ws.column_dimensions['E'].width=22
+          wb.save('순수커머스_KC_47개재검수_공식상태포함.xlsx')
+          print(json.dumps(summary,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sunsu-kc-recheck47-final
+          path: |
+            recheck47-final.json
+            순수커머스_KC_47개재검수_공식상태포함.xlsx
